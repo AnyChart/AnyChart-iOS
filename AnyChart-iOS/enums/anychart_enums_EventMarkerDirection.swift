@@ -3,9 +3,11 @@ extension anychart.enums {
         case AUTO = "auto"
         case DOWN = "down"
         case UP = "up"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

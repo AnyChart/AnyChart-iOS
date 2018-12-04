@@ -5,9 +5,11 @@ extension anychart.enums {
         case OUTSIDE_LEFT_IN_COLUMN = "outside-left-in-column"
         case OUTSIDE_RIGHT = "outside-right"
         case OUTSIDE_RIGHT_IN_COLUMN = "outside-right-in-column"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

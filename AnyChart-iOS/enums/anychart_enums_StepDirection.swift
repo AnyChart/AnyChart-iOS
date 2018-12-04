@@ -3,9 +3,11 @@ extension anychart.enums {
         case BACKWARD = "backward"
         case CENTER = "center"
         case FORWARD = "forward"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

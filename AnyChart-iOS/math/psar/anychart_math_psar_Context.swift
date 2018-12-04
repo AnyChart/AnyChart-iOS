@@ -4,9 +4,5 @@ extension anychart.math.psar {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

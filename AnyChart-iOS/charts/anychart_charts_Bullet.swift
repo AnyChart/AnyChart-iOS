@@ -7,7 +7,7 @@
     public class Bullet: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Bullet {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "bullet\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -536,7 +538,7 @@ Layout is defined by {@link anychart.charts.Bullet#layout} method.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Bullet {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -718,7 +720,7 @@ Layout is defined by {@link anychart.charts.Bullet#layout} method.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Bullet {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

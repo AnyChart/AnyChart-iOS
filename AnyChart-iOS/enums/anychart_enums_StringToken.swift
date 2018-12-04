@@ -100,9 +100,11 @@ extension anychart.enums {
         case Y_PERCENT_OF_SERIES = "%YPercentOfSeries"
         case Y_PERCENT_OF_TOTAL = "%YPercentOfTotal"
         case Y_VALUE = "%YValue"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

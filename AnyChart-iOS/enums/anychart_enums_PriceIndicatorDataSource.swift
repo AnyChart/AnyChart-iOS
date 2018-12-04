@@ -4,9 +4,11 @@ extension anychart.enums {
         case LAST_VISIBLE = "last-visible"
         case SERIES_END = "series-end"
         case SERIES_START = "series-start"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

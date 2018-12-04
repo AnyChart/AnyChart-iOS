@@ -7,7 +7,7 @@
     public class RowProxy: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> RowProxy {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "rowProxy\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

@@ -7,7 +7,7 @@
     public class Clip: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Clip {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "clip\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -43,7 +45,7 @@
      * Setter for the shape of the clip.
      */
     public func shape(shape: [Double]) -> anychart.graphics.vector.Clip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shape(%s);", Arrays.toString(shape)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shape(%s);", shape.map{String($0)}.joined(separator: ",")))
 
         return self
     }

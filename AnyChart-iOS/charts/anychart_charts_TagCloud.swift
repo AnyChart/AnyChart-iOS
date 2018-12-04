@@ -7,7 +7,7 @@
     public class TagCloud: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> TagCloud {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "tagCloud\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -51,7 +53,7 @@
      * Setter for tags rotation angles.
      */
     public func angles(anglesList: [Double]) -> anychart.charts.TagCloud {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".angles(%s);", Arrays.toString(anglesList)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".angles(%s);", anglesList.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -625,7 +627,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.TagCloud {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -811,7 +813,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.TagCloud {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1021,7 +1023,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
 <b>Note:</b> Works only after {@link anychart.charts.TagCloud#draw} is called.
      */
     public func select(indexes: [Double]) -> anychart.charts.TagCloud {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }

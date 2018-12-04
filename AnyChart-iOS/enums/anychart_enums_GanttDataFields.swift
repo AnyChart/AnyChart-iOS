@@ -29,9 +29,11 @@ extension anychart.enums {
         case START = "start"
         case START_MARKER = "startMarker"
         case STROKE = "stroke"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

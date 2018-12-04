@@ -7,7 +7,7 @@
     public class Stock: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Stock {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "stock\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -519,7 +521,7 @@ Please make sure you are aware of that when you dispose and create plots.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -662,7 +664,7 @@ Please make sure you are aware of that when you dispose and create plots.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

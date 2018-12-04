@@ -3,9 +3,11 @@ extension anychart.enums {
         case NONE = "none"
         case PERCENT = "percent"
         case VALUE = "value"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -10,9 +10,11 @@ extension anychart.enums {
         case MIN = "min"
         case SUM = "sum"
         case WEIGHTED_AVERAGE = "weighted-average"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

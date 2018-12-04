@@ -7,7 +7,7 @@
     public class TextSettings: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> TextSettings {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "textSettings\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -191,7 +193,7 @@
      * Setter for the margin using a single value.
      */
     public func margin(margin: [Double]) -> anychart.core.resource.resourcelist.TextSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }

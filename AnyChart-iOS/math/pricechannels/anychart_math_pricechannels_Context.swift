@@ -4,9 +4,5 @@ extension anychart.math.pricechannels {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

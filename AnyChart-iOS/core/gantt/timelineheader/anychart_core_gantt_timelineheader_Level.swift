@@ -4,9 +4,5 @@ extension anychart.core.gantt.timelineheader {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

@@ -3,9 +3,11 @@ extension anychart.enums {
         case AREA = "area"
         case LINE = "line"
         case MARKER = "marker"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

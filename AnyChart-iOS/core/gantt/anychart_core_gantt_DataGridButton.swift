@@ -7,7 +7,7 @@
     public class DataGridButton: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> DataGridButton {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "dataGridButton\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -295,7 +297,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

@@ -3,9 +3,11 @@ extension anychart.graphics.vector {
         case BUTT = "butt"
         case ROUND = "round"
         case SQUARE = "square"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

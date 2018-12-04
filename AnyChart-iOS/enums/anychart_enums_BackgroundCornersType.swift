@@ -4,9 +4,11 @@ extension anychart.enums {
         case NONE = "none"
         case ROUND = "round"
         case ROUND_INNER = "round-inner"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

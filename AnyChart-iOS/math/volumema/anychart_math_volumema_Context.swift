@@ -4,9 +4,5 @@ extension anychart.math.volumema {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

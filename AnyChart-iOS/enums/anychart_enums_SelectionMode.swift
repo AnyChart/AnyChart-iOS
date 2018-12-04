@@ -4,9 +4,11 @@ extension anychart.enums {
         case MULTI_SELECT = "multi-select"
         case NONE = "none"
         case SINGLE_SELECT = "single-select"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

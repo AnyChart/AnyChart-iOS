@@ -10,9 +10,11 @@ extension anychart.enums {
         case ORDINAL_COLOR = "ordinal-color"
         case STOCK_ORDINAL_DATE_TIME = "stock-ordinal-date-time"
         case STOCK_SCATTER_DATE_TIME = "stock-scatter-date-time"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

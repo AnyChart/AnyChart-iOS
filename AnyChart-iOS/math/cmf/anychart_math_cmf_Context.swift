@@ -4,9 +4,5 @@ extension anychart.math.cmf {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

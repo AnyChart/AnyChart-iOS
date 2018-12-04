@@ -4,9 +4,5 @@ extension anychart.math.ao {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

@@ -5,9 +5,11 @@ extension anychart.enums {
         case SERIES_NEGATIVE = "series-negative"
         case SERIES_POSITIVE = "series-positive"
         case ZERO = "zero"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -7,7 +7,7 @@
     public class Legend: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Legend {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "legend\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -448,7 +450,7 @@
      * Setter for the legend margin in pixels using a single value.
      */
     public func margin(margin: [Double]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -534,7 +536,7 @@
      * Setter for the legend padding in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

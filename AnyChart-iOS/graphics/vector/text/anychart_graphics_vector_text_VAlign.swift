@@ -3,9 +3,11 @@ extension anychart.graphics.vector.text {
         case BOTTOM = "bottom"
         case MIDDLE = "middle"
         case TOP = "top"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

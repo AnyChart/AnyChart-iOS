@@ -4,9 +4,11 @@ extension anychart.enums {
         case HORIZONTAL_EXPANDABLE = "horizontal-expandable"
         case VERTICAL = "vertical"
         case VERTICAL_EXPANDABLE = "vertical-expandable"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

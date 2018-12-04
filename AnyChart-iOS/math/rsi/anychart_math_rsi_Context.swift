@@ -4,9 +4,5 @@ extension anychart.math.rsi {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

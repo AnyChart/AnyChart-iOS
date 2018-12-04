@@ -4,9 +4,5 @@ extension anychart.math.bbandsb {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

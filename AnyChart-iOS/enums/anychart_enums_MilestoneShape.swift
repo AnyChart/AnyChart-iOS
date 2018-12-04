@@ -3,9 +3,11 @@ extension anychart.enums {
         case CIRCLE = "circle"
         case RECTANGLE = "rectangle"
         case RHOMBUS = "rhombus"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

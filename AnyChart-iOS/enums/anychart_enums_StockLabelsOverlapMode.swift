@@ -4,9 +4,11 @@ extension anychart.enums {
         case ALLOW_MINOR_OVERLAP = "allow-minor-overlap"
         case ALLOW_OVERLAP = "allow-overlap"
         case NO_OVERLAP = "no-overlap"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -7,7 +7,7 @@
     public class Separator: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Separator {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "separator\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -212,7 +214,7 @@
      * Setter for the margin of the separator.
      */
     public func margin(spaceOrTopOrTopAndBottom: [Double], rightOrRightAndLeft: String, bottom: String, left: String) -> anychart.core.ui.Separator {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", Arrays.toString(spaceOrTopOrTopAndBottom), JsObject.wrapQuotes(value: rightOrRightAndLeft), JsObject.wrapQuotes(value: bottom), JsObject.wrapQuotes(value: left)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", spaceOrTopOrTopAndBottom.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: rightOrRightAndLeft), JsObject.wrapQuotes(value: bottom), JsObject.wrapQuotes(value: left)))
 
         return self
     }
@@ -220,7 +222,7 @@
      * Setter for the margin of the separator.
      */
     public func margin(spaceOrTopOrTopAndBottom: [Double], rightOrRightAndLeft: String, bottom: Double, left: String) -> anychart.core.ui.Separator {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", Arrays.toString(spaceOrTopOrTopAndBottom), JsObject.wrapQuotes(value: rightOrRightAndLeft), bottom, JsObject.wrapQuotes(value: left)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", spaceOrTopOrTopAndBottom.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: rightOrRightAndLeft), bottom, JsObject.wrapQuotes(value: left)))
 
         return self
     }
@@ -228,7 +230,7 @@
      * Setter for the margin of the separator.
      */
     public func margin(spaceOrTopOrTopAndBottom: [Double], rightOrRightAndLeft: Double, bottom: String, left: String) -> anychart.core.ui.Separator {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", Arrays.toString(spaceOrTopOrTopAndBottom), rightOrRightAndLeft, JsObject.wrapQuotes(value: bottom), JsObject.wrapQuotes(value: left)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", spaceOrTopOrTopAndBottom.map{String($0)}.joined(separator: ","), rightOrRightAndLeft, JsObject.wrapQuotes(value: bottom), JsObject.wrapQuotes(value: left)))
 
         return self
     }
@@ -236,7 +238,7 @@
      * Setter for the margin of the separator.
      */
     public func margin(spaceOrTopOrTopAndBottom: [Double], rightOrRightAndLeft: Double, bottom: Double, left: String) -> anychart.core.ui.Separator {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", Arrays.toString(spaceOrTopOrTopAndBottom), rightOrRightAndLeft, bottom, JsObject.wrapQuotes(value: left)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", spaceOrTopOrTopAndBottom.map{String($0)}.joined(separator: ","), rightOrRightAndLeft, bottom, JsObject.wrapQuotes(value: left)))
 
         return self
     }

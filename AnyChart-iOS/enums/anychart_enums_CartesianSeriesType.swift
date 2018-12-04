@@ -21,9 +21,11 @@ extension anychart.enums {
         case STEP_AREA = "step-area"
         case STEP_LINE = "step-line"
         case STICK = "stick"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

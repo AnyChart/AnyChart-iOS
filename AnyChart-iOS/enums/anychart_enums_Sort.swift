@@ -3,9 +3,11 @@ extension anychart.enums {
         case ASC = "asc"
         case DESC = "desc"
         case NONE = "none"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

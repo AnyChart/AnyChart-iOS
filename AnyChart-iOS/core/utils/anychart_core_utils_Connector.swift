@@ -7,7 +7,7 @@
     public class Connector: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Connector {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "connector\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

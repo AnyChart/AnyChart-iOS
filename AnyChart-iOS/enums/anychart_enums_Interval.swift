@@ -11,9 +11,11 @@ extension anychart.enums {
         case THIRD_OF_MONTH = "third-of-month"
         case WEEK = "week"
         case YEAR = "year"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

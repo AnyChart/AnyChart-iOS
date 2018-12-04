@@ -7,7 +7,7 @@
     public class Cartesian3d: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Cartesian3d {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "cartesian3d\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -877,7 +879,7 @@ The baseline is the line relative to which the series with the negative or posit
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Cartesian3d {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1105,7 +1107,7 @@ The baseline is the line relative to which the series with the negative or posit
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Cartesian3d {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

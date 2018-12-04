@@ -5,9 +5,11 @@ extension anychart.graphics.vector.text {
         case NONE = "none"
         case OVERLINE = "overline"
         case UNDERLINE = "underline"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -4,9 +4,11 @@ extension anychart.enums {
         case GROUPED = "grouped"
         case RAW = "raw"
         case SELECTED = "selected"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -3,9 +3,11 @@ extension anychart.enums {
         case ALWAYS_SHOW = "always-show"
         case CLIP = "clip"
         case DROP = "drop"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

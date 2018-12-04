@@ -13,9 +13,11 @@ extension anychart.enums {
         case ROBINSON = "robinson"
         case WAGNER6 = "wagner6"
         case WSG84 = "wsg84"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

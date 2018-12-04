@@ -110,9 +110,11 @@ extension anychart.enums {
         case Y_SCALES_MAX = "yScalesMax"
         case Y_SCALES_MIN = "yScalesMin"
         case Y_VALUE = "yValue"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

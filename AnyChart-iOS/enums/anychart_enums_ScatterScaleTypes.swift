@@ -3,9 +3,11 @@ extension anychart.enums {
         case DATE_TIME = "date-time"
         case LINEAR = "linear"
         case LOG = "log"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

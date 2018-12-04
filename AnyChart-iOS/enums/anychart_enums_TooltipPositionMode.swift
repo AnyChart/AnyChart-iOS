@@ -3,9 +3,11 @@ extension anychart.enums {
         case CHART = "chart"
         case FLOAT = "float"
         case POINT = "point"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

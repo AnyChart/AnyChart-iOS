@@ -10,9 +10,11 @@ extension anychart.enums {
         case RIGHT_BOTTOM = "right-bottom"
         case RIGHT_CENTER = "right-center"
         case RIGHT_TOP = "right-top"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

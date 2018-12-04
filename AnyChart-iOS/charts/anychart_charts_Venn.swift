@@ -7,7 +7,7 @@
     public class Venn: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Venn {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "venn\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -492,7 +494,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Hovers points by indexes.
      */
     public func hover(indexes: [Double]) -> anychart.charts.Venn {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -634,7 +636,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Venn {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -842,7 +844,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Venn {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1238,7 +1240,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Deselects selected points by indexes.
      */
     public func unselect(indexes: [Double]) -> anychart.charts.Venn {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }

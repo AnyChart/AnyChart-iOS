@@ -7,7 +7,7 @@
     public class TimeLineHeader: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> TimeLineHeader {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "timeLineHeader\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -677,7 +679,7 @@
      * Setter for paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.core.gantt.TimeLineHeader {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

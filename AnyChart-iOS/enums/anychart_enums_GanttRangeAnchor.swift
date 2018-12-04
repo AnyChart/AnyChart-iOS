@@ -4,9 +4,11 @@ extension anychart.enums {
         case FIRST_VISIBLE_DATE = "first-visible-date"
         case LAST_DATE = "last-date"
         case LAST_VISIBLE_DATE = "last-visible-date"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

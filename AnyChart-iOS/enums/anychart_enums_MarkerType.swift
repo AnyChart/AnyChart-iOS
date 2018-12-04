@@ -22,9 +22,11 @@ extension anychart.enums {
         case TRIANGLE_LEFT = "triangle-left"
         case TRIANGLE_RIGHT = "triangle-right"
         case TRIANGLE_UP = "triangle-up"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -4,9 +4,11 @@ extension anychart.graphics.vector.stage {
         case RENDER_START = "renderstart"
         case STAGE_RENDERED = "stagerendered"
         case STAGE_RESIZE = "stageresize"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

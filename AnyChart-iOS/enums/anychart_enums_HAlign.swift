@@ -5,9 +5,11 @@ extension anychart.enums {
         case LEFT = "left"
         case RIGHT = "right"
         case START = "start"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

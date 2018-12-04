@@ -3,9 +3,11 @@ extension anychart.graphics.vector {
         case BEVEL = "bevel"
         case MITER = "miter"
         case ROUND = "round"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

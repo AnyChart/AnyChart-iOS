@@ -7,7 +7,7 @@
     public class Label: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Label {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "label\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -370,7 +372,7 @@ Auto rotates a label around an anchor.
      * Setter for label padding in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.core.ui.circularlabelsfactory.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

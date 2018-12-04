@@ -4,9 +4,5 @@ extension anychart.math.aroon {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

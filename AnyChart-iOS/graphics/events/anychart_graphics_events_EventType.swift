@@ -18,9 +18,11 @@ extension anychart.graphics.events {
         case TOUCHEND = "touchend"
         case TOUCHMOVE = "touchmove"
         case TOUCHSTART = "touchstart"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

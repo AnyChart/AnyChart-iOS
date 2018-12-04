@@ -4,9 +4,5 @@ extension anychart.math.keltnerchannels {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

@@ -66,9 +66,11 @@ extension anychart.enums {
         case YEAR_SEMESTER = "year-semester"
         case YEAR_THIRD_OF_MONTH = "year-third-of-month"
         case YEAR_WEEK = "year-week"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -16,9 +16,11 @@ extension anychart.enums {
         case TREND_CHANNEL = "trend-channel"
         case TRIANGLE = "triangle"
         case VERTICAL_LINE = "vertical-line"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

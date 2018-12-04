@@ -3,9 +3,11 @@ extension anychart.enums {
         case SEPARATED = "separated"
         case SINGLE = "single"
         case UNION = "union"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

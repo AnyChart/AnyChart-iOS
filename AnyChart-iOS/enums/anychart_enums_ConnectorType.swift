@@ -4,9 +4,11 @@ extension anychart.enums {
         case FINISH_START = "finish-start"
         case START_FINISH = "start-finish"
         case START_START = "start-start"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

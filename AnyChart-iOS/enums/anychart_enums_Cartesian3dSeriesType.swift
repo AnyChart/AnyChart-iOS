@@ -5,9 +5,11 @@ extension anychart.enums {
         case COLUMN = "column"
         case LINE = "line"
         case LINE_2D = "line-2d"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

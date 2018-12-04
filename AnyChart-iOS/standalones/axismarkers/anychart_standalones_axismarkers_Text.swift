@@ -7,7 +7,7 @@
     public class Text: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Text {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "text\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -370,7 +372,7 @@ Layout is define by {@link anychart.core.axisMarkers.Text#layout} method.
      * Setter for the text marker padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.standalones.axismarkers.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

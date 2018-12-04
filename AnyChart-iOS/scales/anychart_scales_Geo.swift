@@ -7,7 +7,7 @@
     public class Geo: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Geo {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "geo\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -137,7 +139,7 @@ If the number of ticks is greater than set in maxTicksCount(), the scale calcula
      * Setter for the precision using one value.
      */
     public func precision(precision: [Double]) -> anychart.scales.Geo {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".precision(%s);", Arrays.toString(precision)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".precision(%s);", precision.map{String($0)}.joined(separator: ",")))
 
         return self
     }

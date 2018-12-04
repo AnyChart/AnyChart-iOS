@@ -4,9 +4,5 @@ extension anychart.math.kdj {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

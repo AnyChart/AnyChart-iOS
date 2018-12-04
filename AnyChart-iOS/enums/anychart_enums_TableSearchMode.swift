@@ -4,9 +4,11 @@ extension anychart.enums {
         case EXACT_OR_NEXT = "exact-or-next"
         case EXACT_OR_PREV = "exact-or-prev"
         case NEAREST = "nearest"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -7,7 +7,7 @@
     public class Pie: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Pie {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "pie\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -958,7 +960,7 @@ Learn more about mapping at {@link anychart.data.Mapping}.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Pie {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1195,7 +1197,7 @@ Learn more about mapping at {@link anychart.data.Mapping}.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Pie {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1406,7 +1408,7 @@ Learn more about mapping at {@link anychart.data.Mapping}.
 <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
      */
     public func select(indexes: [Double]) -> anychart.charts.Pie {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }

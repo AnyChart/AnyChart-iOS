@@ -82,9 +82,11 @@ extension anychart.enums {
         case ZOOM = "zoom"
         case ZOOM_END = "zoomEnd"
         case ZOOM_START = "zoomStart"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

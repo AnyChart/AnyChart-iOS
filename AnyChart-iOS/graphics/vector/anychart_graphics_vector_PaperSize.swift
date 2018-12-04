@@ -8,9 +8,11 @@ extension anychart.graphics.vector {
         case A5 = "a5"
         case A6 = "a6"
         case US_LETTER = "us-letter"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -7,7 +7,7 @@
     public class RangeArea: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> RangeArea {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "rangeArea\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -562,7 +564,7 @@
      * Hovers points by indexes.
      */
     public func hover(indexes: [Double]) -> anychart.core.cartesian.series.RangeArea {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -937,7 +939,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * 
      */
     public func select(indexes: [Double]) -> anychart.core.cartesian.series.RangeArea {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -1060,7 +1062,7 @@ To select multiple points, press 'ctrl' and click on them.
      * Deselects selected points by indexes.
      */
     public func unselect(indexes: [Double]) -> anychart.core.cartesian.series.RangeArea {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }

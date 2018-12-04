@@ -4,9 +4,11 @@ extension anychart.enums {
         case ACTIVITY_PER_RESOURCE = "activity-per-resource"
         case AVAILABILITY_PER_CHART = "availability-per-chart"
         case AVAILABILITY_PER_RESOURCE = "availability-per-resource"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

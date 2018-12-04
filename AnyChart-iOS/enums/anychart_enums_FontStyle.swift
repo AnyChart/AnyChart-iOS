@@ -3,9 +3,11 @@ extension anychart.enums {
         case ITALIC = "italic"
         case NORMAL = "normal"
         case OBLIQUE = "oblique"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -4,9 +4,5 @@ extension anychart.math.stochastic {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

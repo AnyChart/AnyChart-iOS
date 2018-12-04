@@ -5,9 +5,11 @@ extension anychart.enums {
         case PERCENT = "percent"
         case STRING = "string"
         case UNKNOWN = ""
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -7,9 +7,11 @@ extension anychart.enums {
         case RANGE = "range"
         case UNIT = "unit"
         case YTD = "ytd"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

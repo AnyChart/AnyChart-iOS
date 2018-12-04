@@ -7,7 +7,7 @@
     public class Base: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Base {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "base\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -645,7 +647,7 @@ To select multiple points, press 'ctrl' and click on them.
      * Deselects selected points by indexes.
      */
     public func unselect(indexes: [Double]) -> anychart.core.scatter.series.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselect(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -755,7 +757,7 @@ To select multiple points, press 'ctrl' and click on them.
      * Hovers points by indexes.
      */
     public func hover(indexes: [Double]) -> anychart.core.scatter.series.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", Arrays.toString(indexes)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hover(%s);", indexes.map{String($0)}.joined(separator: ",")))
 
         return self
     }

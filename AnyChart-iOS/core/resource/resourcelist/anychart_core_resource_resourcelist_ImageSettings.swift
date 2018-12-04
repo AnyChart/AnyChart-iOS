@@ -7,7 +7,7 @@
     public class ImageSettings: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> ImageSettings {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "imageSettings\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -80,7 +82,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the margin using a single value.
      */
     public func margin(margin: [Double]) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }

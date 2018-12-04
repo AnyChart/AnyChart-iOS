@@ -4,9 +4,11 @@ extension anychart.enums {
         case CHART = "chart"
         case DATA = "data"
         case EXPORT = "export"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

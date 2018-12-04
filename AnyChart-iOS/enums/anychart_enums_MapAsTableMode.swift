@@ -3,9 +3,11 @@ extension anychart.enums {
         case OHLC = "ohlc"
         case RANGE = "range"
         case VALUE = "value"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

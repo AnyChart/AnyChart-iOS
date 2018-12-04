@@ -9,9 +9,11 @@ extension anychart.enums {
         case PERCENT = "percent"
         case SHORT_TEXT = "short-text"
         case TEXT = "text"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

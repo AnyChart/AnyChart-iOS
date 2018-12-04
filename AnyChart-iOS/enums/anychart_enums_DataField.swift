@@ -10,9 +10,11 @@ extension anychart.enums {
         case OPTIMISTIC = "optimistic"
         case PESSIMISTIC = "pessimistic"
         case TO = "to"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

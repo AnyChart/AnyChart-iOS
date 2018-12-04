@@ -7,7 +7,7 @@
     public class Tooltip: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Tooltip {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "tooltip\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -498,7 +500,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

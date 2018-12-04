@@ -3,9 +3,11 @@ extension anychart.enums {
         case BY_CHAR = "by-char"
         case BY_WORD = "by-word"
         case CSV = "csv"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

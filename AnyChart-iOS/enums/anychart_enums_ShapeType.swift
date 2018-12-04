@@ -4,9 +4,11 @@ extension anychart.enums {
         case ELLIPSE = "ellipse"
         case PATH = "path"
         case RECT = "rect"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

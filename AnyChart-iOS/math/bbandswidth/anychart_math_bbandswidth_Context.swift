@@ -4,9 +4,5 @@ extension anychart.math.bbandswidth {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

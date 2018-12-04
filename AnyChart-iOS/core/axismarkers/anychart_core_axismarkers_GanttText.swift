@@ -7,7 +7,7 @@
     public class GanttText: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> GanttText {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "ganttText\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -330,7 +332,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Setter for the text marker padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.axismarkers.GanttText {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

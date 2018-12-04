@@ -4,9 +4,11 @@ extension anychart.enums {
         case COLUMN = "column"
         case LINE = "line"
         case WIN_LOSS = "win-loss"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

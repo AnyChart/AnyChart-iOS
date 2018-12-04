@@ -7,7 +7,7 @@
     public class Momentum: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Momentum {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "momentum\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

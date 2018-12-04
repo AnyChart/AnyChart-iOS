@@ -7,7 +7,7 @@
     public class Calendar: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Calendar {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "calendar\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -83,7 +85,7 @@
      * Setter for the regular weekend days.
      */
     public func weekendRange(var_range: [Double]) -> anychart.scales.Calendar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".weekendRange(%s);", Arrays.toString(var_range)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".weekendRange(%s);", var_range.map{String($0)}.joined(separator: ",")))
 
         return self
     }

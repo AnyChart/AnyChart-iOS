@@ -22,9 +22,11 @@ extension anychart.enums {
         case THEMING = "theming"
         case TITLE = "title"
         case TOOLTIP = "tooltip"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

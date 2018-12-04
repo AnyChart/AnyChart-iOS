@@ -4,9 +4,11 @@ extension anychart.enums {
         case NONE = "none"
         case VALUE = "value"
         case X = "x"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

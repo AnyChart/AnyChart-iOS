@@ -7,7 +7,7 @@
     public class Ordinal: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Ordinal {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "ordinal\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -150,7 +152,7 @@ call of this method if needed.
      * Setter for scale weights.
      */
     public func weights(weights: [Double]) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".weights(%s);", Arrays.toString(weights)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".weights(%s);", weights.map{String($0)}.joined(separator: ",")))
 
         return self
     }

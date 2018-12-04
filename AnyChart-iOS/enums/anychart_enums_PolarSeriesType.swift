@@ -7,9 +7,11 @@ extension anychart.enums {
         case POLYGON = "polygon"
         case POLYLINE = "polyline"
         case RANGE_COLUMN = "range-column"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

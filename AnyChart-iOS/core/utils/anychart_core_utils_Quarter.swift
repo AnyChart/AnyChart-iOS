@@ -7,7 +7,7 @@
     public class Quarter: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Quarter {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "quarter\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -113,7 +115,7 @@
      * Setter for the corner radius by one value.
      */
     public func corners(corners: [Double]) -> anychart.core.utils.Quarter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".corners(%s);", Arrays.toString(corners)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".corners(%s);", corners.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -356,7 +358,7 @@ e.g. "red 0.5".
      * Setter for the quarter margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.core.utils.Quarter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -443,7 +445,7 @@ e.g. "red 0.5".
      * Setter for the quarter paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.core.Chart {
-        return anychart.core.Chart(jsChart: String(format: jsBase + ".padding(%s)", Arrays.toString(padding)))
+        return anychart.core.Chart(jsChart: String(format: jsBase + ".padding(%s)", padding.map{String($0)}.joined(separator: ",")))
     }
     /**
      * Setter for the quarter paddings in pixels using a single value.

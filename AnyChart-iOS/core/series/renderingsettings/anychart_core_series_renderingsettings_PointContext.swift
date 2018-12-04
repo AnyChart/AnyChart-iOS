@@ -7,7 +7,7 @@
     public class PointContext: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> PointContext {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "pointContext\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

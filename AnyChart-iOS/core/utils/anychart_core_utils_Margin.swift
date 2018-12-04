@@ -7,7 +7,7 @@
     public class Margin: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Margin {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "margin\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -146,7 +148,7 @@ Returns previously set margin, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: String, value3: String, value4: String) -> anychart.core.utils.Margin {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
 
         return self
     }
@@ -154,7 +156,7 @@ Returns previously set margin, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: String, value3: Double, value4: String) -> anychart.core.utils.Margin {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
 
         return self
     }
@@ -162,7 +164,7 @@ Returns previously set margin, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: Double, value3: String, value4: String) -> anychart.core.utils.Margin {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
 
         return self
     }
@@ -170,7 +172,7 @@ Returns previously set margin, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: Double, value3: Double, value4: String) -> anychart.core.utils.Margin {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), value2, value3, JsObject.wrapQuotes(value: value4)))
 
         return self
     }

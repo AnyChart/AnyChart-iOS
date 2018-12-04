@@ -6,9 +6,11 @@ extension anychart.enums {
         case RANGE_BAR = "range-bar"
         case TANK = "tank"
         case THERMOMETER = "thermometer"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

@@ -19,9 +19,11 @@ extension anychart.enums {
         case TEXT = "text"
         case WAIT = "wait"
         case W_RESIZE = "w-resize"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

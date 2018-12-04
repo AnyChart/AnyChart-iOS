@@ -10,9 +10,11 @@ extension anychart.graphics.vector.image {
         case X_MIN_Y_MAX = "x-min-y-max"
         case X_MIN_Y_MID = "x-min-y-mid"
         case X_MIN_Y_MIN = "x-min-y-min"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

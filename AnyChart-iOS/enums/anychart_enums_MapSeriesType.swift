@@ -4,9 +4,11 @@ extension anychart.enums {
         case CHOROPLETH = "choropleth"
         case CONNECTOR = "connector"
         case MARKER = "marker"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

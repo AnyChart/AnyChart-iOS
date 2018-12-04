@@ -4,9 +4,5 @@ extension anychart.math.dmi {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

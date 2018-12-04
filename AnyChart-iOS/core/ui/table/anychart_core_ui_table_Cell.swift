@@ -7,7 +7,7 @@
     public class Cell: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Cell {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "cell\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -408,7 +410,7 @@
      * Setter for cell paddings in pixels using a single value.<br/>
      */
     public func padding(padding: [Double]) -> anychart.core.ui.table.Cell {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }

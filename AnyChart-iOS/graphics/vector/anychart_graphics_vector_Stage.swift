@@ -7,7 +7,7 @@
     public class Stage: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Stage {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "stage\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -106,7 +108,7 @@ Read more at: {@link anychart.graphics.vector.Element#clip}.
      * Creates a clip element using single value.
      */
     public func createClip(rect: [Double]) -> anychart.graphics.vector.Clip {
-        return anychart.graphics.vector.Clip(jsChart: String(format: jsBase + ".createClip(%s)", Arrays.toString(rect)))
+        return anychart.graphics.vector.Clip(jsChart: String(format: jsBase + ".createClip(%s)", rect.map{String($0)}.joined(separator: ",")))
     }
     /**
      * Creates a clip element using single value.

@@ -7,7 +7,7 @@
     public class Triangle: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Triangle {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "triangle\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

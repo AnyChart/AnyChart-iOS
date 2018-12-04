@@ -4,9 +4,5 @@ extension anychart.math.cci {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

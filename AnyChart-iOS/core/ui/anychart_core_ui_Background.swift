@@ -7,7 +7,7 @@
     public class Background: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Background {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "background\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -213,7 +215,7 @@
      * Setter for the corner radius by one value.
      */
     public func corners(corners: [Double]) -> anychart.core.ui.Background {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".corners(%s);", Arrays.toString(corners)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".corners(%s);", corners.map{String($0)}.joined(separator: ",")))
 
         return self
     }

@@ -18,7 +18,7 @@ public class JsObject {
     
     static var variableIndex: Int = 0
     
-    var jsBase: String
+    var jsBase: String = ""
     
     init() {
         
@@ -40,7 +40,7 @@ public class JsObject {
         return "array"
     }
     
-    static func arrayToString(jsObjects: [AnyObject]) -> String {
+    static func arrayToString(jsObjects: [Any]) -> String {
         return "array"
     }
     

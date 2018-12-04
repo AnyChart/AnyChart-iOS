@@ -4,9 +4,11 @@ extension anychart.enums {
         case FLAG = "flag"
         case PIN = "pin"
         case RECT = "rect"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

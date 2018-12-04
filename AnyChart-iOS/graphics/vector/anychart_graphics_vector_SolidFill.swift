@@ -3,12 +3,10 @@ extension anychart.graphics.vector {
     public class SolidFill: JsObject, ColoredFill, Fill {
 
         
-    public init(color: String, opacity: Double) {
-        js.append(String(format: "{color:%s, opacity: %s, } ", JsObject.wrapQuotes(value: color), opacity))
-    }
+        public init(color: String, opacity: Double) {
+            super.init()
 
-        public func getJsBase() -> String {
-            return js
+            js.append(String(format: "{color:%s, opacity: %s, } ", JsObject.wrapQuotes(value: color), opacity))
         }
 
     }

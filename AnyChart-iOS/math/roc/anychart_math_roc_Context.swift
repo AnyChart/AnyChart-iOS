@@ -4,9 +4,5 @@ extension anychart.math.roc {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

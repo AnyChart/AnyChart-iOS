@@ -32,9 +32,11 @@ extension anychart.graphics.vector.hatchfill {
         case VERTICAL_BRICK = "vertical-brick"
         case WEAVE = "weave"
         case ZIG_ZAG = "zig-zag"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

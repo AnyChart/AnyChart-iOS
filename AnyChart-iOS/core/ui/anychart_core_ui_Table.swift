@@ -7,7 +7,7 @@
     public class Table: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Table {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "table\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -310,7 +312,7 @@
      * Setter for cell paddings in pixels using a single value.
      */
     public func cellPadding(padding: [Double]) -> anychart.core.ui.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s);", Arrays.toString(padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s);", padding.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -461,7 +463,7 @@
      * Setter for the table content.
      */
     public func contents(tableValues: [Double], demergeCells: Bool) -> anychart.core.ui.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".contents(%s, %s);", Arrays.toString(tableValues), demergeCells))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".contents(%s, %s);", tableValues.map{String($0)}.joined(separator: ","), demergeCells))
 
         return self
     }

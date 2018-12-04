@@ -3,9 +3,11 @@ extension anychart.enums {
         case CURRENT = "current"
         case END = "end"
         case START = "start"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

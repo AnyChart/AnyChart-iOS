@@ -3,9 +3,11 @@ extension anychart.enums {
         case CENTER = "center"
         case INSIDE = "inside"
         case OUTSIDE = "outside"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

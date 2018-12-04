@@ -7,7 +7,7 @@
     public class Bounds: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Bounds {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "bounds\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -216,7 +218,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(xOrRect), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), y, width, height))
 
         return self
     }
@@ -225,7 +227,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(xOrRect), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), y, JsObject.wrapQuotes(value: width), height))
 
         return self
     }
@@ -234,7 +236,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(xOrRect), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: y), width, height))
 
         return self
     }
@@ -243,7 +245,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", Arrays.toString(xOrRect), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
 
         return self
     }

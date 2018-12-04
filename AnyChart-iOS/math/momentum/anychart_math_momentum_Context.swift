@@ -4,9 +4,5 @@ extension anychart.math.momentum {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

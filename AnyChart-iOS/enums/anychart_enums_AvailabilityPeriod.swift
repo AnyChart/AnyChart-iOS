@@ -4,9 +4,11 @@ extension anychart.enums {
         case NONE = "none"
         case WEEK = "week"
         case YEAR = "year"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

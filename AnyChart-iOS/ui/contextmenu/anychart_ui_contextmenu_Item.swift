@@ -4,9 +4,5 @@ extension anychart.ui.contextmenu {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

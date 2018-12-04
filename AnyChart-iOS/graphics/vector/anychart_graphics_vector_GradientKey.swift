@@ -3,12 +3,10 @@ extension anychart.graphics.vector {
     public class GradientKey: JsObject {
 
         
-    public init(color: String, offset: Double, opacity: Double) {
-        js.append(String(format: "{color:%s, offset: %s, opacity: %s, } ", JsObject.wrapQuotes(value: color), offset, opacity))
-    }
+        public init(color: String, offset: Double, opacity: Double) {
+            super.init()
 
-        public func getJsBase() -> String {
-            return js
+            js.append(String(format: "{color:%s, offset: %s, opacity: %s, } ", JsObject.wrapQuotes(value: color), offset, opacity))
         }
 
     }

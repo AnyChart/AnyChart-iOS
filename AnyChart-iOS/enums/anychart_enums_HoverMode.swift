@@ -3,9 +3,11 @@ extension anychart.enums {
         case BY_SPOT = "by-spot"
         case BY_X = "by-x"
         case SINGLE = "single"
+
+        public func getJsBase() -> String {
+            return ""
+        }
+
     }
 
-    public func getJsBase() -> String {
-        return ""
-    }
 }

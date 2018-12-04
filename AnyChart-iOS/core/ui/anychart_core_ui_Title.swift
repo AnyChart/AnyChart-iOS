@@ -7,7 +7,7 @@
     public class Title: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Title {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "title\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
@@ -280,7 +282,7 @@ Learn more about margins at {@link anychart.core.Chart#margin}.
      * Setter for the title margin in pixels using one complex value.
      */
     public func margin(allValues: [Double]) -> anychart.core.ui.Title {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", Arrays.toString(allValues)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", allValues.map{String($0)}.joined(separator: ",")))
 
         return self
     }
@@ -381,7 +383,7 @@ Learn more about paddings at {@link anychart.core.Chart#padding}.
      * Setter for the title padding in pixels using single value.
      */
     public func padding(paddinge: [Double]) -> anychart.core.ui.Title {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", Arrays.toString(paddinge)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", paddinge.map{String($0)}.joined(separator: ",")))
 
         return self
     }

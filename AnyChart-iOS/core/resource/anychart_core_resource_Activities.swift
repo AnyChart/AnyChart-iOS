@@ -7,7 +7,7 @@
     public class Activities: JsObject {
 
         override init() {
-
+            super.init()
         }
 
         public static func instantiate() -> Activities {
@@ -17,6 +17,8 @@
         
 
         public init(jsChart: String) {
+            super.init()
+
             JsObject.variableIndex += 1
             jsBase = "activities\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")

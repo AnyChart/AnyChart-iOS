@@ -4,9 +4,5 @@ extension anychart.math.mfi {
 
         
 
-        public func getJsBase() -> String {
-            return js
-        }
-
     }
 }

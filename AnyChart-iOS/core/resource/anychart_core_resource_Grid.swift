@@ -223,7 +223,7 @@
      * Setter for even fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func evenFill(color: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func evenFill(color: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".evenFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -285,7 +285,7 @@
      * Image even fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func evenFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func evenFill(imageSettings: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".evenFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -333,7 +333,7 @@
      * Setter for even holiday fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func evenHolidayFill(color: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func evenHolidayFill(color: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".evenHolidayFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -395,7 +395,7 @@
      * Image even holiday fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func evenHolidayFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func evenHolidayFill(imageSettings: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".evenHolidayFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -463,7 +463,7 @@
      * Setter for the horizontal stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func horizontalStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
+    public func horizontalStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -472,7 +472,7 @@
      * Setter for the horizontal stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func horizontalStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
+    public func horizontalStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -481,7 +481,7 @@
      * Setter for the horizontal stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func horizontalStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
+    public func horizontalStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -490,7 +490,7 @@
      * Setter for the horizontal stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func horizontalStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
+    public func horizontalStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -593,7 +593,7 @@
      * Setter for odd fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func oddFill(color: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func oddFill(color: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".oddFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -655,7 +655,7 @@
      * Image odd fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func oddFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func oddFill(imageSettings: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".oddFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -703,7 +703,7 @@
      * Setter for odd holiday fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func oddHolidayFill(value: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func oddHolidayFill(value: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".oddHolidayFill(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self
@@ -765,7 +765,7 @@
      * Image odd holiday fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func oddHolidayFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.resource.Grid {
+    public func oddHolidayFill(imageSettings: Fill) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".oddHolidayFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -873,7 +873,7 @@
      * Setter for the vertical stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func verticalStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
+    public func verticalStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -882,7 +882,7 @@
      * Setter for the vertical stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func verticalStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
+    public func verticalStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -891,7 +891,7 @@
      * Setter for the vertical stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func verticalStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
+    public func verticalStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -900,7 +900,7 @@
      * Setter for the vertical stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func verticalStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
+    public func verticalStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.Grid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self

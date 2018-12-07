@@ -166,7 +166,7 @@
     /**
      * 
      */
-    public func color(value: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Candlestick {
+    public func color(value: Fill) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".color(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self
@@ -299,7 +299,7 @@
      * Setter for falling fill settings using an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fallingFill(color: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingFill(color: Fill) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -361,7 +361,7 @@
      * Image falling fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fallingFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingFill(imageSettings: Fill) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -445,7 +445,7 @@
      * Setter for falling stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func fallingStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -454,7 +454,7 @@
      * Setter for falling stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func fallingStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -463,7 +463,7 @@
      * Setter for falling stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func fallingStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -472,7 +472,7 @@
      * Setter for falling stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func fallingStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func fallingStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -915,7 +915,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising fill settings using an array, an array or a string.
 {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
      */
-    public func risingFill(color: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Candlestick {
+    public func risingFill(color: Fill) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -977,7 +977,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Image rising fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func risingFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Candlestick {
+    public func risingFill(imageSettings: Fill) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -1043,7 +1043,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func risingStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func risingStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1052,7 +1052,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func risingStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func risingStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1061,7 +1061,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func risingStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func risingStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1070,7 +1070,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func risingStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
+    public func risingStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.cartesian.series.Candlestick {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self

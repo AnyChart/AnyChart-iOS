@@ -200,7 +200,7 @@ The collapseTask() method should be used after drawing a chart.
     /**
      * Setter for the column stroke.
      */
-    public func columnStroke(color: anychart.graphics.vector.Stroke) -> anychart.charts.Gantt {
+    public func columnStroke(color: Stroke) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -897,7 +897,7 @@ The fitAll() method should be used after drawing a chart.
      * Setter for row hover fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowHoverFill(color: anychart.graphics.vector.Fill) -> anychart.charts.Gantt {
+    public func rowHoverFill(color: Fill) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -965,7 +965,7 @@ The fitAll() method should be used after drawing a chart.
      * Sets row selected fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowSelectedFill(color: anychart.graphics.vector.Fill) -> anychart.charts.Gantt {
+    public func rowSelectedFill(color: Fill) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -1033,7 +1033,7 @@ Fill as a string or an object.
     /**
      * Setter for the row stroke.
      */
-    public func rowStroke(color: anychart.graphics.vector.Stroke) -> anychart.charts.Gantt {
+    public func rowStroke(color: Stroke) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -1372,7 +1372,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Setter for fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func selectMarqueeFill(color: anychart.graphics.vector.Fill) -> anychart.charts.Gantt {
+    public func selectMarqueeFill(color: Fill) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -1434,7 +1434,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func selectMarqueeFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.charts.Gantt {
+    public func selectMarqueeFill(imageSettings: Fill) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -1449,7 +1449,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Setter for the select marquee stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func selectMarqueeStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Gantt {
+    public func selectMarqueeStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1458,7 +1458,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Setter for the select marquee stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func selectMarqueeStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Gantt {
+    public func selectMarqueeStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1467,7 +1467,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Setter for the select marquee stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func selectMarqueeStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Gantt {
+    public func selectMarqueeStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -1476,7 +1476,7 @@ The scrollToEnd() method should be used after drawing a chart.
      * Setter for the select marquee stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func selectMarqueeStroke(color: anychart.graphics.vector.ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Gantt {
+    public func selectMarqueeStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Gantt {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self

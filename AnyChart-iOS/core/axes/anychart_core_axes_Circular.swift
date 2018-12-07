@@ -96,7 +96,7 @@ Round off the ends of axes to the specified radius.
      * Setter for axis fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.axes.Circular {
+    public func fill(color: Fill) -> anychart.core.axes.Circular {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -158,7 +158,7 @@ Round off the ends of axes to the specified radius.
      * Image axis fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.axes.Circular {
+    public func fill(imageSettings: Fill) -> anychart.core.axes.Circular {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self

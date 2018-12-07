@@ -84,7 +84,7 @@ Settings for visual display of the right side control on the task. Works only fo
      * Setter for fill of all timeline elements preview while editing (tasks, grouping tasks, baselines, milestone, periods) using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.gantt.edit.ElementEdit {
+    public func fill(color: Fill) -> anychart.core.gantt.edit.ElementEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -146,7 +146,7 @@ Settings for visual display of the right side control on the task. Works only fo
      * Image fill of all timeline elements preview while editing (tasks, grouping tasks, baselines, milestone, periods).
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.gantt.edit.ElementEdit {
+    public func fill(imageSettings: Fill) -> anychart.core.gantt.edit.ElementEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -182,7 +182,7 @@ Settings for visual display of the left side control on the task. Works only for
      * Setter for the editing control stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func stroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.gantt.edit.ElementEdit {
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.gantt.edit.ElementEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -191,7 +191,7 @@ Settings for visual display of the left side control on the task. Works only for
      * Setter for the editing control stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
-    public func stroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.gantt.edit.ElementEdit {
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.gantt.edit.ElementEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self

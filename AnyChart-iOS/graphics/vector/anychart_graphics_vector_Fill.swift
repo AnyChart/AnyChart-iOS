@@ -1,7 +1,7 @@
-extension anychart.graphics.vector {
+//extension anychart.graphics.vector {
     public protocol Fill {
 
         func getJsBase() -> String
 
     }
-}
+//}

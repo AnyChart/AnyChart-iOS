@@ -53,7 +53,7 @@
      * Setter for fill settings using an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
+    public func fill(color: Fill) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -115,7 +115,7 @@
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
+    public func fill(imageSettings: Fill) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self

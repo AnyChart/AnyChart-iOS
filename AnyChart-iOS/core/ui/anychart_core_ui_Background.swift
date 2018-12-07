@@ -52,7 +52,7 @@
     /**
      * Setter for bottom stroke settings using one parameter.
      */
-    public func bottomStroke(color: anychart.graphics.vector.Stroke) -> anychart.core.ui.Background {
+    public func bottomStroke(color: Stroke) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottomStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -68,7 +68,7 @@
     /**
      * Setter for bottom stroke settings.
      */
-    public func bottomStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
+    public func bottomStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottomStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -76,7 +76,7 @@
     /**
      * Setter for bottom stroke settings.
      */
-    public func bottomStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
+    public func bottomStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottomStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -315,7 +315,7 @@ Accepts:
 or a color as a string, along with opacity, if needed, format is "<b>Color Opacity</b>",
 e.g. "red 0.5".
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.ui.Background {
+    public func fill(color: Fill) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -420,7 +420,7 @@ e.g. "red 0.5".
     /**
      * Setter for left stroke settings using one parameter.
      */
-    public func leftStroke(color: anychart.graphics.vector.Stroke) -> anychart.core.ui.Background {
+    public func leftStroke(color: Stroke) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".leftStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -428,7 +428,7 @@ e.g. "red 0.5".
     /**
      * Setter for left stroke settings.
      */
-    public func leftStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
+    public func leftStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".leftStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -436,7 +436,7 @@ e.g. "red 0.5".
     /**
      * Setter for left stroke settings.
      */
-    public func leftStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
+    public func leftStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".leftStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -548,7 +548,7 @@ e.g. "red 0.5".
     /**
      * Setter for right stroke settings using one parameter.
      */
-    public func rightStroke(color: anychart.graphics.vector.Stroke) -> anychart.core.ui.Background {
+    public func rightStroke(color: Stroke) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rightStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -564,7 +564,7 @@ e.g. "red 0.5".
     /**
      * Setter for right stroke settings.
      */
-    public func rightStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
+    public func rightStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rightStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -572,7 +572,7 @@ e.g. "red 0.5".
     /**
      * Setter for right stroke settings.
      */
-    public func rightStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
+    public func rightStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rightStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -602,7 +602,7 @@ e.g. "red 0.5".
     /**
      * Setter for stroke settings using one parameter.
      */
-    public func stroke(color: anychart.graphics.vector.Stroke) -> anychart.core.ui.Background {
+    public func stroke(color: Stroke) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -618,7 +618,7 @@ e.g. "red 0.5".
     /**
      * Setter for stroke settings.
      */
-    public func stroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -626,7 +626,7 @@ e.g. "red 0.5".
     /**
      * Setter for stroke settings.
      */
-    public func stroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -670,7 +670,7 @@ e.g. "red 0.5".
     /**
      * Setter for top stroke settings using one parameter.
      */
-    public func topStroke(color: anychart.graphics.vector.Stroke) -> anychart.core.ui.Background {
+    public func topStroke(color: Stroke) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".topStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -686,7 +686,7 @@ e.g. "red 0.5".
     /**
      * Setter for top stroke settings.
      */
-    public func topStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
+    public func topStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".topStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -694,7 +694,7 @@ e.g. "red 0.5".
     /**
      * Setter for top stroke settings.
      */
-    public func topStroke(value: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
+    public func topStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".topStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self

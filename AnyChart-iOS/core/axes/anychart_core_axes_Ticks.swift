@@ -96,7 +96,7 @@ You can set ticks inside of a chart area or outside its position.<br/>
      * Setter for stroke settings via single parameter.<br/>
 <img src='/si/8.4.0/anychart.core.axes.Ticks.stroke.png' height='66' width='413'/>
      */
-    public func stroke(color: anychart.graphics.vector.Stroke) -> anychart.core.axes.Ticks {
+    public func stroke(color: Stroke) -> anychart.core.axes.Ticks {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self

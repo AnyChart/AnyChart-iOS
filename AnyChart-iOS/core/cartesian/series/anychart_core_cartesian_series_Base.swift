@@ -166,7 +166,7 @@
     /**
      * 
      */
-    public func color(value: anychart.graphics.vector.Fill) -> anychart.core.cartesian.series.Base {
+    public func color(value: Fill) -> anychart.core.cartesian.series.Base {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".color(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self

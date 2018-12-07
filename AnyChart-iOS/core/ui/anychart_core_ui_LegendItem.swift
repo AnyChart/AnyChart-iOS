@@ -220,7 +220,7 @@
     /**
      * Getter/setter for icon fill setting.
      */
-    public func iconFill(value: anychart.graphics.vector.Fill)  {
+    public func iconFill(value: Fill)  {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".iconFill(%s);", (value != nil) ? value.getJsBase() : "null"))
     }
     /**
@@ -248,7 +248,7 @@
     /**
      * Getter/setter for icon stroke setting.
      */
-    public func iconStroke(value: anychart.graphics.vector.Stroke)  {
+    public func iconStroke(value: Stroke)  {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".iconStroke(%s);", (value != nil) ? value.getJsBase() : "null"))
     }
     /**

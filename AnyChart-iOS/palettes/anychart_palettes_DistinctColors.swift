@@ -38,7 +38,7 @@
     /**
      * Setter for color palette colors from list by index.
      */
-    public func itemAt(index: Double, color: anychart.graphics.vector.Fill) -> anychart.palettes.DistinctColors {
+    public func itemAt(index: Double, color: Fill) -> anychart.palettes.DistinctColors {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemAt(%s, %s);", index, (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -52,8 +52,8 @@
     /**
      * Setter for color palette colors list.
      */
-    public func items(color: [anychart.graphics.vector.Fill], var_args: anychart.graphics.vector.Fill) -> anychart.palettes.DistinctColors {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".items(%s, %s);", JsObject.arrayToString(jsObjects: color), (var_args != nil) ? var_args.getJsBase() : "null"))
+    public func items(color: [String], var_args: Fill) -> anychart.palettes.DistinctColors {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".items(%s, %s);", JsObject.arrayToStringWrapQuotes(array: color), (var_args != nil) ? var_args.getJsBase() : "null"))
 
         return self
     }

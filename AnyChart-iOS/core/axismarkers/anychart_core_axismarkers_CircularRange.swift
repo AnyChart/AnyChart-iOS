@@ -96,7 +96,7 @@ Round off the ends of circular ranges to the specified radius.
      * Setter for range fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.axismarkers.CircularRange {
+    public func fill(color: Fill) -> anychart.core.axismarkers.CircularRange {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self

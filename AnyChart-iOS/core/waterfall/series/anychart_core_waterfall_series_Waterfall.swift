@@ -166,7 +166,7 @@
     /**
      * 
      */
-    public func color(value: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func color(value: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".color(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self
@@ -277,7 +277,7 @@
      * Setter for falling fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fallingFill(color: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func fallingFill(color: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -339,7 +339,7 @@
      * Image falling fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fallingFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func fallingFill(imageSettings: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fallingFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -354,7 +354,7 @@
      * Setter for fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(color: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func fill(color: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -416,7 +416,7 @@
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func fill(imageSettings: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -827,7 +827,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Setter for rising fill settings using an array, an object or a string.
 {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
      */
-    public func risingFill(color: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func risingFill(color: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -889,7 +889,7 @@ Set it to null to reset to the default. {docs:Basic_Charts/Vertical/Overview}Lea
      * Image rising fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func risingFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.core.waterfall.series.Waterfall {
+    public func risingFill(imageSettings: Fill) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".risingFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self

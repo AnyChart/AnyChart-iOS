@@ -39,7 +39,7 @@
      * Setter for fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func backgroundFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func backgroundFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -101,7 +101,7 @@
      * Setter for the image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func backgroundFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func backgroundFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -252,7 +252,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * Setter for the column stroke.
      */
-    public func columnStroke(color: anychart.graphics.vector.Stroke) -> anychart.standalones.DataGrid {
+    public func columnStroke(color: Stroke) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -347,7 +347,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * 
      */
-    public func editStructurePreviewDashStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.DataGrid {
+    public func editStructurePreviewDashStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -355,7 +355,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * 
      */
-    public func editStructurePreviewDashStroke(color: anychart.graphics.vector.Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.DataGrid {
+    public func editStructurePreviewDashStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
 
         return self
@@ -393,7 +393,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * 
      */
-    public func editStructurePreviewFill(value: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func editStructurePreviewFill(value: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self
@@ -441,7 +441,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * 
      */
-    public func editStructurePreviewFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func editStructurePreviewFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -455,7 +455,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
     /**
      * 
      */
-    public func editStructurePreviewStroke(value: anychart.graphics.vector.Stroke) -> anychart.standalones.DataGrid {
+    public func editStructurePreviewStroke(value: Stroke) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s);", (value != nil) ? value.getJsBase() : "null"))
 
         return self
@@ -711,7 +711,7 @@ As a getter falls back to stage bounds.
      * Setter for fill settings using an object, an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowEvenFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowEvenFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -773,7 +773,7 @@ As a getter falls back to stage bounds.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowEvenFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowEvenFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -788,7 +788,7 @@ As a getter falls back to stage bounds.
      * Setter for fill settings using an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -850,7 +850,7 @@ As a getter falls back to stage bounds.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -865,7 +865,7 @@ As a getter falls back to stage bounds.
      * Setter for fill settings using an object, an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowHoverFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowHoverFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -927,7 +927,7 @@ As a getter falls back to stage bounds.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowHoverFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowHoverFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -942,7 +942,7 @@ As a getter falls back to stage bounds.
      * Setter for fill settings using an object, an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowOddFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowOddFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -1004,7 +1004,7 @@ As a getter falls back to stage bounds.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowOddFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowOddFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -1019,7 +1019,7 @@ As a getter falls back to stage bounds.
      * Setter for row fill settings in selected mode using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowSelectedFill(color: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowSelectedFill(color: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self
@@ -1081,7 +1081,7 @@ As a getter falls back to stage bounds.
      * Image fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func rowSelectedFill(imageSettings: anychart.graphics.vector.Fill) -> anychart.standalones.DataGrid {
+    public func rowSelectedFill(imageSettings: Fill) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
 
         return self
@@ -1095,7 +1095,7 @@ As a getter falls back to stage bounds.
     /**
      * Setter for the row stroke.
      */
-    public func rowStroke(color: anychart.graphics.vector.Stroke) -> anychart.standalones.DataGrid {
+    public func rowStroke(color: Stroke) -> anychart.standalones.DataGrid {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
 
         return self

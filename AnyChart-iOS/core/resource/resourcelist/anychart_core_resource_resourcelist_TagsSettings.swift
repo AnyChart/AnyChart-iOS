@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.resource.resourcelist {
-    public class TagsSettings: JsObject {
+    public class TagsSettings: anychart.core.resource.resourceList.TextSettings {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> TagsSettings {
-            return TagsSettings(jsChart: "new anychart.core.resource.resourceList.TagsSettings()")
+        public override init() {
+            //return TagsSettings(jsBase: "new anychart.core.resource.resourceList.TagsSettings()")
+            super.init(jsBase: "new anychart.core.resource.resourceList.TagsSettings()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "tagsSettings\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "tagsSettings\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,13 +34,13 @@
      * Getter for tags background.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsChart: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
     }
     /**
      * Setter for tags background.
      */
     public func background(settings: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".background(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the font color.
      */
     public func fontColor(color: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the text font decoration.
      */
     public func fontDecoration(type: anychart.graphics.vector.text.Decoration) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the font family.
      */
     public func fontFamily(fontFamily: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: fontFamily)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -95,7 +96,7 @@
      * Setter for the font opacity.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for the text font size text.
      */
     public func fontSize(size: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -123,7 +124,7 @@
      * Setter for the font style.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -137,7 +138,7 @@
      * Setter for the font variant.
      */
     public func fontVariant(type: anychart.graphics.vector.text.FontVariant) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -151,7 +152,7 @@
      * Setter for the font weight.
      */
     public func fontWeight(weight: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -165,7 +166,7 @@
      * Setter for the font horizontal align.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -179,7 +180,7 @@
      * Setter for the letter spacing.
      */
     public func letterSpacing(spacing: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -193,7 +194,7 @@
      * Setter for the font line height.
      */
     public func lineHeight(height: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -201,13 +202,13 @@
      * Getter for the margin.
      */
     public func margin() -> anychart.core.utils.Margin {
-        return anychart.core.utils.Margin(jsChart: jsBase + ".margin()")
+        return anychart.core.utils.Margin(jsBase: jsBase + ".margin()")
     }
     /**
      * Setter for the margin using a single value.
      */
     public func margin(margin: [Double]) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -215,7 +216,7 @@
      * Setter for the margin using a single value.
      */
     public func margin(margin: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", JsObject.wrapQuotes(value: margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -223,7 +224,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -231,7 +232,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -239,7 +240,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -247,7 +248,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -255,7 +256,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -263,7 +264,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -271,7 +272,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -279,7 +280,7 @@
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -287,13 +288,13 @@
      * Getter for tags padding.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -301,7 +302,7 @@
      * Setter for padding in pixels by one value.
      */
     public func padding(padding: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -309,7 +310,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -317,7 +318,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -325,7 +326,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -333,7 +334,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -341,7 +342,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -349,7 +350,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -357,7 +358,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -365,7 +366,7 @@
      * Setter for tags padding in pixels.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -379,7 +380,7 @@
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -393,7 +394,7 @@
      * Setter for the text direction.
      */
     public func textDirection(type: anychart.graphics.vector.text.Direction) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -407,7 +408,7 @@
      * Setter for text indent settings.
      */
     public func textIndent(indent: Double) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -421,7 +422,7 @@
      * Setter for text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -435,7 +436,7 @@
      * Setter for the useHTML flag.
      */
     public func useHtml(enabled: Bool) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -449,7 +450,7 @@
      * Setter for the font vertical align.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -463,7 +464,7 @@
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -477,7 +478,7 @@
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.core.resource.resourcelist.TagsSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }

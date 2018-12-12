@@ -6,22 +6,23 @@
  extension anychart.data {
     public class Traverser: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Traverser {
-            return Traverser(jsChart: "new anychart.data.Traverser()")
+        public override init() {
+            //return Traverser(jsBase: "new anychart.data.Traverser()")
+            super.init(jsBase: "new anychart.data.Traverser()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "traverser\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "traverser\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,13 +40,13 @@
      * Gets current tree data item.
      */
     public func current() -> anychart.data.tree.DataItem {
-        return anychart.data.tree.DataItem(jsChart: jsBase + ".current()")
+        return anychart.data.tree.DataItem(jsBase: jsBase + ".current()")
     }
     /**
      * Gets current data item's data value by field specified.
      */
     public func get(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Gets depth of current data item.
@@ -57,13 +58,13 @@
      * Getter for a meta value.
      */
     public func meta(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".meta(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).meta(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Setter for a meta value.
      */
     public func meta(key: String, value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".meta(%s, %s);", JsObject.wrapQuotes(value: key), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).meta(\(JsObject.wrapQuotes(value: key)), \(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Getter for decider function.
@@ -84,7 +85,7 @@
      * Sets current item's value by key specified.
      */
     public func set(key: String, value: String) -> anychart.data.Traverser {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: key), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }

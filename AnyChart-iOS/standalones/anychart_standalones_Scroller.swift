@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.standalones {
-    public class Scroller: JsObject {
+    public class Scroller: anychart.core.ui.Scroller {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Scroller {
-            return Scroller(jsChart: "new anychart.standalones.Scroller()")
+        public override init() {
+            //return Scroller(jsBase: "new anychart.standalones.Scroller()")
+            super.init(jsBase: "new anychart.standalones.Scroller()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "scroller\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "scroller\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the mode of the range changing. If the range changing is allowed.
      */
     public func allowRangeChange(enabled: Bool) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowRangeChange(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowRangeChange()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for scroller auto hide mode.
      */
     public func autoHide(enabled: Bool) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".autoHide(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).autoHide()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the scroller container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the scroller container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -89,7 +90,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -104,7 +105,7 @@
 <b>Note</b>: It is always greater than the startRatio.
      */
     public func endRatio(ratio: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".endRatio(%s);", ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).endRatio()")
 
         return self
     }
@@ -119,7 +120,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -128,7 +129,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: [String]) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -136,7 +137,7 @@
      * Scroller fill color with opacity.
      */
     public func fill(color: String, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -145,7 +146,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -154,7 +155,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -163,7 +164,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -172,7 +173,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -181,7 +182,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(imageSettings: Fill) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -189,7 +190,7 @@
      * Returns the remaining (after scroller placement) part of the container.
      */
     public func getRemainingBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getRemainingBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getRemainingBounds()")
     }
     /**
      * Getter for the scroller height.
@@ -201,7 +202,7 @@
      * Setter for the scroller height.
      */
     public func height(height: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -215,7 +216,7 @@
      * Setter for the scroller maximum height.
      */
     public func maxHeight(height: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -229,7 +230,7 @@
      * Setter for the scroller minimum height.
      */
     public func minHeight(height: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -243,7 +244,7 @@
      * Setter for the scroller orientation.
      */
     public func orientation(orientation: anychart.enums.Orientation) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".orientation(%s);", (orientation != nil) ? orientation.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).orientation()")
 
         return self
     }
@@ -258,7 +259,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -267,7 +268,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -276,7 +277,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -285,7 +286,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -294,7 +295,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -303,7 +304,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func outlineStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -311,7 +312,7 @@
      * Setter for outline stroke using an object.
      */
     public func outlineStroke(settings: String) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".outlineStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).outlineStroke()")
 
         return self
     }
@@ -320,13 +321,13 @@
 As a getter falls back to stage bounds.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for bounds using single value.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -334,7 +335,7 @@ As a getter falls back to stage bounds.
      * Setter for bounds using several values.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -342,13 +343,13 @@ As a getter falls back to stage bounds.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for scroller fill in selected mode.
@@ -361,7 +362,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(color: Fill) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -370,7 +371,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(color: [String]) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -378,7 +379,7 @@ As a getter falls back to stage bounds.
      * Scroller fill color in selected mode with opacity.
      */
     public func selectedFill(color: String, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -387,7 +388,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -396,7 +397,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -405,7 +406,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -414,7 +415,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -423,7 +424,7 @@ As a getter falls back to stage bounds.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectedFill(imageSettings: Fill) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedFill()")
 
         return self
     }
@@ -431,7 +432,7 @@ As a getter falls back to stage bounds.
      * Changes current selected range to the passed one.
      */
     public func setRange(startRatio: Double, endRatio: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setRange(%s, %s);", startRatio, endRatio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setRange()")
 
         return self
     }
@@ -446,7 +447,7 @@ As a getter falls back to stage bounds.
 <b>Note</b>: It is always less than the endRatio.
      */
     public func startRatio(value: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".startRatio(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startRatio()")
 
         return self
     }
@@ -454,13 +455,13 @@ As a getter falls back to stage bounds.
      * Getter for the thumbs.
      */
     public func thumbs() -> anychart.core.ui.scroller.Thumbs {
-        return anychart.core.ui.scroller.Thumbs(jsChart: jsBase + ".thumbs()")
+        return anychart.core.ui.scroller.Thumbs(jsBase: jsBase + ".thumbs()")
     }
     /**
      * Setter for the thumbs settings.
      */
     public func thumbs(settings: Bool) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".thumbs(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).thumbs()")
 
         return self
     }
@@ -468,7 +469,7 @@ As a getter falls back to stage bounds.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the Z-index of the element.
@@ -480,7 +481,7 @@ As a getter falls back to stage bounds.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.standalones.Scroller {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }

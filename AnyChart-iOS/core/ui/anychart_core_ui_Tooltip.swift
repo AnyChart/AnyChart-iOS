@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui {
-    public class Tooltip: JsObject {
+    public class Tooltip: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Tooltip {
-            return Tooltip(jsChart: "new anychart.core.ui.Tooltip()")
+        public override init() {
+            //return Tooltip(jsBase: "new anychart.core.ui.Tooltip()")
+            super.init(jsBase: "new anychart.core.ui.Tooltip()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "tooltip\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "tooltip\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the adjusting font size.
      */
     public func adjustFontSize(adjustOrAdjustByWidth: Bool, adjustByHeight: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s, %s);", adjustOrAdjustByWidth, adjustByHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -47,7 +48,7 @@
      * Setter for the adjusting font size.
      */
     public func adjustFontSize(adjustOrAdjustByWidth: String, adjustByHeight: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s, %s);", JsObject.wrapQuotes(value: adjustOrAdjustByWidth), adjustByHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -61,7 +62,7 @@
      * Setter for the allowLeaveChart tooltip mode.
      */
     public func allowLeaveChart(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowLeaveChart(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowLeaveChart()")
 
         return self
     }
@@ -75,7 +76,7 @@
      * Setter for the allowLeaveScreen tooltip mode.
      */
     public func allowLeaveScreen(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowLeaveScreen(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowLeaveScreen()")
 
         return self
     }
@@ -89,7 +90,7 @@
      * Setter for the allowLeaveStage tooltip mode.
      */
     public func allowLeaveStage(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowLeaveStage(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowLeaveStage()")
 
         return self
     }
@@ -103,7 +104,7 @@
      * Setter for the tooltip anchor.
      */
     public func anchor(anchor: anychart.enums.Anchor) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".anchor(%s);", (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).anchor()")
 
         return self
     }
@@ -111,13 +112,13 @@
      * Getter for tooltip background settings.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsChart: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
     }
     /**
      * Setter for tooltip background settings.
      */
     public func background(settings: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".background(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
 
         return self
     }
@@ -131,7 +132,7 @@
      * Setter for the pointer events setting.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -146,7 +147,7 @@
 <b>Note</b>: Works only for the <b>chart</b> tooltip.
      */
     public func displayMode(value: anychart.enums.TooltipDisplayMode) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".displayMode(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).displayMode()")
 
         return self
     }
@@ -160,7 +161,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -174,7 +175,7 @@
      * Setter for font color settings.
      */
     public func fontColor(color: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -188,7 +189,7 @@
      * Setter for font decoration settings.
      */
     public func fontDecoration(value: anychart.graphics.vector.text.Decoration) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -202,7 +203,7 @@
      * Setter for font family settings.
      */
     public func fontFamily(family: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -216,7 +217,7 @@
      * Setter for font opacity settings.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -230,7 +231,7 @@
      * Setter for font size settings.
      */
     public func fontSize(size: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -244,7 +245,7 @@
      * Setter for font style settings.
      */
     public func fontStyle(style: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", JsObject.wrapQuotes(value: style)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -258,7 +259,7 @@
      * Setter for font variant settings.
      */
     public func fontVariant(value: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -272,7 +273,7 @@
      * Setter for font weight settings.
      */
     public func fontWeight(weight: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -287,7 +288,7 @@
 {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
      */
     public func format(format: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".format(%s);", JsObject.wrapQuotes(value: format)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).format()")
 
         return self
     }
@@ -301,7 +302,7 @@
      * Setter for the text horizontal align settings.
      */
     public func hAlign(align: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", JsObject.wrapQuotes(value: align)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -315,7 +316,7 @@
      * Setter for the tooltip height.
      */
     public func height(height: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -329,7 +330,7 @@
      * Setter for the delay in milliseconds before a tooltip becomes hidden.
      */
     public func hideDelay(delay: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hideDelay(%s);", delay))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hideDelay()")
 
         return self
     }
@@ -343,7 +344,7 @@
      * Setter for text letter spacing settings.
      */
     public func letterSpacing(spacing: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", spacing))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -357,7 +358,7 @@
      * Setter for text line height settings.
      */
     public func lineHeight(height: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -371,7 +372,7 @@
      * Setter for maximum font size settings for adjust text from.
      */
     public func maxFontSize(size: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize()")
 
         return self
     }
@@ -385,7 +386,7 @@
      * Setter for minimum font size settings for adjust text from.
      */
     public func minFontSize(size: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize()")
 
         return self
     }
@@ -399,7 +400,7 @@
      * Setter for union tooltip offsetX.
      */
     public func offsetX(offset: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".offsetX(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetX()")
 
         return self
     }
@@ -413,7 +414,7 @@
      * Setter for the tooltip offset by Y.
      */
     public func offsetY(offset: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".offsetY(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetY()")
 
         return self
     }
@@ -445,7 +446,7 @@ The onContentChanged() method is called only if the {api:anychart.core.ui.Toolti
 See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#useHtml}useHtml() method{api}.
      */
     public func onContentChanged(handler: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".onContentChanged(%s);", JsObject.wrapQuotes(value: handler)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).onContentChanged()")
 
         return self
     }
@@ -466,7 +467,7 @@ tooltip on the chart (for example, several tooltips for separated mode).<br/>
 See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#useHtml}useHtml() method{api}.
      */
     public func onDomReady(handler: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".onDomReady(%s);", JsObject.wrapQuotes(value: handler)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).onDomReady()")
 
         return self
     }
@@ -486,7 +487,7 @@ The onTitleChanged() method is called only if the {api:anychart.core.ui.Tooltip#
 See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#useHtml}useHtml() method{api}.
      */
     public func onTitleChanged(handler: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".onTitleChanged(%s);", JsObject.wrapQuotes(value: handler)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).onTitleChanged()")
 
         return self
     }
@@ -494,13 +495,13 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Getter for the tooltip padding.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for the tooltip padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -508,7 +509,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels by one value.
      */
     public func padding(padding: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -516,7 +517,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -524,7 +525,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -532,7 +533,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -540,7 +541,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -548,7 +549,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -556,7 +557,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -564,7 +565,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -572,7 +573,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the tooltip padding in pixels.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -587,7 +588,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
 <b>Note:</b> Do not works with position mode <b>FLOAT</b>.
      */
     public func position(position: anychart.enums.Position) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".position(%s);", (position != nil) ? position.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position()")
 
         return self
     }
@@ -601,7 +602,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for all tooltips position mode.
      */
     public func positionMode(mode: anychart.enums.TooltipPositionMode) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".positionMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).positionMode()")
 
         return self
     }
@@ -609,13 +610,13 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the text selectable option.
@@ -627,7 +628,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the text selectable option.
      */
     public func selectable(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -635,13 +636,13 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Getter for the union tooltip separator.
      */
     public func separator() -> anychart.core.ui.Separator {
-        return anychart.core.ui.Separator(jsChart: jsBase + ".separator()")
+        return anychart.core.ui.Separator(jsBase: jsBase + ".separator()")
     }
     /**
      * Setter for the union tooltip separator.
      */
     public func separator(settings: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".separator(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).separator()")
 
         return self
     }
@@ -655,7 +656,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for text direction settings.
      */
     public func textDirection(value: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -669,7 +670,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for text-indent settings.
      */
     public func textIndent(indent: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -683,7 +684,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -697,7 +698,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the full text appearance settings.
      */
     public func textSettings(settings: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -705,7 +706,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the custom text appearance settings.
      */
     public func textSettings(name: String, value: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -713,7 +714,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Setter for the custom text appearance settings.
      */
     public func textSettings(name: String, value: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -721,13 +722,13 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Getter for union tooltip title visual settings.
      */
     public func title() -> anychart.core.ui.Title {
-        return anychart.core.ui.Title(jsChart: jsBase + ".title()")
+        return anychart.core.ui.Title(jsBase: jsBase + ".title()")
     }
     /**
      * Setter for union tooltip title visual settings.
      */
     public func title(settings: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -742,7 +743,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
 <b>Note:</b> Use {@link anychart.core.ui.Tooltip#title} method to set title visual settings.
      */
     public func titleFormat(format: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".titleFormat(%s);", JsObject.wrapQuotes(value: format)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).titleFormat()")
 
         return self
     }
@@ -757,7 +758,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
 {docs:Common_Settings/Text_Formatters}Learn more about using unionFormat() method.{docs}
      */
     public func unionFormat(unionFormat: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unionFormat(%s);", JsObject.wrapQuotes(value: unionFormat)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unionFormat()")
 
         return self
     }
@@ -765,7 +766,7 @@ See the structure of HTML-tooltip elements in the {api:anychart.core.ui.Tooltip#
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHTML flag.
@@ -789,7 +790,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#format}tooltip.format(
 The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.titleFormat(){api} is rendered to the tltleElement.
      */
     public func useHtml(enabled: Bool) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -803,7 +804,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for text vertical align settings.
      */
     public func vAlign(align: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", JsObject.wrapQuotes(value: align)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -817,7 +818,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for tooltip postfix value.
      */
     public func valuePostfix(value: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".valuePostfix(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valuePostfix()")
 
         return self
     }
@@ -831,7 +832,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for tooltip prefix value.
      */
     public func valuePrefix(value: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".valuePrefix(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valuePrefix()")
 
         return self
     }
@@ -845,7 +846,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for the tooltip width.
      */
     public func width(width: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", JsObject.wrapQuotes(value: width)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -859,7 +860,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -873,7 +874,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }
@@ -887,7 +888,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -895,13 +896,13 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -909,7 +910,7 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -918,14 +919,14 @@ The HTML text obtained from {api:anychart.core.ui.Tooltip#titleFormat}tooltip.ti
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -934,7 +935,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -943,7 +944,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.ui.Tooltip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

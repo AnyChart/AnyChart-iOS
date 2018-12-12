@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class TRIX: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> TRIX {
-            return TRIX(jsChart: "new anychart.core.stock.indicators.TRIX()")
+        public override init() {
+            //return TRIX(jsBase: "new anychart.core.stock.indicators.TRIX()")
+            super.init(jsBase: "new anychart.core.stock.indicators.TRIX()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "tRIX\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "tRIX\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the smoothing type.
      */
     public func maType(type: anychart.enums.MovingAverageType) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maType(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maType()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the period.
      */
     public func period(period: Double) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".period(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).period()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the signal smoothing type.
      */
     public func signalMaType(type: String) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".signalMaType(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).signalMaType()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the signal period.
      */
     public func signalPeriod(period: Double) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".signalPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).signalPeriod()")
 
         return self
     }
@@ -89,13 +90,13 @@
      * Getter for the indicator signal series instance.
      */
     public func signalSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".signalSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".signalSeries()")
     }
     /**
      * Setter for the indicator signal series type.
      */
     public func signalSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".signalSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).signalSeries()")
 
         return self
     }
@@ -103,13 +104,13 @@
      * Getter for the indicator TRIX series instance.
      */
     public func trixSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".trixSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".trixSeries()")
     }
     /**
      * Setter for the indicator TRIX series type.
      */
     public func trixSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.TRIX {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".trixSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).trixSeries()")
 
         return self
     }

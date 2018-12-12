@@ -6,22 +6,23 @@
  extension anychart.core.utils {
     public class OrdinalZoom: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> OrdinalZoom {
-            return OrdinalZoom(jsChart: "new anychart.core.utils.OrdinalZoom()")
+        public override init() {
+            //return OrdinalZoom(jsBase: "new anychart.core.utils.OrdinalZoom()")
+            super.init(jsBase: "new anychart.core.utils.OrdinalZoom()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "ordinalZoom\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "ordinalZoom\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Whether to zoom on moving of the scroller or only on mouseUp.
      */
     public func continuous(enabled: Bool) -> anychart.core.utils.OrdinalZoom {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".continuous(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).continuous()")
 
         return self
     }
@@ -59,7 +60,7 @@
      * Sets zoom to passed start and end ratios.
      */
     public func setTo(startRatio: Double, endRatio: Double) -> anychart.core.utils.OrdinalZoom {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setTo(%s, %s);", startRatio, endRatio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setTo()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setups zoom by passed values.
      */
     public func setToPointsCount(pointsCount: Double, fromEnd: Bool, scale: anychart.scales.Base) -> anychart.core.utils.OrdinalZoom {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setToPointsCount(%s, %s, %s);", pointsCount, fromEnd, (scale != nil) ? scale.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setToPointsCount()")
 
         return self
     }
@@ -75,7 +76,7 @@
      * Setups zoom by passed values.
      */
     public func setToValues(startValue: String, endValue: String, scale: anychart.scales.Base) -> anychart.core.utils.OrdinalZoom {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setToValues(%s, %s, %s);", JsObject.wrapQuotes(value: startValue), JsObject.wrapQuotes(value: endValue), (scale != nil) ? scale.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setToValues()")
 
         return self
     }

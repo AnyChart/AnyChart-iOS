@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui {
-    public class DataGrid: JsObject {
+    public class DataGrid: anychart.core.VisualBaseWithBounds {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> DataGrid {
-            return DataGrid(jsChart: "new anychart.core.ui.DataGrid()")
+        public override init() {
+            //return DataGrid(jsBase: "new anychart.core.ui.DataGrid()")
+            super.init(jsBase: "new anychart.core.ui.DataGrid()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "dataGrid\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "dataGrid\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -40,7 +41,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -49,7 +50,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -57,7 +58,7 @@
      * Background fill color with opacity.
      */
     public func backgroundFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -66,7 +67,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -75,7 +76,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -84,7 +85,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -93,7 +94,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -102,7 +103,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -116,7 +117,7 @@
      * Setter for element bottom bound settings.
      */
     public func bottom(bottom: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottom(%s);", bottom))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
 
         return self
     }
@@ -124,13 +125,13 @@
      * Getter for element bounds settings.
      */
     public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsChart: jsBase + ".bounds()")
+        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
     }
     /**
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.utils.RectObj) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -138,7 +139,7 @@
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -146,7 +147,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -154,7 +155,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -162,7 +163,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -170,7 +171,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -178,7 +179,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -186,7 +187,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -194,7 +195,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -202,7 +203,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: String, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -210,13 +211,13 @@
      * Getter for button settings.
      */
     public func buttons() -> anychart.core.gantt.DataGridButton {
-        return anychart.core.gantt.DataGridButton(jsChart: jsBase + ".buttons()")
+        return anychart.core.gantt.DataGridButton(jsBase: jsBase + ".buttons()")
     }
     /**
      * Setter for button settings.
      */
     public func buttons(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".buttons(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).buttons()")
 
         return self
     }
@@ -225,13 +226,13 @@
 Gets column by index or creates a new one if column doesn't exist yet.
      */
     public func column(index: Double) -> anychart.core.ui.datagrid.Column {
-        return anychart.core.ui.datagrid.Column(jsChart: String(format: jsBase + ".column(%s)", index))
+        return anychart.core.ui.datagrid.Column(jsBase: "\(self.jsBase).column(\(index))")
     }
     /**
      * Setter for the first column.
      */
     public func column(settings: anychart.core.ui.datagrid.Column) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".column(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).column()")
 
         return self
     }
@@ -239,7 +240,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the column by index.
      */
     public func column(index: Double, settings: anychart.core.ui.datagrid.Column) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".column(%s, %s);", index, (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).column()")
 
         return self
     }
@@ -253,7 +254,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the column stroke.
      */
     public func columnStroke(color: Stroke) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).columnStroke()")
 
         return self
     }
@@ -261,23 +262,15 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the column stroke using an object.
      */
     public func columnStroke(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).columnStroke()")
 
         return self
     }
     /**
-     * Getter for data.
+     * 
      */
-    public func data() -> anychart.data.Tree {
-        return anychart.data.Tree(jsChart: jsBase + ".data()")
-    }
-    /**
-     * Setter for new data.
-     */
-    public func data(data: anychart.data.Tree) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".data(%s);", (data != nil) ? data.getJsBase() : "null"))
-
-        return self
+    public func data(data: [DataEntry]) -> anychart.data.Tree {
+        return anychart.data.Tree(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Draws data grid.
@@ -291,14 +284,14 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Getter for live edit settings.
      */
     public func edit() -> anychart.core.gantt.edit.StructureEdit {
-        return anychart.core.gantt.edit.StructureEdit(jsChart: jsBase + ".edit()")
+        return anychart.core.gantt.edit.StructureEdit(jsBase: jsBase + ".edit()")
     }
     /**
      * Setter for live edit settings.
 {docs:Gantt_Chart/Live_Edit_UI_and_API}Learn more about Live editing.{docs}
      */
     public func edit(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".edit(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).edit()")
 
         return self
     }
@@ -312,7 +305,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewDashStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -320,7 +313,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewDashStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -328,7 +321,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewDashStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -336,7 +329,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewDashStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -344,7 +337,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewDashStroke(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -358,7 +351,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(value: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -366,7 +359,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -374,7 +367,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -382,7 +375,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -390,7 +383,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -398,7 +391,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -406,7 +399,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -420,7 +413,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editStructurePreviewStroke(value: Stroke) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -434,7 +427,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * 
      */
     public func editing(value: Bool) -> anychart.standalones.DataGrid {
-        return anychart.standalones.DataGrid(jsChart: String(format: jsBase + ".editing(%s)", value))
+        return anychart.standalones.DataGrid(jsBase: "\(self.jsBase).editing(\(value))")
     }
     /**
      * Getter for the element state (enabled or disabled).
@@ -446,7 +439,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -460,7 +453,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the end index.
      */
     public func endIndex(index: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".endIndex(%s);", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).endIndex()")
 
         return self
     }
@@ -468,7 +461,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Returns pixel bounds of the element due to parent bounds and self bounds settings.
      */
     public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getPixelBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
     }
     /**
      * 
@@ -486,7 +479,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for element height setting.
      */
     public func height(height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -500,7 +493,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the horizontal offset.
      */
     public func horizontalOffset(offset: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalOffset(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).horizontalOffset()")
 
         return self
     }
@@ -508,13 +501,13 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Getter for the horizontal scroll bar.
      */
     public func horizontalScrollBar() -> anychart.core.ui.ScrollBar {
-        return anychart.core.ui.ScrollBar(jsChart: jsBase + ".horizontalScrollBar()")
+        return anychart.core.ui.ScrollBar(jsBase: jsBase + ".horizontalScrollBar()")
     }
     /**
      * Setter for the horizontal scroll bar.
      */
     public func horizontalScrollBar(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalScrollBar(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).horizontalScrollBar()")
 
         return self
     }
@@ -528,7 +521,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for element left bound settings.
      */
     public func left(left: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".left(%s);", left))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
 
         return self
     }
@@ -542,7 +535,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the maximum height.
      */
     public func maxHeight(height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -556,7 +549,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the maximum width.
      */
     public func maxWidth(width: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
 
         return self
     }
@@ -570,7 +563,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the minimum height.
      */
     public func minHeight(height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -584,7 +577,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the minimum width.
      */
     public func minWidth(width: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
 
         return self
     }
@@ -604,13 +597,13 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for element right bound settings.
@@ -622,7 +615,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for element right bound setting.
      */
     public func right(right: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".right(%s);", right))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
 
         return self
     }
@@ -637,7 +630,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -646,7 +639,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -654,7 +647,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Fill color with opacity.
      */
     public func rowEvenFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -663,7 +656,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -672,7 +665,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -681,7 +674,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -690,7 +683,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -699,7 +692,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -714,7 +707,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -723,7 +716,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -731,7 +724,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Fill color with opacity.
      */
     public func rowFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -740,7 +733,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -749,7 +742,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -758,7 +751,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -767,7 +760,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -776,7 +769,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -791,7 +784,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -800,7 +793,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -808,7 +801,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Fill color with opacity.
      */
     public func rowHoverFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -817,7 +810,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -826,7 +819,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -835,7 +828,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -844,7 +837,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -853,7 +846,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -868,7 +861,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -877,7 +870,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -885,7 +878,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Fill color with opacity.
      */
     public func rowOddFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -894,7 +887,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -903,7 +896,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -912,7 +905,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -921,7 +914,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -930,7 +923,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -945,7 +938,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(color: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -954,7 +947,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(color: [String]) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -962,7 +955,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Fill color in selected mode with opacity. Fill as a string or an object.
      */
     public func rowSelectedFill(color: String, opacity: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -971,7 +964,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -980,7 +973,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -989,7 +982,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -998,7 +991,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -1007,7 +1000,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(imageSettings: Fill) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -1021,7 +1014,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the start index.
      */
     public func startIndex(index: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".startIndex(%s);", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startIndex()")
 
         return self
     }
@@ -1029,13 +1022,13 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Getter for tooltip settings.
      */
     public func tooltip() -> anychart.core.ui.Tooltip {
-        return anychart.core.ui.Tooltip(jsChart: jsBase + ".tooltip()")
+        return anychart.core.ui.Tooltip(jsBase: jsBase + ".tooltip()")
     }
     /**
      * Getter for tooltip settings.
      */
     public func tooltip(settings: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tooltip(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip()")
 
         return self
     }
@@ -1049,7 +1042,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for element top bound settings.
      */
     public func top(top: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".top(%s);", top))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
 
         return self
     }
@@ -1057,7 +1050,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the vertical offset.
@@ -1069,7 +1062,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the vertical offset.
      */
     public func verticalOffset(offset: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalOffset(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).verticalOffset()")
 
         return self
     }
@@ -1083,7 +1076,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for element width setting.
      */
     public func width(width: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -1097,7 +1090,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -1105,13 +1098,13 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -1119,7 +1112,7 @@ Gets column by index or creates a new one if column doesn't exist yet.
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -1128,14 +1121,14 @@ Gets column by index or creates a new one if column doesn't exist yet.
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -1144,7 +1137,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -1153,9 +1146,15 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.ui.DataGrid {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func data(data: [DataEntry], fillMethod: anychart.enums.TreeFillingMethod) -> anychart.data.Tree {
+        return anychart.data.Tree(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \((fillMethod != nil) ? fillMethod.getJsBase() : "null"))")
     }
 
     }

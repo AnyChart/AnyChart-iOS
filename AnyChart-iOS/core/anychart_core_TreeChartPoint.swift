@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core {
-    public class TreeChartPoint: JsObject {
+    public class TreeChartPoint: anychart.core.Point {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> TreeChartPoint {
-            return TreeChartPoint(jsChart: "new anychart.core.TreeChartPoint()")
+        public override init() {
+            //return TreeChartPoint(jsBase: "new anychart.core.TreeChartPoint()")
+            super.init(jsBase: "new anychart.core.TreeChartPoint()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "treeChartPoint\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "treeChartPoint\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,13 +40,13 @@
      * Getter for the current value from data by path specified.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: field)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
     }
     /**
      * Getter for the chart point belongs to.
      */
     public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
     }
     /**
      * Getter for the point linear index.
@@ -57,7 +58,7 @@
      * Returns a node.
      */
     public func getNode() -> anychart.data.tree.DataItem {
-        return anychart.data.tree.DataItem(jsChart: jsBase + ".getNode()")
+        return anychart.data.tree.DataItem(jsBase: jsBase + ".getNode()")
     }
     /**
      * Getter for the hover point state.
@@ -69,7 +70,7 @@
      * Setter for the hover point state.
      */
     public func hovered(enabled: Bool) -> anychart.core.TreeChartPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -83,7 +84,7 @@
      * Setter for the select point state.
      */
     public func selected(value: Bool) -> anychart.core.TreeChartPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -91,7 +92,7 @@
      * Setter for the value to the data by path.
      */
     public func set(field: String, value: String) -> anychart.core.TreeChartPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: field), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -99,7 +100,7 @@
      * Getter for the statistics value by key.
      */
     public func getStat(key: anychart.enums.Statistics)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", (key != nil) ? key.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\((key != nil) ? key.getJsBase() : "null"))")
     }
 
     }

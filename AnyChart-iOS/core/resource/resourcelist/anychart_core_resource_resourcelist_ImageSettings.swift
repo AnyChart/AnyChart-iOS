@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.resource.resourcelist {
-    public class ImageSettings: JsObject {
+    public class ImageSettings: anychart.core.resource.resourceList.SettingsWithMargin {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ImageSettings {
-            return ImageSettings(jsChart: "new anychart.core.resource.resourceList.ImageSettings()")
+        public override init() {
+            //return ImageSettings(jsBase: "new anychart.core.resource.resourceList.ImageSettings()")
+            super.init(jsBase: "new anychart.core.resource.resourceList.ImageSettings()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "imageSettings\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "imageSettings\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the image align.
      */
     public func align(align: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".align(%s);", JsObject.wrapQuotes(value: align)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).align()")
 
         return self
     }
@@ -54,7 +55,7 @@
 Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_border-radius.asp}
      */
     public func borderRadius(borders: Double) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".borderRadius(%s);", borders))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).borderRadius()")
 
         return self
     }
@@ -68,7 +69,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the fitting mode.
      */
     public func fittingMode(mode: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fittingMode(%s);", JsObject.wrapQuotes(value: mode)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fittingMode()")
 
         return self
     }
@@ -76,13 +77,13 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Getter for the margin.
      */
     public func margin() -> anychart.core.utils.Margin {
-        return anychart.core.utils.Margin(jsChart: jsBase + ".margin()")
+        return anychart.core.utils.Margin(jsBase: jsBase + ".margin()")
     }
     /**
      * Setter for the margin using a single value.
      */
     public func margin(margin: [Double]) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -90,7 +91,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the margin using a single value.
      */
     public func margin(margin: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", JsObject.wrapQuotes(value: margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -98,7 +99,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -106,7 +107,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -114,7 +115,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -122,7 +123,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -130,7 +131,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -138,7 +139,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -146,7 +147,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -154,7 +155,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the callout margin using several values.
      */
     public func margin(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -168,7 +169,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the image opacity.
      */
     public func opacity(opacity: Double) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".opacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).opacity()")
 
         return self
     }
@@ -182,7 +183,7 @@ Learn more about border radius {@link https://www.w3schools.com/cssref/css3_pr_b
      * Setter for the image size in item.
      */
     public func size(size: String) -> anychart.core.resource.resourcelist.ImageSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".size(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).size()")
 
         return self
     }

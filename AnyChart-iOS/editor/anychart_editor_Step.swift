@@ -6,22 +6,23 @@
  extension anychart.editor {
     public class Step: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Step {
-            return Step(jsChart: "new anychart.editor.Step()")
+        public override init() {
+            //return Step(jsBase: "new anychart.editor.Step()")
+            super.init(jsBase: "new anychart.editor.Step()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "step\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "step\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -45,7 +46,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func enabled(enabled: Bool) -> anychart.editor.Step {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -56,7 +57,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func tab(tabName: anychart.enums.EditorTabs, value: Bool) -> anychart.editor.Step {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tab(%s, %s);", (tabName != nil) ? tabName.getJsBase() : "null", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tab()")
 
         return self
     }

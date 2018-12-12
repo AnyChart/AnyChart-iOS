@@ -6,22 +6,23 @@
  extension anychart.ui {
     public class GanttToolbar: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> GanttToolbar {
-            return GanttToolbar(jsChart: "new anychart.ui.GanttToolbar()")
+        public override init() {
+            //return GanttToolbar(jsBase: "new anychart.ui.GanttToolbar()")
+            super.init(jsBase: "new anychart.ui.GanttToolbar()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "ganttToolbar\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "ganttToolbar\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the Gantt chart toolbar container.
      */
     public func container(element: String) -> anychart.ui.GanttToolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -61,7 +62,7 @@
      * Setter for the print paper sizes.
      */
     public func printPaperSizes(paperSizeList: [anychart.graphics.vector.PaperSize]) -> anychart.ui.GanttToolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".printPaperSizes(%s);", JsObject.arrayToString(jsObjects: paperSizeList)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).printPaperSizes()")
 
         return self
     }
@@ -69,13 +70,13 @@
      * Getter for the toolbar target.
      */
     public func target() -> anychart.core.Chart {
-        return anychart.core.Chart(jsChart: jsBase + ".target()")
+        return anychart.core.Chart(jsBase: jsBase + ".target()")
     }
     /**
      * Setter for the toolbar target.
      */
     public func target(target: anychart.core.Chart) -> anychart.ui.GanttToolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".target(%s);", (target != nil) ? target.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).target()")
 
         return self
     }

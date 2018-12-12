@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class BBands: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> BBands {
-            return BBands(jsChart: "new anychart.core.stock.indicators.BBands()")
+        public override init() {
+            //return BBands(jsBase: "new anychart.core.stock.indicators.BBands()")
+            super.init(jsBase: "new anychart.core.stock.indicators.BBands()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "bBands\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "bBands\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the deviation.
      */
     public func deviation(deviation: Double) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".deviation(%s);", deviation))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).deviation()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for the indicator Lower Series instance.
      */
     public func lowerSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".lowerSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".lowerSeries()")
     }
     /**
      * Setter for the indicator Lower Series type.
      */
     public func lowerSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lowerSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lowerSeries()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the indicator Middle Series instance.
      */
     public func middleSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".middleSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".middleSeries()")
     }
     /**
      * Setter for the indicator Middle Series type.
      */
     public func middleSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".middleSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).middleSeries()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the period.
      */
     public func period(period: Double) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".period(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).period()")
 
         return self
     }
@@ -89,13 +90,13 @@
      * Getter for the indicator Range Series instance.
      */
     public func rangeSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".rangeSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".rangeSeries()")
     }
     /**
      * Setter for the indicator Range Series type.
      */
     public func rangeSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rangeSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeSeries()")
 
         return self
     }
@@ -103,13 +104,13 @@
      * Getter for the indicator Upper Series instance.
      */
     public func upperSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".upperSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".upperSeries()")
     }
     /**
      * Setter for the indicator Upper Series type.
      */
     public func upperSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.BBands {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".upperSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).upperSeries()")
 
         return self
     }

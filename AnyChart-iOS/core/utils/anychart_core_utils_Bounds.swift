@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class Bounds: JsObject {
+    public class Bounds: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Bounds {
-            return Bounds(jsChart: "new anychart.core.utils.Bounds()")
+        public override init() {
+            //return Bounds(jsBase: "new anychart.core.utils.Bounds()")
+            super.init(jsBase: "new anychart.core.utils.Bounds()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "bounds\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "bounds\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the bottom edge position.
      */
     public func bottom(bottom: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottom(%s);", bottom))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the height value.
      */
     public func height(height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the left edge position.
      */
     public func left(left: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".left(%s);", left))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the maximum height value.
      */
     public func maxHeight(height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -95,7 +96,7 @@
      * Setter for the maximum width value.
      */
     public func maxWidth(width: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for the minimum height value.
      */
     public func minHeight(height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -123,7 +124,7 @@
      * Setter for the minimum width value.
      */
     public func minWidth(width: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
 
         return self
     }
@@ -137,7 +138,7 @@
      * Setter for the right edge position.
      */
     public func right(right: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".right(%s);", right))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
 
         return self
     }
@@ -146,7 +147,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: Double, y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect, y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -155,7 +156,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: Double, y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect, y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -164,7 +165,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: Double, y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect, JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -173,7 +174,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: Double, y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect, JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -182,7 +183,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: String, y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: xOrRect), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -191,7 +192,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: String, y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: xOrRect), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -200,7 +201,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: String, y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: xOrRect), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -209,7 +210,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: String, y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: xOrRect), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -218,7 +219,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -227,7 +228,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -236,7 +237,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -245,7 +246,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: [Double], y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", xOrRect.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -254,7 +255,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.utils.RectObj, y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -263,7 +264,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.utils.RectObj, y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -272,7 +273,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.utils.RectObj, y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -281,7 +282,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.utils.RectObj, y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -290,7 +291,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.math.Rect, y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -299,7 +300,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.math.Rect, y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -308,7 +309,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.math.Rect, y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -317,7 +318,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.math.Rect, y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -326,7 +327,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.core.utils.Bounds, y: Double, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -335,7 +336,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.core.utils.Bounds, y: Double, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -344,7 +345,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.core.utils.Bounds, y: String, width: Double, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -353,7 +354,7 @@
 <b>Note</b>: 'right' and 'bottom' have priority over 'width' and 'height'.
      */
     public func set(xOrRect: anychart.core.utils.Bounds, y: String, width: String, height: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", (xOrRect != nil) ? xOrRect.getJsBase() : "null", JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -361,13 +362,13 @@
      * Normalizes all info stored in this object.
      */
     public func toRect(parentLeftOrRect: Double, parentTop: Double, parentWidth: Double, parentHeight: Double) -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: String(format: jsBase + ".toRect(%s, %s, %s, %s)", parentLeftOrRect, parentTop, parentWidth, parentHeight))
+        return anychart.math.Rect(jsBase: "\(self.jsBase).toRect(\(parentLeftOrRect), \(parentTop), \(parentWidth), \(parentHeight))")
     }
     /**
      * Normalizes all info stored in this object.
      */
     public func toRect(parentLeftOrRect: String, parentTop: Double, parentWidth: Double, parentHeight: Double) -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: String(format: jsBase + ".toRect(%s, %s, %s, %s)", JsObject.wrapQuotes(value: parentLeftOrRect), parentTop, parentWidth, parentHeight))
+        return anychart.math.Rect(jsBase: "\(self.jsBase).toRect(\(JsObject.wrapQuotes(value: parentLeftOrRect)), \(parentTop), \(parentWidth), \(parentHeight))")
     }
     /**
      * Getter for the top edge position.
@@ -379,7 +380,7 @@
      * Setter for the top edge position.
      */
     public func top(top: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".top(%s);", top))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
 
         return self
     }
@@ -393,7 +394,7 @@
      * Setter for the width value.
      */
     public func width(width: Double) -> anychart.core.utils.Bounds {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -401,13 +402,13 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

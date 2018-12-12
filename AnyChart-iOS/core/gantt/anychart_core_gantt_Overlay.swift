@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.gantt {
-    public class Overlay: JsObject {
+    public class Overlay: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Overlay {
-            return Overlay(jsChart: "new anychart.core.gantt.Overlay()")
+        public override init() {
+            //return Overlay(jsBase: "new anychart.core.gantt.Overlay()")
+            super.init(jsBase: "new anychart.core.gantt.Overlay()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "overlay\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "overlay\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the name of DIV class.
      */
     public func className(name: String) -> anychart.core.gantt.Overlay {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".className(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).className()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.gantt.Overlay {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Setter for the DIV identifier.
      */
     public func id(id: String) -> anychart.core.gantt.Overlay {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".id(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).id()")
 
         return self
     }
@@ -81,13 +82,13 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

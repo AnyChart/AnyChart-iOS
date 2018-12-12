@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.stock.eventmarkers {
-    public class Group: JsObject {
+    public class Group: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Group {
-            return Group(jsChart: "new anychart.core.stock.eventMarkers.Group()")
+        public override init() {
+            //return Group(jsBase: "new anychart.core.stock.eventMarkers.Group()")
+            super.init(jsBase: "new anychart.core.stock.eventMarkers.Group()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "group\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "group\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the adjusting font size.
      */
     public func adjustFontSize(adjustOrAdjustByWidth: Bool, adjustByHeight: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s, %s);", adjustOrAdjustByWidth, adjustByHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -47,7 +48,7 @@
      * Setter for the adjusting font size.
      */
     public func adjustFontSize(adjustOrAdjustByWidth: String, adjustByHeight: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s, %s);", JsObject.wrapQuotes(value: adjustOrAdjustByWidth), adjustByHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -55,29 +56,21 @@
      * Getter for connector settings.
      */
     public func connector() -> anychart.core.utils.Connector {
-        return anychart.core.utils.Connector(jsChart: jsBase + ".connector()")
+        return anychart.core.utils.Connector(jsBase: jsBase + ".connector()")
     }
     /**
      * Setter for the connector length.
      */
     public func connector(settings: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connector(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connector()")
 
         return self
     }
     /**
-     * Getter for the group data.
+     * 
      */
-    public func data()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".data();")
-    }
-    /**
-     * Setter for the group data.
-     */
-    public func data(data: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".data(%s);", JsObject.wrapQuotes(value: data)))
-
-        return self
+    public func data(data: [DataEntry])  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the direction.
@@ -89,7 +82,7 @@
      * Setter for the direction.
      */
     public func direction(direction: anychart.enums.EventMarkerDirection) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".direction(%s);", (direction != nil) ? direction.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).direction()")
 
         return self
     }
@@ -103,7 +96,7 @@
      * Setter for the pointer events setting.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -117,7 +110,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -132,7 +125,7 @@
 <b>Note</b>: Sets a series field name for all {@link anychart.core.stock.eventMarkers.Group#position} values with exception of "axis" value.
      */
     public func fieldName(name: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fieldName(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fieldName()")
 
         return self
     }
@@ -147,7 +140,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -156,7 +149,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: [String]) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -164,7 +157,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func fill(color: String, opacity: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -173,7 +166,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -182,7 +175,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -191,7 +184,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -200,7 +193,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -209,7 +202,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(imageSettings: Fill) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -223,7 +216,7 @@
      * Setter for font color settings.
      */
     public func fontColor(color: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -237,7 +230,7 @@
      * Setter for font decoration settings.
      */
     public func fontDecoration(type: anychart.graphics.vector.text.Decoration) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -251,7 +244,7 @@
      * Setter for font family settings.
      */
     public func fontFamily(family: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -265,7 +258,7 @@
      * Setter for font opacity settings.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -279,7 +272,7 @@
      * Setter for the font padding.
      */
     public func fontPadding(padding: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontPadding(%s);", padding))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontPadding()")
 
         return self
     }
@@ -293,7 +286,7 @@
      * Setter for font size settings.
      */
     public func fontSize(size: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -307,7 +300,7 @@
      * Setter for font style settings.
      */
     public func fontStyle(style: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", JsObject.wrapQuotes(value: style)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -321,7 +314,7 @@
      * Setter for font variant settings.
      */
     public func fontVariant(value: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -335,7 +328,7 @@
      * Setter for font weight settings.
      */
     public func fontWeight(weight: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -349,7 +342,7 @@
      * Setter for function content text for the tooltip.<br/>
      */
     public func format(format: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".format(%s);", JsObject.wrapQuotes(value: format)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).format()")
 
         return self
     }
@@ -358,7 +351,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Stock#draw} is called.
      */
     public func getMarker(index: Double) -> anychart.format.Context {
-        return anychart.format.Context(jsChart: String(format: jsBase + ".getMarker(%s)", index))
+        return anychart.format.Context(jsBase: "\(self.jsBase).getMarker(\(index))")
     }
     /**
      * Getter for horizontal align settings.
@@ -370,7 +363,7 @@
      * Setter for the horizontal align settings.
      */
     public func hAlign(align: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", JsObject.wrapQuotes(value: align)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -384,7 +377,7 @@
      * Setter for the markers height.
      */
     public func height(height: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -400,7 +393,7 @@
      * Setter for hovered state settings.
      */
     public func hovered(settings: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -414,7 +407,7 @@
      * Setter for text letter spacing settings.
      */
     public func letterSpacing(spacing: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", spacing))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -428,7 +421,7 @@
      * Setter for line height settings.
      */
     public func lineHeight(height: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -442,7 +435,7 @@
      * Setter for maximum font size settings for adjust text from.
      */
     public func maxFontSize(size: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize()")
 
         return self
     }
@@ -456,7 +449,7 @@
      * Setter for minimum font size settings for adjust text from.
      */
     public func minFontSize(size: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize()")
 
         return self
     }
@@ -472,7 +465,7 @@
      * Setter for normal state settings.
      */
     public func normal(settings: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".normal(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
 
         return self
     }
@@ -486,7 +479,7 @@
      * Setter for the position.
      */
     public func position(position: anychart.enums.EventMarkerPosition) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".position(%s);", (position != nil) ? position.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position()")
 
         return self
     }
@@ -494,13 +487,13 @@
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the text selectable option.
@@ -512,7 +505,7 @@
      * Setter for the text selectable option.
      */
     public func selectable(enabled: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -528,7 +521,7 @@
      * Setter for selected state settings.
      */
     public func selected(settings: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -543,7 +536,7 @@
 <b>Note</b>: Sets a series by id for all {@link anychart.core.stock.eventMarkers.Group#position} values with exception of "axis" value.
      */
     public func seriesId(id: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".seriesId(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).seriesId()")
 
         return self
     }
@@ -557,7 +550,7 @@
      * Setter for sticking event markers to left value.
      */
     public func stickToLeft(enabled: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stickToLeft(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stickToLeft()")
 
         return self
     }
@@ -572,34 +565,34 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s)", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)))")
     }
     /**
      * Setter for series stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s)", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)))")
     }
     /**
      * Setter for series stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s)", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)))")
     }
     /**
      * Setter for series stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".stroke(%s, %s, %s, %s, %s)", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)))")
     }
     /**
      * Setter for stroke using an object.
      */
     public func stroke(settings: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
 
         return self
     }
@@ -613,7 +606,7 @@
      * Setter for text direction settings.
      */
     public func textDirection(type: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -627,7 +620,7 @@
      * Setter for text-indent settings.
      */
     public func textIndent(indent: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -641,7 +634,7 @@
      * Setter for text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -657,7 +650,7 @@
      * Setter for tooltip settings.
      */
     public func tooltip(settings: String) -> anychart.charts.Pie {
-        return anychart.charts.Pie(jsChart: String(format: jsBase + ".tooltip(%s)", JsObject.wrapQuotes(value: settings)))
+        return anychart.charts.Pie(jsBase: "\(self.jsBase).tooltip(\(JsObject.wrapQuotes(value: settings)))")
     }
     /**
      * Getter for the marker type.
@@ -669,7 +662,7 @@
      * Setter for the marker type.
      */
     public func type(type: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".type(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).type()")
 
         return self
     }
@@ -677,7 +670,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHTML flag.
@@ -689,7 +682,7 @@
      * Setter for the useHTML flag.
      */
     public func useHtml(enabled: Bool) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -703,7 +696,7 @@
      * Setter for text vertical align settings.
      */
     public func vAlign(align: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", JsObject.wrapQuotes(value: align)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -717,7 +710,7 @@
      * Setter for the markers width.
      */
     public func width(width: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", JsObject.wrapQuotes(value: width)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -731,7 +724,7 @@
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -745,7 +738,7 @@
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }
@@ -759,7 +752,7 @@
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -767,13 +760,13 @@
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -781,7 +774,7 @@
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -790,14 +783,14 @@
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -806,7 +799,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -815,7 +808,15 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.stock.eventmarkers.Group {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func data(data: [DataEntry], fillMethod: anychart.enums.TreeFillingMethod) -> anychart.core.stock.eventmarkers.Group {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data()")
 
         return self
     }

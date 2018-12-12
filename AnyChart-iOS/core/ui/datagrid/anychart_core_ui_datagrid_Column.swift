@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui.datagrid {
-    public class Column: JsObject {
+    public class Column: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Column {
-            return Column(jsChart: "new anychart.core.ui.DataGrid.Column()")
+        public override init() {
+            //return Column(jsBase: "new anychart.core.ui.DataGrid.Column()")
+            super.init(jsBase: "new anychart.core.ui.DataGrid.Column()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "column\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "column\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * 
      */
     public func buttonCursor(valueCursor: anychart.enums.Cursor) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".buttonCursor(%s);", (valueCursor != nil) ? valueCursor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).buttonCursor()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * 
      */
     public func cellTextSettings() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".cellTextSettings()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".cellTextSettings()")
     }
     /**
      * 
      */
     public func cellTextSettings(value: String) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellTextSettings(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellTextSettings()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Setter for expanding or collapse buttons.
      */
     public func collapseExpandButtons(enabled: Bool) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".collapseExpandButtons(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).collapseExpandButtons()")
 
         return self
     }
@@ -87,7 +88,7 @@
      * Setter for the column default width.
      */
     public func defaultWidth(width: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".defaultWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).defaultWidth()")
 
         return self
     }
@@ -101,7 +102,7 @@
      * Setter for the multiplier to choose a left padding.
      */
     public func depthPaddingMultiplier(padding: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".depthPaddingMultiplier(%s);", padding))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).depthPaddingMultiplier()")
 
         return self
     }
@@ -123,7 +124,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -131,7 +132,7 @@
      * Getter for labels settings of a column.
      */
     public func labels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".labels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".labels()")
     }
     /**
      * Getter for the labels overrider.
@@ -143,19 +144,19 @@
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Sets column format using enum.
      */
     public func setColumnFormat(fieldName: String, presetValue: anychart.enums.ColumnFormats) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setColumnFormat(%s, %s);", JsObject.wrapQuotes(value: fieldName), (presetValue != nil) ? presetValue.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setColumnFormat()")
 
         return self
     }
@@ -163,7 +164,7 @@
      * Sets column format using object.
      */
     public func setColumnFormat(fieldName: String, settings: String) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setColumnFormat(%s, %s);", JsObject.wrapQuotes(value: fieldName), JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setColumnFormat()")
 
         return self
     }
@@ -171,13 +172,13 @@
      * Getter for the column title.
      */
     public func title() -> anychart.core.ui.Title {
-        return anychart.core.ui.Title(jsChart: jsBase + ".title()")
+        return anychart.core.ui.Title(jsBase: jsBase + ".title()")
     }
     /**
      * Setter for the column title.
      */
     public func title(settings: Bool) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -185,7 +186,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the column width.
@@ -197,7 +198,7 @@
      * Setter for the column width.
      */
     public func width(width: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -211,7 +212,7 @@
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -219,13 +220,13 @@
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -233,7 +234,7 @@
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -242,14 +243,14 @@
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -258,7 +259,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -267,7 +268,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.ui.datagrid.Column {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

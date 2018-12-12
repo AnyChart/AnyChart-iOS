@@ -6,22 +6,23 @@
  extension anychart.ui {
     public class ContextMenu: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ContextMenu {
-            return ContextMenu(jsChart: "new anychart.ui.ContextMenu()")
+        public override init() {
+            //return ContextMenu(jsBase: "new anychart.ui.ContextMenu()")
+            super.init(jsBase: "new anychart.ui.ContextMenu()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "contextMenu\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "contextMenu\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,13 +34,13 @@
      * Setter for the class name.
      */
     public func addClassName(className: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addClassName(%s);", JsObject.wrapQuotes(value: className)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addClassName(\(JsObject.wrapQuotes(value: className)))")
     }
     /**
      * Attaches the context menu to a chart or DOM element.
      */
     public func attach(target: anychart.core.Chart, capture: Bool) -> anychart.ui.ContextMenu {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".attach(%s, %s);", (target != nil) ? target.getJsBase() : "null", capture))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).attach()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the context menu enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.ui.ContextMenu {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Setter for the context menu items.
      */
     public func items(itemsList: [anychart.ui.contextmenu.Item]) -> anychart.ui.ContextMenu {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".items(%s);", JsObject.arrayToString(jsObjects: itemsList)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items()")
 
         return self
     }
@@ -94,7 +95,7 @@
      * Removes the class name.
      */
     public func removeClassName(className: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeClassName(%s);", JsObject.wrapQuotes(value: className)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeClassName(\(JsObject.wrapQuotes(value: className)))")
     }
     /**
      * Serializes element to JSON.
@@ -106,7 +107,7 @@
      * Setups the element using passed configuration value.
      */
     public func setup(var_args: String) -> anychart.ui.ContextMenu {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setup(%s);", JsObject.wrapQuotes(value: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setup()")
 
         return self
     }
@@ -114,7 +115,7 @@
      * Setups the element using passed configuration value.
      */
     public func setup(var_args: Double) -> anychart.ui.ContextMenu {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setup(%s);", var_args))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setup()")
 
         return self
     }
@@ -122,7 +123,7 @@
      * Shows the menu immediately at the given client coordinates.
      */
     public func show(x: Double, y: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".show(%s, %s);", x, y))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).show(\(x), \(y))")
     }
 
     }

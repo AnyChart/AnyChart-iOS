@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.axismarkers {
-    public class GanttRange: JsObject {
+    public class GanttRange: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> GanttRange {
-            return GanttRange(jsChart: "new anychart.core.axisMarkers.GanttRange()")
+        public override init() {
+            //return GanttRange(jsBase: "new anychart.core.axisMarkers.GanttRange()")
+            super.init(jsBase: "new anychart.core.axisMarkers.GanttRange()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "ganttRange\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "ganttRange\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -54,7 +55,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -62,7 +63,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func fill(color: String, opacity: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -71,7 +72,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -80,7 +81,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -89,7 +90,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -98,7 +99,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -107,7 +108,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(imageSettings: Fill) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -121,7 +122,7 @@
      * Setter for the starting marker value.
      */
     public func from(fromValue: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".from(%s);", fromValue))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).from()")
 
         return self
     }
@@ -129,7 +130,7 @@
      * Setter for the starting marker value.
      */
     public func from(fromValue: String) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".from(%s);", JsObject.wrapQuotes(value: fromValue)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).from()")
 
         return self
     }
@@ -152,7 +153,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
 <b>Note:</b> The layout method will not work here, only 'vertical' layout are available in Gantt Chart.
      */
     public func layout(layout: anychart.enums.Layout) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".layout(%s);", (layout != nil) ? layout.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).layout()")
 
         return self
     }
@@ -160,19 +161,19 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the Gantt chart range marker scale.
      */
     public func scale() -> anychart.scales.GanttDateTime {
-        return anychart.scales.GanttDateTime(jsChart: jsBase + ".scale()")
+        return anychart.scales.GanttDateTime(jsBase: jsBase + ".scale()")
     }
     /**
      * Setter for the Gantt chart range marker scale.
@@ -180,7 +181,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
 {docs:Gantt_Chart/Timeline#special_features}Learn more about scale.{docs}
      */
     public func scale(scale: anychart.scales.GanttDateTime) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s);", (scale != nil) ? scale.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -194,7 +195,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Setter for the ending marker value.
      */
     public func to(toValue: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".to(%s);", toValue))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to()")
 
         return self
     }
@@ -202,7 +203,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Setter for the ending marker value.
      */
     public func to(toValue: String) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".to(%s);", JsObject.wrapQuotes(value: toValue)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to()")
 
         return self
     }
@@ -210,7 +211,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the Z-index of the element.
@@ -222,7 +223,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -230,13 +231,13 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -244,7 +245,7 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -253,14 +254,14 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -269,7 +270,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -278,7 +279,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.axismarkers.GanttRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

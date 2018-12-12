@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.series {
-    public class Stock: JsObject {
+    public class Stock: anychart.core.series.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Stock {
-            return Stock(jsChart: "new anychart.core.series.Stock()")
+        public override init() {
+            //return Stock(jsBase: "new anychart.core.series.Stock()")
+            super.init(jsBase: "new anychart.core.series.Stock()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "stock\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "stock\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for element bottom bound settings.
      */
     public func bottom(bottom: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottom(%s);", bottom))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for element bounds settings.
      */
     public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsChart: jsBase + ".bounds()")
+        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
     }
     /**
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.utils.RectObj) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -61,7 +62,7 @@
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -69,7 +70,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -77,7 +78,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -85,7 +86,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -93,7 +94,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -101,7 +102,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -117,7 +118,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -125,7 +126,7 @@
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: String, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -133,9 +134,15 @@
      * 
      */
     public func clip(value: Bool) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".clip(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).clip()")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func data(data: [DataEntry]) -> anychart.data.TableMapping {
+        return anychart.data.TableMapping(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the element state (enabled or disabled).
@@ -147,7 +154,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -155,7 +162,7 @@
      * 
      */
     public func error(value: String) -> anychart.core.utils.Error {
-        return anychart.core.utils.Error(jsChart: String(format: jsBase + ".error(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.utils.Error(jsBase: "\(self.jsBase).error(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
@@ -167,7 +174,7 @@
      * Returns pixel bounds of the element due to parent bounds and self bounds settings.
      */
     public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getPixelBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
     }
     /**
      * 
@@ -185,7 +192,7 @@
      * Setter for element height setting.
      */
     public func height(height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -193,31 +200,31 @@
      * 
      */
     public func hoverLabels(value: String) -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: String(format: jsBase + ".hoverLabels(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.LabelsFactory(jsBase: "\(self.jsBase).hoverLabels(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func hoverMarkers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".hoverMarkers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).hoverMarkers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func hoverOutlierMarkers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".hoverOutlierMarkers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).hoverOutlierMarkers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func id(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".id(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).id(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func labels(value: String) -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: String(format: jsBase + ".labels(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.LabelsFactory(jsBase: "\(self.jsBase).labels(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Getter for element left bound settings.
@@ -229,7 +236,7 @@
      * Setter for element left bound settings.
      */
     public func left(left: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".left(%s);", left))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
 
         return self
     }
@@ -237,13 +244,13 @@
      * 
      */
     public func legendItem(value: String) -> anychart.core.utils.LegendItemSettings {
-        return anychart.core.utils.LegendItemSettings(jsChart: String(format: jsBase + ".legendItem(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.utils.LegendItemSettings(jsBase: "\(self.jsBase).legendItem(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func markers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".markers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).markers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Getter for the maximum height.
@@ -255,7 +262,7 @@
      * Setter for the maximum height.
      */
     public func maxHeight(height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -269,7 +276,7 @@
      * Setter for the maximum width.
      */
     public func maxWidth(width: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
 
         return self
     }
@@ -277,7 +284,7 @@
      * 
      */
     public func meta(object_or_key: String, value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".meta(%s, %s);", JsObject.wrapQuotes(value: object_or_key), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).meta(\(JsObject.wrapQuotes(value: object_or_key)), \(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Getter for the minimum height.
@@ -289,7 +296,7 @@
      * Setter for the minimum height.
      */
     public func minHeight(height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -303,7 +310,7 @@
      * Setter for the minimum width.
      */
     public func minWidth(width: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
 
         return self
     }
@@ -311,7 +318,7 @@
      * 
      */
     public func name(value: String) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".name(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).name()")
 
         return self
     }
@@ -319,19 +326,19 @@
      * 
      */
     public func outlierMarkers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".outlierMarkers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).outlierMarkers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for element right bound settings.
@@ -343,7 +350,7 @@
      * Setter for element right bound setting.
      */
     public func right(right: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".right(%s);", right))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
 
         return self
     }
@@ -351,25 +358,25 @@
      * 
      */
     public func selectLabels(value: String) -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: String(format: jsBase + ".selectLabels(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.LabelsFactory(jsBase: "\(self.jsBase).selectLabels(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func selectMarkers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".selectMarkers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).selectMarkers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func selectOutlierMarkers(value: String) -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: String(format: jsBase + ".selectOutlierMarkers(%s)", JsObject.wrapQuotes(value: value)))
+        return anychart.core.ui.MarkersFactory(jsBase: "\(self.jsBase).selectOutlierMarkers(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * 
      */
     public func seriesType(value: String) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".seriesType(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).seriesType()")
 
         return self
     }
@@ -377,7 +384,7 @@
      * 
      */
     public func tooltip(value: String) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tooltip(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip()")
 
         return self
     }
@@ -391,7 +398,7 @@
      * Setter for element top bound settings.
      */
     public func top(top: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".top(%s);", top))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
 
         return self
     }
@@ -399,19 +406,19 @@
      * 
      */
     public func transformX(value: String, subRangeRatio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transformX(%s, %s);", JsObject.wrapQuotes(value: value), subRangeRatio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transformX(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio))")
     }
     /**
      * 
      */
     public func transformY(value: String, subRangeRatio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transformY(%s, %s);", JsObject.wrapQuotes(value: value), subRangeRatio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transformY(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for element width settings.
@@ -423,7 +430,7 @@
      * Setter for element width setting.
      */
     public func width(width: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -431,7 +438,7 @@
      * 
      */
     public func yScale(value: anychart.scales.Base) -> anychart.scales.Base {
-        return anychart.scales.Base(jsChart: String(format: jsBase + ".yScale(%s)", (value != nil) ? value.getJsBase() : "null"))
+        return anychart.scales.Base(jsBase: "\(self.jsBase).yScale(\((value != nil) ? value.getJsBase() : "null"))")
     }
     /**
      * Getter for the Z-index of the element.
@@ -443,7 +450,7 @@
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -451,13 +458,13 @@
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -465,7 +472,7 @@
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -474,14 +481,14 @@
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -490,7 +497,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -499,9 +506,15 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.series.Stock {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func data(data: [DataEntry], fillMethod: anychart.enums.TreeFillingMethod) -> anychart.data.TableMapping {
+        return anychart.data.TableMapping(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \((fillMethod != nil) ? fillMethod.getJsBase() : "null"))")
     }
 
     }

@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class KeltnerChannels: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> KeltnerChannels {
-            return KeltnerChannels(jsChart: "new anychart.core.stock.indicators.KeltnerChannels()")
+        public override init() {
+            //return KeltnerChannels(jsBase: "new anychart.core.stock.indicators.KeltnerChannels()")
+            super.init(jsBase: "new anychart.core.stock.indicators.KeltnerChannels()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "keltnerChannels\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "keltnerChannels\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the Average True Range period.
      */
     public func atrPeriod(period: Double) -> anychart.core.stock.indicators.KeltnerChannels {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".atrPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).atrPeriod()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the Moving Average period.
      */
     public func maPeriod(period: Double) -> anychart.core.stock.indicators.KeltnerChannels {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maPeriod()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the Moving Average series instance.
      */
     public func maSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".maSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".maSeries()")
     }
     /**
      * Setter for the Moving Average series type.
      */
     public func maSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.KeltnerChannels {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maSeries()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the multiplier.
      */
     public func multiplier(multiplier: Double) -> anychart.core.stock.indicators.KeltnerChannels {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".multiplier(%s);", multiplier))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).multiplier()")
 
         return self
     }
@@ -89,13 +90,13 @@
      * Getter for the indicator Range Series instance.
      */
     public func rangeSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".rangeSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".rangeSeries()")
     }
     /**
      * Setter for the indicator Range Series type.
      */
     public func rangeSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.KeltnerChannels {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rangeSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeSeries()")
 
         return self
     }

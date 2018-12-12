@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core {
-    public class BubblePoint: JsObject {
+    public class BubblePoint: anychart.core.SeriesPoint {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> BubblePoint {
-            return BubblePoint(jsChart: "new anychart.core.BubblePoint()")
+        public override init() {
+            //return BubblePoint(jsBase: "new anychart.core.BubblePoint()")
+            super.init(jsBase: "new anychart.core.BubblePoint()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "bubblePoint\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "bubblePoint\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,13 +40,13 @@
      * Fetches a field value from point data row by its name.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: field)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
     }
     /**
      * Getter for the chart which current point belongs to.
      */
     public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
     }
     /**
      * Getter for the point index in chart or series.
@@ -63,7 +64,7 @@
      * Getter for series which current point belongs to.
      */
     public func getSeries() -> anychart.core.SeriesBase {
-        return anychart.core.SeriesBase(jsChart: jsBase + ".getSeries()")
+        return anychart.core.SeriesBase(jsBase: jsBase + ".getSeries()")
     }
     /**
      * Returns stack value of the point.
@@ -83,7 +84,7 @@
      * Getter for the statistics value by key.
      */
     public func getStat(key: anychart.enums.Statistics)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", (key != nil) ? key.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\((key != nil) ? key.getJsBase() : "null"))")
     }
     /**
      * Getter for the hover point state.
@@ -95,7 +96,7 @@
      * Setter for the hover point state.
      */
     public func hovered(enabled: Bool) -> anychart.core.BubblePoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for the select series point state.
      */
     public func selected(enabled: Bool) -> anychart.core.BubblePoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -117,7 +118,7 @@
      * Sets the field of the point data row to the specified value.
      */
     public func set(field: String, value: String) -> anychart.core.BubblePoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: field), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }

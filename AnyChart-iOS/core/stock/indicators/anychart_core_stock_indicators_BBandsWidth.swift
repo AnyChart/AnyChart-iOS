@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class BBandsWidth: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> BBandsWidth {
-            return BBandsWidth(jsChart: "new anychart.core.stock.indicators.BBandsWidth()")
+        public override init() {
+            //return BBandsWidth(jsBase: "new anychart.core.stock.indicators.BBandsWidth()")
+            super.init(jsBase: "new anychart.core.stock.indicators.BBandsWidth()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "bBandsWidth\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "bBandsWidth\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the deviation.
      */
     public func deviation(deviation: Double) -> anychart.core.stock.indicators.BBandsWidth {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".deviation(%s);", deviation))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).deviation()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the period.
      */
     public func period(period: Double) -> anychart.core.stock.indicators.BBandsWidth {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".period(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).period()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the indicator series instance.
      */
     public func series() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".series()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".series()")
     }
     /**
      * Setter for the indicator series type.
      */
     public func series(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.BBandsWidth {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".series(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).series()")
 
         return self
     }

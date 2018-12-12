@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class OrdinalColor: JsObject {
+    public class OrdinalColor: anychart.scales.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> OrdinalColor {
-            return OrdinalColor(jsChart: "new anychart.scales.OrdinalColor()")
+        public override init() {
+            //return OrdinalColor(jsBase: "new anychart.scales.OrdinalColor()")
+            super.init(jsBase: "new anychart.scales.OrdinalColor()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "ordinalColor\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "ordinalColor\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,7 +34,7 @@
      * Returns value for passed color. Value is a middle of its range.
      */
     public func colorToValue(color: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".colorToValue(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colorToValue(\(JsObject.wrapQuotes(value: color)))")
     }
     /**
      * Getter for the linear gradient for linear color scale.
@@ -45,7 +46,7 @@
      * Setter for the linear gradient for linear color scale.
      */
     public func colors(colors: [String]) -> anychart.scales.OrdinalColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".colors(%s);", JsObject.arrayToStringWrapQuotes(array: colors)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors()")
 
         return self
     }
@@ -53,13 +54,13 @@
      * Informs the scale that an auto-range calculation started for the chart in past was ended.
      */
     public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".finishAutoCalc(%s);", silently))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
     }
     /**
      * Returns range index relative passed value.
      */
     public func getIndexByValue(value: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getIndexByValue(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getIndexByValue(\(value))")
     }
     /**
      * Returns processed ranges.
@@ -71,7 +72,7 @@
      * Returns range for passed value.
      */
     public func getRangeByValue(value: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getRangeByValue(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getRangeByValue(\(value))")
     }
     /**
      * Returns scale type.
@@ -83,7 +84,7 @@
      * Returns tick value by its ratio position.
      */
     public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverseTransform(%s);", ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
     }
     /**
      * Getter for the scale inversion.
@@ -95,7 +96,7 @@
      * Setter for the scale inversion.
      */
     public func inverted(enabled: Bool) -> anychart.scales.OrdinalColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverted(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for scale names for data set.
      */
     public func names(names: [String]) -> anychart.scales.OrdinalColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".names(%s);", JsObject.arrayToStringWrapQuotes(array: names)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names()")
 
         return self
     }
@@ -123,7 +124,7 @@
      * Setter for the scale ranges.
      */
     public func ranges(ranges: [String]) -> anychart.scales.OrdinalColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ranges(%s);", JsObject.arrayToStringWrapQuotes(array: ranges)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ranges()")
 
         return self
     }
@@ -131,7 +132,7 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Informs scale that an auto-range calculation started for the chart, so it should reset its data range on the first
@@ -146,13 +147,13 @@ call of this method if needed.
      * Getter for the set of scale ticks in terms of data values.
      */
     public func ticks() -> anychart.scales.OrdinalTicks {
-        return anychart.scales.OrdinalTicks(jsChart: jsBase + ".ticks()")
+        return anychart.scales.OrdinalTicks(jsBase: jsBase + ".ticks()")
     }
     /**
      * Setter for the set of scale ticks in terms of data values.
      */
     public func ticks(ticks: String) -> anychart.scales.OrdinalColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ticks(%s);", JsObject.wrapQuotes(value: ticks)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
 
         return self
     }
@@ -160,19 +161,19 @@ call of this method if needed.
      * Returns tick position ratio by its value.
      */
     public func transform(value: String, subRangeRatio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transform(%s, %s);", JsObject.wrapQuotes(value: value), subRangeRatio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Converts value to color. Returns color relative to passed value.
      */
     public func valueToColor(value: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".valueToColor(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueToColor(\(value))")
     }
 
     }

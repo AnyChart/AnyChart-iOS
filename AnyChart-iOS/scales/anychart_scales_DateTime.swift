@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class DateTime: JsObject {
+    public class DateTime: anychart.scales.ScatterBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> DateTime {
-            return DateTime(jsChart: "new anychart.scales.DateTime()")
+        public override init() {
+            //return DateTime(jsBase: "new anychart.scales.DateTime()")
+            super.init(jsBase: "new anychart.scales.DateTime()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "dateTime\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "dateTime\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Getter for a flag if the maximum should be aligned by major ticks interval.<br/>
      */
     public func alignMaximum(enabled: Bool) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMaximum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMaximum()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for a flag if the minimum should be aligned by major ticks interval.
      */
     public func alignMinimum(enabled: Bool) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMinimum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMinimum()")
 
         return self
     }
@@ -62,7 +63,7 @@
 <b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
      */
     public func extendDataRange(var_args: String) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".extendDataRange(%s);", JsObject.wrapQuotes(value: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange()")
 
         return self
     }
@@ -70,7 +71,7 @@
      * Informs the scale that an auto-range calculation started for the chart in past was ended.
      */
     public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".finishAutoCalc(%s);", silently))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
     }
     /**
      * Returns scale type.
@@ -83,7 +84,7 @@
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverseTransform(%s);", ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
     }
     /**
      * Getter for the scale inversion.
@@ -96,7 +97,7 @@
 instead of bottom-to-top and left-to-right.
      */
     public func inverted(enabled: Bool) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverted(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
 
         return self
     }
@@ -110,7 +111,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale maximum.
      */
     public func maximum(maximum: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximum(%s);", maximum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximum()")
 
         return self
     }
@@ -124,7 +125,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale maximum gap.
      */
     public func maximumGap(gap: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximumGap(%s);", gap))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximumGap()")
 
         return self
     }
@@ -138,7 +139,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale minimum.
      */
     public func minimum(minimum: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimum(%s);", minimum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimum()")
 
         return self
     }
@@ -152,7 +153,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale minimum gap.
      */
     public func minimumGap(gap: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimumGap(%s);", gap))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimumGap()")
 
         return self
     }
@@ -160,13 +161,13 @@ instead of bottom-to-top and left-to-right.
      * Getter for the set of scale ticks in terms of data values.
      */
     public func minorTicks() -> anychart.scales.DateTimeTicks {
-        return anychart.scales.DateTimeTicks(jsChart: jsBase + ".minorTicks()")
+        return anychart.scales.DateTimeTicks(jsBase: jsBase + ".minorTicks()")
     }
     /**
      * Setter for the set of scale ticks in terms of data values.
      */
     public func minorTicks(settings: String) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minorTicks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks()")
 
         return self
     }
@@ -174,7 +175,7 @@ instead of bottom-to-top and left-to-right.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the soft maximum.
@@ -186,7 +187,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the soft maximum.
      */
     public func softMaximum(maximum: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".softMaximum(%s);", maximum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).softMaximum()")
 
         return self
     }
@@ -200,7 +201,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for soft minimum.
      */
     public func softMinimum(minimum: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".softMinimum(%s);", minimum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).softMinimum()")
 
         return self
     }
@@ -217,13 +218,13 @@ call of this method if needed.
      * Getter for set of scale ticks in terms of data values.
      */
     public func ticks() -> anychart.scales.DateTimeTicks {
-        return anychart.scales.DateTimeTicks(jsChart: jsBase + ".ticks()")
+        return anychart.scales.DateTimeTicks(jsBase: jsBase + ".ticks()")
     }
     /**
      * Setter for the set of scale ticks in terms of data values.
      */
     public func ticks(settings: String) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ticks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
 
         return self
     }
@@ -232,13 +233,13 @@ call of this method if needed.
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func transform(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transform(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the maximum ticks count.
@@ -250,7 +251,7 @@ call of this method if needed.
      * Setter for the maximum ticks count.<br/>
      */
     public func maxTicksCount(count: Double) -> anychart.scales.DateTime {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxTicksCount(%s);", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxTicksCount()")
 
         return self
     }

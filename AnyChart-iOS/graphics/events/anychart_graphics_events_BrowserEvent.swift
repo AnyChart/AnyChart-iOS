@@ -6,22 +6,23 @@
  extension anychart.graphics.events {
     public class BrowserEvent: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> BrowserEvent {
-            return BrowserEvent(jsChart: "new anychart.graphics.events.BrowserEvent()")
+        public override init() {
+            //return BrowserEvent(jsBase: "new anychart.graphics.events.BrowserEvent()")
+            super.init(jsBase: "new anychart.graphics.events.BrowserEvent()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "browserEvent\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "browserEvent\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {

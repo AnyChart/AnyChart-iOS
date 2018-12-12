@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.axes {
-    public class Circular: JsObject {
+    public class Circular: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Circular {
-            return Circular(jsChart: "new anychart.core.axes.Circular()")
+        public override init() {
+            //return Circular(jsBase: "new anychart.core.axes.Circular()")
+            super.init(jsBase: "new anychart.core.axes.Circular()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "circular\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "circular\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -40,7 +41,7 @@
 Round off the ends of axes to the specified radius.
      */
     public func cornersRounding(value: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cornersRounding(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cornersRounding()")
 
         return self
     }
@@ -54,7 +55,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the first label drawing flag.
      */
     public func drawFirstLabel(enabled: Bool) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drawFirstLabel(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawFirstLabel()")
 
         return self
     }
@@ -68,7 +69,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the last label drawing flag.
      */
     public func drawLastLabel(enabled: Bool) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drawLastLabel(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawLastLabel()")
 
         return self
     }
@@ -82,7 +83,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -97,7 +98,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -106,7 +107,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: [String]) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -114,7 +115,7 @@ Round off the ends of axes to the specified radius.
      * Axis fill color with opacity. Fill as a string or an object.
      */
     public func fill(color: String, opacity: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -123,7 +124,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -132,7 +133,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -141,7 +142,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -150,7 +151,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -159,7 +160,7 @@ Round off the ends of axes to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(imageSettings: Fill) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
 
         return self
     }
@@ -167,13 +168,13 @@ Round off the ends of axes to the specified radius.
      * Getter for labels.
      */
     public func labels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".labels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".labels()")
     }
     /**
      * Setter for labels.
      */
     public func labels(settings: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".labels(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels()")
 
         return self
     }
@@ -181,13 +182,13 @@ Round off the ends of axes to the specified radius.
      * Getter for minor labels.
      */
     public func minorLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".minorLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".minorLabels()")
     }
     /**
      * Setter for minor labels.
      */
     public func minorLabels(settings: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minorLabels(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorLabels()")
 
         return self
     }
@@ -195,13 +196,13 @@ Round off the ends of axes to the specified radius.
      * Getter for minor axis ticks.
      */
     public func minorTicks() -> anychart.core.axes.CircularTicks {
-        return anychart.core.axes.CircularTicks(jsChart: jsBase + ".minorTicks()")
+        return anychart.core.axes.CircularTicks(jsBase: jsBase + ".minorTicks()")
     }
     /**
      * Setter for minor axis ticks.
      */
     public func minorTicks(settings: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minorTicks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks()")
 
         return self
     }
@@ -215,7 +216,7 @@ Round off the ends of axes to the specified radius.
      * Setter for labels overlap mode.
      */
     public func overlapMode(value: anychart.enums.LabelsOverlapMode) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".overlapMode(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlapMode()")
 
         return self
     }
@@ -223,7 +224,7 @@ Round off the ends of axes to the specified radius.
      * Setter for labels overlap mode.
      */
     public func overlapMode(value: Bool) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".overlapMode(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlapMode()")
 
         return self
     }
@@ -231,7 +232,7 @@ Round off the ends of axes to the specified radius.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Getter for the axis radius.
@@ -243,7 +244,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the axis radius.
      */
     public func radius(value: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".radius(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius()")
 
         return self
     }
@@ -251,19 +252,19 @@ Round off the ends of axes to the specified radius.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the axis scale.
      */
     public func scale() -> anychart.scales.Linear {
-        return anychart.scales.Linear(jsChart: jsBase + ".scale()")
+        return anychart.scales.Linear(jsBase: jsBase + ".scale()")
     }
     /**
      * Setter for the axis scale.
      */
     public func scale(settings: anychart.enums.GaugeScaleTypes) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -271,7 +272,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the axis scale.
      */
     public func scale(settings: anychart.scales.Linear) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -285,7 +286,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the start angle.
      */
     public func startAngle(value: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".startAngle(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startAngle()")
 
         return self
     }
@@ -299,7 +300,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the sweep angle.
      */
     public func sweepAngle(value: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".sweepAngle(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).sweepAngle()")
 
         return self
     }
@@ -307,13 +308,13 @@ Round off the ends of axes to the specified radius.
      * Getter for circular ticks.
      */
     public func ticks() -> anychart.core.axes.CircularTicks {
-        return anychart.core.axes.CircularTicks(jsChart: jsBase + ".ticks()")
+        return anychart.core.axes.CircularTicks(jsBase: jsBase + ".ticks()")
     }
     /**
      * Setter for circular ticks.
      */
     public func ticks(settings: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ticks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
 
         return self
     }
@@ -321,7 +322,7 @@ Round off the ends of axes to the specified radius.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the axis width.
@@ -333,7 +334,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the axis width.
      */
     public func width(value: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -347,7 +348,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -355,13 +356,13 @@ Round off the ends of axes to the specified radius.
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -369,7 +370,7 @@ Round off the ends of axes to the specified radius.
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -378,14 +379,14 @@ Round off the ends of axes to the specified radius.
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -394,7 +395,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -403,7 +404,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.axes.Circular {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

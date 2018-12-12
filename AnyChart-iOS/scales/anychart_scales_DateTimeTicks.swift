@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class DateTimeTicks: JsObject {
+    public class DateTimeTicks: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> DateTimeTicks {
-            return DateTimeTicks(jsChart: "new anychart.scales.DateTimeTicks()")
+        public override init() {
+            //return DateTimeTicks(jsBase: "new anychart.scales.DateTimeTicks()")
+            super.init(jsBase: "new anychart.scales.DateTimeTicks()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "dateTimeTicks\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "dateTimeTicks\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for ticks count value.
      */
     public func count(count: Double) -> anychart.scales.DateTimeTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".count(%s);", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Setter for ticks interval value by a string representing date part or ISO 8601 interval string..
      */
     public func interval(isoDate: String) -> anychart.scales.DateTimeTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".interval(%s);", JsObject.wrapQuotes(value: isoDate)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for ticks interval value by the unit.
      */
     public func interval(unit: anychart.enums.Interval, count: Double) -> anychart.scales.DateTimeTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".interval(%s, %s);", (unit != nil) ? unit.getJsBase() : "null", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
 
         return self
     }
@@ -90,7 +91,7 @@
 <b>Note:</b> If any passed value is defined but is not a number or less than 0, it defaults to NaN and count() resets to 5.
      */
     public func interval(years: Double, months: Double, days: Double, hours: Double, minutes: Double, seconds: Double) -> anychart.scales.DateTimeTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".interval(%s, %s, %s, %s, %s, %s);", years, months, days, hours, minutes, seconds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
 
         return self
     }
@@ -98,13 +99,13 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Setups ticks as an explicit array of fixed ticks.
      */
     public func set(ticks: [String]) -> anychart.scales.DateTimeTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s);", JsObject.arrayToStringWrapQuotes(array: ticks)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -112,7 +113,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

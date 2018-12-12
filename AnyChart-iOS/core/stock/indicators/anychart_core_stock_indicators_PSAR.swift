@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class PSAR: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> PSAR {
-            return PSAR(jsChart: "new anychart.core.stock.indicators.PSAR()")
+        public override init() {
+            //return PSAR(jsBase: "new anychart.core.stock.indicators.PSAR()")
+            super.init(jsBase: "new anychart.core.stock.indicators.PSAR()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "pSAR\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "pSAR\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the acceleration factor increment value.
      */
     public func accelerationFactorIncrement(factor: Double) -> anychart.core.stock.indicators.PSAR {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".accelerationFactorIncrement(%s);", factor))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).accelerationFactorIncrement()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the acceleration factor maximum.
      */
     public func accelerationFactorMaximum(factor: Double) -> anychart.core.stock.indicators.PSAR {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".accelerationFactorMaximum(%s);", factor))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).accelerationFactorMaximum()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the acceleration factor start.
      */
     public func accelerationFactorStart(factor: Double) -> anychart.core.stock.indicators.PSAR {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".accelerationFactorStart(%s);", factor))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).accelerationFactorStart()")
 
         return self
     }
@@ -75,13 +76,13 @@
      * Getter for the indicator series instance.
      */
     public func series() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".series()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".series()")
     }
     /**
      * Setter for the indicator series type.
      */
     public func series(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.PSAR {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".series(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).series()")
 
         return self
     }

@@ -6,22 +6,23 @@
  extension anychart.graphics.vector {
     public class LinearGradient: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> LinearGradient {
-            return LinearGradient(jsChart: "new anychart.graphics.vector.LinearGradient()")
+        public override init() {
+            //return LinearGradient(jsBase: "new anychart.graphics.vector.LinearGradient()")
+            super.init(jsBase: "new anychart.graphics.vector.LinearGradient()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "linearGradient\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "linearGradient\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {

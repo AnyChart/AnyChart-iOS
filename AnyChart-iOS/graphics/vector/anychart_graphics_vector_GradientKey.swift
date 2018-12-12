@@ -6,7 +6,7 @@ extension anychart.graphics.vector {
         public init(color: String, offset: Double, opacity: Double) {
             super.init()
 
-            js.append(String(format: "{color:%s, offset: %s, opacity: %s, } ", JsObject.wrapQuotes(value: color), offset, opacity))
+            js.append(String(format: "{color:%s, offset: %s, opacity: %s, } ", \(JsObject.wrapQuotes(value: color)), \(offset), \(opacity)))
         }
 
     }

@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui.table {
-    public class Row: JsObject {
+    public class Row: anychart.core.ui.table.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Row {
-            return Row(jsChart: "new anychart.core.ui.table.Row()")
+        public override init() {
+            //return Row(jsBase: "new anychart.core.ui.table.Row()")
+            super.init(jsBase: "new anychart.core.ui.table.Row()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "row\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "row\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,14 +34,14 @@
      * Getter for border settings object.
      */
     public func border() -> anychart.core.ui.table.Border {
-        return anychart.core.ui.table.Border(jsChart: jsBase + ".border()")
+        return anychart.core.ui.table.Border(jsBase: jsBase + ".border()")
     }
     /**
      * Setter for cell border settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -49,7 +50,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -58,7 +59,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -67,7 +68,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -76,7 +77,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -85,7 +86,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func border(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".border(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).border()")
 
         return self
     }
@@ -93,14 +94,14 @@
      * Getter for border settings object.
      */
     public func cellBorder() -> anychart.core.ui.table.Border {
-        return anychart.core.ui.table.Border(jsChart: jsBase + ".cellBorder()")
+        return anychart.core.ui.table.Border(jsBase: jsBase + ".cellBorder()")
     }
     /**
      * Setter for cell border settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -109,7 +110,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -118,7 +119,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -127,7 +128,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -136,7 +137,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -145,7 +146,7 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func cellBorder(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellBorder(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellBorder()")
 
         return self
     }
@@ -160,7 +161,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(color: Fill) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -169,7 +170,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(color: [String]) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -177,7 +178,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func cellFill(color: String, opacity: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -186,7 +187,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -195,7 +196,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -204,7 +205,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -213,7 +214,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -222,7 +223,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func cellFill(imageSettings: Fill) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellFill()")
 
         return self
     }
@@ -230,13 +231,13 @@
      * Getter for padding settings.
      */
     public func cellPadding() -> anychart.core.ui.table.Padding {
-        return anychart.core.ui.table.Padding(jsChart: jsBase + ".cellPadding()")
+        return anychart.core.ui.table.Padding(jsBase: jsBase + ".cellPadding()")
     }
     /**
      * Setter for cell paddings in pixels using a single value.
      */
     public func cellPadding(padding: [Double]) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -244,7 +245,7 @@
      * Setter for cell paddings in pixels using a single value.
      */
     public func cellPadding(padding: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -252,7 +253,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -260,7 +261,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -268,7 +269,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -276,7 +277,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -284,7 +285,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -292,7 +293,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -300,7 +301,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -308,7 +309,7 @@
      * Setter for cell paddings in pixels using several numbers.
      */
     public func cellPadding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cellPadding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cellPadding()")
 
         return self
     }
@@ -322,7 +323,7 @@
      * Setter for the text disablePointerEvents option.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -336,7 +337,7 @@
      * Setter for the text font color. {@link https://www.w3schools.com/html/html_colors.asp}
      */
     public func fontColor(color: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -350,7 +351,7 @@
      * Setter for the text font decoration.
      */
     public func fontDecoration(type: anychart.graphics.vector.text.Decoration) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -364,7 +365,7 @@
      * Setter for the font family.
      */
     public func fontFamily(family: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -378,7 +379,7 @@
      * Setter for the text font opacity. Double value from 0 to 1.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -392,7 +393,7 @@
      * Setter for text font size.
      */
     public func fontSize(size: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -406,7 +407,7 @@
      * Setter for the text font style.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -420,7 +421,7 @@
      * Setter for the text font variant.
      */
     public func fontVariant(type: anychart.graphics.vector.text.FontVariant) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -434,7 +435,7 @@
      * Setter for the text font weight. {@link https://www.w3schools.com/cssref/pr_font_weight.asp}
      */
     public func fontWeight(weight: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -442,7 +443,7 @@
      * Returns cell of current row by column index.
      */
     public func getCell(col: Double) -> anychart.core.ui.table.Cell {
-        return anychart.core.ui.table.Cell(jsChart: String(format: jsBase + ".getCell(%s)", col))
+        return anychart.core.ui.table.Cell(jsBase: "\(self.jsBase).getCell(\(col))")
     }
     /**
      * Returns row index.
@@ -460,7 +461,7 @@
      * Setter for the text horizontal align.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -474,7 +475,7 @@
      * Setter for row height settings.
      */
     public func height(height: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -488,7 +489,7 @@
      * Setter for the text letter spacing. {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func letterSpacing(spacing: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -502,7 +503,7 @@
      * Setter for the text line height. {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func lineHeight(height: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -516,7 +517,7 @@
      * Getter for row maximum height settings.
      */
     public func maxHeight(height: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -530,7 +531,7 @@
      * Setter for row minimum height settings.
      */
     public func minHeight(height: String) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -544,7 +545,7 @@
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -558,7 +559,7 @@
      * Setter for the text direction.
      */
     public func textDirection(type: anychart.graphics.vector.text.Direction) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -572,7 +573,7 @@
      * Setter for the text indent.
      */
     public func textIndent(indent: Double) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -586,7 +587,7 @@
      * Setter for the text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -600,7 +601,7 @@
      * Setter for flag useHtml.
      */
     public func useHtml(enabled: Bool) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -614,7 +615,7 @@
      * Setter for the text vertical align.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -628,7 +629,7 @@
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -642,7 +643,7 @@
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.core.ui.table.Row {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }

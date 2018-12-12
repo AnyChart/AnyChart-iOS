@@ -20,6 +20,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
     
     var js: String = ""
     var isRendered = false
+    var chart: anychart.core.Chart? = nil
     
     func jsAddLine(jsLine: String) {
         if (isRendered) {
@@ -48,34 +49,36 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 
         APIlib.sharedInstance.jsDelegate = self
         
-        let jsPath = bundle.path(forResource: "anychart-bundle.min", ofType: "js", inDirectory: "bundle")
+//        let jsPath = bundle.path(forResource: "anychart-bundle.min", ofType: "js", inDirectory: "bundle")
+//        let jsPath = bundle.path(forResource: "anychart-bundle.min", ofType: "js")
 //        print(jsPath!)
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.configuration.userContentController.add(self, name: "scriptHandler")
-        webView.loadHTMLString("<html>" +
-            "<head>" +
-            "<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">" +
-            "<style type=\"text/css\">" +
-            "html, body, #container {" +
-            "width: 100%;" +
-            "height: 100%;" +
-            "margin: 0;" +
-            "padding: 0;" +
-            "-webkit-tap-highlight-color: rgba(0,0,0,0); }" +
-            "</style>" +
-            "<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no'>" +
-            //            "<meta name='viewport' content='initial-scale=0.5'>" +
-            "</head>" +
-            "<body>" +
-            //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
-            // https://stackoverflow.com/questions/5733883/loading-javascript-into-a-uiwebview-from-resources/5810930#5810930
-            // https://github.com/facebook/react-native/issues/1442
-            "<script src=\"" + jsPath! + "\"></script>" +
-            "<div id=\"container\"></div>" +
-            "</body>" +
-            "</html>", baseURL: bundle.url(forResource: "bundle", withExtension:nil))
+//        webView.loadHTMLString("<html>" +
+//            "<head>" +
+//            "<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">" +
+//            "<style type=\"text/css\">" +
+//            "html, body, #container {" +
+//            "width: 100%;" +
+//            "height: 100%;" +
+//            "margin: 0;" +
+//            "padding: 0;" +
+//            "-webkit-tap-highlight-color: rgba(0,0,0,0); }" +
+//            "</style>" +
+//            "<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no'>" +
+//            //            "<meta name='viewport' content='initial-scale=0.5'>" +
+//            "</head>" +
+//            "<body>" +
+//            //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
+//            // https://stackoverflow.com/questions/5733883/loading-javascript-into-a-uiwebview-from-resources/5810930#5810930
+//            // https://github.com/facebook/react-native/issues/1442
+//            "<script src=\"" + jsPath! + "\"></script>" +
+//            "<div id=\"container\"></div>" +
+//            "</body>" +
+//            "</html>", baseURL: bundle.url(forResource: "anychart-bundle.min", withExtension:"js"))
+        //baseURL: bundle.url(forResource: "bundle", withExtension:nil))
     }
     
     //    https://stackoverflow.com/questions/26851630/javascript-synchronous-native-communication-to-wkwebview
@@ -84,20 +87,20 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         print("Message received: \(message.name) with body: \(message.body)")
     }
     
-//        func webView(_ webView: WKWebView,
-//                     runJavaScriptAlertPanelWithMessage message: String,
-//                     initiatedByFrame frame: WKFrameInfo,
-//                     completionHandler: @escaping () -> Void) {
+//    func webView(_ webView: WKWebView,
+//                 runJavaScriptAlertPanelWithMessage message: String,
+//                 initiatedByFrame frame: WKFrameInfo,
+//                 completionHandler: @escaping () -> Void) {
 //
-//            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-//            let title = NSLocalizedString("OK", comment: "OK Button")
-//            let ok = UIAlertAction(title: title, style: .default) { (action: UIAlertAction) -> Void in
-//                alert.dismiss(animated: true, completion: nil)
-//            }
-//            alert.addAction(ok)
-//            present(alert, animated: true)
-//            completionHandler()
+//        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+//        let title = NSLocalizedString("OK", comment: "OK Button")
+//        let ok = UIAlertAction(title: title, style: .default) { (action: UIAlertAction) -> Void in
+//            alert.dismiss(animated: true, completion: nil)
 //        }
+//        alert.addAction(ok)
+//        present(alert, animated: true)
+//        completionHandler()
+//    }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("Loaded")
@@ -115,15 +118,15 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //        pie.legend().position(value: "center-bottom")
 //            .itemsLayout(value: "horizontal")
 //            .align(value: "center")
-
-//        print(js)
-
+        print(js)
+        
         webView.evaluateJavaScript(
-            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
+//            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
                 "anychart.onDocumentReady(function () {" +
                 js +
-                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"THERE\"); });" +
-                "chart.container('container');chart.draw();" +
+//                    "chart = anychart.pie();chart.data([{value: '69.2',x: 'Apples'}, {value: '85',x: 'Oranges'}, {value: '32.1',x: 'Tea'}, {value: '8.2',x: 'Sugar'}]);" +
+//                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"THERE\"); });" +
+                "pie1.container('container');pie1.draw();" +
             "});", completionHandler: nil)
         
         isRendered = true
@@ -145,7 +148,44 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
     //        print("loading error", error)
     //    }
     
+    private func loadHtml() {
+        let bundle = Bundle(for: type(of: self))
+//        let jsPath = bundle.path(forResource: "anychart-bundle.min", ofType: "js", inDirectory: "bundle")
+        let jsPath = bundle.path(forResource: "anychart-bundle.min", ofType: "js")
+        
+        webView.loadHTMLString("<html>" +
+            "<head>" +
+            "<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">" +
+            "<style type=\"text/css\">" +
+            "html, body, #container {" +
+            "width: 100%;" +
+            "height: 100%;" +
+            "margin: 0;" +
+            "padding: 0;" +
+            "-webkit-tap-highlight-color: rgba(0,0,0,0); }" +
+            "</style>" +
+            "<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no'>" +
+            //            "<meta name='viewport' content='initial-scale=0.5'>" +
+            "</head>" +
+            "<body>" +
+            //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
+            // https://stackoverflow.com/questions/5733883/loading-javascript-into-a-uiwebview-from-resources/5810930#5810930
+            // https://github.com/facebook/react-native/issues/1442
+            "<script src=\"" + jsPath! + "\"></script>" +
+            "<div id=\"container\"></div>" +
+            "</body>" +
+            "</html>", baseURL: bundle.url(forResource: "anychart-bundle.min", withExtension:"js"))
+        //baseURL: bundle.url(forResource: "bundle", withExtension:nil))
+    }
+    
+    public func setChart(chart: anychart.core.Chart) {
+        js = ""
+        self.chart = chart
+        loadHtml()
+    }
+    
     public func update() {
+//        print(js)
         webView.evaluateJavaScript(js, completionHandler: nil)
     }
     

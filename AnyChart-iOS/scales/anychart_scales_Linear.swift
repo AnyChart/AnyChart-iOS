@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class Linear: JsObject {
+    public class Linear: anychart.scales.ScatterBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Linear {
-            return Linear(jsChart: "new anychart.scales.Linear()")
+        public override init() {
+            //return Linear(jsBase: "new anychart.scales.Linear()")
+            super.init(jsBase: "new anychart.scales.Linear()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "linear\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "linear\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Getter for a flag if the maximum should be aligned by major ticks interval.<br/>
      */
     public func alignMaximum(enabled: Bool) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMaximum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMaximum()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for a flag if the minimum should be aligned by major ticks interval.
      */
     public func alignMinimum(enabled: Bool) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMinimum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMinimum()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the date which should be used as a changes zero for series.
      */
     public func compareWith(mode: anychart.enums.ScaleCompareWithMode) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".compareWith(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).compareWith()")
 
         return self
     }
@@ -75,7 +76,7 @@
      * Setter for the date which should be used as a changes zero for series.
      */
     public func compareWith(mode: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".compareWith(%s);", mode))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).compareWith()")
 
         return self
     }
@@ -89,7 +90,7 @@
      * Setter for the scale changes mode.
      */
     public func comparisonMode(mode: anychart.enums.ScaleComparisonMode) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".comparisonMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).comparisonMode()")
 
         return self
     }
@@ -98,7 +99,7 @@
 <b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
      */
     public func extendDataRange(var_args: String) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".extendDataRange(%s);", JsObject.wrapQuotes(value: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange()")
 
         return self
     }
@@ -106,7 +107,7 @@
      * Informs the scale that an auto-range calculation started for the chart in past was ended.
      */
     public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".finishAutoCalc(%s);", silently))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
     }
     /**
      * Returns scale type.
@@ -119,7 +120,7 @@
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverseTransform(%s);", ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
     }
     /**
      * Getter for the scale inversion.
@@ -132,7 +133,7 @@
 instead of bottom-to-top and left-to-right.
      */
     public func inverted(enabled: Bool) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverted(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
 
         return self
     }
@@ -146,7 +147,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale maximum.
      */
     public func maximum(maximum: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximum(%s);", maximum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximum()")
 
         return self
     }
@@ -160,7 +161,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale maximum gap.
      */
     public func maximumGap(gap: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximumGap(%s);", gap))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximumGap()")
 
         return self
     }
@@ -174,7 +175,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale minimum.
      */
     public func minimum(minimum: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimum(%s);", minimum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimum()")
 
         return self
     }
@@ -188,7 +189,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale minimum gap.
      */
     public func minimumGap(gap: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimumGap(%s);", gap))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimumGap()")
 
         return self
     }
@@ -196,13 +197,13 @@ instead of bottom-to-top and left-to-right.
      * Getter for set of scale minor ticks in terms of data values.
      */
     public func minorTicks() -> anychart.scales.ScatterTicks {
-        return anychart.scales.ScatterTicks(jsChart: jsBase + ".minorTicks()")
+        return anychart.scales.ScatterTicks(jsBase: jsBase + ".minorTicks()")
     }
     /**
      * Setter for set of scale minor ticks in terms of data values.
      */
     public func minorTicks(settings: String) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minorTicks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks()")
 
         return self
     }
@@ -210,7 +211,7 @@ instead of bottom-to-top and left-to-right.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the soft maximum.
@@ -222,7 +223,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the soft maximum.
      */
     public func softMaximum(maximum: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".softMaximum(%s);", maximum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).softMaximum()")
 
         return self
     }
@@ -236,7 +237,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the soft minimum.
      */
     public func softMinimum(minimum: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".softMinimum(%s);", minimum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).softMinimum()")
 
         return self
     }
@@ -250,7 +251,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the stacking direction.
      */
     public func stackDirection(direction: anychart.enums.ScaleStackDirection) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stackDirection(%s);", (direction != nil) ? direction.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stackDirection()")
 
         return self
     }
@@ -264,7 +265,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the stacked mode.
      */
     public func stackMode(value: anychart.enums.ScaleStackMode) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stackMode(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stackMode()")
 
         return self
     }
@@ -288,7 +289,7 @@ call of this method if needed.
 Flag to stick to zero value on auto calc if gaps lead to zero crossing.
      */
     public func stickToZero(enabled: Bool) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".stickToZero(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stickToZero()")
 
         return self
     }
@@ -296,13 +297,13 @@ Flag to stick to zero value on auto calc if gaps lead to zero crossing.
      * Getter for set of scale ticks in terms of data values.
      */
     public func ticks() -> anychart.scales.ScatterTicks {
-        return anychart.scales.ScatterTicks(jsChart: jsBase + ".ticks()")
+        return anychart.scales.ScatterTicks(jsBase: jsBase + ".ticks()")
     }
     /**
      * Setter for set of scale ticks in terms of data values.
      */
     public func ticks(settings: String) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ticks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
 
         return self
     }
@@ -311,13 +312,13 @@ Flag to stick to zero value on auto calc if gaps lead to zero crossing.
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func transform(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transform(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the maximum ticks count.
@@ -329,7 +330,7 @@ Flag to stick to zero value on auto calc if gaps lead to zero crossing.
      * Setter for the maximum ticks count.<br/>
      */
     public func maxTicksCount(count: Double) -> anychart.scales.Linear {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxTicksCount(%s);", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxTicksCount()")
 
         return self
     }

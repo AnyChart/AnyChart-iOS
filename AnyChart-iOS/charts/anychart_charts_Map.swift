@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.charts {
-    public class Map: JsObject {
+    public class Map: anychart.core.SeparateChart {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Map {
-            return Map(jsChart: "new anychart.charts.Map()")
+        public override init() {
+            //return Map(jsBase: "new anychart.charts.Map()")
+            super.init(jsBase: "new anychart.charts.Map()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "map\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "map\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,13 +34,13 @@
      * Getter for the accessibility setting.
      */
     public func a11y() -> anychart.core.utils.ChartA11y {
-        return anychart.core.utils.ChartA11y(jsChart: jsBase + ".a11y()")
+        return anychart.core.utils.ChartA11y(jsBase: jsBase + ".a11y()")
     }
     /**
      * Setter for the accessibility setting.
      */
     public func a11y(settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".a11y(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).a11y()")
 
         return self
     }
@@ -47,25 +48,25 @@
      * Add series to the chart.
      */
     public func addSeries(var_args: anychart.data.View)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addSeries(%s);", (var_args != nil) ? var_args.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\((var_args != nil) ? var_args.getJsBase() : "null"))")
     }
     /**
      * Add series to the chart.
      */
     public func addSeries(var_args: [String])  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addSeries(%s);", JsObject.arrayToStringWrapQuotes(array: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\(JsObject.arrayToStringWrapQuotes(array: var_args)))")
     }
     /**
      * Getter for animation settings.
      */
     public func animation() -> anychart.core.utils.Animation {
-        return anychart.core.utils.Animation(jsChart: jsBase + ".animation()")
+        return anychart.core.utils.Animation(jsBase: jsBase + ".animation()")
     }
     /**
      * Setter for animation settings by one value.
      */
     public func animation(settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".animation(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).animation()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Setter for animation settings using several parameters.
      */
     public func animation(enabled: Bool, duration: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".animation(%s, %s);", enabled, duration))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).animation()")
 
         return self
     }
@@ -89,7 +90,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
 Flag whether to automatically call chart.draw() on any changes or not.
      */
     public func autoRedraw(enabled: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".autoRedraw(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).autoRedraw()")
 
         return self
     }
@@ -97,13 +98,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for map axes.
      */
     public func axes() -> anychart.core.axes.MapSettings {
-        return anychart.core.axes.MapSettings(jsChart: jsBase + ".axes()")
+        return anychart.core.axes.MapSettings(jsBase: jsBase + ".axes()")
     }
     /**
      * Setter for map axes.
      */
     public func axes(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".axes(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).axes()")
 
         return self
     }
@@ -111,13 +112,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for the chart background.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsChart: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
     }
     /**
      * Setter for the chart background.
      */
     public func background(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".background(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
 
         return self
     }
@@ -131,7 +132,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bottom bound settings.
      */
     public func bottom(bottom: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottom(%s);", bottom))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
 
         return self
     }
@@ -139,13 +140,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for element bounds settings.
      */
     public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsChart: jsBase + ".bounds()")
+        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
     }
     /**
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.utils.RectObj) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -153,7 +154,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for bounds of the element using one parameter.
      */
     public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -161,7 +162,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -169,7 +170,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -177,7 +178,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -185,7 +186,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", x, JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -193,7 +194,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -201,7 +202,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), y, JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -209,7 +210,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -217,7 +218,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for element bounds settings.
      */
     public func bounds(x: String, y: String, width: String, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bounds(%s, %s, %s, %s);", JsObject.wrapQuotes(value: x), JsObject.wrapQuotes(value: y), JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
 
         return self
     }
@@ -225,49 +226,49 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Creates a Bubble series.
      */
     public func bubble(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Bubble series.
      */
     public func bubble(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Bubble series.
      */
     public func bubble(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", (data != nil) ? data.getJsBase() : "null", JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Creates a Bubble series.
      */
     public func bubble(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Bubble series.
      */
     public func bubble(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Bubble series.
      */
     public func bubble(data: String, csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsChart: String(format: jsBase + ".bubble(%s, %s)", JsObject.wrapQuotes(value: data), JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Getter for callout elements.
      */
     public func callout(index: Double) -> anychart.core.ui.Callout {
-        return anychart.core.ui.Callout(jsChart: String(format: jsBase + ".callout(%s)", index))
+        return anychart.core.ui.Callout(jsBase: "\(self.jsBase).callout(\(index))")
     }
     /**
      * Setter for callout elements.
      */
     public func callout(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".callout(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).callout()")
 
         return self
     }
@@ -275,7 +276,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for callout elements by index.
      */
     public func callout(index: Double, settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".callout(%s, %s);", index, JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).callout()")
 
         return self
     }
@@ -291,49 +292,49 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Creates a Choropleth series.
      */
     public func choropleth(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Choropleth series.
      */
     public func choropleth(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Choropleth series.
      */
     public func choropleth(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", (data != nil) ? data.getJsBase() : "null", JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Creates a Choropleth series.
      */
     public func choropleth(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Choropleth series.
      */
     public func choropleth(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Choropleth series.
      */
     public func choropleth(data: String, csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsChart: String(format: jsBase + ".choropleth(%s, %s)", JsObject.wrapQuotes(value: data), JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Getter for the color range.
      */
     public func colorRange() -> anychart.core.ui.ColorRange {
-        return anychart.core.ui.ColorRange(jsChart: jsBase + ".colorRange()")
+        return anychart.core.ui.ColorRange(jsBase: jsBase + ".colorRange()")
     }
     /**
      * Setter for the color range.
      */
     public func colorRange(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".colorRange(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colorRange()")
 
         return self
     }
@@ -341,49 +342,49 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Creates connector series.
      */
     public func connector(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates connector series.
      */
     public func connector(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates connector series.
      */
     public func connector(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", (data != nil) ? data.getJsBase() : "null", JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Creates connector series.
      */
     public func connector(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates connector series.
      */
     public func connector(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates connector series.
      */
     public func connector(data: String, csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsChart: String(format: jsBase + ".connector(%s, %s)", JsObject.wrapQuotes(value: data), JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Getter for the element's container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the element's container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -391,7 +392,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the element's container.
      */
     public func container(element: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -399,13 +400,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for the context menu.
      */
     public func contextMenu() -> anychart.ui.ContextMenu {
-        return anychart.ui.ContextMenu(jsChart: jsBase + ".contextMenu()")
+        return anychart.ui.ContextMenu(jsBase: jsBase + ".contextMenu()")
     }
     /**
      * Setter for the context menu.
      */
     public func contextMenu(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".contextMenu(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).contextMenu()")
 
         return self
     }
@@ -413,14 +414,14 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for the credits.
      */
     public func credits() -> anychart.core.ui.ChartCredits {
-        return anychart.core.ui.ChartCredits(jsChart: jsBase + ".credits()")
+        return anychart.core.ui.ChartCredits(jsBase: jsBase + ".credits()")
     }
     /**
      * Setter for the chart credits.
 {docs:Quick_Start/Credits}Learn more about credits settings.{docs}
      */
     public func credits(value: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".credits(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).credits()")
 
         return self
     }
@@ -428,13 +429,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for map crosshair settings.
      */
     public func crosshair() -> anychart.core.ui.Crosshair {
-        return anychart.core.ui.Crosshair(jsChart: jsBase + ".crosshair()")
+        return anychart.core.ui.Crosshair(jsBase: jsBase + ".crosshair()")
     }
     /**
      * Setter for map crosshair settings.
      */
     public func crosshair(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".crosshair(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crosshair()")
 
         return self
     }
@@ -448,7 +449,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the the crs (coordinate system) to map.
      */
     public func crs(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".crs(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crs()")
 
         return self
     }
@@ -456,13 +457,13 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Getter for animation settings.
      */
     public func crsAnimation() -> anychart.core.utils.Animation {
-        return anychart.core.utils.Animation(jsChart: jsBase + ".crsAnimation()")
+        return anychart.core.utils.Animation(jsBase: jsBase + ".crsAnimation()")
     }
     /**
      * Setter for animation settings.
      */
     public func crsAnimation(settings: Bool, duration: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".crsAnimation(%s, %s);", settings, duration))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crsAnimation()")
 
         return self
     }
@@ -476,7 +477,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Setter for the map default series type.
      */
     public func defaultSeriesType(type: anychart.enums.MapSeriesType) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".defaultSeriesType(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).defaultSeriesType()")
 
         return self
     }
@@ -490,7 +491,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Starts the rendering of the chart into the container.
      */
     public func draw(async: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".draw(%s);", async))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).draw()")
 
         return self
     }
@@ -498,7 +499,7 @@ Flag whether to automatically call chart.draw() on any changes or not.
      * Drills down to a map.
      */
     public func drillTo(id: String, map: anychart.charts.Map) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drillTo(%s, %s);", JsObject.wrapQuotes(value: id), (map != nil) ? map.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drillTo()")
 
         return self
     }
@@ -521,7 +522,7 @@ Rises up from the current level of drill down, if possible.
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -529,13 +530,13 @@ Rises up from the current level of drill down, if possible.
      * Getter for the export charts.
      */
     public func exports() -> anychart.core.utils.Exports {
-        return anychart.core.utils.Exports(jsChart: jsBase + ".exports()")
+        return anychart.core.utils.Exports(jsBase: jsBase + ".exports()")
     }
     /**
      * Setter for the export charts.
      */
     public func exports(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".exports(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).exports()")
 
         return self
     }
@@ -544,14 +545,14 @@ Rises up from the current level of drill down, if possible.
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func featureCrs(id: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureCrs(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureCrs(\(JsObject.wrapQuotes(value: id)))")
     }
     /**
      * Setter for the crs of the feature.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func featureCrs(id: String, crs: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureCrs(%s, %s);", JsObject.wrapQuotes(value: id), JsObject.wrapQuotes(value: crs)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureCrs()")
 
         return self
     }
@@ -560,14 +561,14 @@ Rises up from the current level of drill down, if possible.
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func featureScaleFactor(id: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureScaleFactor(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureScaleFactor(\(JsObject.wrapQuotes(value: id)))")
     }
     /**
      * Setter for the feature scale factor.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func featureScaleFactor(id: String, ratio: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureScaleFactor(%s, %s);", JsObject.wrapQuotes(value: id), ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureScaleFactor()")
 
         return self
     }
@@ -575,14 +576,14 @@ Rises up from the current level of drill down, if possible.
      * Getter for the translation feature by id.
      */
     public func featureTranslation(id: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureTranslation(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureTranslation(\(JsObject.wrapQuotes(value: id)))")
     }
     /**
      * Setter for the translation feature.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func featureTranslation(id: String, dx: Double, dy: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".featureTranslation(%s, %s, %s);", JsObject.wrapQuotes(value: id), dx, dy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).featureTranslation()")
 
         return self
     }
@@ -596,7 +597,7 @@ Rises up from the current level of drill down, if possible.
      * Setter for the fullscreen mode.
      */
     public func fullScreen(enabled: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fullScreen(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fullScreen()")
 
         return self
     }
@@ -610,7 +611,7 @@ Rises up from the current level of drill down, if possible.
      * Setter for the geo data.
      */
     public func geoData(data: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".geoData(%s);", JsObject.wrapQuotes(value: data)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).geoData()")
 
         return self
     }
@@ -624,7 +625,7 @@ Rises up from the current level of drill down, if possible.
      * Setter for the geo id field.
      */
     public func geoIdField(id: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".geoIdField(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).geoIdField()")
 
         return self
     }
@@ -639,14 +640,14 @@ Returns path of drill down from the root map to the current level.
      * Returns pixel bounds of the element due to parent bounds and self bounds settings.
      */
     public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getPixelBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
     }
     /**
      * Getter for the data bounds of the chart.
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func getPlotBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getPlotBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getPlotBounds()")
     }
     /**
      * Getter for the selected points.
@@ -658,13 +659,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the series by its id.
      */
     public func getSeries(id: Double) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".getSeries(%s)", id))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).getSeries(\(id))")
     }
     /**
      * Getter for the series by its index.
      */
     public func getSeriesAt(index: Double) -> anychart.core.map.series.Base {
-        return anychart.core.map.series.Base(jsChart: String(format: jsBase + ".getSeriesAt(%s)", index))
+        return anychart.core.map.series.Base(jsBase: "\(self.jsBase).getSeriesAt(\(index))")
     }
     /**
      * Returns a series count.
@@ -676,7 +677,7 @@ Returns path of drill down from the root map to the current level.
      * Getter for a statistical value by the key.
      */
     public func getStat(key: anychart.enums.Statistics)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", (key != nil) ? key.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\((key != nil) ? key.getJsBase() : "null"))")
     }
     /**
      * Returns chart type.
@@ -695,19 +696,19 @@ Returns path of drill down from the root map to the current level.
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func globalToLocal(xCoord: Double, yCoord: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".globalToLocal(%s, %s);", xCoord, yCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).globalToLocal(\(xCoord), \(yCoord))")
     }
     /**
      * Getter for map grids.
      */
     public func grids() -> anychart.core.grids.MapSettings {
-        return anychart.core.grids.MapSettings(jsChart: jsBase + ".grids()")
+        return anychart.core.grids.MapSettings(jsBase: jsBase + ".grids()")
     }
     /**
      * Setter for map grids.
      */
     public func grids(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".grids(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).grids()")
 
         return self
     }
@@ -715,13 +716,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the map hatch fill palette settings.
      */
     public func hatchFillPalette() -> anychart.palettes.HatchFills {
-        return anychart.palettes.HatchFills(jsChart: jsBase + ".hatchFillPalette()")
+        return anychart.palettes.HatchFills(jsBase: jsBase + ".hatchFillPalette()")
     }
     /**
      * Setter for the map hatch fill palette settings.
      */
     public func hatchFillPalette(settings: [anychart.graphics.vector.hatchfill.HatchFillType]) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hatchFillPalette(%s);", JsObject.arrayToString(jsObjects: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette()")
 
         return self
     }
@@ -729,7 +730,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the map hatch fill palette settings.
      */
     public func hatchFillPalette(settings: anychart.palettes.HatchFills) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hatchFillPalette(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette()")
 
         return self
     }
@@ -743,7 +744,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for element height setting.
      */
     public func height(height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -751,13 +752,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for hovered state settings.
      */
     public func hovered() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".hovered()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".hovered()")
     }
     /**
      * Setter for hovered state settings.
      */
     public func hovered(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -771,7 +772,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for chart id.
      */
     public func id(id: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".id(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).id()")
 
         return self
     }
@@ -785,13 +786,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for interactivity settings for the chart.
      */
     public func interactivity() -> anychart.core.utils.Interactivity {
-        return anychart.core.utils.Interactivity(jsChart: jsBase + ".interactivity()")
+        return anychart.core.utils.Interactivity(jsBase: jsBase + ".interactivity()")
     }
     /**
      * Setter for interactivity settings for the chart.
      */
     public func interactivity(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".interactivity(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interactivity()")
 
         return self
     }
@@ -799,7 +800,7 @@ Returns path of drill down from the root map to the current level.
      * Transforms local pixel coordinates to latitude/longitude values.
      */
     public func inverseTransform(x: Double, y: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverseTransform(%s, %s);", x, y))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(x), \(y))")
     }
     /**
      * Whether the fullscreen mode available in the browser or not.
@@ -811,13 +812,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the chart label.
      */
     public func label(index: String) -> anychart.core.ui.Label {
-        return anychart.core.ui.Label(jsChart: String(format: jsBase + ".label(%s)", JsObject.wrapQuotes(value: index)))
+        return anychart.core.ui.Label(jsBase: "\(self.jsBase).label(\(JsObject.wrapQuotes(value: index)))")
     }
     /**
      * Setter for the chart label.
      */
     public func label(settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".label(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label()")
 
         return self
     }
@@ -825,7 +826,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart label.
      */
     public func label(index: String, settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".label(%s, %s);", JsObject.wrapQuotes(value: index), settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label()")
 
         return self
     }
@@ -833,7 +834,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart label.
      */
     public func label(index: Double, settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".label(%s, %s);", index, settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label()")
 
         return self
     }
@@ -841,13 +842,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for series data labels.
      */
     public func labels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".labels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".labels()")
     }
     /**
      * Setter for series data labels.
      */
     public func labels(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".labels(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels()")
 
         return self
     }
@@ -861,7 +862,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for element left bound settings.
      */
     public func left(left: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".left(%s);", left))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
 
         return self
     }
@@ -869,13 +870,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the chart legend.
      */
     public func legend() -> anychart.core.ui.Legend {
-        return anychart.core.ui.Legend(jsChart: jsBase + ".legend()")
+        return anychart.core.ui.Legend(jsBase: jsBase + ".legend()")
     }
     /**
      * Setter for chart legend settings.
      */
     public func legend(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".legend(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).legend()")
 
         return self
     }
@@ -884,20 +885,20 @@ Returns path of drill down from the root map to the current level.
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func localToGlobal(xCoord: Double, yCoord: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".localToGlobal(%s, %s);", xCoord, yCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).localToGlobal(\(xCoord), \(yCoord))")
     }
     /**
      * Getter for the chart margin.<br/>
 <img src='/si/8.4.0/anychart.core.Chart.prototype.margin.png' width='352' height='351'/>
      */
     public func margin() -> anychart.core.utils.Margin {
-        return anychart.core.utils.Margin(jsChart: jsBase + ".margin()")
+        return anychart.core.utils.Margin(jsBase: jsBase + ".margin()")
     }
     /**
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: [Double]) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -905,7 +906,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using a single complex object.
      */
     public func margin(margin: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", JsObject.wrapQuotes(value: margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -913,7 +914,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: String, value2: String, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -921,7 +922,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: String, value2: String, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -929,7 +930,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: String, value2: Double, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -937,7 +938,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: String, value2: Double, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -945,7 +946,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: Double, value2: String, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -953,7 +954,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: Double, value2: String, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -961,7 +962,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: Double, value2: Double, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -969,7 +970,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart margin in pixels using several simple values.
      */
     public func margin(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -977,49 +978,49 @@ Returns path of drill down from the root map to the current level.
      * Creates a Marker series.
      */
     public func marker(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Marker series.
      */
     public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", (data != nil) ? data.getJsBase() : "null", (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Marker series.
      */
     public func marker(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", (data != nil) ? data.getJsBase() : "null", JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Creates a Marker series.
      */
     public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Marker series.
      */
     public func marker(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", JsObject.arrayToStringWrapQuotes(array: data), (csvSettings != nil) ? csvSettings.getJsBase() : "null"))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Creates a Marker series.
      */
     public func marker(data: String, csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsChart: String(format: jsBase + ".marker(%s, %s)", JsObject.wrapQuotes(value: data), JsObject.wrapQuotes(value: csvSettings)))
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Getter for the map markers palette settings.
      */
     public func markerPalette() -> anychart.palettes.Markers {
-        return anychart.palettes.Markers(jsChart: jsBase + ".markerPalette()")
+        return anychart.palettes.Markers(jsBase: jsBase + ".markerPalette()")
     }
     /**
      * Setter for the map markers palette settings.
      */
     public func markerPalette(settings: anychart.palettes.Markers) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".markerPalette(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette()")
 
         return self
     }
@@ -1027,7 +1028,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the map markers palette settings.
      */
     public func markerPalette(settings: [anychart.enums.MarkerType]) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".markerPalette(%s);", JsObject.arrayToString(jsObjects: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette()")
 
         return self
     }
@@ -1041,7 +1042,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the maximum size for all bubbles on the charts.
      */
     public func maxBubbleSize(size: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxBubbleSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxBubbleSize()")
 
         return self
     }
@@ -1055,7 +1056,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the maximum height.
      */
     public func maxHeight(height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -1069,7 +1070,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the maximum width.
      */
     public func maxWidth(width: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
 
         return self
     }
@@ -1083,7 +1084,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the maximum zoom level.
      */
     public func maxZoomLevel(value: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxZoomLevel(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxZoomLevel()")
 
         return self
     }
@@ -1097,7 +1098,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the minimum size for all bubbles on the charts.
      */
     public func minBubbleSize(size: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minBubbleSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minBubbleSize()")
 
         return self
     }
@@ -1111,7 +1112,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the minimum height.
      */
     public func minHeight(height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
 
         return self
     }
@@ -1125,7 +1126,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the minimum width.
      */
     public func minWidth(width: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
 
         return self
     }
@@ -1134,7 +1135,7 @@ Returns path of drill down from the root map to the current level.
 <b>Note:</b> Works only with {@link anychart.charts.Map#zoom}
      */
     public func move(dx: Double, dy: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".move(%s, %s);", dx, dy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).move()")
 
         return self
     }
@@ -1142,14 +1143,14 @@ Returns path of drill down from the root map to the current level.
      * Getter for noData settings.
      */
     public func noData() -> anychart.core.NoDataSettings {
-        return anychart.core.NoDataSettings(jsChart: jsBase + ".noData()")
+        return anychart.core.NoDataSettings(jsBase: jsBase + ".noData()")
     }
     /**
      * Setter for noData settings.<br/>
 {docs:Working_with_Data/No_Data_Label} Learn more about "No data" feature {docs}
      */
     public func noData(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".noData(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).noData()")
 
         return self
     }
@@ -1157,13 +1158,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for normal state settings.
      */
     public func normal() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".normal()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".normal()")
     }
     /**
      * Setter for normal state settings.
      */
     public func normal(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".normal(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
 
         return self
     }
@@ -1177,7 +1178,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for labels overlap mode.
      */
     public func overlapMode(value: anychart.enums.LabelsOverlapMode) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".overlapMode(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlapMode()")
 
         return self
     }
@@ -1185,7 +1186,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for labels overlap mode.
      */
     public func overlapMode(value: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".overlapMode(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlapMode()")
 
         return self
     }
@@ -1194,13 +1195,13 @@ Returns path of drill down from the root map to the current level.
 <img src='/si/8.4.0/anychart.core.Chart.prototype.padding.png' width='352' height='351'/>
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1208,7 +1209,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using a single value.
      */
     public func padding(padding: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1216,7 +1217,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1224,7 +1225,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1232,7 +1233,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1240,7 +1241,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1248,7 +1249,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1256,7 +1257,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1264,7 +1265,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1272,7 +1273,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the chart paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -1280,13 +1281,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the map palette.
      */
     public func palette() -> anychart.palettes.RangeColors {
-        return anychart.palettes.RangeColors(jsChart: jsBase + ".palette()")
+        return anychart.palettes.RangeColors(jsBase: jsBase + ".palette()")
     }
     /**
      * Setter for the map palette.
      */
     public func palette(settings: anychart.palettes.RangeColors) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".palette(%s);", (settings != nil) ? settings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
 
         return self
     }
@@ -1294,7 +1295,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the map palette.
      */
     public func palette(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".palette(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
 
         return self
     }
@@ -1302,13 +1303,13 @@ Returns path of drill down from the root map to the current level.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes all series from chart.
@@ -1322,7 +1323,7 @@ Returns path of drill down from the root map to the current level.
      * Removes one of series from chart by its id.
      */
     public func removeSeries(id: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeSeries(%s);", id))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeries()")
 
         return self
     }
@@ -1330,7 +1331,7 @@ Returns path of drill down from the root map to the current level.
      * Removes one of series from chart by its index.
      */
     public func removeSeriesAt(index: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeSeriesAt(%s);", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeriesAt()")
 
         return self
     }
@@ -1344,7 +1345,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for element right bound setting.
      */
     public func right(right: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".right(%s);", right))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
 
         return self
     }
@@ -1352,61 +1353,61 @@ Returns path of drill down from the root map to the current level.
      * Saves the current chart as JPEG image.
      */
     public func saveAsJpg(width: Double, height: Double, quality: Double, forceTransparentWhite: Bool, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsJpg(%s, %s, %s, %s, %s);", width, height, quality, forceTransparentWhite, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsJpg(\(width), \(height), \(quality), \(forceTransparentWhite), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves chart config as JSON document.
      */
     public func saveAsJson(filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsJson(%s);", JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsJson(\(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the current chart as PDF image.
      */
     public func saveAsPdf(paperSizeOrWidthOrOptions: Double, landscape: Bool, x: Double, y: Double, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsPdf(%s, %s, %s, %s, %s);", paperSizeOrWidthOrOptions, landscape, x, y, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsPdf(\(paperSizeOrWidthOrOptions), \(landscape), \(x), \(y), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the current chart as PNG image.
      */
     public func saveAsPng(width: Double, height: Double, quality: Double, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsPng(%s, %s, %s, %s);", width, height, quality, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsPng(\(width), \(height), \(quality), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the current chart as SVG image.
      */
     public func saveAsSvg(paperSize: String, landscape: Bool, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsSvg(%s, %s, %s);", JsObject.wrapQuotes(value: paperSize), landscape, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsSvg(\(JsObject.wrapQuotes(value: paperSize)), \(landscape), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the stage as SVG image using width and height.
      */
     public func saveAsSvg(width: Double, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsSvg(%s, %s);", width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsSvg(\(width), \(height))")
     }
     /**
      * Saves chart data as an Excel document.
      */
     public func saveAsXlsx(chartDataExportMode: anychart.enums.ChartDataExportMode, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsXlsx(%s, %s);", (chartDataExportMode != nil) ? chartDataExportMode.getJsBase() : "null", JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsXlsx(\((chartDataExportMode != nil) ? chartDataExportMode.getJsBase() : "null"), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves chart config as XML document.
      */
     public func saveAsXml(filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsXml(%s);", JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsXml(\(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Getter for the map geo scale.
      */
     public func scale() -> anychart.scales.Geo {
-        return anychart.scales.Geo(jsChart: jsBase + ".scale()")
+        return anychart.scales.Geo(jsBase: jsBase + ".scale()")
     }
     /**
      * Setter for the map geo scale.
      */
     public func scale(settings: anychart.scales.Geo) -> anychart.scales.Geo {
-        return anychart.scales.Geo(jsChart: String(format: jsBase + ".scale(%s)", (settings != nil) ? settings.getJsBase() : "null"))
+        return anychart.scales.Geo(jsBase: "\(self.jsBase).scale(\((settings != nil) ? settings.getJsBase() : "null"))")
     }
     /**
      * Getter for the select marquee fill.
@@ -1419,7 +1420,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(color: Fill) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1428,7 +1429,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(color: [String]) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1436,7 +1437,7 @@ Returns path of drill down from the root map to the current level.
      * Fill color with opacity. Fill as a string or an object.
      */
     public func selectMarqueeFill(color: String, opacity: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1445,7 +1446,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1454,7 +1455,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1463,7 +1464,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1472,7 +1473,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1481,7 +1482,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func selectMarqueeFill(imageSettings: Fill) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeFill()")
 
         return self
     }
@@ -1496,7 +1497,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1505,7 +1506,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1514,7 +1515,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1523,7 +1524,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1532,7 +1533,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1541,7 +1542,7 @@ Returns path of drill down from the root map to the current level.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func selectMarqueeStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectMarqueeStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectMarqueeStroke()")
 
         return self
     }
@@ -1549,13 +1550,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for selected state settings.
      */
     public func selected() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".selected()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".selected()")
     }
     /**
      * Setter for selected state settings.
      */
     public func selected(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -1563,19 +1564,19 @@ Returns path of drill down from the root map to the current level.
      * Opens Facebook sharing dialog.
      */
     public func shareWithFacebook(captionOrOptions: String, link: String, name: String, description: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shareWithFacebook(%s, %s, %s, %s);", JsObject.wrapQuotes(value: captionOrOptions), JsObject.wrapQuotes(value: link), JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: description)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shareWithFacebook(\(JsObject.wrapQuotes(value: captionOrOptions)), \(JsObject.wrapQuotes(value: link)), \(JsObject.wrapQuotes(value: name)), \(JsObject.wrapQuotes(value: description)))")
     }
     /**
      * Opens LinkedIn sharing dialog.
      */
     public func shareWithLinkedIn(captionOrOptions: String, description: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shareWithLinkedIn(%s, %s);", JsObject.wrapQuotes(value: captionOrOptions), JsObject.wrapQuotes(value: description)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shareWithLinkedIn(\(JsObject.wrapQuotes(value: captionOrOptions)), \(JsObject.wrapQuotes(value: description)))")
     }
     /**
      * Opens Pinterest sharing dialog.
      */
     public func shareWithPinterest(linkOrOptions: String, description: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shareWithPinterest(%s, %s);", JsObject.wrapQuotes(value: linkOrOptions), JsObject.wrapQuotes(value: description)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shareWithPinterest(\(JsObject.wrapQuotes(value: linkOrOptions)), \(JsObject.wrapQuotes(value: description)))")
     }
     /**
      * Opens Twitter sharing dialog.
@@ -1588,7 +1589,7 @@ Returns path of drill down from the root map to the current level.
 <b>Note:</b> Works only after {@link anychart.core.Chart#draw} is called.
      */
     public func startSelectMarquee(repeat1: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".startSelectMarquee(%s);", repeat1))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startSelectMarquee()")
 
         return self
     }
@@ -1596,13 +1597,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the chart title.
      */
     public func title() -> anychart.core.ui.Title {
-        return anychart.core.ui.Title(jsChart: jsBase + ".title()")
+        return anychart.core.ui.Title(jsBase: jsBase + ".title()")
     }
     /**
      * Setter for the chart title.
      */
     public func title(settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -1616,37 +1617,37 @@ Returns path of drill down from the root map to the current level.
      * Return chart configuration as JSON object or string.
      */
     public func toJson(stringify: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toJson(%s);", stringify))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toJson(\(stringify))")
     }
     /**
      * Returns SVG string with paper size and landscape.
      */
     public func toSvg(paperSize: String, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toSvg(%s, %s);", JsObject.wrapQuotes(value: paperSize), landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toSvg(\(JsObject.wrapQuotes(value: paperSize)), \(landscape))")
     }
     /**
      * Returns SVG string with with determined the width and height.
      */
     public func toSvg(width: Double, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toSvg(%s, %s);", width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toSvg(\(width), \(height))")
     }
     /**
      * Return chart configuration as XML string or XMLNode.
      */
     public func toXml(asXmlNode: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toXml(%s);", asXmlNode))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toXml(\(asXmlNode))")
     }
     /**
      * Getter for the chart tooltip.
      */
     public func tooltip() -> anychart.core.ui.Tooltip {
-        return anychart.core.ui.Tooltip(jsChart: jsBase + ".tooltip()")
+        return anychart.core.ui.Tooltip(jsBase: jsBase + ".tooltip()")
     }
     /**
      * Setter for the chart tooltip.
      */
     public func tooltip(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tooltip(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip()")
 
         return self
     }
@@ -1660,7 +1661,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for element top bound settings.
      */
     public func top(top: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".top(%s);", top))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
 
         return self
     }
@@ -1669,14 +1670,14 @@ Returns path of drill down from the root map to the current level.
 <b>Note:</b> Returns correct values only after {@link anychart.charts.Map#draw} is called.
      */
     public func transform(xLong: Double, yLat: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transform(%s, %s);", xLong, yLat))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(xLong), \(yLat))")
     }
     /**
      * Translates feature on passed dx and dy.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func translateFeature(id: String, dx: Double, dy: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".translateFeature(%s, %s, %s);", JsObject.wrapQuotes(value: id), dx, dy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).translateFeature()")
 
         return self
     }
@@ -1684,13 +1685,13 @@ Returns path of drill down from the root map to the current level.
      * Getter for the settings for the unbound regions.
      */
     public func unboundRegions() -> anychart.core.utils.UnboundRegionsSettings {
-        return anychart.core.utils.UnboundRegionsSettings(jsChart: jsBase + ".unboundRegions()")
+        return anychart.core.utils.UnboundRegionsSettings(jsBase: jsBase + ".unboundRegions()")
     }
     /**
      * Setter for the settings for regions that are not linked to any series data.
      */
     public func unboundRegions(settings: String) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unboundRegions(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unboundRegions()")
 
         return self
     }
@@ -1698,7 +1699,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the settings for regions that are not linked to any series data.
      */
     public func unboundRegions(settings: Bool) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unboundRegions(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unboundRegions()")
 
         return self
     }
@@ -1706,7 +1707,7 @@ Returns path of drill down from the root map to the current level.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for element width settings.
@@ -1718,7 +1719,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for element width setting.
      */
     public func width(width: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -1732,7 +1733,7 @@ Returns path of drill down from the root map to the current level.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -1740,7 +1741,7 @@ Returns path of drill down from the root map to the current level.
      * Zooms a map.
      */
     public func zoom(value: Double, cx: Double, cy: Double, duration: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoom(%s, %s, %s, %s);", value, cx, cy, duration))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoom()")
 
         return self
     }
@@ -1748,7 +1749,7 @@ Returns path of drill down from the root map to the current level.
      * Zooms the map to passed zoom level and coordinates.
      */
     public func zoomTo(value: Double, cx: Double, cy: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomTo(%s, %s, %s);", value, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomTo()")
 
         return self
     }
@@ -1756,33 +1757,33 @@ Returns path of drill down from the root map to the current level.
      * Zoom to feature by passed id.
      */
     public func zoomToFeature(id: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomToFeature(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomToFeature(\(JsObject.wrapQuotes(value: id)))")
     }
     /**
      * Creates and returns the chart represented as an invisible HTML table.
      */
     public func toA11yTable(title: String, asString: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toA11yTable(%s, %s);", JsObject.wrapQuotes(value: title), asString))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toA11yTable(\(JsObject.wrapQuotes(value: title)), \(asString))")
     }
     /**
      * Creates and returns a chart as HTML table.
      */
     public func toHtmlTable(title: String, asString: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toHtmlTable(%s, %s);", JsObject.wrapQuotes(value: title), asString))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toHtmlTable(\(JsObject.wrapQuotes(value: title)), \(asString))")
     }
     /**
      * Getter for the parent bounds.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -1791,7 +1792,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -1800,7 +1801,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.charts.Map {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

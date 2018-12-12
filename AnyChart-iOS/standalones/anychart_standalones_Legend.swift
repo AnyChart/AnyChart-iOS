@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.standalones {
-    public class Legend: JsObject {
+    public class Legend: anychart.core.ui.Legend {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Legend {
-            return Legend(jsChart: "new anychart.standalones.Legend()")
+        public override init() {
+            //return Legend(jsBase: "new anychart.standalones.Legend()")
+            super.init(jsBase: "new anychart.standalones.Legend()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "legend\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "legend\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for legend align settings.
      */
     public func align(align: anychart.enums.Align) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".align(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).align()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for the legend background.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsChart: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
     }
     /**
      * Setter for the legend background.
      */
     public func background(settings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".background(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the legend container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the legend container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the pointer events.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -103,7 +104,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -118,7 +119,7 @@
 {@link https://www.w3schools.com/html/html_colors.asp}
      */
     public func fontColor(color: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -132,7 +133,7 @@
      * Setter for the text font decoration.
      */
     public func fontDecoration(value: anychart.graphics.vector.text.Decoration) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -146,7 +147,7 @@
      * Setter for the font family.
      */
     public func fontFamily(family: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -160,7 +161,7 @@
      * Setter for the text font opacity. Double value from 0 to 1.
      */
     public func fontOpacity(opacity: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -174,7 +175,7 @@
      * Setter for the text font size.
      */
     public func fontSize(size: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -188,7 +189,7 @@
      * Setter for the text font style.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -202,7 +203,7 @@
      * Setter for the text font variant.
      */
     public func fontVariant(value: anychart.graphics.vector.text.FontVariant) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -217,7 +218,7 @@
 {@link https://www.w3schools.com/cssref/pr_font_weight.asp}
      */
     public func fontWeight(weight: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -225,7 +226,7 @@
      * Getter for remain bounds after legend.
      */
     public func getRemainingBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getRemainingBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getRemainingBounds()")
     }
     /**
      * Getter for the text horizontal align.
@@ -237,7 +238,7 @@
      * Setter for the text horizontal align.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -251,7 +252,7 @@
      * Setter for the legend height.
      */
     public func height(height: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -265,7 +266,7 @@
      * Setter for hover cursor settings.
      */
     public func hoverCursor(cursorTypr: anychart.enums.Cursor) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hoverCursor(%s);", (cursorTypr != nil) ? cursorTypr.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverCursor()")
 
         return self
     }
@@ -279,7 +280,7 @@
      * Setter for the icon size.
      */
     public func iconSize(size: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".iconSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).iconSize()")
 
         return self
     }
@@ -293,7 +294,7 @@
      * Setter for spacing between icon and text in a legend item.
      */
     public func iconTextSpacing(spacing: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".iconTextSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).iconTextSpacing()")
 
         return self
     }
@@ -307,7 +308,7 @@
      * Setter for inverted settings.
      */
     public func inverted(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverted(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
 
         return self
     }
@@ -321,7 +322,7 @@
      * Setter for custom items.
      */
     public func items(itemsList: [anychart.core.ui.legend.LegendItemProvider]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".items(%s);", JsObject.arrayToString(jsObjects: itemsList)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items()")
 
         return self
     }
@@ -336,7 +337,7 @@
 {docs:Stock_Charts/Legend#items}Learn more about using itemsFormat() method.{docs}
      */
     public func itemsFormat(format: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsFormat(%s);", JsObject.wrapQuotes(value: format)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsFormat()")
 
         return self
     }
@@ -350,7 +351,7 @@
      * Setter for items formatter.
      */
     public func itemsFormatter(formatterFunction: [anychart.core.ui.legend.LegendItemProvider]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsFormatter(%s);", JsObject.arrayToString(jsObjects: formatterFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsFormatter()")
 
         return self
     }
@@ -364,7 +365,7 @@
      * Setter for items layout.
      */
     public func itemsLayout(layout: anychart.enums.LegendLayout) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsLayout(%s);", (layout != nil) ? layout.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsLayout()")
 
         return self
     }
@@ -372,13 +373,13 @@
      * Getter for items source.
      */
     public func itemsSource() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".itemsSource()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".itemsSource()")
     }
     /**
      * Setter for items source.
      */
     public func itemsSource(source: anychart.core.SeparateChart) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsSource(%s);", (source != nil) ? source.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsSource()")
 
         return self
     }
@@ -392,7 +393,7 @@
      * Setter for items source mode.
      */
     public func itemsSourceMode(mode: anychart.enums.LegendItemsSourceMode) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsSourceMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsSourceMode()")
 
         return self
     }
@@ -406,7 +407,7 @@
      * Setter for items spacing settings.
      */
     public func itemsSpacing(spacing: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".itemsSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemsSpacing()")
 
         return self
     }
@@ -421,7 +422,7 @@
 {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func letterSpacing(spacing: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -436,7 +437,7 @@
 {@link https://www.w3schools.com/cssref/pr_dim_line-height.asp}
      */
     public func lineHeight(height: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -444,13 +445,13 @@
      * Getter for margin settings.
      */
     public func margin() -> anychart.core.utils.Margin {
-        return anychart.core.utils.Margin(jsChart: jsBase + ".margin()")
+        return anychart.core.utils.Margin(jsBase: jsBase + ".margin()")
     }
     /**
      * Setter for the legend margin in pixels using a single value.
      */
     public func margin(margin: [Double]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", margin.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -458,7 +459,7 @@
      * Setter for the legend margin in pixels using a single value.
      */
     public func margin(margin: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s);", JsObject.wrapQuotes(value: margin)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -466,7 +467,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: String, value2: String, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -474,7 +475,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: String, value2: String, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -482,7 +483,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: String, value2: Double, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -490,7 +491,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: String, value2: Double, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -498,7 +499,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: Double, value2: String, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -506,7 +507,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: Double, value2: String, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -514,7 +515,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: Double, value2: Double, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -522,7 +523,7 @@
      * Setter for the legend margin in pixels using a single simple values.
      */
     public func margin(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".margin(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).margin()")
 
         return self
     }
@@ -530,13 +531,13 @@
      * Getter for legend padding settings.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for the legend padding in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -544,7 +545,7 @@
      * Setter for the legend padding in pixels using a single value.
      */
     public func padding(padding: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -552,7 +553,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -560,7 +561,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -568,7 +569,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -576,7 +577,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -584,7 +585,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -592,7 +593,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -600,7 +601,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -608,7 +609,7 @@
      * Setter for the legend padding setting in pixels using a several value.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -616,13 +617,13 @@
      * Getter for paginator settings.
      */
     public func paginator() -> anychart.core.ui.Paginator {
-        return anychart.core.ui.Paginator(jsChart: jsBase + ".paginator()")
+        return anychart.core.ui.Paginator(jsBase: jsBase + ".paginator()")
     }
     /**
      * Setter for paginator settings.
      */
     public func paginator(settings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".paginator(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).paginator()")
 
         return self
     }
@@ -631,13 +632,13 @@
 As a getter falls back to stage bounds.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for bounds using single value.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -645,7 +646,7 @@ As a getter falls back to stage bounds.
      * Setter for bounds using several values.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -659,7 +660,7 @@ As a getter falls back to stage bounds.
      * Setter for legend position setting.
      */
     public func position(position: anychart.enums.Orientation) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".position(%s);", (position != nil) ? position.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position()")
 
         return self
     }
@@ -667,13 +668,13 @@ As a getter falls back to stage bounds.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the text selectable option.
@@ -685,7 +686,7 @@ As a getter falls back to stage bounds.
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -699,7 +700,7 @@ As a getter falls back to stage bounds.
      * Setter for the text direction.
      */
     public func textDirection(direction: anychart.graphics.vector.text.Direction) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", (direction != nil) ? direction.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -713,7 +714,7 @@ As a getter falls back to stage bounds.
      * Setter for the text indent.
      */
     public func textIndent(indent: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -727,7 +728,7 @@ As a getter falls back to stage bounds.
      * Setter for the text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -741,13 +742,13 @@ As a getter falls back to stage bounds.
      * Getter for all text appearance settings.
      */
     public func textSettings(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings(\(JsObject.wrapQuotes(value: name)))")
     }
     /**
      * Setter for text appearance settings.
      */
     public func textSettings(objectWithSettings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s);", JsObject.wrapQuotes(value: objectWithSettings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -755,7 +756,7 @@ As a getter falls back to stage bounds.
      * Setter for the text appearance settings.
      */
     public func textSettings(name: String, settings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -763,7 +764,7 @@ As a getter falls back to stage bounds.
      * Setter for the text appearance settings.
      */
     public func textSettings(name: String, settings: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -771,13 +772,13 @@ As a getter falls back to stage bounds.
      * Getter for the legend title.
      */
     public func title() -> anychart.core.ui.Title {
-        return anychart.core.ui.Title(jsChart: jsBase + ".title()")
+        return anychart.core.ui.Title(jsBase: jsBase + ".title()")
     }
     /**
      * Setter for the legend title.
      */
     public func title(settings: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -793,7 +794,7 @@ If set, formats title. Currently supported in Stock only.
 {docs:Common_Settings/Text_Formatters}Learn more about using titleFormat() method.{docs}
      */
     public func titleFormat(format: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".titleFormat(%s);", JsObject.wrapQuotes(value: format)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).titleFormat()")
 
         return self
     }
@@ -801,13 +802,13 @@ If set, formats title. Currently supported in Stock only.
      * Getter for title separator settings.
      */
     public func titleSeparator() -> anychart.core.ui.Separator {
-        return anychart.core.ui.Separator(jsChart: jsBase + ".titleSeparator()")
+        return anychart.core.ui.Separator(jsBase: jsBase + ".titleSeparator()")
     }
     /**
      * Setter for title separator settings.
      */
     public func titleSeparator(settings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".titleSeparator(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).titleSeparator()")
 
         return self
     }
@@ -815,13 +816,13 @@ If set, formats title. Currently supported in Stock only.
      * Getter for the legend tooltip.
      */
     public func tooltip() -> anychart.core.ui.Tooltip {
-        return anychart.core.ui.Tooltip(jsChart: jsBase + ".tooltip()")
+        return anychart.core.ui.Tooltip(jsBase: jsBase + ".tooltip()")
     }
     /**
      * Setter for legend tooltip.
      */
     public func tooltip(settings: String) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tooltip(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip()")
 
         return self
     }
@@ -829,7 +830,7 @@ If set, formats title. Currently supported in Stock only.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHTML flag.
@@ -841,7 +842,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for flag useHTML.
      */
     public func useHtml(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -855,7 +856,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the text vertical align.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -869,7 +870,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the legend width.
      */
     public func width(width: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -883,7 +884,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -897,7 +898,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }
@@ -911,7 +912,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -925,7 +926,7 @@ If set, formats title. Currently supported in Stock only.
      * Allows to use drag for legend.
      */
     public func drag(enabled: Bool) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drag(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drag()")
 
         return self
     }
@@ -933,7 +934,7 @@ If set, formats title. Currently supported in Stock only.
      * Returns pixel bounds of the legend.
      */
     public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getPixelBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
     }
     /**
      * Getter for the maximum height.
@@ -945,7 +946,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the maximum height.
      */
     public func maxHeight(height: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
 
         return self
     }
@@ -959,7 +960,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the maximum width.
      */
     public func maxWidth(width: Double) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxWidth(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
 
         return self
     }
@@ -973,7 +974,7 @@ If set, formats title. Currently supported in Stock only.
      * Setter for the position mode.
      */
     public func positionMode(mode: anychart.enums.LegendPositionMode) -> anychart.standalones.Legend {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".positionMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).positionMode()")
 
         return self
     }

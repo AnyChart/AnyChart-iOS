@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class Calendar: JsObject {
+    public class Calendar: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Calendar {
-            return Calendar(jsChart: "new anychart.scales.Calendar()")
+        public override init() {
+            //return Calendar(jsBase: "new anychart.scales.Calendar()")
+            super.init(jsBase: "new anychart.scales.Calendar()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "calendar\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "calendar\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the availabilities for the calendar.
      */
     public func availabilities(availabilities: [anychart.scales.calendar.Availability]) -> anychart.scales.Calendar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".availabilities(%s);", JsObject.arrayToString(jsObjects: availabilities)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).availabilities()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Gets the working time in passed datetime interval.
      */
     public func getWorkingSchedule(startDate: Double, endDate: Double, unit: anychart.enums.Interval, count: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getWorkingSchedule(%s, %s, %s, %s);", startDate, endDate, (unit != nil) ? unit.getJsBase() : "null", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getWorkingSchedule(\(startDate), \(endDate), \((unit != nil) ? unit.getJsBase() : "null"), \(count))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the timezone offset.
@@ -65,7 +66,7 @@
      * Setter for the timezone offset for the output availabilities.
      */
     public func timezoneOffset(var_offset: Double) -> anychart.scales.Calendar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".timezoneOffset(%s);", var_offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).timezoneOffset()")
 
         return self
     }
@@ -73,7 +74,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the regular weekend days.
@@ -85,7 +86,7 @@
      * Setter for the regular weekend days.
      */
     public func weekendRange(var_range: [Double]) -> anychart.scales.Calendar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".weekendRange(%s);", var_range.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).weekendRange()")
 
         return self
     }

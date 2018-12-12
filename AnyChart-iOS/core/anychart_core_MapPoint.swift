@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core {
-    public class MapPoint: JsObject {
+    public class MapPoint: anychart.core.Point {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> MapPoint {
-            return MapPoint(jsChart: "new anychart.core.MapPoint()")
+        public override init() {
+            //return MapPoint(jsBase: "new anychart.core.MapPoint()")
+            super.init(jsBase: "new anychart.core.MapPoint()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "mapPoint\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "mapPoint\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,19 +40,19 @@
      * Fetches a field value from point data row by its name.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: field)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
     }
     /**
      * Getter for the chart which current point belongs to.
      */
     public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
     }
     /**
      * Returns current visible map on stage.
      */
     public func getCurrentChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getCurrentChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getCurrentChart()")
     }
     /**
      * Returns point geo id.
@@ -69,7 +70,7 @@
      * Returns point parent map chart.
      */
     public func getParentChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getParentChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getParentChart()")
     }
     /**
      * Returns point geo properties.
@@ -87,7 +88,7 @@
      * Setter for hover point state.
      */
     public func hovered(enabled: Bool) -> anychart.core.MapPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -101,7 +102,7 @@
      * Setter for select point state.
      */
     public func selected(enabled: Bool) -> anychart.core.MapPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Sets the field of the point data row to the specified value.
      */
     public func set(field: String, value: String) -> anychart.core.MapPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: field), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -117,7 +118,7 @@
      * Getter for the statistics value by key.
      */
     public func getStat(key: anychart.enums.Statistics)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", (key != nil) ? key.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\((key != nil) ? key.getJsBase() : "null"))")
     }
 
     }

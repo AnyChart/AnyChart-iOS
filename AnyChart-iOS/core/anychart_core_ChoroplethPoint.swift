@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core {
-    public class ChoroplethPoint: JsObject {
+    public class ChoroplethPoint: anychart.core.SeriesPoint {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ChoroplethPoint {
-            return ChoroplethPoint(jsChart: "new anychart.core.ChoroplethPoint()")
+        public override init() {
+            //return ChoroplethPoint(jsBase: "new anychart.core.ChoroplethPoint()")
+            super.init(jsBase: "new anychart.core.ChoroplethPoint()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "choroplethPoint\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "choroplethPoint\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -40,7 +41,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func crs(crs: String) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".crs(%s);", JsObject.wrapQuotes(value: crs)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crs()")
 
         return self
     }
@@ -54,20 +55,20 @@
      * Fetches a field value from point data row by its name.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: field)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
     }
     /**
      * Getter for the chart which current point belongs to.
      */
     public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsChart: jsBase + ".getChart()")
+        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
     }
     /**
      * Getter for the point bounds.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func getFeatureBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".getFeatureBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".getFeatureBounds()")
     }
     /**
      * Getter for the point properties.<br/>
@@ -86,7 +87,7 @@
      * Getter for series which current point belongs to.
      */
     public func getSeries() -> anychart.core.SeriesBase {
-        return anychart.core.SeriesBase(jsChart: jsBase + ".getSeries()")
+        return anychart.core.SeriesBase(jsBase: jsBase + ".getSeries()")
     }
     /**
      * Returns stack value of the point.
@@ -106,7 +107,7 @@
      * Getter for the statistics value by key.
      */
     public func getStat(key: anychart.enums.Statistics)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", (key != nil) ? key.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\((key != nil) ? key.getJsBase() : "null"))")
     }
     /**
      * Getter for the hover point state.
@@ -118,7 +119,7 @@
      * Setter for the hover point state.
      */
     public func hovered(enabled: Bool) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -133,7 +134,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func middleX(xCoord: Double) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".middleX(%s);", xCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).middleX()")
 
         return self
     }
@@ -148,7 +149,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func middleY(yCoord: Double) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".middleY(%s);", yCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).middleY()")
 
         return self
     }
@@ -163,7 +164,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func scaleFactor(scaleFactor: Double) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scaleFactor(%s);", scaleFactor))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scaleFactor()")
 
         return self
     }
@@ -177,7 +178,7 @@
      * Setter for the select series point state.
      */
     public func selected(enabled: Bool) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -185,7 +186,7 @@
      * Sets the field of the point data row to the specified value.
      */
     public func set(field: String, value: String) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: field), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -194,7 +195,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func translate(dx: Double, dy: Double) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".translate(%s, %s);", dx, dy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).translate()")
 
         return self
     }
@@ -209,7 +210,7 @@
 <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
      */
     public func translation(dx: Double, dy: Double) -> anychart.core.ChoroplethPoint {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".translation(%s, %s);", dx, dy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).translation()")
 
         return self
     }

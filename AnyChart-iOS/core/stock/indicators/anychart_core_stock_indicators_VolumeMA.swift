@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class VolumeMA: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> VolumeMA {
-            return VolumeMA(jsChart: "new anychart.core.stock.indicators.VolumeMA()")
+        public override init() {
+            //return VolumeMA(jsBase: "new anychart.core.stock.indicators.VolumeMA()")
+            super.init(jsBase: "new anychart.core.stock.indicators.VolumeMA()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "volumeMA\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "volumeMA\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the Moving Average period.
      */
     public func maPeriod(period: Double) -> anychart.core.stock.indicators.VolumeMA {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maPeriod()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for the indicator moving average series instance.
      */
     public func maSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".maSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".maSeries()")
     }
     /**
      * Setter for the indicator moving average series type.
      */
     public func maSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.Base {
-        return anychart.core.stock.indicators.Base(jsChart: String(format: jsBase + ".maSeries(%s)", (type != nil) ? type.getJsBase() : "null"))
+        return anychart.core.stock.indicators.Base(jsBase: "\(self.jsBase).maSeries(\((type != nil) ? type.getJsBase() : "null"))")
     }
     /**
      * Getter for the smoothing type.
@@ -65,7 +66,7 @@
      * Setter for the smoothing type.
      */
     public func maType(type: anychart.enums.MovingAverageType) -> anychart.core.stock.indicators.VolumeMA {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maType(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maType()")
 
         return self
     }
@@ -73,13 +74,13 @@
      * Getter for the indicator volume series instance.
      */
     public func volumeSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".volumeSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".volumeSeries()")
     }
     /**
      * Setter for the indicator volume series type.
      */
     public func volumeSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.VolumeMA {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".volumeSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).volumeSeries()")
 
         return self
     }

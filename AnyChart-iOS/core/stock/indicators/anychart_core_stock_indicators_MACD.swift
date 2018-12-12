@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class MACD: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> MACD {
-            return MACD(jsChart: "new anychart.core.stock.indicators.MACD()")
+        public override init() {
+            //return MACD(jsBase: "new anychart.core.stock.indicators.MACD()")
+            super.init(jsBase: "new anychart.core.stock.indicators.MACD()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "mACD\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "mACD\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the fast period.
      */
     public func fastPeriod(period: Double) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fastPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fastPeriod()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for the indicator histogram series instance.
      */
     public func histogramSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".histogramSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".histogramSeries()")
     }
     /**
      * Setter for the indicator histogram series type.
      */
     public func histogramSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".histogramSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).histogramSeries()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for the indicator MACD series instance.
      */
     public func macdSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".macdSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".macdSeries()")
     }
     /**
      * Setter for the indicator MACD series type.
      */
     public func macdSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".macdSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).macdSeries()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the signal period.
      */
     public func signalPeriod(period: Double) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".signalPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).signalPeriod()")
 
         return self
     }
@@ -89,13 +90,13 @@
      * Getter for the signal series instance.
      */
     public func signalSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".signalSeries()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".signalSeries()")
     }
     /**
      * Setter for the signal series type.
      */
     public func signalSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".signalSeries(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).signalSeries()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Getter and setter for the slow period.
      */
     public func slowPeriod(period: Double) -> anychart.core.stock.indicators.MACD {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".slowPeriod(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).slowPeriod()")
 
         return self
     }

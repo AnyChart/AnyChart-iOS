@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class MapInteractivity: JsObject {
+    public class MapInteractivity: anychart.core.utils.Interactivity {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> MapInteractivity {
-            return MapInteractivity(jsChart: "new anychart.core.utils.MapInteractivity()")
+        public override init() {
+            //return MapInteractivity(jsBase: "new anychart.core.utils.MapInteractivity()")
+            super.init(jsBase: "new anychart.core.utils.MapInteractivity()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "mapInteractivity\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "mapInteractivity\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,7 +34,7 @@
      * 
      */
     public func allowMultiSeriesSelection(value: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowMultiSeriesSelection(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowMultiSeriesSelection()")
 
         return self
     }
@@ -48,7 +49,7 @@
 {docs:Common_Settings/Text_Formatters}Learn more about using copyFormat() method.{docs}
      */
     public func copyFormat(formatFunction: String) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".copyFormat(%s);", JsObject.wrapQuotes(value: formatFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).copyFormat()")
 
         return self
     }
@@ -63,7 +64,7 @@
 <b>Note:</b> Works only with {@link anychart.charts.Map#zoom}
      */
     public func drag(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drag(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drag()")
 
         return self
     }
@@ -77,7 +78,7 @@
      * Setter for the hover mode.
      */
     public func hoverMode(mode: anychart.enums.HoverMode) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hoverMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverMode()")
 
         return self
     }
@@ -91,7 +92,7 @@
      * Allows to use the keyboard to zoom and move.
      */
     public func keyboardZoomAndMove(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".keyboardZoomAndMove(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).keyboardZoomAndMove()")
 
         return self
     }
@@ -105,7 +106,7 @@
      * 
      */
     public func mouseWheel(value: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".mouseWheel(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mouseWheel()")
 
         return self
     }
@@ -119,7 +120,7 @@
      * Setter for the multi-select on click.
      */
     public func multiSelectOnClick(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".multiSelectOnClick(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).multiSelectOnClick()")
 
         return self
     }
@@ -127,7 +128,7 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the selection mode.
@@ -139,7 +140,7 @@
      * Setter for the selection mode.
      */
     public func selectionMode(mode: anychart.enums.SelectionMode) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectionMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectionMode()")
 
         return self
     }
@@ -155,7 +156,7 @@ Size of the area under cursor in pixels for radius hovering.
 <b>Note:</b> Works only with "by-spot" value in the {@link anychart.core.utils.Interactivity#hoverMode} method.
      */
     public func spotRadius(radius: Double) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".spotRadius(%s);", radius))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).spotRadius()")
 
         return self
     }
@@ -163,7 +164,7 @@ Size of the area under cursor in pixels for radius hovering.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the unselectOnClickOutOfPoint.
@@ -176,7 +177,7 @@ Size of the area under cursor in pixels for radius hovering.
 If the value is <b>true<b/>, disables select all points when clicking outside the chart point.
      */
     public func unselectOnClickOutOfPoint(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselectOnClickOutOfPoint(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unselectOnClickOutOfPoint()")
 
         return self
     }
@@ -190,7 +191,7 @@ If the value is <b>true<b/>, disables select all points when clicking outside th
      * Enables double click zoom.
      */
     public func zoomOnDoubleClick(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomOnDoubleClick(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomOnDoubleClick()")
 
         return self
     }
@@ -204,7 +205,7 @@ If the value is <b>true<b/>, disables select all points when clicking outside th
      * Allows use the mouse wheel to zoom.
      */
     public func zoomOnMouseWheel(enabled: Bool) -> anychart.core.utils.MapInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomOnMouseWheel(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomOnMouseWheel()")
 
         return self
     }

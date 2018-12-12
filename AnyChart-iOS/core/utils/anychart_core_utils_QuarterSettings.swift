@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class QuarterSettings: JsObject {
+    public class QuarterSettings: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> QuarterSettings {
-            return QuarterSettings(jsChart: "new anychart.core.utils.QuarterSettings()")
+        public override init() {
+            //return QuarterSettings(jsBase: "new anychart.core.utils.QuarterSettings()")
+            super.init(jsBase: "new anychart.core.utils.QuarterSettings()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "quarterSettings\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "quarterSettings\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,13 +34,13 @@
      * Getter for left-bottom quarter.
      */
     public func leftBottom() -> anychart.core.utils.Quarter {
-        return anychart.core.utils.Quarter(jsChart: jsBase + ".leftBottom()")
+        return anychart.core.utils.Quarter(jsBase: jsBase + ".leftBottom()")
     }
     /**
      * Setter for left-bottom quarter.
      */
     public func leftBottom(settings: String) -> anychart.core.utils.QuarterSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".leftBottom(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).leftBottom()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for left-top quarter.
      */
     public func leftTop() -> anychart.core.utils.Quarter {
-        return anychart.core.utils.Quarter(jsChart: jsBase + ".leftTop()")
+        return anychart.core.utils.Quarter(jsBase: jsBase + ".leftTop()")
     }
     /**
      * Setter for left-top quarter.
      */
     public func leftTop(settings: String) -> anychart.core.utils.QuarterSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".leftTop(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).leftTop()")
 
         return self
     }
@@ -61,13 +62,13 @@
      * Getter for right-bottom quarter.
      */
     public func rightBottom() -> anychart.core.utils.Quarter {
-        return anychart.core.utils.Quarter(jsChart: jsBase + ".rightBottom()")
+        return anychart.core.utils.Quarter(jsBase: jsBase + ".rightBottom()")
     }
     /**
      * Setter for right-bottom quarter.
      */
     public func rightBottom(settings: String) -> anychart.core.utils.QuarterSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rightBottom(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rightBottom()")
 
         return self
     }
@@ -75,13 +76,13 @@
      * Getter for right-top quarter.
      */
     public func rightTop() -> anychart.core.utils.Quarter {
-        return anychart.core.utils.Quarter(jsChart: jsBase + ".rightTop()")
+        return anychart.core.utils.Quarter(jsBase: jsBase + ".rightTop()")
     }
     /**
      * Setter for right-top quarter.
      */
     public func rightTop(settings: String) -> anychart.core.utils.QuarterSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rightTop(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rightTop()")
 
         return self
     }
@@ -89,13 +90,13 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

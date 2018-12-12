@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.series {
-    public class RenderingSettings: JsObject {
+    public class RenderingSettings: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> RenderingSettings {
-            return RenderingSettings(jsChart: "new anychart.core.series.RenderingSettings()")
+        public override init() {
+            //return RenderingSettings(jsBase: "new anychart.core.series.RenderingSettings()")
+            super.init(jsBase: "new anychart.core.series.RenderingSettings()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "renderingSettings\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "renderingSettings\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the finish.
      */
     public func finish(finishFunction: String) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".finish(%s);", JsObject.wrapQuotes(value: finishFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finish()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for points width.
      */
     public func needsWidth(enabled: Bool) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".needsWidth(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).needsWidth()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for zero value.
      */
     public func needsZero(enabled: Bool) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".needsZero(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).needsZero()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the point.
      */
     public func point(pointFunction: String) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".point(%s);", JsObject.wrapQuotes(value: pointFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).point()")
 
         return self
     }
@@ -89,7 +90,7 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for shapes settings.
@@ -107,7 +108,7 @@
      * Setter for the start.
      */
     public func start(startFunction: String) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".start(%s);", JsObject.wrapQuotes(value: startFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).start()")
 
         return self
     }
@@ -115,7 +116,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the update of a point.
@@ -128,7 +129,7 @@
 Change the point shape when the state changes.
      */
     public func updatePoint(pointFunction: String) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".updatePoint(%s);", JsObject.wrapQuotes(value: pointFunction)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).updatePoint()")
 
         return self
     }
@@ -142,7 +143,7 @@ Change the point shape when the state changes.
      * Setter for YScale values.
      */
     public func yValues(value: [String]) -> anychart.core.series.RenderingSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".yValues(%s);", JsObject.arrayToStringWrapQuotes(array: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yValues()")
 
         return self
     }

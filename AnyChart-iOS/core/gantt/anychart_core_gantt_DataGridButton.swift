@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.gantt {
-    public class DataGridButton: JsObject {
+    public class DataGridButton: anychart.core.VisualBase {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> DataGridButton {
-            return DataGridButton(jsChart: "new anychart.core.gantt.DataGridButton()")
+        public override init() {
+            //return DataGridButton(jsBase: "new anychart.core.gantt.DataGridButton()")
+            super.init(jsBase: "new anychart.core.gantt.DataGridButton()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "dataGridButton\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "dataGridButton\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for buttons content.
      */
     public func content(content: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".content(%s);", JsObject.wrapQuotes(value: content)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).content()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the cursor type.
      */
     public func cursor(cursorType: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cursor(%s);", JsObject.wrapQuotes(value: cursorType)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cursor()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the text disablePointerEvents option.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -81,7 +82,7 @@
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -95,7 +96,7 @@
      * Setter for button font color settings.
      */
     public func fontColor(color: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -109,7 +110,7 @@
      * Setter for the button text font decoration.
      */
     public func fontDecoration(fontDecoration: anychart.graphics.vector.text.Decoration) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (fontDecoration != nil) ? fontDecoration.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -123,7 +124,7 @@
      * Setter for the button font family of text.
      */
     public func fontFamily(fontFamily: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: fontFamily)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -138,7 +139,7 @@
 Double value from 0 to 1.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -152,7 +153,7 @@ Double value from 0 to 1.
      * Setter for button font size settings.
      */
     public func fontSize(size: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -166,7 +167,7 @@ Double value from 0 to 1.
      * Setter for the button text font style.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -180,7 +181,7 @@ Double value from 0 to 1.
      * Setter for the button text font variant.
      */
     public func fontVariant(type: anychart.graphics.vector.text.FontVariant) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -194,7 +195,7 @@ Double value from 0 to 1.
      * Setter for the button text font weight. {@link https://www.w3schools.com/cssref/pr_font_weight.asp}
      */
     public func fontWeight(weight: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -208,7 +209,7 @@ Double value from 0 to 1.
      * Setter for the button text horizontal align.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -222,7 +223,7 @@ Double value from 0 to 1.
      * Setter for the buttons height.
      */
     public func height(height: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -231,14 +232,14 @@ Double value from 0 to 1.
 The hovered state is a hover on the button in the normal state.
      */
     public func hovered() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".hovered()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".hovered()")
     }
     /**
      * Setter for hovered state settings.<br/>
 The hovered state is a hover on the button in the normal state.
      */
     public func hovered(settings: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hovered(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
 
         return self
     }
@@ -253,7 +254,7 @@ The hovered state is a hover on the button in the normal state.
 {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func letterSpacing(spacing: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -267,7 +268,7 @@ The hovered state is a hover on the button in the normal state.
      * Setter for the button text line height. {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func lineHeight(height: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -276,14 +277,14 @@ The hovered state is a hover on the button in the normal state.
 The normal state is the button in the collapsed state.
      */
     public func normal() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".normal()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".normal()")
     }
     /**
      * Setter for normal state settings.<br/>
 The normal state is the button in the collapsed state.
      */
     public func normal(settings: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".normal(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
 
         return self
     }
@@ -291,13 +292,13 @@ The normal state is the button in the collapsed state.
      * Getter for the buttons padding.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for the buttons padding in pixels by one value.
      */
     public func padding(padding: [Double]) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -305,7 +306,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels by one value.
      */
     public func padding(padding: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -313,7 +314,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -321,7 +322,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -329,7 +330,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -337,7 +338,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -345,7 +346,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -353,7 +354,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -361,7 +362,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -369,7 +370,7 @@ The normal state is the button in the collapsed state.
      * Setter for the buttons padding in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -377,13 +378,13 @@ The normal state is the button in the collapsed state.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the text selectable option.
@@ -395,7 +396,7 @@ The normal state is the button in the collapsed state.
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -404,14 +405,14 @@ The normal state is the button in the collapsed state.
 The selected state is the button in the expanded state.
      */
     public func selected() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsChart: jsBase + ".selected()")
+        return anychart.core.StateSettings(jsBase: jsBase + ".selected()")
     }
     /**
      * Setter for selected state settings.<br/>
 The selected state is the button in the expanded state.
      */
     public func selected(settings: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selected(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
 
         return self
     }
@@ -425,7 +426,7 @@ The selected state is the button in the expanded state.
      * Setter for the button text direction.
      */
     public func textDirection(type: anychart.graphics.vector.text.Direction) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -439,7 +440,7 @@ The selected state is the button in the expanded state.
      * Setter for the button text indent.
      */
     public func textIndent(indent: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -453,7 +454,7 @@ The selected state is the button in the expanded state.
      * Setter for the text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -461,7 +462,7 @@ The selected state is the button in the expanded state.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHtml flag.
@@ -473,7 +474,7 @@ The selected state is the button in the expanded state.
      * Setter for button text as useHtml.
      */
     public func useHtml(enabled: Bool) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -487,7 +488,7 @@ The selected state is the button in the expanded state.
      * Setter for the button text vertical align.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -501,7 +502,7 @@ The selected state is the button in the expanded state.
      * Setter for the buttons width.
      */
     public func width(width: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -515,7 +516,7 @@ The selected state is the button in the expanded state.
      * Setter for the word-break mode.
      */
     public func wordBreak(type: anychart.enums.WordBreak) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -529,7 +530,7 @@ The selected state is the button in the expanded state.
      * Setter for the word-wrap mode.
      */
     public func wordWrap(type: anychart.enums.WordWrap) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }
@@ -543,7 +544,7 @@ The selected state is the button in the expanded state.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -551,13 +552,13 @@ The selected state is the button in the expanded state.
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -565,7 +566,7 @@ The selected state is the button in the expanded state.
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -574,14 +575,14 @@ The selected state is the button in the expanded state.
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -590,7 +591,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -599,7 +600,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.gantt.DataGridButton {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

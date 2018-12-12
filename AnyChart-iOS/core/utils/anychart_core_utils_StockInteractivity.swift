@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class StockInteractivity: JsObject {
+    public class StockInteractivity: anychart.core.utils.Interactivity {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> StockInteractivity {
-            return StockInteractivity(jsChart: "new anychart.core.utils.StockInteractivity()")
+        public override init() {
+            //return StockInteractivity(jsBase: "new anychart.core.utils.StockInteractivity()")
+            super.init(jsBase: "new anychart.core.utils.StockInteractivity()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "stockInteractivity\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "stockInteractivity\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the multi-select on click.
      */
     public func multiSelectOnClick(enabled: Bool) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".multiSelectOnClick(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).multiSelectOnClick()")
 
         return self
     }
@@ -47,7 +48,7 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the scrolling.
@@ -60,7 +61,7 @@
 Allows use mouse wheel for scrolling. Press "ctrl" or "shift" and scroll mouse wheel.
      */
     public func scrollOnMouseWheel(enabled: Bool) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scrollOnMouseWheel(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scrollOnMouseWheel()")
 
         return self
     }
@@ -68,7 +69,7 @@ Allows use mouse wheel for scrolling. Press "ctrl" or "shift" and scroll mouse w
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the unselectOnClickOutOfPoint.
@@ -81,7 +82,7 @@ Allows use mouse wheel for scrolling. Press "ctrl" or "shift" and scroll mouse w
 If the value is <b>true<b/>, disables select all points when clicking outside the chart point.
      */
     public func unselectOnClickOutOfPoint(enabled: Bool) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unselectOnClickOutOfPoint(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unselectOnClickOutOfPoint()")
 
         return self
     }
@@ -96,7 +97,7 @@ If the value is <b>true<b/>, disables select all points when clicking outside th
 Allows use mouse wheel for zooming.
      */
     public func zoomOnMouseWheel(enabled: Bool) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomOnMouseWheel(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomOnMouseWheel()")
 
         return self
     }
@@ -104,7 +105,7 @@ Allows use mouse wheel for zooming.
      * 
      */
     public func allowMultiSeriesSelection(value: Bool) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".allowMultiSeriesSelection(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowMultiSeriesSelection()")
 
         return self
     }
@@ -118,7 +119,7 @@ Allows use mouse wheel for zooming.
      * Setter for the hover mode.
      */
     public func hoverMode(mode: anychart.enums.HoverMode) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hoverMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverMode()")
 
         return self
     }
@@ -132,7 +133,7 @@ Allows use mouse wheel for zooming.
      * Setter for the selection mode.
      */
     public func selectionMode(mode: anychart.enums.SelectionMode) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectionMode(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectionMode()")
 
         return self
     }
@@ -148,7 +149,7 @@ Size of the area under cursor in pixels for radius hovering.
 <b>Note:</b> Works only with "by-spot" value in the {@link anychart.core.utils.Interactivity#hoverMode} method.
      */
     public func spotRadius(radius: Double) -> anychart.core.utils.StockInteractivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".spotRadius(%s);", radius))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).spotRadius()")
 
         return self
     }

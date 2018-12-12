@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class ScatterBase: JsObject {
+    public class ScatterBase: anychart.scales.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ScatterBase {
-            return ScatterBase(jsChart: "new anychart.scales.ScatterBase()")
+        public override init() {
+            //return ScatterBase(jsBase: "new anychart.scales.ScatterBase()")
+            super.init(jsBase: "new anychart.scales.ScatterBase()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "scatterBase\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "scatterBase\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Getter for a flag if the maximum should be aligned by major ticks interval.<br/>
      */
     public func alignMaximum(enabled: Bool) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMaximum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMaximum()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for a flag if the minimum should be aligned by major ticks interval.
      */
     public func alignMinimum(enabled: Bool) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alignMinimum(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMinimum()")
 
         return self
     }
@@ -62,7 +63,7 @@
 <b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
      */
     public func extendDataRange(var_args: String) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".extendDataRange(%s);", JsObject.wrapQuotes(value: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange()")
 
         return self
     }
@@ -70,14 +71,14 @@
      * Informs the scale that an auto-range calculation started for the chart in past was ended.
      */
     public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".finishAutoCalc(%s);", silently))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
     }
     /**
      * Returns tick by its position ratio.<br/>
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverseTransform(%s);", ratio))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
     }
     /**
      * Getter for the scale inversion.
@@ -90,7 +91,7 @@
 instead of bottom-to-top and left-to-right.
      */
     public func inverted(enabled: Bool) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".inverted(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
 
         return self
     }
@@ -104,7 +105,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the maximum ticks count.<br/>
      */
     public func maxTicksCount(count: Double) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxTicksCount(%s);", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxTicksCount()")
 
         return self
     }
@@ -118,7 +119,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale maximum.
      */
     public func maximum(maximum: Double) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximum(%s);", maximum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximum()")
 
         return self
     }
@@ -132,7 +133,7 @@ instead of bottom-to-top and left-to-right.
      * Setter for the scale minimum.
      */
     public func minimum(minimum: Double) -> anychart.scales.ScatterBase {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimum(%s);", minimum))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimum()")
 
         return self
     }
@@ -140,7 +141,7 @@ instead of bottom-to-top and left-to-right.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Informs scale that an auto-range calculation started for the chart, so it should reset its data range on the first
@@ -156,13 +157,13 @@ call of this method if needed.
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func transform(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".transform(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Returns scale type.

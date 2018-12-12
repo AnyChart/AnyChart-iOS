@@ -6,12 +6,12 @@ extension anychart.core.stock.grouping {
         public init(count: Double, unit: anychart.enums.Interval) {
             super.init()
 
-            js.append(String(format: "{count:%s, unit: %s, } ", count, (unit != nil) ? unit.getJsBase() : "null"))
+            js.append(String(format: "{count:%s, unit: %s, } ", \(count), \((unit != nil) ? unit.getJsBase() : "null")))
         }
         public init(count: Double, unit: String) {
             super.init()
 
-            js.append(String(format: "{count:%s, unit: %s, } ", count, JsObject.wrapQuotes(value: unit)))
+            js.append(String(format: "{count:%s, unit: %s, } ", \(count), \(JsObject.wrapQuotes(value: unit))))
         }
 
     }

@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.standalones {
-    public class ProjectTimeline: JsObject {
+    public class ProjectTimeline: anychart.core.ui.Timeline {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ProjectTimeline {
-            return ProjectTimeline(jsChart: "new anychart.standalones.ProjectTimeline()")
+        public override init() {
+            //return ProjectTimeline(jsBase: "new anychart.standalones.ProjectTimeline()")
+            super.init(jsBase: "new anychart.standalones.ProjectTimeline()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "projectTimeline\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "projectTimeline\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -40,7 +41,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(color: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -49,7 +50,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(color: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -57,7 +58,7 @@
      * Fill color with opacity.
      */
     public func backgroundFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -66,7 +67,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -75,7 +76,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -84,7 +85,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -93,7 +94,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -102,7 +103,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func backgroundFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".backgroundFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).backgroundFill()")
 
         return self
     }
@@ -116,7 +117,7 @@
      * 
      */
     public func baseBarAnchor(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseBarAnchor(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseBarAnchor()")
 
         return self
     }
@@ -130,7 +131,7 @@
      * 
      */
     public func baseBarHeight(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseBarHeight(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseBarHeight()")
 
         return self
     }
@@ -144,7 +145,7 @@
      * Setter for the base bar offset.
      */
     public func baseBarOffset(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseBarOffset(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseBarOffset()")
 
         return self
     }
@@ -158,7 +159,7 @@
      * 
      */
     public func baseBarPosition(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseBarPosition(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseBarPosition()")
 
         return self
     }
@@ -172,7 +173,7 @@
      * 
      */
     public func baseFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -180,7 +181,7 @@
      * 
      */
     public func baseFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -188,7 +189,7 @@
      * 
      */
     public func baseFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -196,7 +197,7 @@
      * 
      */
     public func baseFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -204,7 +205,7 @@
      * 
      */
     public func baseFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -212,7 +213,7 @@
      * 
      */
     public func baseFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -220,7 +221,7 @@
      * 
      */
     public func baseFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseFill()")
 
         return self
     }
@@ -234,7 +235,7 @@
      * 
      */
     public func baseStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -242,7 +243,7 @@
      * 
      */
     public func baseStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -250,7 +251,7 @@
      * 
      */
     public func baseStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -258,7 +259,7 @@
      * 
      */
     public func baseStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -266,7 +267,7 @@
      * 
      */
     public func baseStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -274,7 +275,7 @@
      * 
      */
     public func baseStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseStroke()")
 
         return self
     }
@@ -288,7 +289,7 @@
      * 
      */
     public func baselineAbove(value: Bool) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineAbove(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineAbove()")
 
         return self
     }
@@ -302,7 +303,7 @@
      * Setter for the baseline bar anchor.
      */
     public func baselineBarAnchor(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineBarAnchor(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineBarAnchor()")
 
         return self
     }
@@ -316,7 +317,7 @@
      * Setter for the baseline bar height.
      */
     public func baselineBarHeight(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineBarHeight(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineBarHeight()")
 
         return self
     }
@@ -330,7 +331,7 @@
      * Setter for the baseline bar offset.
      */
     public func baselineBarOffset(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineBarOffset(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineBarOffset()")
 
         return self
     }
@@ -344,7 +345,7 @@
      * Setter for the baseline bar position.
      */
     public func baselineBarPosition(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineBarPosition(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineBarPosition()")
 
         return self
     }
@@ -358,7 +359,7 @@
      * 
      */
     public func baselineFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -366,7 +367,7 @@
      * 
      */
     public func baselineFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -374,7 +375,7 @@
      * 
      */
     public func baselineFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -382,7 +383,7 @@
      * 
      */
     public func baselineFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -390,7 +391,7 @@
      * 
      */
     public func baselineFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -398,7 +399,7 @@
      * 
      */
     public func baselineFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -406,7 +407,7 @@
      * 
      */
     public func baselineFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineFill()")
 
         return self
     }
@@ -420,7 +421,7 @@
      * 
      */
     public func baselineStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -428,7 +429,7 @@
      * 
      */
     public func baselineStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -436,7 +437,7 @@
      * 
      */
     public func baselineStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -444,7 +445,7 @@
      * 
      */
     public func baselineStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -452,7 +453,7 @@
      * 
      */
     public func baselineStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -460,7 +461,7 @@
      * 
      */
     public func baselineStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineStroke()")
 
         return self
     }
@@ -468,13 +469,13 @@
      * Getter for baselines.
      */
     public func baselines() -> anychart.core.gantt.elements.BaselinesElement {
-        return anychart.core.gantt.elements.BaselinesElement(jsChart: jsBase + ".baselines()")
+        return anychart.core.gantt.elements.BaselinesElement(jsBase: jsBase + ".baselines()")
     }
     /**
      * Setter for baselines.
      */
     public func baselines(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselines(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselines()")
 
         return self
     }
@@ -488,7 +489,7 @@
      * Setter for the column stroke.
      */
     public func columnStroke(value: Stroke) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).columnStroke()")
 
         return self
     }
@@ -496,7 +497,7 @@
      * Setter for the column stroke using an object.
      */
     public func columnStroke(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".columnStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).columnStroke()")
 
         return self
     }
@@ -510,7 +511,7 @@
      * 
      */
     public func connectorFill(value: Fill, cx: Double, cy: Double, opacityOrMode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorFill(%s, %s, %s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", cx, cy, (opacityOrMode != nil) ? opacityOrMode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorFill()")
 
         return self
     }
@@ -518,7 +519,7 @@
      * 
      */
     public func connectorFill(value: [String], cx: Double, cy: Double, opacityOrMode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: value), cx, cy, (opacityOrMode != nil) ? opacityOrMode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorFill()")
 
         return self
     }
@@ -532,7 +533,7 @@
      * 
      */
     public func connectorPreviewStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -540,7 +541,7 @@
      * 
      */
     public func connectorPreviewStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -548,7 +549,7 @@
      * 
      */
     public func connectorPreviewStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -556,7 +557,7 @@
      * 
      */
     public func connectorPreviewStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -564,7 +565,7 @@
      * 
      */
     public func connectorPreviewStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -572,7 +573,7 @@
      * 
      */
     public func connectorPreviewStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorPreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: color), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorPreviewStroke()")
 
         return self
     }
@@ -586,7 +587,7 @@
      * 
      */
     public func connectorStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -594,7 +595,7 @@
      * 
      */
     public func connectorStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -602,7 +603,7 @@
      * 
      */
     public func connectorStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -610,7 +611,7 @@
      * 
      */
     public func connectorStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -618,7 +619,7 @@
      * 
      */
     public func connectorStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -626,7 +627,7 @@
      * 
      */
     public func connectorStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -634,7 +635,7 @@
      * 
      */
     public func connectorStroke(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -642,13 +643,13 @@
      * Getter for connectors.
      */
     public func connectors() -> anychart.core.gantt.elements.ConnectorElement {
-        return anychart.core.gantt.elements.ConnectorElement(jsChart: jsBase + ".connectors()")
+        return anychart.core.gantt.elements.ConnectorElement(jsBase: jsBase + ".connectors()")
     }
     /**
      * Setter for connectors.
      */
     public func connectors(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectors(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectors()")
 
         return self
     }
@@ -662,7 +663,7 @@
      * Setter for the default row height.
      */
     public func defaultRowHeight(height: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".defaultRowHeight(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).defaultRowHeight()")
 
         return self
     }
@@ -670,14 +671,14 @@
      * Getter for live edit settings.
      */
     public func edit() -> anychart.core.gantt.edit.StructureEdit {
-        return anychart.core.gantt.edit.StructureEdit(jsChart: jsBase + ".edit()")
+        return anychart.core.gantt.edit.StructureEdit(jsBase: jsBase + ".edit()")
     }
     /**
      * Setter for live edit settings.
 {docs:Gantt_Chart/Live_Edit_UI_and_API}Learn more about Live editing.{docs}
      */
     public func edit(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".edit(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).edit()")
 
         return self
     }
@@ -691,7 +692,7 @@
      * 
      */
     public func editConnectorThumbFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -699,7 +700,7 @@
      * 
      */
     public func editConnectorThumbFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -707,7 +708,7 @@
      * 
      */
     public func editConnectorThumbFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -715,7 +716,7 @@
      * 
      */
     public func editConnectorThumbFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -723,7 +724,7 @@
      * 
      */
     public func editConnectorThumbFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -731,7 +732,7 @@
      * 
      */
     public func editConnectorThumbFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -739,7 +740,7 @@
      * 
      */
     public func editConnectorThumbFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbFill()")
 
         return self
     }
@@ -753,7 +754,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -761,7 +762,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -769,7 +770,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -777,7 +778,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -785,7 +786,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -793,7 +794,7 @@
      * 
      */
     public func editConnectorThumbStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editConnectorThumbStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editConnectorThumbStroke()")
 
         return self
     }
@@ -807,7 +808,7 @@
      * 
      */
     public func editIntervalThumbFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -815,7 +816,7 @@
      * 
      */
     public func editIntervalThumbFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -823,7 +824,7 @@
      * 
      */
     public func editIntervalThumbFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -831,7 +832,7 @@
      * 
      */
     public func editIntervalThumbFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -839,7 +840,7 @@
      * 
      */
     public func editIntervalThumbFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -847,7 +848,7 @@
      * 
      */
     public func editIntervalThumbFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -855,7 +856,7 @@
      * 
      */
     public func editIntervalThumbFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbFill()")
 
         return self
     }
@@ -869,7 +870,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -877,7 +878,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -885,7 +886,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -893,7 +894,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -901,7 +902,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -909,7 +910,7 @@
      * 
      */
     public func editIntervalThumbStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalThumbStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalThumbStroke()")
 
         return self
     }
@@ -923,7 +924,7 @@
      * 
      */
     public func editPreviewFill(color: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -931,7 +932,7 @@
      * 
      */
     public func editPreviewFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -939,7 +940,7 @@
      * 
      */
     public func editPreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -947,7 +948,7 @@
      * 
      */
     public func editPreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -955,7 +956,7 @@
      * 
      */
     public func editPreviewFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -963,7 +964,7 @@
      * 
      */
     public func editPreviewFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -971,7 +972,7 @@
      * 
      */
     public func editPreviewFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewFill()")
 
         return self
     }
@@ -985,7 +986,7 @@
      * 
      */
     public func editPreviewStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -993,7 +994,7 @@
      * 
      */
     public func editPreviewStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -1001,7 +1002,7 @@
      * 
      */
     public func editPreviewStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -1009,7 +1010,7 @@
      * 
      */
     public func editPreviewStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -1017,7 +1018,7 @@
      * 
      */
     public func editPreviewStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -1025,7 +1026,7 @@
      * 
      */
     public func editPreviewStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editPreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editPreviewStroke()")
 
         return self
     }
@@ -1039,7 +1040,7 @@
      * 
      */
     public func editProgressFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1047,7 +1048,7 @@
      * 
      */
     public func editProgressFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1055,7 +1056,7 @@
      * 
      */
     public func editProgressFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1063,7 +1064,7 @@
      * 
      */
     public func editProgressFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1071,7 +1072,7 @@
      * 
      */
     public func editProgressFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1079,7 +1080,7 @@
      * 
      */
     public func editProgressFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1087,7 +1088,7 @@
      * 
      */
     public func editProgressFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressFill()")
 
         return self
     }
@@ -1101,7 +1102,7 @@
      * 
      */
     public func editProgressStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1109,7 +1110,7 @@
      * 
      */
     public func editProgressStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1117,7 +1118,7 @@
      * 
      */
     public func editProgressStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1125,7 +1126,7 @@
      * 
      */
     public func editProgressStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1133,7 +1134,7 @@
      * 
      */
     public func editProgressStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1141,7 +1142,7 @@
      * 
      */
     public func editProgressStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editProgressStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editProgressStroke()")
 
         return self
     }
@@ -1155,7 +1156,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1163,7 +1164,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1171,7 +1172,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1179,7 +1180,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1187,7 +1188,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1195,7 +1196,7 @@
      * 
      */
     public func editStructurePreviewDashStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewDashStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewDashStroke()")
 
         return self
     }
@@ -1209,7 +1210,7 @@
      * 
      */
     public func editStructurePreviewFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1217,7 +1218,7 @@
      * 
      */
     public func editStructurePreviewFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1225,7 +1226,7 @@
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1233,7 +1234,7 @@
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1241,7 +1242,7 @@
      * 
      */
     public func editStructurePreviewFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1249,7 +1250,7 @@
      * 
      */
     public func editStructurePreviewFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1257,7 +1258,7 @@
      * 
      */
     public func editStructurePreviewFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewFill()")
 
         return self
     }
@@ -1271,7 +1272,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1279,7 +1280,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1287,7 +1288,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1295,7 +1296,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1303,7 +1304,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1311,7 +1312,7 @@
      * 
      */
     public func editStructurePreviewStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStructurePreviewStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStructurePreviewStroke()")
 
         return self
     }
@@ -1325,7 +1326,7 @@
      * 
      */
     public func editing(value: Bool) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editing(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editing()")
 
         return self
     }
@@ -1333,13 +1334,13 @@
      * Getter for elements.
      */
     public func elements() -> anychart.core.gantt.elements.TimelineElement {
-        return anychart.core.gantt.elements.TimelineElement(jsChart: jsBase + ".elements()")
+        return anychart.core.gantt.elements.TimelineElement(jsBase: jsBase + ".elements()")
     }
     /**
      * Setter for elements.
      */
     public func elements(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".elements(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).elements()")
 
         return self
     }
@@ -1347,13 +1348,13 @@
      * Getter for grouping tasks.
      */
     public func groupingTasks() -> anychart.core.gantt.elements.GroupingTasksElement {
-        return anychart.core.gantt.elements.GroupingTasksElement(jsChart: jsBase + ".groupingTasks()")
+        return anychart.core.gantt.elements.GroupingTasksElement(jsBase: jsBase + ".groupingTasks()")
     }
     /**
      * Setter for grouping tasks.
      */
     public func groupingTasks(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".groupingTasks(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).groupingTasks()")
 
         return self
     }
@@ -1361,13 +1362,13 @@
      * Getter for the labels factory.
      */
     public func labels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".labels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".labels()")
     }
     /**
      * Setter for the labels factory.
      */
     public func labels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".labels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels()")
 
         return self
     }
@@ -1375,13 +1376,13 @@
      * Getter for the line marker.
      */
     public func lineMarker(index: Double) -> anychart.core.axismarkers.GanttLine {
-        return anychart.core.axismarkers.GanttLine(jsChart: String(format: jsBase + ".lineMarker(%s)", index))
+        return anychart.core.axismarkers.GanttLine(jsBase: "\(self.jsBase).lineMarker(\(index))")
     }
     /**
      * Setter for the line marker.
      */
     public func lineMarker(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineMarker(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker()")
 
         return self
     }
@@ -1389,7 +1390,7 @@
      * Setter for the line marker by index.
      */
     public func lineMarker(index: Double, value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineMarker(%s, %s);", index, JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker()")
 
         return self
     }
@@ -1397,7 +1398,7 @@
      * Setter for the line marker by index.
      */
     public func lineMarker(index: Double, value: anychart.enums.GanttDateTimeMarkers) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineMarker(%s, %s);", index, (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker()")
 
         return self
     }
@@ -1405,13 +1406,13 @@
      * Getter for the markers factory.
      */
     public func markers() -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsChart: jsBase + ".markers()")
+        return anychart.core.ui.MarkersFactory(jsBase: jsBase + ".markers()")
     }
     /**
      * Setter for the markers factory.
      */
     public func markers(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".markers(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markers()")
 
         return self
     }
@@ -1425,7 +1426,7 @@
      * 
      */
     public func maximumGap(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maximumGap(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximumGap()")
 
         return self
     }
@@ -1439,7 +1440,7 @@
      * 
      */
     public func milestoneAnchor(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneAnchor(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneAnchor()")
 
         return self
     }
@@ -1453,7 +1454,7 @@
      * 
      */
     public func milestoneFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1461,7 +1462,7 @@
      * 
      */
     public func milestoneFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1469,7 +1470,7 @@
      * 
      */
     public func milestoneFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1477,7 +1478,7 @@
      * 
      */
     public func milestoneFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1485,7 +1486,7 @@
      * 
      */
     public func milestoneFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1493,7 +1494,7 @@
      * 
      */
     public func milestoneFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1501,7 +1502,7 @@
      * 
      */
     public func milestoneFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneFill()")
 
         return self
     }
@@ -1515,7 +1516,7 @@
      * 
      */
     public func milestoneHeight(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneHeight(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneHeight()")
 
         return self
     }
@@ -1529,7 +1530,7 @@
      * 
      */
     public func milestoneOffset(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneOffset(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneOffset()")
 
         return self
     }
@@ -1543,7 +1544,7 @@
      * 
      */
     public func milestonePosition(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestonePosition(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestonePosition()")
 
         return self
     }
@@ -1557,7 +1558,7 @@
      * 
      */
     public func milestoneStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1565,7 +1566,7 @@
      * 
      */
     public func milestoneStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1573,7 +1574,7 @@
      * 
      */
     public func milestoneStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1581,7 +1582,7 @@
      * 
      */
     public func milestoneStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1589,7 +1590,7 @@
      * 
      */
     public func milestoneStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1597,7 +1598,7 @@
      * 
      */
     public func milestoneStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneStroke()")
 
         return self
     }
@@ -1605,13 +1606,13 @@
      * Getter for milestones.
      */
     public func milestones() -> anychart.core.gantt.elements.MilestonesElement {
-        return anychart.core.gantt.elements.MilestonesElement(jsChart: jsBase + ".milestones()")
+        return anychart.core.gantt.elements.MilestonesElement(jsBase: jsBase + ".milestones()")
     }
     /**
      * Setter for milestones.
      */
     public func milestones(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestones(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestones()")
 
         return self
     }
@@ -1625,7 +1626,7 @@
      * 
      */
     public func minimumGap(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minimumGap(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimumGap()")
 
         return self
     }
@@ -1633,13 +1634,13 @@
      * Getter for the palette.
      */
     public func palette() -> anychart.palettes.RangeColors {
-        return anychart.palettes.RangeColors(jsChart: jsBase + ".palette()")
+        return anychart.palettes.RangeColors(jsBase: jsBase + ".palette()")
     }
     /**
      * Setter the for palette.
      */
     public func palette(paletteSettings: anychart.palettes.RangeColors) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".palette(%s);", (paletteSettings != nil) ? paletteSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
 
         return self
     }
@@ -1647,7 +1648,7 @@
      * Setter the for palette.
      */
     public func palette(paletteSettings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".palette(%s);", JsObject.wrapQuotes(value: paletteSettings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
 
         return self
     }
@@ -1661,7 +1662,7 @@
      * 
      */
     public func parentBarAnchor(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBarAnchor(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBarAnchor()")
 
         return self
     }
@@ -1675,7 +1676,7 @@
      * 
      */
     public func parentBarHeight(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBarHeight(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBarHeight()")
 
         return self
     }
@@ -1689,7 +1690,7 @@
      * 
      */
     public func parentBarOffset(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBarOffset(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBarOffset()")
 
         return self
     }
@@ -1703,7 +1704,7 @@
      * 
      */
     public func parentBarPosition(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBarPosition(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBarPosition()")
 
         return self
     }
@@ -1717,7 +1718,7 @@
      * 
      */
     public func parentFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1725,7 +1726,7 @@
      * 
      */
     public func parentFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1733,7 +1734,7 @@
      * 
      */
     public func parentFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1741,7 +1742,7 @@
      * 
      */
     public func parentFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1749,7 +1750,7 @@
      * 
      */
     public func parentFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1757,7 +1758,7 @@
      * 
      */
     public func parentFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1765,7 +1766,7 @@
      * 
      */
     public func parentFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentFill()")
 
         return self
     }
@@ -1779,7 +1780,7 @@
      * 
      */
     public func parentStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1787,7 +1788,7 @@
      * 
      */
     public func parentStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1795,7 +1796,7 @@
      * 
      */
     public func parentStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1803,7 +1804,7 @@
      * 
      */
     public func parentStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1811,7 +1812,7 @@
      * 
      */
     public func parentStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1819,7 +1820,7 @@
      * 
      */
     public func parentStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentStroke()")
 
         return self
     }
@@ -1833,7 +1834,7 @@
      * 
      */
     public func progressBarAnchor(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressBarAnchor(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressBarAnchor()")
 
         return self
     }
@@ -1847,7 +1848,7 @@
      * 
      */
     public func progressBarHeight(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressBarHeight(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressBarHeight()")
 
         return self
     }
@@ -1861,7 +1862,7 @@
      * 
      */
     public func progressBarOffset(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressBarOffset(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressBarOffset()")
 
         return self
     }
@@ -1875,7 +1876,7 @@
      * 
      */
     public func progressBarPosition(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressBarPosition(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressBarPosition()")
 
         return self
     }
@@ -1889,7 +1890,7 @@
      * 
      */
     public func progressFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1897,7 +1898,7 @@
      * 
      */
     public func progressFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1905,7 +1906,7 @@
      * 
      */
     public func progressFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1913,7 +1914,7 @@
      * 
      */
     public func progressFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1921,7 +1922,7 @@
      * 
      */
     public func progressFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1929,7 +1930,7 @@
      * 
      */
     public func progressFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1937,7 +1938,7 @@
      * 
      */
     public func progressFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressFill()")
 
         return self
     }
@@ -1951,7 +1952,7 @@
      * 
      */
     public func progressStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1959,7 +1960,7 @@
      * 
      */
     public func progressStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1967,7 +1968,7 @@
      * 
      */
     public func progressStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1975,7 +1976,7 @@
      * 
      */
     public func progressStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1983,7 +1984,7 @@
      * 
      */
     public func progressStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1991,7 +1992,7 @@
      * 
      */
     public func progressStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressStroke()")
 
         return self
     }
@@ -1999,13 +2000,13 @@
      * Getter for the range marker.
      */
     public func rangeMarker(index: Double) -> anychart.core.axismarkers.GanttRange {
-        return anychart.core.axismarkers.GanttRange(jsChart: String(format: jsBase + ".rangeMarker(%s)", index))
+        return anychart.core.axismarkers.GanttRange(jsBase: "\(self.jsBase).rangeMarker(\(index))")
     }
     /**
      * Setter for the range marker.
      */
     public func rangeMarker(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rangeMarker(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker()")
 
         return self
     }
@@ -2013,7 +2014,7 @@
      * Setter for the range marker by index.
      */
     public func rangeMarker(index: Double, value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rangeMarker(%s, %s);", index, JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker()")
 
         return self
     }
@@ -2021,7 +2022,7 @@
      * Setter for the range marker by index.
      */
     public func rangeMarker(index: Double, value: anychart.enums.GanttDateTimeMarkers) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rangeMarker(%s, %s);", index, (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker()")
 
         return self
     }
@@ -2036,7 +2037,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(color: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2045,7 +2046,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(color: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2053,7 +2054,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func rowEvenFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2062,7 +2063,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2071,7 +2072,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2080,7 +2081,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2089,7 +2090,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2098,7 +2099,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowEvenFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowEvenFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowEvenFill()")
 
         return self
     }
@@ -2113,7 +2114,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2122,7 +2123,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(value: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", JsObject.arrayToStringWrapQuotes(array: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2130,7 +2131,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func rowFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2139,7 +2140,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2148,7 +2149,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2157,7 +2158,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2166,7 +2167,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2175,7 +2176,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowFill()")
 
         return self
     }
@@ -2190,7 +2191,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2199,7 +2200,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(value: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s);", JsObject.arrayToStringWrapQuotes(array: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2207,7 +2208,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func rowHoverFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2216,7 +2217,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2225,7 +2226,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2234,7 +2235,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2243,7 +2244,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowHoverFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowHoverFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowHoverFill()")
 
         return self
     }
@@ -2258,7 +2259,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2267,7 +2268,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(value: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", JsObject.arrayToStringWrapQuotes(array: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2275,7 +2276,7 @@
      * Fill color with opacity. Fill as a string or an object.
      */
     public func rowOddFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2284,7 +2285,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2293,7 +2294,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2302,7 +2303,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2311,7 +2312,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2320,7 +2321,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowOddFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowOddFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowOddFill()")
 
         return self
     }
@@ -2335,7 +2336,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(color: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (color != nil) ? color.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2344,7 +2345,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(color: [String]) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", JsObject.arrayToStringWrapQuotes(array: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2352,7 +2353,7 @@
      * Fill color in selected mode with opacity. Fill as a string or an object.
      */
     public func rowSelectedFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2361,7 +2362,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2370,7 +2371,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2379,7 +2380,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2388,7 +2389,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2397,7 +2398,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func rowSelectedFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rowSelectedFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSelectedFill()")
 
         return self
     }
@@ -2411,7 +2412,7 @@
      * 
      */
     public func selectedElementFill(value: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2419,7 +2420,7 @@
      * 
      */
     public func selectedElementFill(color: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s, %s);", JsObject.wrapQuotes(value: color), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2427,7 +2428,7 @@
      * 
      */
     public func selectedElementFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, mode, opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2435,7 +2436,7 @@
      * 
      */
     public func selectedElementFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), angle, JsObject.wrapQuotes(value: mode), opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2443,7 +2444,7 @@
      * 
      */
     public func selectedElementFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: keys), angle, (mode != nil) ? mode.getJsBase() : "null", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2451,7 +2452,7 @@
      * 
      */
     public func selectedElementFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s, %s, %s, %s, %s, %s, %s);", JsObject.arrayToString(jsObjects: keys), cx, cy, (mode != nil) ? mode.getJsBase() : "null", opacity, fx, fy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2459,7 +2460,7 @@
      * 
      */
     public func selectedElementFill(imageSettings: Fill) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementFill(%s);", (imageSettings != nil) ? imageSettings.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementFill()")
 
         return self
     }
@@ -2473,7 +2474,7 @@
      * 
      */
     public func selectedElementStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2481,7 +2482,7 @@
      * 
      */
     public func selectedElementStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2489,7 +2490,7 @@
      * 
      */
     public func selectedElementStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2497,7 +2498,7 @@
      * 
      */
     public func selectedElementStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2505,7 +2506,7 @@
      * 
      */
     public func selectedElementStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2513,7 +2514,7 @@
      * 
      */
     public func selectedElementStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedElementStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedElementStroke()")
 
         return self
     }
@@ -2521,13 +2522,13 @@
      * Getter for tasks.
      */
     public func tasks() -> anychart.core.gantt.elements.TasksElement {
-        return anychart.core.gantt.elements.TasksElement(jsChart: jsBase + ".tasks()")
+        return anychart.core.gantt.elements.TasksElement(jsBase: jsBase + ".tasks()")
     }
     /**
      * Setter for tasks.
      */
     public func tasks(settingss: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tasks(%s);", JsObject.wrapQuotes(value: settingss)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tasks()")
 
         return self
     }
@@ -2535,13 +2536,13 @@
      * Getter for the text marker.
      */
     public func textMarker(index: Double) -> anychart.core.axismarkers.GanttText {
-        return anychart.core.axismarkers.GanttText(jsChart: String(format: jsBase + ".textMarker(%s)", index))
+        return anychart.core.axismarkers.GanttText(jsBase: "\(self.jsBase).textMarker(\(index))")
     }
     /**
      * Setter for the text marker.
      */
     public func textMarker(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textMarker(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker()")
 
         return self
     }
@@ -2549,7 +2550,7 @@
      * Setter for text marker by index.
      */
     public func textMarker(index: Double, value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textMarker(%s, %s);", index, JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker()")
 
         return self
     }
@@ -2557,7 +2558,7 @@
      * Setter for text marker by index.
      */
     public func textMarker(index: Double, value: anychart.enums.GanttDateTimeMarkers) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textMarker(%s, %s);", index, (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker()")
 
         return self
     }
@@ -2565,13 +2566,13 @@
      * Getter for tooltip settings.
      */
     public func tooltip() -> anychart.core.ui.Tooltip {
-        return anychart.core.ui.Tooltip(jsChart: jsBase + ".tooltip()")
+        return anychart.core.ui.Tooltip(jsBase: jsBase + ".tooltip()")
     }
     /**
      * Setter for the tooltip.
      */
     public func tooltip(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".tooltip(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip()")
 
         return self
     }
@@ -2579,13 +2580,13 @@
      * 
      */
     public func baseLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".baseLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".baseLabels()")
     }
     /**
      * 
      */
     public func baseLabels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baseLabels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseLabels()")
 
         return self
     }
@@ -2593,13 +2594,13 @@
      * 
      */
     public func baselineLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".baselineLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".baselineLabels()")
     }
     /**
      * 
      */
     public func baselineLabels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".baselineLabels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baselineLabels()")
 
         return self
     }
@@ -2613,7 +2614,7 @@
      * 
      */
     public func editFinishConnectorMarkerHorizontalOffset(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editFinishConnectorMarkerHorizontalOffset(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editFinishConnectorMarkerHorizontalOffset()")
 
         return self
     }
@@ -2627,7 +2628,7 @@
      * 
      */
     public func editFinishConnectorMarkerSize(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editFinishConnectorMarkerSize(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editFinishConnectorMarkerSize()")
 
         return self
     }
@@ -2641,7 +2642,7 @@
      * 
      */
     public func editFinishConnectorMarkerType(value: anychart.enums.MarkerType) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editFinishConnectorMarkerType(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editFinishConnectorMarkerType()")
 
         return self
     }
@@ -2655,7 +2656,7 @@
      * 
      */
     public func editFinishConnectorMarkerVerticalOffset(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editFinishConnectorMarkerVerticalOffset(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editFinishConnectorMarkerVerticalOffset()")
 
         return self
     }
@@ -2669,7 +2670,7 @@
      * 
      */
     public func editIntervalWidth(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editIntervalWidth(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editIntervalWidth()")
 
         return self
     }
@@ -2683,7 +2684,7 @@
      * 
      */
     public func editStartConnectorMarkerHorizontalOffset(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStartConnectorMarkerHorizontalOffset(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStartConnectorMarkerHorizontalOffset()")
 
         return self
     }
@@ -2697,7 +2698,7 @@
      * 
      */
     public func editStartConnectorMarkerSize(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStartConnectorMarkerSize(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStartConnectorMarkerSize()")
 
         return self
     }
@@ -2711,7 +2712,7 @@
      * 
      */
     public func editStartConnectorMarkerType(value: anychart.enums.MarkerType) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStartConnectorMarkerType(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStartConnectorMarkerType()")
 
         return self
     }
@@ -2725,7 +2726,7 @@
      * 
      */
     public func editStartConnectorMarkerVerticalOffset(value: Double) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".editStartConnectorMarkerVerticalOffset(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).editStartConnectorMarkerVerticalOffset()")
 
         return self
     }
@@ -2733,13 +2734,13 @@
      * Getter for the timeline header.
      */
     public func header() -> anychart.core.gantt.TimeLineHeader {
-        return anychart.core.gantt.TimeLineHeader(jsChart: jsBase + ".header()")
+        return anychart.core.gantt.TimeLineHeader(jsBase: jsBase + ".header()")
     }
     /**
      * Setter for the timeline header.
      */
     public func header(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".header(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).header()")
 
         return self
     }
@@ -2747,13 +2748,13 @@
      * Getter for the horizontal scroll bar.
      */
     public func horizontalScrollBar() -> anychart.core.ui.ScrollBar {
-        return anychart.core.ui.ScrollBar(jsChart: jsBase + ".horizontalScrollBar()")
+        return anychart.core.ui.ScrollBar(jsBase: jsBase + ".horizontalScrollBar()")
     }
     /**
      * Setter for the horizontal scroll bar.
      */
     public func horizontalScrollBar(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".horizontalScrollBar(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).horizontalScrollBar()")
 
         return self
     }
@@ -2761,13 +2762,13 @@
      * 
      */
     public func milestoneLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".milestoneLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".milestoneLabels()")
     }
     /**
      * 
      */
     public func milestoneLabels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".milestoneLabels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).milestoneLabels()")
 
         return self
     }
@@ -2775,13 +2776,13 @@
      * 
      */
     public func parentLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".parentLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".parentLabels()")
     }
     /**
      * 
      */
     public func parentLabels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentLabels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentLabels()")
 
         return self
     }
@@ -2789,13 +2790,13 @@
      * Getter for periods.
      */
     public func periods() -> anychart.core.gantt.elements.PeriodsElement {
-        return anychart.core.gantt.elements.PeriodsElement(jsChart: jsBase + ".periods()")
+        return anychart.core.gantt.elements.PeriodsElement(jsBase: jsBase + ".periods()")
     }
     /**
      * Setter for periods.
      */
     public func periods(settings: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".periods(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).periods()")
 
         return self
     }
@@ -2803,13 +2804,13 @@
      * 
      */
     public func progressLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsChart: jsBase + ".progressLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".progressLabels()")
     }
     /**
      * 
      */
     public func progressLabels(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".progressLabels(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).progressLabels()")
 
         return self
     }
@@ -2817,13 +2818,13 @@
      * Getter for the timeline scale.
      */
     public func scale() -> anychart.scales.GanttDateTime {
-        return anychart.scales.GanttDateTime(jsChart: jsBase + ".scale()")
+        return anychart.scales.GanttDateTime(jsBase: jsBase + ".scale()")
     }
     /**
      * Setter for the timeline scale.
      */
     public func scale(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -2837,7 +2838,7 @@
      * 
      */
     public func selectedConnectorStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2845,7 +2846,7 @@
      * 
      */
     public func selectedConnectorStroke(value: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2853,7 +2854,7 @@
      * 
      */
     public func selectedConnectorStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2861,7 +2862,7 @@
      * 
      */
     public func selectedConnectorStroke(value: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", (value != nil) ? value.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2869,7 +2870,7 @@
      * 
      */
     public func selectedConnectorStroke(value: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), JsObject.wrapQuotes(value: lineJoin), JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2877,7 +2878,7 @@
      * 
      */
     public func selectedConnectorStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectedConnectorStroke(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: value), thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", JsObject.wrapQuotes(value: lineCap)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectedConnectorStroke()")
 
         return self
     }
@@ -2885,13 +2886,13 @@
      * Getter for the vertical scroll bar.
      */
     public func verticalScrollBar() -> anychart.core.ui.ScrollBar {
-        return anychart.core.ui.ScrollBar(jsChart: jsBase + ".verticalScrollBar()")
+        return anychart.core.ui.ScrollBar(jsBase: jsBase + ".verticalScrollBar()")
     }
     /**
      * Setter for the vertical scroll bar.
      */
     public func verticalScrollBar(value: String) -> anychart.standalones.ProjectTimeline {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".verticalScrollBar(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).verticalScrollBar()")
 
         return self
     }

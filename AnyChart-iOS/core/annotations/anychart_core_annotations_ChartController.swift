@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.annotations {
-    public class ChartController: JsObject {
+    public class ChartController: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ChartController {
-            return ChartController(jsChart: "new anychart.core.annotations.ChartController()")
+        public override init() {
+            //return ChartController(jsBase: "new anychart.core.annotations.ChartController()")
+            super.init(jsBase: "new anychart.core.annotations.ChartController()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "chartController\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "chartController\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Returns currently selected annotation.
      */
     public func getSelectedAnnotation() -> anychart.core.annotations.Base {
-        return anychart.core.annotations.Base(jsChart: jsBase + ".getSelectedAnnotation()")
+        return anychart.core.annotations.Base(jsBase: jsBase + ".getSelectedAnnotation()")
     }
     /**
      * Removes all annotations from the chart.
@@ -53,13 +54,13 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes one of annotations from plot by its instance.
      */
     public func removeAnnotation(annotation: anychart.core.annotations.Base) -> anychart.core.annotations.ChartController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAnnotation(%s);", (annotation != nil) ? annotation.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAnnotation()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Selects annotation.
      */
     public func select(annotation: anychart.core.annotations.Base) -> anychart.core.annotations.ChartController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", (annotation != nil) ? annotation.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).select()")
 
         return self
     }
@@ -76,20 +77,20 @@
 <b>Note:</b> Works only after {@link anychart.charts.Stock#draw} is called.
      */
     public func startDrawing(annotationTypeOrConfig: anychart.enums.AnnotationTypes) -> anychart.core.annotations.Base {
-        return anychart.core.annotations.Base(jsChart: String(format: jsBase + ".startDrawing(%s)", (annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))
+        return anychart.core.annotations.Base(jsBase: "\(self.jsBase).startDrawing(\((annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))")
     }
     /**
      * Starts annotation drawing.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Stock#draw} is called.
      */
     public func startDrawing(annotationTypeOrConfig: anychart.core.annotations.AnnotationJSONFormat) -> anychart.core.annotations.Base {
-        return anychart.core.annotations.Base(jsChart: String(format: jsBase + ".startDrawing(%s)", (annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))
+        return anychart.core.annotations.Base(jsBase: "\(self.jsBase).startDrawing(\((annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Unselects annotations.

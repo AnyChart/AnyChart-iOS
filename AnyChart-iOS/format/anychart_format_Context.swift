@@ -6,22 +6,23 @@
  extension anychart.format {
     public class Context: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Context {
-            return Context(jsChart: "new anychart.format.Context()")
+        public override init() {
+            //return Context(jsBase: "new anychart.format.Context()")
+            super.init(jsBase: "new anychart.format.Context()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "context\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "context\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,26 +34,26 @@
      * Gets data value by the single parameter.
      */
     public func getData(fieldPath: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getData(%s);", JsObject.wrapQuotes(value: fieldPath)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getData(\(JsObject.wrapQuotes(value: fieldPath)))")
     }
     /**
      * Gets data value by several parameters.<br/>
 This method uses several parameters only in the Gantt Resource, TreeMap and Pert charts.
      */
     public func getData(var_args: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getData(%s);", JsObject.wrapQuotes(value: var_args)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getData(\(JsObject.wrapQuotes(value: var_args)))")
     }
     /**
      * Gets meta value.
      */
     public func getMeta(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getMeta(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getMeta(\(JsObject.wrapQuotes(value: name)))")
     }
     /**
      * Gets statistics value by key.
      */
     public func getStat(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getStat(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

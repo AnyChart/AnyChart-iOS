@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui {
-    public class ChartCredits: JsObject {
+    public class ChartCredits: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> ChartCredits {
-            return ChartCredits(jsChart: "new anychart.core.ui.ChartCredits()")
+        public override init() {
+            //return ChartCredits(jsBase: "new anychart.core.ui.ChartCredits()")
+            super.init(jsBase: "new anychart.core.ui.ChartCredits()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "chartCredits\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "chartCredits\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for credits alt.
      */
     public func alt(text: String) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".alt(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alt()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the credits state.
      */
     public func enabled(enabled: Bool) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -67,7 +68,7 @@
      * Setter for the image alternative text.
      */
     public func imgAlt(text: String) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".imgAlt(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).imgAlt()")
 
         return self
     }
@@ -82,7 +83,7 @@
 <b>Note:</b> You can't customize credits without <u>a license key</u>. See <a href="https://www.anychart.com/buy/">AnyChart Licensing</a> to learn more.
      */
     public func logoSrc(logoSrc: String) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".logoSrc(%s);", JsObject.wrapQuotes(value: logoSrc)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).logoSrc()")
 
         return self
     }
@@ -90,7 +91,7 @@
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for credits text value.
@@ -102,7 +103,7 @@
      * Setter for credits text value.
      */
     public func text(text: String) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".text(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).text()")
 
         return self
     }
@@ -110,7 +111,7 @@
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the credits URL.
@@ -122,7 +123,7 @@
      * Setter for the credits URL.
      */
     public func url(url: String) -> anychart.core.ui.ChartCredits {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".url(%s);", JsObject.wrapQuotes(value: url)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).url()")
 
         return self
     }

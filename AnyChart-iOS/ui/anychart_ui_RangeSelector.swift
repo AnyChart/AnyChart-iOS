@@ -6,22 +6,23 @@
  extension anychart.ui {
     public class RangeSelector: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> RangeSelector {
-            return RangeSelector(jsChart: "new anychart.ui.RangeSelector()")
+        public override init() {
+            //return RangeSelector(jsBase: "new anychart.ui.RangeSelector()")
+            super.init(jsBase: "new anychart.ui.RangeSelector()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "rangeSelector\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "rangeSelector\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -52,19 +53,19 @@ Removes it from parent layer, nulls links, removes from DOM.
      * Setter for buttons setup.
      */
     public func ranges(ranges: [anychart.ui.rangeselector.Range])  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".ranges(%s);", JsObject.arrayToString(jsObjects: ranges)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ranges(\(JsObject.arrayToString(jsObjects: ranges)))")
     }
     /**
      * Renders the range selector.
      */
     public func render(parentElement: anychart.charts.Stock)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".render(%s);", (parentElement != nil) ? parentElement.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).render(\((parentElement != nil) ? parentElement.getJsBase() : "null"))")
     }
     /**
      * Sets stock chart for range selector.
      */
     public func target(chart: anychart.charts.Stock)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".target(%s);", (chart != nil) ? chart.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).target(\((chart != nil) ? chart.getJsBase() : "null"))")
     }
     /**
      * Getter for the label text.
@@ -76,7 +77,7 @@ Removes it from parent layer, nulls links, removes from DOM.
      * Setter fot the label text.
      */
     public func zoomLabelText(text: String) -> anychart.ui.RangeSelector {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zoomLabelText(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomLabelText()")
 
         return self
     }

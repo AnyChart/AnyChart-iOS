@@ -6,22 +6,23 @@
  extension anychart.core.stock.indicators {
     public class MFI: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> MFI {
-            return MFI(jsChart: "new anychart.core.stock.indicators.MFI()")
+        public override init() {
+            //return MFI(jsBase: "new anychart.core.stock.indicators.MFI()")
+            super.init(jsBase: "new anychart.core.stock.indicators.MFI()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "mFI\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "mFI\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the indicator period.
      */
     public func period(period: Double) -> anychart.core.stock.indicators.MFI {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".period(%s);", period))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).period()")
 
         return self
     }
@@ -47,13 +48,13 @@
      * Getter for the indicator series instance.
      */
     public func series() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsChart: jsBase + ".series()")
+        return anychart.core.stock.series.Base(jsBase: jsBase + ".series()")
     }
     /**
      * Setter for the indicator series type.
      */
     public func series(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.MFI {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".series(%s);", (type != nil) ? type.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).series()")
 
         return self
     }

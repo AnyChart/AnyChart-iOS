@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.graphics.vector {
-    public class Text: JsObject {
+    public class Text: anychart.graphics.vector.Element {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Text {
-            return Text(jsChart: "new anychart.graphics.vector.Text()")
+        public override init() {
+            //return Text(jsBase: "new anychart.graphics.vector.Text()")
+            super.init(jsBase: "new anychart.graphics.vector.Text()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "text\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "text\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,7 +34,7 @@
      * Combines the current transformation with the given transformation matrix.
      */
     public func appendTransformationMatrix(m00: Double, m10: Double, m01: Double, m11: Double, m02: Double, m12: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".appendTransformationMatrix(%s, %s, %s, %s, %s, %s);", m00, m10, m01, m11, m02, m12))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).appendTransformationMatrix()")
 
         return self
     }
@@ -41,13 +42,13 @@
      * Getter for the attribute.
      */
     public func attr(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".attr(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).attr(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Setter for the attribute.
      */
     public func attr(key: String, value: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".attr(%s, %s);", JsObject.wrapQuotes(value: key), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).attr()")
 
         return self
     }
@@ -55,13 +56,13 @@
      * Gets the current clipping rectangle.
      */
     public func clip() -> anychart.graphics.math.Rect {
-        return anychart.graphics.math.Rect(jsChart: jsBase + ".clip()")
+        return anychart.graphics.math.Rect(jsBase: jsBase + ".clip()")
     }
     /**
      * Sets the clipping rectangle.
      */
     public func clip(value: anychart.graphics.math.Rect) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".clip(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).clip()")
 
         return self
     }
@@ -75,7 +76,7 @@
      * Setter for the text color.
      */
     public func color(color: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".color(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).color()")
 
         return self
     }
@@ -89,7 +90,7 @@
      * Setter for the cursor type.
      */
     public func cursor(value: anychart.graphics.vector.Cursor) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".cursor(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cursor()")
 
         return self
     }
@@ -103,7 +104,7 @@
      * Setter for text decoration.
      */
     public func decoration(value: anychart.graphics.vector.text.Decoration) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".decoration(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).decoration()")
 
         return self
     }
@@ -117,7 +118,7 @@
      * Setter for the element description value.
      */
     public func desc(value: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".desc(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).desc()")
 
         return self
     }
@@ -131,7 +132,7 @@
      * Setter for text direction.
      */
     public func direction(direction: anychart.graphics.vector.text.Direction) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".direction(%s);", (direction != nil) ? direction.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).direction()")
 
         return self
     }
@@ -145,7 +146,7 @@
      * Disables the pointer events.
      */
     public func disablePointerEvents(value: Bool) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -160,7 +161,7 @@
 Learn more by <a href="https://www.w3.org/TR/2004/WD-SVG12-20041027/vectoreffects.html#vector-effect-prop">link</a>.
      */
     public func disableStrokeScaling(value: Bool) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disableStrokeScaling(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disableStrokeScaling()")
 
         return self
     }
@@ -188,7 +189,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Turns off/on dragging (moving) of an element.
      */
     public func drag(value: Bool) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".drag(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drag()")
 
         return self
     }
@@ -202,7 +203,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Setter for font family of text.
      */
     public func fontFamily(family: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -216,7 +217,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Setter for font size of text.
      */
     public func fontSize(size: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -230,7 +231,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Setter for font style of text.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -244,7 +245,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Setter for font variant of text.
      */
     public func fontVariant(value: anychart.graphics.vector.text.FontVariant) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -258,7 +259,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Setter for font weight of text.
      */
     public func fontWeight(weight: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -266,7 +267,7 @@ In case of Stage in Suspended state or unbound element - null is returned.
      * Gets element bounds in absolute coordinates (root element coordinate system).
      */
     public func getAbsoluteBounds() -> anychart.graphics.math.Rect {
-        return anychart.graphics.math.Rect(jsChart: jsBase + ".getAbsoluteBounds()")
+        return anychart.graphics.math.Rect(jsBase: jsBase + ".getAbsoluteBounds()")
     }
     /**
      * Returns height within root bounds.<br/>
@@ -297,7 +298,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Returns the bounds.
      */
     public func getBounds() -> anychart.graphics.math.Rect {
-        return anychart.graphics.math.Rect(jsChart: jsBase + ".getBounds()")
+        return anychart.graphics.math.Rect(jsBase: jsBase + ".getBounds()")
     }
     /**
      * Returns the height.
@@ -315,7 +316,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Stage object (to which the given element is bound).
      */
     public func getStage() -> anychart.graphics.vector.Stage {
-        return anychart.graphics.vector.Stage(jsChart: jsBase + ".getStage()")
+        return anychart.graphics.vector.Stage(jsBase: jsBase + ".getStage()")
     }
     /**
      * Returns the current transformation matrix.
@@ -351,7 +352,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Setter for horizontal align of text.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -372,7 +373,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Sets a height.
      */
     public func height(height: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -386,7 +387,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Setter for the HTML format.
      */
     public func htmlText(value: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".htmlText(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).htmlText()")
 
         return self
     }
@@ -400,7 +401,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Sets the element identifier.
      */
     public func id(id: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".id(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).id()")
 
         return self
     }
@@ -414,7 +415,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Setter for letter spacing of text.
      */
     public func letterSpacing(spacing: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -428,7 +429,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Sets line height, either as ratio or in pixels.
      */
     public func lineHeight(height: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -442,7 +443,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Setter for text opacity.
      */
     public func opacity(opacity: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".opacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).opacity()")
 
         return self
     }
@@ -450,13 +451,13 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Returns the parent layer.
      */
     public func parent() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".parent()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".parent()")
     }
     /**
      * Adds element to the given layer.
      */
     public func parent(parent: anychart.graphics.vector.Layer) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parent(%s);", (parent != nil) ? parent.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parent()")
 
         return self
     }
@@ -464,13 +465,13 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Getter for the path element.
      */
     public func path() -> anychart.graphics.vector.Path {
-        return anychart.graphics.vector.Path(jsChart: jsBase + ".path()")
+        return anychart.graphics.vector.Path(jsBase: jsBase + ".path()")
     }
     /**
      * Setter for the path element.
      */
     public func path(path: anychart.graphics.vector.Path) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".path(%s);", (path != nil) ? path.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).path()")
 
         return self
     }
@@ -486,13 +487,13 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Removes all listeners from this listenable.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Rotates a shape around the given rotation point.
      */
     public func rotate(degrees: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rotate(%s, %s, %s);", degrees, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rotate()")
 
         return self
     }
@@ -500,7 +501,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Rotates a shape around the given anchor.
      */
     public func rotateByAnchor(degrees: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rotateByAnchor(%s, %s);", degrees, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rotateByAnchor()")
 
         return self
     }
@@ -508,7 +509,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Scales a shape. Scaling center is set in the coordinate system of the parent.
      */
     public func scale(sx: Double, sy: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s, %s, %s, %s);", sx, sy, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -516,7 +517,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
      * Scales a shape by anchor. Scaling center is set as an anchor.
      */
     public func scaleByAnchor(sx: Double, sy: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scaleByAnchor(%s, %s, %s);", sx, sy, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scaleByAnchor()")
 
         return self
     }
@@ -531,7 +532,7 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
 Defines whether text can be selected. If <b>false</b> - no selection.
      */
     public func selectable(enabled: Bool) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -539,7 +540,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
      * Sets top left corner of a shape (transformation taken into account) in the coordinate system of the parent.
      */
     public func setPosition(x: Double, y: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setPosition(%s, %s);", x, y))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setPosition()")
 
         return self
     }
@@ -547,7 +548,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
      * Rotates a shape around the given point.
      */
     public func setRotation(degrees: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setRotation(%s, %s, %s);", degrees, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setRotation()")
 
         return self
     }
@@ -555,7 +556,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
      * Rotates a shape around the given anchor.
      */
     public func setRotationByAnchor(degrees: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setRotationByAnchor(%s, %s);", degrees, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setRotationByAnchor()")
 
         return self
     }
@@ -563,7 +564,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
      * Sets the transformation matrix.
      */
     public func setTransformationMatrix(m00: Double, m10: Double, m01: Double, m11: Double, m02: Double, m12: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setTransformationMatrix(%s, %s, %s, %s, %s, %s);", m00, m10, m01, m11, m02, m12))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setTransformationMatrix()")
 
         return self
     }
@@ -583,7 +584,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
      * Setter for the text.
      */
     public func text(text: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".text(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).text()")
 
         return self
     }
@@ -598,7 +599,7 @@ Defines whether text can be selected. If <b>false</b> - no selection.
 The text-indent property specifies the indentation of the first line in a text-block.
      */
     public func textIndent(indent: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -612,7 +613,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Setter for the text overflow mode.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -626,7 +627,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Setter for the element title value.
      */
     public func title(value: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -634,7 +635,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Moves a shape taking an account the current transformation.
      */
     public func translate(tx: Double, ty: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".translate(%s, %s);", tx, ty))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).translate()")
 
         return self
     }
@@ -648,7 +649,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Setter for vertical align of text.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -662,7 +663,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Hides or shows an element.
      */
     public func visible(isVisible: Bool) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".visible(%s);", isVisible))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).visible()")
 
         return self
     }
@@ -677,7 +678,7 @@ The text-indent property specifies the indentation of the first line in a text-b
      * Sets a width.
      */
     public func width(width: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -692,7 +693,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-break.asp'>Word-
      * Setter for word break of text.
      */
     public func wordBreak(value: String) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -707,7 +708,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-break.asp'>Word-
 More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-wrap Property</a>
      */
     public func wordWrap(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Getter for the X coordinate of text.
@@ -719,7 +720,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-w
      * Setter for X coordinate of text.
      */
     public func x(xCoord: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".x(%s);", xCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).x()")
 
         return self
     }
@@ -733,7 +734,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-w
      * Setter for Y coordinate of text.
      */
     public func y(yCoord: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".y(%s);", yCoord))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).y()")
 
         return self
     }
@@ -747,7 +748,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-w
      * Sets the element's zIndex.
      */
     public func zIndex(value: Double) -> anychart.graphics.vector.Text {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", value))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -755,7 +756,7 @@ More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-w
      * Removes an event listener which was added with listen() by the key returned by listen().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

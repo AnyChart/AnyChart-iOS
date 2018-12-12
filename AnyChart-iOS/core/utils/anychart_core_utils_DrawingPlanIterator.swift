@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class DrawingPlanIterator: JsObject {
+    public class DrawingPlanIterator: anychart.data.Iterator {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> DrawingPlanIterator {
-            return DrawingPlanIterator(jsChart: "new anychart.core.utils.DrawingPlanIterator()")
+        public override init() {
+            //return DrawingPlanIterator(jsBase: "new anychart.core.utils.DrawingPlanIterator()")
+            super.init(jsBase: "new anychart.core.utils.DrawingPlanIterator()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "drawingPlanIterator\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "drawingPlanIterator\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Gets the value from the current row by the field name.
      */
     public func get(fieldName: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: fieldName)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: fieldName)))")
     }
     /**
      * Returns the index of the item to which iterator points to.
@@ -57,13 +58,13 @@
      * Gets the metadata value by the field name.
      */
     public func meta(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".meta(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).meta(\(JsObject.wrapQuotes(value: name)))")
     }
     /**
      * Sets metadata value by the field name.
      */
     public func meta(name: String, value: String) -> anychart.core.utils.DrawingPlanIterator {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".meta(%s, %s);", JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).meta()")
 
         return self
     }
@@ -79,7 +80,7 @@
      * Sets a passed index as the current index and returns it in case of success.
      */
     public func select(index: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".select(%s);", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).select(\(index))")
     }
 
     }

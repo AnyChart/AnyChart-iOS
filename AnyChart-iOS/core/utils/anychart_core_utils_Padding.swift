@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.utils {
-    public class Padding: JsObject {
+    public class Padding: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Padding {
-            return Padding(jsChart: "new anychart.core.utils.Padding()")
+        public override init() {
+            //return Padding(jsBase: "new anychart.core.utils.Padding()")
+            super.init(jsBase: "new anychart.core.utils.Padding()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "padding\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "padding\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -40,7 +41,7 @@ Returns previously set padding, not the derived pixel value.
      * Setter for the bottom space.
      */
     public func bottom(bottom: Double) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".bottom(%s);", bottom))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
 
         return self
     }
@@ -55,7 +56,7 @@ Returns previously set padding, not the derived pixel value.
      * Setter for the left space.
      */
     public func left(left: Double) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".left(%s);", left))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
 
         return self
     }
@@ -63,7 +64,7 @@ Returns previously set padding, not the derived pixel value.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the right space.<br/>
@@ -76,7 +77,7 @@ Returns previously set padding, not the derived pixel value.
      * Setter for the right space.
      */
     public func right(right: Double) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".right(%s);", right))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
 
         return self
     }
@@ -84,7 +85,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: String, value2: String, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -92,7 +93,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -100,7 +101,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -108,7 +109,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -116,7 +117,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -124,7 +125,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -132,7 +133,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -140,7 +141,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -148,7 +149,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: String, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -156,7 +157,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: String, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -164,7 +165,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: Double, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -172,7 +173,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [Double], value2: Double, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", value1.map{String($0)}.joined(separator: ","), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -180,7 +181,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [String], value2: String, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -188,7 +189,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [String], value2: String, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -196,7 +197,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [String], value2: Double, value3: String, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -204,7 +205,7 @@ Returns previously set padding, not the derived pixel value.
      * Sets all offsets.
      */
     public func set(value1: [String], value2: Double, value3: Double, value4: String) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s, %s, %s);", JsObject.arrayToStringWrapQuotes(array: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -219,7 +220,7 @@ Returns previously set padding, not the derived pixel value.
      * Setter for the top space.
      */
     public func top(top: Double) -> anychart.core.utils.Padding {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".top(%s);", top))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
 
         return self
     }
@@ -227,7 +228,7 @@ Returns previously set padding, not the derived pixel value.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

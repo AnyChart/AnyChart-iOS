@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.core.ui {
-    public class CircularLabelsFactory: JsObject {
+    public class CircularLabelsFactory: anychart.core.ui.LabelsFactory {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> CircularLabelsFactory {
-            return CircularLabelsFactory(jsChart: "new anychart.core.ui.CircularLabelsFactory()")
+        public override init() {
+            //return CircularLabelsFactory(jsBase: "new anychart.core.ui.CircularLabelsFactory()")
+            super.init(jsBase: "new anychart.core.ui.CircularLabelsFactory()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "circularLabelsFactory\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "circularLabelsFactory\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,7 +40,7 @@
      * Setter for the adjusting font size by two parameters width and height.
      */
     public func adjustFontSize(adjustByWidth: Bool, adjustByHeight: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s, %s);", adjustByWidth, adjustByHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -47,7 +48,7 @@
      * Setter for the adjusting font size by one parameter.
      */
     public func adjustFontSize(settings: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -55,7 +56,7 @@
      * Setter for the adjusting font size by one parameter.
      */
     public func adjustFontSize(settings: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".adjustFontSize(%s);", settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
 
         return self
     }
@@ -69,7 +70,7 @@
      * Setter for the labels anchor settings.
      */
     public func anchor(anchor: anychart.enums.Anchor) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".anchor(%s);", (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).anchor()")
 
         return self
     }
@@ -84,7 +85,7 @@
 Auto rotates the labels around an anchor.
      */
     public func autoRotate(enabled: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".autoRotate(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).autoRotate()")
 
         return self
     }
@@ -92,13 +93,13 @@ Auto rotates the labels around an anchor.
      * Getter for the labels background settings.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsChart: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
     }
     /**
      * Setter for the labels background settings.
      */
     public func background(settings: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".background(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
 
         return self
     }
@@ -112,7 +113,7 @@ Auto rotates the labels around an anchor.
      * Setter for the pointer events.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".disablePointerEvents(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
 
         return self
     }
@@ -126,7 +127,7 @@ Auto rotates the labels around an anchor.
      * Setter for the element enabled state.
      */
     public func enabled(enabled: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enabled(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
 
         return self
     }
@@ -141,7 +142,7 @@ Auto rotates the labels around an anchor.
 {@link https://www.w3schools.com/html/html_colors.asp}
      */
     public func fontColor(color: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontColor(%s);", JsObject.wrapQuotes(value: color)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
 
         return self
     }
@@ -155,7 +156,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text font decoration.
      */
     public func fontDecoration(value: anychart.graphics.vector.text.Decoration) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontDecoration(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
 
         return self
     }
@@ -169,7 +170,7 @@ Auto rotates the labels around an anchor.
      * Setter for the font family.
      */
     public func fontFamily(family: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontFamily(%s);", JsObject.wrapQuotes(value: family)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
 
         return self
     }
@@ -183,7 +184,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text font opacity. Double value from 0 to 1.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontOpacity(%s);", opacity))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
 
         return self
     }
@@ -197,7 +198,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text font size.
      */
     public func fontSize(size: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontSize(%s);", JsObject.wrapQuotes(value: size)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
 
         return self
     }
@@ -211,7 +212,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text font style.
      */
     public func fontStyle(style: anychart.graphics.vector.text.FontStyle) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontStyle(%s);", (style != nil) ? style.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
 
         return self
     }
@@ -225,7 +226,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text font variant.
      */
     public func fontVariant(value: anychart.graphics.vector.text.FontVariant) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontVariant(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
 
         return self
     }
@@ -240,7 +241,7 @@ Auto rotates the labels around an anchor.
 {@link https://www.w3schools.com/cssref/pr_font_weight.asp}
      */
     public func fontWeight(weight: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fontWeight(%s);", JsObject.wrapQuotes(value: weight)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
 
         return self
     }
@@ -254,7 +255,7 @@ Auto rotates the labels around an anchor.
      * Setter for the text horizontal align.
      */
     public func hAlign(align: anychart.graphics.vector.text.HAlign) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
 
         return self
     }
@@ -268,7 +269,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels height settings.
      */
     public func height(height: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -283,7 +284,7 @@ Auto rotates the labels around an anchor.
 {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func letterSpacing(spacing: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".letterSpacing(%s);", JsObject.wrapQuotes(value: spacing)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
 
         return self
     }
@@ -298,7 +299,7 @@ Auto rotates the labels around an anchor.
 {@link https://www.w3schools.com/cssref/pr_dim_line-height.asp}
      */
     public func lineHeight(height: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".lineHeight(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
 
         return self
     }
@@ -312,7 +313,7 @@ Auto rotates the labels around an anchor.
      * Setter for maximum font size settings for adjust text to.
      */
     public func maxFontSize(size: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize()")
 
         return self
     }
@@ -326,7 +327,7 @@ Auto rotates the labels around an anchor.
      * Setter for the minimum font size settings for adjust text from.
      */
     public func minFontSize(size: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".minFontSize(%s);", size))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize()")
 
         return self
     }
@@ -340,7 +341,7 @@ Auto rotates the labels around an anchor.
      * Setter for the labels offsetX settings.
      */
     public func offsetX(offset: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".offsetX(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetX()")
 
         return self
     }
@@ -354,7 +355,7 @@ Auto rotates the labels around an anchor.
      * Setter for the labels offsetY settings.
      */
     public func offsetY(offset: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".offsetY(%s);", offset))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetY()")
 
         return self
     }
@@ -362,13 +363,13 @@ Auto rotates the labels around an anchor.
      * Getter for labels padding settings.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsChart: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
     }
     /**
      * Setter for labels padding in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", padding.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -376,7 +377,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding in pixels using a single value.
      */
     public func padding(padding: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s);", JsObject.wrapQuotes(value: padding)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -384,7 +385,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -392,7 +393,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -400,7 +401,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -408,7 +409,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", JsObject.wrapQuotes(value: value1), value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -416,7 +417,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -424,7 +425,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, JsObject.wrapQuotes(value: value2), value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -432,7 +433,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, JsObject.wrapQuotes(value: value3), JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -440,7 +441,7 @@ Auto rotates the labels around an anchor.
      * Setter for labels padding settings in pixels using several value.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".padding(%s, %s, %s, %s);", value1, value2, value3, JsObject.wrapQuotes(value: value4)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
 
         return self
     }
@@ -456,7 +457,7 @@ The default value and the list of available values can be different depending on
 Find more information in the detailed description.
      */
     public func position(position: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".position(%s);", JsObject.wrapQuotes(value: position)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position()")
 
         return self
     }
@@ -470,7 +471,7 @@ Find more information in the detailed description.
      * Setter for the labels position formatter function.
      */
     public func positionFormatter(formatter: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".positionFormatter(%s);", JsObject.wrapQuotes(value: formatter)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).positionFormatter()")
 
         return self
     }
@@ -478,13 +479,13 @@ Find more information in the detailed description.
      * Prints all elements on related stage.
      */
     public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", (paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null", landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the rotation angle around an anchor.
@@ -496,7 +497,7 @@ Find more information in the detailed description.
      * Setter for the rotation angle around an anchor.
      */
     public func rotation(angle: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rotation(%s);", angle))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rotation()")
 
         return self
     }
@@ -510,7 +511,7 @@ Find more information in the detailed description.
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".selectable(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
 
         return self
     }
@@ -524,7 +525,7 @@ Find more information in the detailed description.
      * Setter for the text direction.
      */
     public func textDirection(direction: anychart.graphics.vector.text.Direction) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textDirection(%s);", (direction != nil) ? direction.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
 
         return self
     }
@@ -538,7 +539,7 @@ Find more information in the detailed description.
      * Setter for the text indent.
      */
     public func textIndent(indent: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textIndent(%s);", indent))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
 
         return self
     }
@@ -552,7 +553,7 @@ Find more information in the detailed description.
      * Setter for the text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textOverflow(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
 
         return self
     }
@@ -566,13 +567,13 @@ Find more information in the detailed description.
      * Getter for all text appearance settings.
      */
     public func textSettings(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s);", JsObject.wrapQuotes(value: name)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings(\(JsObject.wrapQuotes(value: name)))")
     }
     /**
      * Setter for text appearance settings.
      */
     public func textSettings(objectWithSettings: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s);", JsObject.wrapQuotes(value: objectWithSettings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -580,7 +581,7 @@ Find more information in the detailed description.
      * Setter for the text appearance settings.
      */
     public func textSettings(name: String, settings: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -588,7 +589,7 @@ Find more information in the detailed description.
      * Setter for the text appearance settings.
      */
     public func textSettings(name: String, settings: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".textSettings(%s, %s);", JsObject.wrapQuotes(value: name), settings))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textSettings()")
 
         return self
     }
@@ -596,7 +597,7 @@ Find more information in the detailed description.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHTML flag.
@@ -608,7 +609,7 @@ Find more information in the detailed description.
      * Setter for flag useHTML.
      */
     public func useHtml(enabled: Bool) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".useHtml(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
 
         return self
     }
@@ -622,7 +623,7 @@ Find more information in the detailed description.
      * Setter for the text vertical align.
      */
     public func vAlign(align: anychart.graphics.vector.text.VAlign) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".vAlign(%s);", (align != nil) ? align.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
 
         return self
     }
@@ -636,7 +637,7 @@ Find more information in the detailed description.
      * Setter for labels width settings.
      */
     public func width(width: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", width))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
 
         return self
     }
@@ -650,7 +651,7 @@ Find more information in the detailed description.
      * Setter for the word-break mode.
      */
     public func wordBreak(mode: anychart.enums.WordBreak) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordBreak(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
 
         return self
     }
@@ -664,7 +665,7 @@ Find more information in the detailed description.
      * Setter for the word-wrap mode.
      */
     public func wordWrap(mode: anychart.enums.WordWrap) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".wordWrap(%s);", (mode != nil) ? mode.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
 
         return self
     }
@@ -678,7 +679,7 @@ Find more information in the detailed description.
      * Setter for the Z-index of the element.
      */
     public func zIndex(zIndex: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".zIndex(%s);", zIndex))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
 
         return self
     }
@@ -692,7 +693,7 @@ Find more information in the detailed description.
      * Getter for connector stroke settings.
      */
     public func connectorStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s, %s, %s, %s, %s);", (color != nil) ? color.getJsBase() : "null", thickness, JsObject.wrapQuotes(value: dashpattern), (lineJoin != nil) ? lineJoin.getJsBase() : "null", (lineCap != nil) ? lineCap.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -700,7 +701,7 @@ Find more information in the detailed description.
      * Setter for connector stroke using an object.
      */
     public func connectorStroke(settings: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".connectorStroke(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorStroke()")
 
         return self
     }
@@ -715,7 +716,7 @@ Find more information in the detailed description.
 {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
      */
     public func format(token: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".format(%s);", JsObject.wrapQuotes(value: token)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).format()")
 
         return self
     }
@@ -724,7 +725,7 @@ Find more information in the detailed description.
 {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
      */
     public func format(function: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".format(%s);", JsObject.wrapQuotes(value: function)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).format()")
 
         return self
     }
@@ -732,7 +733,7 @@ Find more information in the detailed description.
      * Returns label by index.
      */
     public func getLabel(index: Double) -> anychart.core.ui.labelsfactory.Label {
-        return anychart.core.ui.labelsfactory.Label(jsChart: String(format: jsBase + ".getLabel(%s)", index))
+        return anychart.core.ui.labelsfactory.Label(jsBase: "\(self.jsBase).getLabel(\(index))")
     }
     /**
      * Gets labels count.
@@ -744,13 +745,13 @@ Find more information in the detailed description.
      * Getter for the container.
      */
     public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".container()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
     }
     /**
      * Setter for the container.
      */
     public func container(element: anychart.graphics.vector.Layer) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -758,7 +759,7 @@ Find more information in the detailed description.
      * Setter for the container.
      */
     public func container(element: String) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -767,14 +768,14 @@ Find more information in the detailed description.
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsChart: jsBase + ".parentBounds()")
+        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
     }
     /**
      * Setter for the parent bounds using single value.<br>
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", (bounds != nil) ? bounds.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -783,7 +784,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(bounds: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s);", bounds))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }
@@ -792,7 +793,7 @@ Bounds that would be used in case of percent size calculations. Expects pixel va
 Bounds that would be used in case of percent size calculations. Expects pixel values only.
      */
     public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.ui.CircularLabelsFactory {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".parentBounds(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
 
         return self
     }

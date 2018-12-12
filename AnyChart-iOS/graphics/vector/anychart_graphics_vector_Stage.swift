@@ -6,22 +6,23 @@
  extension anychart.graphics.vector {
     public class Stage: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Stage {
-            return Stage(jsChart: "new anychart.graphics.vector.Stage()")
+        public override init() {
+            //return Stage(jsBase: "new anychart.graphics.vector.Stage()")
+            super.init(jsBase: "new anychart.graphics.vector.Stage()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "stage\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "stage\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -34,7 +35,7 @@
 Similar to {@link anychart.graphics.vector.Layer#addChild}
      */
     public func addChild(element: anychart.graphics.vector.Element) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addChild(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addChild()")
 
         return self
     }
@@ -43,7 +44,7 @@ Similar to {@link anychart.graphics.vector.Layer#addChild}
 Similar to {@link anychart.graphics.vector.Layer#addChildAt}
      */
     public func addChildAt(element: anychart.graphics.vector.Element, index: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addChildAt(%s, %s);", (element != nil) ? element.getJsBase() : "null", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addChildAt()")
 
         return self
     }
@@ -53,7 +54,7 @@ Combination is done by multiplying matrix to the right.<br/>
 Read more at: {@link anychart.graphics.vector.Element#appendTransformationMatrix}.
      */
     public func appendTransformationMatrix(m00: Double, m10: Double, m01: Double, m11: Double, m02: Double, m12: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".appendTransformationMatrix(%s, %s, %s, %s, %s, %s);", m00, m10, m01, m11, m02, m12))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).appendTransformationMatrix()")
 
         return self
     }
@@ -67,7 +68,7 @@ Read more at: {@link anychart.graphics.vector.Element#appendTransformationMatrix
      * Setter for the stage rendering mode.
      */
     public func asyncMode(async: Bool) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".asyncMode(%s);", async))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).asyncMode()")
 
         return self
     }
@@ -78,7 +79,7 @@ You must delete them yourself after you finish using them.<br/>
 Read more at: {@link anychart.graphics.vector.Circle}
      */
     public func circle(cx: Double, cy: Double, radius: Double) -> anychart.graphics.vector.Circle {
-        return anychart.graphics.vector.Circle(jsChart: String(format: jsBase + ".circle(%s, %s, %s)", cx, cy, radius))
+        return anychart.graphics.vector.Circle(jsBase: "\(self.jsBase).circle(\(cx), \(cy), \(radius))")
     }
     /**
      * Gets clip bounds.<br/>
@@ -86,7 +87,7 @@ Works only after render() is invoked.<br/>
 Read more at: {@link anychart.graphics.vector.Element#clip}.
      */
     public func clip() -> anychart.graphics.math.Rect {
-        return anychart.graphics.math.Rect(jsChart: jsBase + ".clip()")
+        return anychart.graphics.math.Rect(jsBase: jsBase + ".clip()")
     }
     /**
      * Clips a stage.<br/>
@@ -94,7 +95,7 @@ Works only after render() is invoked.<br/>
 Read more at: {@link anychart.graphics.vector.Element#clip}.
      */
     public func clip(rect: anychart.graphics.math.Rect) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".clip(%s);", (rect != nil) ? rect.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).clip()")
 
         return self
     }
@@ -108,32 +109,32 @@ Read more at: {@link anychart.graphics.vector.Element#clip}.
      * Creates a clip element using single value.
      */
     public func createClip(rect: [Double]) -> anychart.graphics.vector.Clip {
-        return anychart.graphics.vector.Clip(jsChart: String(format: jsBase + ".createClip(%s)", rect.map{String($0)}.joined(separator: ",")))
+        return anychart.graphics.vector.Clip(jsBase: "\(self.jsBase).createClip(\(rect.map{String($0)}.joined(separator: ",")))")
     }
     /**
      * Creates a clip element using single value.
      */
     public func createClip(rect: String) -> anychart.graphics.vector.Clip {
-        return anychart.graphics.vector.Clip(jsChart: String(format: jsBase + ".createClip(%s)", JsObject.wrapQuotes(value: rect)))
+        return anychart.graphics.vector.Clip(jsBase: "\(self.jsBase).createClip(\(JsObject.wrapQuotes(value: rect)))")
     }
     /**
      * Creates a clip element using several value.
      */
     public func createClip(left: Double, top: Double, width: Double, height: Double) -> anychart.graphics.vector.Clip {
-        return anychart.graphics.vector.Clip(jsChart: String(format: jsBase + ".createClip(%s, %s, %s, %s)", left, top, width, height))
+        return anychart.graphics.vector.Clip(jsBase: "\(self.jsBase).createClip(\(left), \(top), \(width), \(height))")
     }
     /**
      * Getter for stage credits.
      */
     public func credits() -> anychart.core.ui.StageCredits {
-        return anychart.core.ui.StageCredits(jsChart: jsBase + ".credits()")
+        return anychart.core.ui.StageCredits(jsBase: jsBase + ".credits()")
     }
     /**
      * Setter for stage credits.
 {docs:Quick_Start/Credits}Learn more about credits settings.{docs}
      */
     public func credits(settings: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".credits(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).credits()")
 
         return self
     }
@@ -145,23 +146,10 @@ Read more at {@link anychart.graphics.vector.primitives#cross}
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".cross();")
     }
     /**
-     * Returns stage JSON. Serializes stage and all its object to JSON.
+     * 
      */
-    public func data()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".data();")
-    }
-    /**
-     * Deserialize JSON. Objects are created and rendered to the current stage.<br/>
-<b>Note:</b> All settings except events and handlers are serialized. JSON object
-must be conformed with JSON schema (can be found in the project root). No checks are done
-when we deserialize - JSON schema does this. JSON schema is created in
-<a href='https://tools.ietf.org/html/draft-zyp-json-schema-04'>4-th version of standard</a>
-<a href='http://json-schema.org/'>JSON schema</a>.
-     */
-    public func data(settings: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".data(%s);", JsObject.wrapQuotes(value: settings)))
-
-        return self
+    public func data(data: [DataEntry])  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the element description value.
@@ -173,7 +161,7 @@ when we deserialize - JSON schema does this. JSON schema is created in
      * Setter for the element desc value.
      */
     public func desc(text: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".desc(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).desc()")
 
         return self
     }
@@ -218,7 +206,7 @@ You must delete them yourself after you finish using them.<br/>
 Read more at: {@link anychart.graphics.vector.Ellipse}
      */
     public func ellipse(cx: Double, cy: Double, rx: Double, ry: Double) -> anychart.graphics.vector.Ellipse {
-        return anychart.graphics.vector.Ellipse(jsChart: String(format: jsBase + ".ellipse(%s, %s, %s, %s)", cx, cy, rx, ry))
+        return anychart.graphics.vector.Ellipse(jsBase: "\(self.jsBase).ellipse(\(cx), \(cy), \(rx), \(ry))")
     }
     /**
      * Getter for the fullscreen mode.
@@ -230,7 +218,7 @@ Read more at: {@link anychart.graphics.vector.Ellipse}
      * Setter for the fullscreen mode.
      */
     public func fullScreen(enabled: Bool) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".fullScreen(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fullScreen()")
 
         return self
     }
@@ -238,14 +226,14 @@ Read more at: {@link anychart.graphics.vector.Ellipse}
      * Returns bounds.
      */
     public func getBounds() -> anychart.graphics.math.Rect {
-        return anychart.graphics.math.Rect(jsChart: jsBase + ".getBounds()")
+        return anychart.graphics.math.Rect(jsBase: jsBase + ".getBounds()")
     }
     /**
      * Returns an element by index.<br/>
 Similar to {@link anychart.graphics.vector.Layer#getChildAt}
      */
     public func getChildAt(index: Double) -> anychart.graphics.vector.Element {
-        return anychart.graphics.vector.Element(jsChart: String(format: jsBase + ".getChildAt(%s)", index))
+        return anychart.graphics.vector.Element(jsBase: "\(self.jsBase).getChildAt(\(index))")
     }
     /**
      * Returns stage container element.
@@ -312,7 +300,7 @@ Read more at {@link anychart.graphics.vector.primitives#hLine}
 Similar to {@link anychart.graphics.vector.Layer#hasChild}
      */
     public func hasChild(element: anychart.graphics.vector.Element)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hasChild(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hasChild(\((element != nil) ? element.getJsBase() : "null"))")
     }
     /**
      * Invokes {@link anychart.graphics.vector.HatchFill} constructor.
@@ -321,7 +309,7 @@ You have to delete them yourself after you finish using them.<br/>
 Read more at: {@link anychart.graphics.vector.HatchFill}
      */
     public func hatchFill(type: anychart.graphics.vector.hatchfill.HatchFillType, color: String, thickness: Double, size: Double) -> anychart.graphics.vector.HatchFill {
-        return anychart.graphics.vector.HatchFill(jsChart: String(format: jsBase + ".hatchFill(%s, %s, %s, %s)", (type != nil) ? type.getJsBase() : "null", JsObject.wrapQuotes(value: color), thickness, size))
+        return anychart.graphics.vector.HatchFill(jsBase: "\(self.jsBase).hatchFill(\((type != nil) ? type.getJsBase() : "null"), \(JsObject.wrapQuotes(value: color)), \(thickness), \(size))")
     }
     /**
      * Getter for the stage height.
@@ -333,7 +321,7 @@ Read more at: {@link anychart.graphics.vector.HatchFill}
      * Setter for a stage height.
      */
     public func height(height: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".height(%s);", JsObject.wrapQuotes(value: height)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
 
         return self
     }
@@ -348,7 +336,7 @@ If it was not set, than it will be generated.
      * Setter for a stage identifier. Instantly applied to the DOM.
      */
     public func id(id: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".id(%s);", JsObject.wrapQuotes(value: id)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).id()")
 
         return self
     }
@@ -358,14 +346,14 @@ If it was not set, than it will be generated.
 You must delete them yourself after you finish using them.
      */
     public func image(src: String, x: Double, y: Double, width: Double, height: Double) -> anychart.graphics.vector.Image {
-        return anychart.graphics.vector.Image(jsChart: String(format: jsBase + ".image(%s, %s, %s, %s, %s)", JsObject.wrapQuotes(value: src), x, y, width, height))
+        return anychart.graphics.vector.Image(jsBase: "\(self.jsBase).image(\(JsObject.wrapQuotes(value: src)), \(x), \(y), \(width), \(height))")
     }
     /**
      * Returns index of a child.<br/>
 Similar to {@link anychart.graphics.vector.Layer#indexOfChild}
      */
     public func indexOfChild(element: anychart.graphics.vector.Element)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".indexOfChild(%s);", (element != nil) ? element.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((element != nil) ? element.getJsBase() : "null"))")
     }
     /**
      * Whether the context menu available in the browser or not.
@@ -391,7 +379,7 @@ Similar to {@link anychart.graphics.vector.Layer#indexOfChild}
 You must delete them yourself after you finish using them.
      */
     public func layer() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsChart: jsBase + ".layer()")
+        return anychart.graphics.vector.Layer(jsBase: jsBase + ".layer()")
     }
     /**
      * Getter for max delay.
@@ -403,7 +391,7 @@ You must delete them yourself after you finish using them.
      * Setter for max delay.
      */
     public func maxResizeDelay(delay: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxResizeDelay(%s);", delay))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxResizeDelay()")
 
         return self
     }
@@ -429,7 +417,7 @@ You must delete them yourself after you finish using them.<br/>
 Read more at Path: {@link anychart.graphics.vector.Path}
      */
     public func path() -> anychart.graphics.vector.Path {
-        return anychart.graphics.vector.Path(jsChart: jsBase + ".path()")
+        return anychart.graphics.vector.Path(jsBase: jsBase + ".path()")
     }
     /**
      * Invokes {@link anychart.graphics.vector.PatternFill}.<br/>
@@ -438,7 +426,7 @@ You must delete them yourself after you finish using them.<br/>
 Read more at: {@link anychart.graphics.vector.PatternFill}
      */
     public func pattern(bounds: anychart.graphics.math.Rect) -> anychart.graphics.vector.PatternFill {
-        return anychart.graphics.vector.PatternFill(jsChart: String(format: jsBase + ".pattern(%s)", (bounds != nil) ? bounds.getJsBase() : "null"))
+        return anychart.graphics.vector.PatternFill(jsBase: "\(self.jsBase).pattern(\((bounds != nil) ? bounds.getJsBase() : "null"))")
     }
     /**
      * Draws arc as pie chart element.<br/>
@@ -451,13 +439,13 @@ Read more at {@link anychart.graphics.vector.primitives#pie}
      * Print stage.
      */
     public func print(paperSizeOrWidth: String, landscapeOrHeight: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", JsObject.wrapQuotes(value: paperSizeOrWidth), landscapeOrHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\(JsObject.wrapQuotes(value: paperSizeOrWidth)), \(landscapeOrHeight))")
     }
     /**
      * Print stage.
      */
     public func print(paperSizeOrWidth: Double, landscapeOrHeight: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".print(%s, %s);", paperSizeOrWidth, landscapeOrHeight))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\(paperSizeOrWidth), \(landscapeOrHeight))")
     }
     /**
      * Invokes {@link anychart.graphics.vector.Rect} constructor.<br/>
@@ -465,7 +453,7 @@ Read more at {@link anychart.graphics.vector.primitives#pie}
 You must delete them yourself after you finish using them.
      */
     public func rect(x: Double, y: Double, width: Double, height: Double) -> anychart.graphics.vector.Rect {
-        return anychart.graphics.vector.Rect(jsChart: String(format: jsBase + ".rect(%s, %s, %s, %s)", x, y, width, height))
+        return anychart.graphics.vector.Rect(jsBase: "\(self.jsBase).rect(\(x), \(y), \(width), \(height))")
     }
     /**
      * Removes everything.
@@ -479,21 +467,21 @@ You must delete them yourself after you finish using them.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes an element.<br/>
 Similar to {@link anychart.graphics.vector.Layer#removeChild}
      */
     public func removeChild(element: anychart.graphics.vector.Element) -> anychart.graphics.vector.Element {
-        return anychart.graphics.vector.Element(jsChart: String(format: jsBase + ".removeChild(%s)", (element != nil) ? element.getJsBase() : "null"))
+        return anychart.graphics.vector.Element(jsBase: "\(self.jsBase).removeChild(\((element != nil) ? element.getJsBase() : "null"))")
     }
     /**
      * Removes an element by index.<br/>
 Similar to {@link anychart.graphics.vector.Layer#removeChildAt}
      */
     public func removeChildAt(index: Double) -> anychart.graphics.vector.Element {
-        return anychart.graphics.vector.Element(jsChart: String(format: jsBase + ".removeChildAt(%s)", index))
+        return anychart.graphics.vector.Element(jsBase: "\(self.jsBase).removeChildAt(\(index))")
     }
     /**
      * Removes all elements.<br/>
@@ -507,21 +495,21 @@ Similar to {@link anychart.graphics.vector.Layer#removeChildren}
 So any part that doesn't fit will be clipped.
      */
     public func resize(width: Double, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".resize(%s, %s);", width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).resize(\(width), \(height))")
     }
     /**
      * Stage resize. Anything drawn on stage must fit in it.
 So any part that doesn't fit will be clipped.
      */
     public func resize(width: String, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".resize(%s, %s);", JsObject.wrapQuotes(value: width), height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).resize(\(JsObject.wrapQuotes(value: width)), \(height))")
     }
     /**
      * Removes suspend state and applies all changes in sync (if any).<br/>
 Read more at {@link anychart.graphics.vector.Stage#suspend}.
      */
     public func resume(force: Bool) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".resume(%s);", force))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).resume()")
 
         return self
     }
@@ -530,7 +518,7 @@ Read more at {@link anychart.graphics.vector.Stage#suspend}.
 Read more at: {@link anychart.graphics.vector.Element#rotate}.
      */
     public func rotate(degrees: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rotate(%s, %s, %s);", degrees, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rotate()")
 
         return self
     }
@@ -539,7 +527,7 @@ Read more at: {@link anychart.graphics.vector.Element#rotate}.
 Read more at: {@link anychart.graphics.vector.Element#rotateByAnchor}.
      */
     public func rotateByAnchor(degrees: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".rotateByAnchor(%s, %s);", degrees, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rotateByAnchor()")
 
         return self
     }
@@ -548,42 +536,42 @@ Read more at: {@link anychart.graphics.vector.Element#rotateByAnchor}.
 For export to image JPG use {@link anychart.graphics#server}.
      */
     public func saveAsJpg(width: Double, height: Double, quality: Double, forceTransparentWhite: Bool, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsJpg(%s, %s, %s, %s, %s);", width, height, quality, forceTransparentWhite, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsJpg(\(width), \(height), \(quality), \(forceTransparentWhite), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the current stage as PDF Document.<br/>
 For export to PDF file use {@link anychart.graphics#server}.
      */
     public func saveAsPdf(paperSize: String, landscape: Bool, x: Double, y: Double, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsPdf(%s, %s, %s, %s, %s);", JsObject.wrapQuotes(value: paperSize), landscape, x, y, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsPdf(\(JsObject.wrapQuotes(value: paperSize)), \(landscape), \(x), \(y), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the current stage as PNG Image.<br/>
 For export to image PNG use {@link anychart.graphics#server}.
      */
     public func saveAsPng(width: Double, height: Double, quality: Double, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsPng(%s, %s, %s, %s);", width, height, quality, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsPng(\(width), \(height), \(quality), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the stage as SVG Image.<br/>
 For export to SVG use {@link anychart.graphics#server}.
      */
     public func saveAsSvg(paperSize: String, landscape: Bool, filename: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsSvg(%s, %s, %s);", JsObject.wrapQuotes(value: paperSize), landscape, JsObject.wrapQuotes(value: filename)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsSvg(\(JsObject.wrapQuotes(value: paperSize)), \(landscape), \(JsObject.wrapQuotes(value: filename)))")
     }
     /**
      * Saves the stage as SVG Image using width and height.<br/>
 For export to SVG use {@link anychart.graphics#server}.
      */
     public func saveAsSvg(width: Double, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".saveAsSvg(%s, %s);", width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).saveAsSvg(\(width), \(height))")
     }
     /**
      * Scales root layer in parent coordinates system. Scaling center is set in the parent system too.<br/>
 Read more at: {@link anychart.graphics.vector.Element#scale}.
      */
     public func scale(sx: Double, sy: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scale(%s, %s, %s, %s);", sx, sy, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scale()")
 
         return self
     }
@@ -592,7 +580,7 @@ Read more at: {@link anychart.graphics.vector.Element#scale}.
 Read more at: {@link anychart.graphics.vector.Element#scaleByAnchor}.
      */
     public func scaleByAnchor(sx: Double, sy: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".scaleByAnchor(%s, %s, %s);", sx, sy, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).scaleByAnchor()")
 
         return self
     }
@@ -601,7 +589,7 @@ Read more at: {@link anychart.graphics.vector.Element#scaleByAnchor}.
 Read more at: {@link anychart.graphics.vector.Element#setPosition}.
      */
     public func setPosition(x: Double, y: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setPosition(%s, %s);", x, y))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setPosition()")
 
         return self
     }
@@ -610,7 +598,7 @@ Read more at: {@link anychart.graphics.vector.Element#setPosition}.
 Read more at: {@link anychart.graphics.vector.Element#setRotation}.
      */
     public func setRotation(degrees: Double, cx: Double, cy: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setRotation(%s, %s, %s);", degrees, cx, cy))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setRotation()")
 
         return self
     }
@@ -619,7 +607,7 @@ Read more at: {@link anychart.graphics.vector.Element#setRotation}.
 Read more at: {@link anychart.graphics.vector.Element#setRotationByAnchor}.
      */
     public func setRotationByAnchor(degrees: Double, anchor: anychart.graphics.vector.Anchor) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setRotationByAnchor(%s, %s);", degrees, (anchor != nil) ? anchor.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setRotationByAnchor()")
 
         return self
     }
@@ -628,7 +616,7 @@ Read more at: {@link anychart.graphics.vector.Element#setRotationByAnchor}.
 Read more at: {@link anychart.graphics.vector.Element#setTransformationMatrix}.
      */
     public func setTransformationMatrix(m00: Double, m10: Double, m01: Double, m11: Double, m02: Double, m12: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setTransformationMatrix(%s, %s, %s, %s, %s, %s);", m00, m10, m01, m11, m02, m12))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setTransformationMatrix()")
 
         return self
     }
@@ -687,7 +675,7 @@ Read more at {@link anychart.graphics.vector.primitives#star7}
 Similar to {@link anychart.graphics.vector.Layer#swapChildren}
      */
     public func swapChildren(element1: anychart.graphics.vector.Element, element2: anychart.graphics.vector.Element) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".swapChildren(%s, %s);", (element1 != nil) ? element1.getJsBase() : "null", (element2 != nil) ? element2.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).swapChildren()")
 
         return self
     }
@@ -696,7 +684,7 @@ Similar to {@link anychart.graphics.vector.Layer#swapChildren}
 Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
      */
     public func swapChildrenAt(index1: Double, index2: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".swapChildrenAt(%s, %s);", index1, index2))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).swapChildrenAt()")
 
         return self
     }
@@ -710,7 +698,7 @@ Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
      * Setter for the element title value.
      */
     public func title(text: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".title(%s);", JsObject.wrapQuotes(value: text)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).title()")
 
         return self
     }
@@ -718,13 +706,13 @@ Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
      * Returns SVG string if type of content is SVG with parameters otherwise returns empty string.
      */
     public func toSvg(paperSize: String, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toSvg(%s, %s);", JsObject.wrapQuotes(value: paperSize), landscape))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toSvg(\(JsObject.wrapQuotes(value: paperSize)), \(landscape))")
     }
     /**
      * Returns SVG string if type of content is SVG with determined the width and height otherwise returns empty string.
      */
     public func toSvg(width: Double, height: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".toSvg(%s, %s);", width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toSvg(\(width), \(height))")
     }
     /**
      * Moves root layer taking transformation into account.<br/>
@@ -732,7 +720,7 @@ Movement happens in root layer coordinates.<br/>
 Read more at: {@link anychart.graphics.vector.Element#translate}.
      */
     public func translate(tx: Double, ty: Double) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".translate(%s, %s);", tx, ty))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).translate()")
 
         return self
     }
@@ -769,7 +757,7 @@ Read more at {@link anychart.graphics.vector.primitives#triangleUp}
 {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
@@ -788,7 +776,7 @@ Read more at {@link anychart.graphics.vector.primitives#vLine}
      * Shows or hides a stage.
      */
     public func visible(isVisible: Bool) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".visible(%s);", isVisible))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).visible()")
 
         return self
     }
@@ -802,7 +790,15 @@ Read more at {@link anychart.graphics.vector.primitives#vLine}
      * Setter for a stage width.
      */
     public func width(width: String) -> anychart.graphics.vector.Stage {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".width(%s);", JsObject.wrapQuotes(value: width)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func data(data: [DataEntry], fillMethod: anychart.enums.TreeFillingMethod) -> anychart.graphics.vector.Stage {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data()")
 
         return self
     }

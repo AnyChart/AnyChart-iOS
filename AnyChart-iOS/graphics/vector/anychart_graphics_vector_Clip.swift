@@ -6,22 +6,23 @@
  extension anychart.graphics.vector {
     public class Clip: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Clip {
-            return Clip(jsChart: "new anychart.graphics.vector.Clip()")
+        public override init() {
+            //return Clip(jsBase: "new anychart.graphics.vector.Clip()")
+            super.init(jsBase: "new anychart.graphics.vector.Clip()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "clip\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "clip\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -39,13 +40,13 @@
      * Getter for the shape of the clip.
      */
     public func shape() -> anychart.graphics.vector.Shape {
-        return anychart.graphics.vector.Shape(jsChart: jsBase + ".shape()")
+        return anychart.graphics.vector.Shape(jsBase: jsBase + ".shape()")
     }
     /**
      * Setter for the shape of the clip.
      */
     public func shape(shape: [Double]) -> anychart.graphics.vector.Clip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shape(%s);", shape.map{String($0)}.joined(separator: ",")))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shape()")
 
         return self
     }
@@ -53,7 +54,7 @@
      * Setter for the shape of the clip.
      */
     public func shape(shape: anychart.graphics.math.Rect) -> anychart.graphics.vector.Clip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shape(%s);", (shape != nil) ? shape.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shape()")
 
         return self
     }
@@ -61,7 +62,7 @@
      * Setter for the shape of the clip with coordinates.
      */
     public func shape(left: Double, top: Double, width: Double, height: Double) -> anychart.graphics.vector.Clip {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".shape(%s, %s, %s, %s);", left, top, width, height))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).shape()")
 
         return self
     }

@@ -6,22 +6,23 @@
  extension anychart.editor {
     public class Editor: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Editor {
-            return Editor(jsChart: "new anychart.editor.Editor()")
+        public override init() {
+            //return Editor(jsBase: "new anychart.editor.Editor()")
+            super.init(jsBase: "new anychart.editor.Editor()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "editor\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "editor\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -36,16 +37,13 @@
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func addClassName(className: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".addClassName(%s);", JsObject.wrapQuotes(value: className)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addClassName(\(JsObject.wrapQuotes(value: className)))")
     }
     /**
-     * Adds data to editor.<br/>
-<br>
-<i> To work with the Chart Editor you need to reference the extension file from AnyChart CDN (example for the versioned file:
-https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
+     * 
      */
-    public func data(data: [String])  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".data(%s);", JsObject.arrayToStringWrapQuotes(array: data)))
+    public func data(data: [DataEntry])  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Renders the Chart Editor as a modal dialog.<br/>
@@ -65,7 +63,7 @@ To set dialog visible or hidden use dialogVisible(boolean) method.<br/>
 (example for the versioned file: https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func dialogRender(className: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".dialogRender(%s);", JsObject.wrapQuotes(value: className)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dialogRender(\(JsObject.wrapQuotes(value: className)))")
     }
     /**
      * Getter for the visibility of the dialog box.<br/>
@@ -83,7 +81,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func dialogVisible(enabled: Bool) -> anychart.editor.Editor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".dialogVisible(%s);", enabled))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dialogVisible()")
 
         return self
     }
@@ -112,7 +110,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 (example for the versioned file: https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func getJavascript(outputOptions: anychart.editor.JavascriptOptions)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getJavascript(%s);", (outputOptions != nil) ? outputOptions.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getJavascript(\((outputOptions != nil) ? outputOptions.getJsBase() : "null"))")
     }
     /**
      * Returns the configured chart in the JSON representation.<br/>
@@ -139,7 +137,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func hide(hide: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".hide(%s);", hide))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hide(\(hide))")
     }
     /**
      * Sets anychart locale settings.<br>
@@ -148,7 +146,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func localization(settings: String) -> anychart.editor.Editor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".localization(%s);", JsObject.wrapQuotes(value: settings)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).localization()")
 
         return self
     }
@@ -159,7 +157,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes the given class name from the list of classes to be applied to the chart editor component root element.<br/>
@@ -168,7 +166,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func removeClassName(className: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeClassName(%s);", JsObject.wrapQuotes(value: className)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeClassName(\(JsObject.wrapQuotes(value: className)))")
     }
     /**
      * Shows chart editor component in DOM by removing 'display: none' style.<br/>
@@ -177,7 +175,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func show(show: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".show(%s);", show))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).show(\(show))")
     }
     /**
      * Getter for the step by its name.<br/>
@@ -186,7 +184,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func step(stepName: anychart.enums.EditorSteps) -> anychart.editor.Step {
-        return anychart.editor.Step(jsChart: String(format: jsBase + ".step(%s)", (stepName != nil) ? stepName.getJsBase() : "null"))
+        return anychart.editor.Step(jsBase: "\(self.jsBase).step(\((stepName != nil) ? stepName.getJsBase() : "null"))")
     }
     /**
      * Setter for the step settings.<br/>
@@ -197,7 +195,7 @@ Step is a screen of the chart editor.<br/>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func step(stepName: anychart.enums.EditorSteps, value: Bool) -> anychart.editor.Step {
-        return anychart.editor.Step(jsChart: String(format: jsBase + ".step(%s, %s)", (stepName != nil) ? stepName.getJsBase() : "null", value))
+        return anychart.editor.Step(jsBase: "\(self.jsBase).step(\((stepName != nil) ? stepName.getJsBase() : "null"), \(value))")
     }
     /**
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().<br/>
@@ -206,7 +204,7 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
 https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Returns the current chart editor version.<br>

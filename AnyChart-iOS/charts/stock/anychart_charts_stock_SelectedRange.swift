@@ -6,7 +6,7 @@ extension anychart.charts.stock {
         public init(firstSelected: Double, firstVisible: Double, lastSelected: Double, lastVisible: Double) {
             super.init()
 
-            js.append(String(format: "{firstSelected:%s, firstVisible: %s, lastSelected: %s, lastVisible: %s, } ", firstSelected, firstVisible, lastSelected, lastVisible))
+            js.append(String(format: "{firstSelected:%s, firstVisible: %s, lastSelected: %s, lastVisible: %s, } ", \(firstSelected), \(firstVisible), \(lastSelected), \(lastVisible)))
         }
 
     }

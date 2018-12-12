@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.scales {
-    public class OrdinalTicks: JsObject {
+    public class OrdinalTicks: anychart.core.Base {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> OrdinalTicks {
-            return OrdinalTicks(jsChart: "new anychart.scales.OrdinalTicks()")
+        public override init() {
+            //return OrdinalTicks(jsBase: "new anychart.scales.OrdinalTicks()")
+            super.init(jsBase: "new anychart.scales.OrdinalTicks()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "ordinalTicks\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "ordinalTicks\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -51,7 +52,7 @@
 Passed value is rounded and defaults to 1 in case of incorrect settings.
      */
     public func interval(interval: Double) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".interval(%s);", interval))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
 
         return self
     }
@@ -65,7 +66,7 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Setter for maximum ticks count.
      */
     public func maxCount(count: Double) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".maxCount(%s);", count))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxCount()")
 
         return self
     }
@@ -79,7 +80,7 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Setter for the tick names.
      */
     public func names(names: [String]) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".names(%s);", JsObject.arrayToStringWrapQuotes(array: names)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names()")
 
         return self
     }
@@ -87,13 +88,13 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
      */
     public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".removeAllListeners(%s);", JsObject.wrapQuotes(value: type)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Setups ticks as an explicit array of fixed ticks.
      */
     public func set(ticks: [String]) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s);", JsObject.arrayToStringWrapQuotes(array: ticks)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
 
         return self
     }
@@ -101,7 +102,7 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
      */
     public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".unlistenByKey(%s);", JsObject.wrapQuotes(value: key)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

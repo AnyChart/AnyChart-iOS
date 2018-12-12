@@ -6,22 +6,23 @@
  extension anychart.ui.toolbar {
     public class Toolbar: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> Toolbar {
-            return Toolbar(jsChart: "new anychart.ui.toolbar.Toolbar()")
+        public override init() {
+            //return Toolbar(jsBase: "new anychart.ui.toolbar.Toolbar()")
+            super.init(jsBase: "new anychart.ui.toolbar.Toolbar()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "toolbar\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "toolbar\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,7 +34,7 @@
      * 
      */
     public func container(element: String) -> anychart.ui.toolbar.Toolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".container(%s);", JsObject.wrapQuotes(value: element)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
 
         return self
     }
@@ -49,7 +50,7 @@
      * 
      */
     public func target(value: anychart.core.Chart) -> anychart.ui.toolbar.Toolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".target(%s);", (value != nil) ? value.getJsBase() : "null"))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).target()")
 
         return self
     }

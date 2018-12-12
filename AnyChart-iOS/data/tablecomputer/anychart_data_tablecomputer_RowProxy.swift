@@ -4,24 +4,25 @@
  * 
  */
  extension anychart.data.tablecomputer {
-    public class RowProxy: JsObject {
+    public class RowProxy: anychart.data.TableSelectable.RowProxy {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> RowProxy {
-            return RowProxy(jsChart: "new anychart.data.TableComputer.RowProxy()")
+        public override init() {
+            //return RowProxy(jsBase: "new anychart.data.TableComputer.RowProxy()")
+            super.init(jsBase: "new anychart.data.TableComputer.RowProxy()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "rowProxy\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "rowProxy\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,13 +34,13 @@
      * Returns current field values.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", JsObject.wrapQuotes(value: field)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
     }
     /**
      * Returns current column value.
      */
     public func getColumn(column: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".getColumn(%s);", column))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getColumn(\(column))")
     }
     /**
      * Returns index of the item in the selection that has created this item.
@@ -57,13 +58,13 @@
      * Sets field value by field name.
      */
     public func set(name: String, value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".set(%s, %s);", JsObject.wrapQuotes(value: name), JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set(\(JsObject.wrapQuotes(value: name)), \(JsObject.wrapQuotes(value: value)))")
     }
     /**
      * Sets value by column.
      */
     public func setColumn(index: Double, value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".setColumn(%s, %s);", index, JsObject.wrapQuotes(value: value)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).setColumn(\(index), \(JsObject.wrapQuotes(value: value)))")
     }
 
     }

@@ -6,22 +6,23 @@
  extension anychart.math {
     public class CycledQueue: JsObject {
 
-        override init() {
-            super.init()
-        }
+        //override init() {
+        //    super.init()
+        //}
 
-        public static func instantiate() -> CycledQueue {
-            return CycledQueue(jsChart: "new anychart.math.CycledQueue()")
+        public override init() {
+            //return CycledQueue(jsBase: "new anychart.math.CycledQueue()")
+            super.init(jsBase: "new anychart.math.CycledQueue()")
         }
 
         
 
-        public init(jsChart: String) {
+        public override init(jsBase: String) {
             super.init()
 
             JsObject.variableIndex += 1
-            jsBase = "cycledQueue\(JsObject.variableIndex)"
-            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + " = " + jsChart + ";")
+            self.jsBase = "cycledQueue\(JsObject.variableIndex)"
+            APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
         override public func getJsBase() -> String {
@@ -33,7 +34,7 @@
      * Clears the queue. You can optionally reset the queue length limit.
      */
     public func clear(newLengthLimit: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".clear(%s);", newLengthLimit))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).clear(\(newLengthLimit))")
     }
     /**
      * Removes the first item from the queue and returns it.
@@ -46,14 +47,14 @@
 If this call dequeued an item - returns it.
      */
     public func enqueue(item: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".enqueue(%s);", JsObject.wrapQuotes(value: item)))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enqueue(\(JsObject.wrapQuotes(value: item)))")
     }
     /**
      * Returns the queue item at the specified index.
 The index can be negative - that is interpreted as the index from the end of the queue.
      */
     public func get(index: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: String(format: jsBase + ".get(%s);", index))
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(index))")
     }
     /**
      * Returns current queue length.

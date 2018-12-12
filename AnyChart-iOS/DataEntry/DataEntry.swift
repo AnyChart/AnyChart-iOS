@@ -29,7 +29,7 @@ public class DataEntry {
             js.append("\(key): '\(value)',")
         }
         js.remove(at: js.index(before: js.endIndex))
-        js.append("},")
+        js.append("}")
         
         return js
     }

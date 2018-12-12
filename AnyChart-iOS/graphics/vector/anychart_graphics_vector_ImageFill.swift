@@ -6,12 +6,12 @@ extension anychart.graphics.vector {
         public init(mode: anychart.graphics.vector.ImageFillMode, opacity: Double, src: String) {
             super.init()
 
-            js.append(String(format: "{mode:%s, opacity: %s, src: %s, } ", (mode != nil) ? mode.getJsBase() : "null", opacity, JsObject.wrapQuotes(value: src)))
+            js.append(String(format: "{mode:%s, opacity: %s, src: %s, } ", \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(JsObject.wrapQuotes(value: src))))
         }
         public init(mode: String, opacity: Double, src: String) {
             super.init()
 
-            js.append(String(format: "{mode:%s, opacity: %s, src: %s, } ", JsObject.wrapQuotes(value: mode), opacity, JsObject.wrapQuotes(value: src)))
+            js.append(String(format: "{mode:%s, opacity: %s, src: %s, } ", \(JsObject.wrapQuotes(value: mode)), \(opacity), \(JsObject.wrapQuotes(value: src))))
         }
 
     }

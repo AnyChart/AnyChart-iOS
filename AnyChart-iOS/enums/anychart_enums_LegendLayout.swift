@@ -6,7 +6,7 @@ extension anychart.enums {
         case VERTICAL_EXPANDABLE = "vertical-expandable"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

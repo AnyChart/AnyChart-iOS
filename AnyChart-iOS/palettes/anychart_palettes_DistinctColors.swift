@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return DistinctColors(jsBase: "new anychart.palettes.DistinctColors()")
-            super.init(jsBase: "new anychart.palettes.DistinctColors()")
+            //super.init(jsBase: "new anychart.palettes.DistinctColors()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.palettes.DistinctColors {
+            return anychart.palettes.DistinctColors(jsBase: "new anychart.palettes.DistinctColors()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,13 @@
      * Getter for color palette colors from list by index.
      */
     public func itemAt(index: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index));")
     }
     /**
      * Setter for color palette colors from list by index.
      */
     public func itemAt(index: Double, color: Fill) -> anychart.palettes.DistinctColors {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index), \((color != nil) ? color.getJsBase() : "null"));")
 
         return self
     }
@@ -48,27 +53,23 @@
      * Getter for color palette colors list.
      */
     public func items()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".items();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".items();")
     }
     /**
      * Setter for color palette colors list.
      */
     public func items(color: [String], var_args: Fill) -> anychart.palettes.DistinctColors {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\(JsObject.arrayToStringWrapQuotes(array: color)), \((var_args != nil) ? var_args.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for color palette colors list.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+    public func items(color: Fill, var_args: Fill) -> anychart.palettes.DistinctColors {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\((color != nil) ? color.getJsBase() : "null"), \((var_args != nil) ? var_args.getJsBase() : "null"));")
+
+        return self
     }
 
     }

@@ -4,7 +4,7 @@ extension anychart.enums {
         case OUTSIDE = "outside"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

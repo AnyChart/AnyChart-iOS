@@ -7,7 +7,7 @@ extension anychart.enums {
         case LINE_2D = "line-2d"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

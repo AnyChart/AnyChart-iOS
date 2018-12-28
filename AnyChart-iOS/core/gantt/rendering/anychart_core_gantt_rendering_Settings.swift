@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Settings(jsBase: "new anychart.core.gantt.rendering.Settings()")
-            super.init(jsBase: "new anychart.core.gantt.rendering.Settings()")
+            //super.init(jsBase: "new anychart.core.gantt.rendering.Settings()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.gantt.rendering.Settings {
+            return anychart.core.gantt.rendering.Settings(jsBase: "new anychart.core.gantt.rendering.Settings()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,33 +39,21 @@
      * Getter for custom drawing settings.
      */
     public func drawer()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".drawer();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".drawer();")
     }
     /**
      * Setter for custom drawing settings.
      */
     public func drawer(drawerFunction: String) -> anychart.core.gantt.rendering.Settings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawer()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawer(\(JsObject.wrapQuotes(value: drawerFunction)));")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for shapes of the custom drawing.
      */
     public func shapes()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".shapes();")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".shapes();")
     }
 
     }

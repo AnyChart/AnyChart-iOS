@@ -6,7 +6,7 @@ extension anychart.enums {
         case NO_OVERLAP = "no-overlap"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

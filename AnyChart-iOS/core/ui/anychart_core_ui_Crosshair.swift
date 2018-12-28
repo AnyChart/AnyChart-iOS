@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Crosshair(jsBase: "new anychart.core.ui.Crosshair()")
-            super.init(jsBase: "new anychart.core.ui.Crosshair()")
+            //super.init(jsBase: "new anychart.core.ui.Crosshair()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.ui.Crosshair {
+            return anychart.core.ui.Crosshair(jsBase: "new anychart.core.ui.Crosshair()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,47 +39,23 @@
      * Getter for the crosshair display mode.
      */
     public func displayMode()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".displayMode();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".displayMode();")
     }
     /**
      * Setter for the display mode for crosshair.
      */
     public func displayMode(mode: anychart.enums.CrosshairDisplayMode) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).displayMode()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).displayMode(\((mode != nil) ? mode.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Getter for the element state (enabled or disabled).
+     * Setter for the display mode for crosshair.
      */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
+    public func displayMode(mode: String) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).displayMode(\(JsObject.wrapQuotes(value: mode)));")
 
         return self
-    }
-    /**
-     * Prints all elements on related stage.
-     */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the crosshair X-label settings.
@@ -86,7 +67,15 @@
      * Setter for the crosshair X-label settings.
      */
     public func xLabel(settings: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the crosshair X-label settings.
+     */
+    public func xLabel(settings: Bool) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel(\(settings));")
 
         return self
     }
@@ -94,7 +83,15 @@
      * Setter for the crosshair X-label settings by index.
      */
     public func xLabel(index: Double, settings: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the crosshair X-label settings by index.
+     */
+    public func xLabel(index: Double, settings: Bool) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLabel(\(index), \(settings));")
 
         return self
     }
@@ -102,13 +99,21 @@
      * Getter for the X-line stroke.
      */
     public func xStroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xStroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xStroke();")
     }
     /**
      * Setter for the X-line stroke.
      */
     public func xStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the X-line stroke.
+     */
+    public func xStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -116,7 +121,15 @@
      * Setter for the X-line stroke.
      */
     public func xStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the X-line stroke.
+     */
+    public func xStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -124,7 +137,15 @@
      * Setter for the X-line stroke.
      */
     public func xStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the X-line stroke.
+     */
+    public func xStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -132,7 +153,15 @@
      * Setter for the X-line stroke.
      */
     public func xStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the X-line stroke.
+     */
+    public func xStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -146,7 +175,15 @@
      * Setter for the crosshair Y-label settings.
      */
     public func yLabel(settings: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the crosshair Y-label settings.
+     */
+    public func yLabel(settings: Bool) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel(\(settings));")
 
         return self
     }
@@ -154,7 +191,15 @@
      * Setter for the crosshair Y-label settings by index.
      */
     public func yLabel(index: Double, settings: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the crosshair Y-label settings by index.
+     */
+    public func yLabel(index: Double, settings: Bool) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yLabel(\(index), \(settings));")
 
         return self
     }
@@ -162,13 +207,21 @@
      * Getter for the Y-line stroke.
      */
     public func yStroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".yStroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".yStroke();")
     }
     /**
      * Setter for the Y-line stroke.
      */
     public func yStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the Y-line stroke.
+     */
+    public func yStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -176,7 +229,15 @@
      * Setter for the Y-line stroke.
      */
     public func yStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the Y-line stroke.
+     */
+    public func yStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -184,7 +245,15 @@
      * Setter for the Y-line stroke.
      */
     public func yStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the Y-line stroke.
+     */
+    public func yStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -192,77 +261,15 @@
      * Setter for the Y-line stroke.
      */
     public func yStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
 
         return self
     }
     /**
-     * Getter for the Z-index of the element.
+     * Setter for the Y-line stroke.
      */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.ui.Crosshair {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+    public func yStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Crosshair {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }

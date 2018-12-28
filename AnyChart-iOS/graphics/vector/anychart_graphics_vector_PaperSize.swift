@@ -10,7 +10,7 @@ extension anychart.graphics.vector {
         case US_LETTER = "us-letter"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

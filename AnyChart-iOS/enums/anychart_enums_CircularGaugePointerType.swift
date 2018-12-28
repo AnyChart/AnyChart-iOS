@@ -6,7 +6,7 @@ extension anychart.enums {
         case NEEDLE = "needle"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

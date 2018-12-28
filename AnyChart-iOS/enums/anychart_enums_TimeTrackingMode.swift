@@ -6,7 +6,7 @@ extension anychart.enums {
         case AVAILABILITY_PER_RESOURCE = "availability-per-resource"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

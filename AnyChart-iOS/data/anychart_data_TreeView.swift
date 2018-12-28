@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return TreeView(jsBase: "new anychart.data.TreeView()")
-            super.init(jsBase: "new anychart.data.TreeView()")
+            //super.init(jsBase: "new anychart.data.TreeView()")
         }
 
         
@@ -23,6 +24,10 @@
             JsObject.variableIndex += 1
             self.jsBase = "treeView\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
+        }
+
+        override public func instantiate() -> anychart.data.TreeView {
+            return anychart.data.TreeView(jsBase: "new anychart.data.TreeView()")
         }
 
         override public func getJsBase() -> String {
@@ -39,6 +44,12 @@
     /**
      * Adds a child.
      */
+    public func addChild(child: anychart.data.tree.DataItem) -> anychart.data.treeview.DataItem {
+        return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).addChild(\((child != nil) ? child.getJsBase() : "null"))")
+    }
+    /**
+     * Adds a child.
+     */
     public func addChild(child: anychart.data.treeview.DataItem) -> anychart.data.treeview.DataItem {
         return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).addChild(\((child != nil) ? child.getJsBase() : "null"))")
     }
@@ -51,6 +62,12 @@
     /**
      * Inserts a child into a specified position.
      */
+    public func addChildAt(child: anychart.data.tree.DataItem, index: Double) -> anychart.data.treeview.DataItem {
+        return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).addChildAt(\((child != nil) ? child.getJsBase() : "null"), \(index))")
+    }
+    /**
+     * Inserts a child into a specified position.
+     */
     public func addChildAt(child: anychart.data.treeview.DataItem, index: Double) -> anychart.data.treeview.DataItem {
         return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).addChildAt(\((child != nil) ? child.getJsBase() : "null"), \(index))")
     }
@@ -58,7 +75,15 @@
      * Adds a data.
      */
     public func addData(data: [String], fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: [String], fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -66,7 +91,15 @@
      * Adds a data.
      */
     public func addData(data: [String], fillMethodOrCsvMapping: String, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: [String], fillMethodOrCsvMapping: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -74,7 +107,15 @@
      * Adds a data.
      */
     public func addData(data: String, fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: String, fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -82,7 +123,15 @@
      * Adds a data.
      */
     public func addData(data: String, fillMethodOrCsvMapping: String, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: String, fillMethodOrCsvMapping: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -96,30 +145,42 @@
      * Returns a roots array.
      */
     public func getChildren()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getChildren();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getChildren();")
     }
     /**
      * Creates tree view data traverser.
      */
     public func getTraverser() -> anychart.data.Traverser {
-        return anychart.data.Traverser(jsBase: jsBase + ".getTraverser()")
+        return anychart.data.Traverser(jsBase: self.jsBase + ".getTraverser()")
     }
     /**
      * Gets the index of child in a children array.
      */
     public func indexOfChild(child: anychart.data.tree.DataItem)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"));")
+    }
+    /**
+     * Gets the index of child in a children array.
+     */
+    public func indexOfChild(child: anychart.data.treeview.DataItem)  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"));")
     }
     /**
      * Returns a length of roots array.
      */
     public func numChildren()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".numChildren();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".numChildren();")
     }
     /**
      * Removes data item's child.
      */
     public func removeChild(child: anychart.data.tree.DataItem) -> anychart.data.treeview.DataItem {
+        return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).removeChild(\((child != nil) ? child.getJsBase() : "null"))")
+    }
+    /**
+     * Removes data item's child.
+     */
+    public func removeChild(child: anychart.data.treeview.DataItem) -> anychart.data.treeview.DataItem {
         return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).removeChild(\((child != nil) ? child.getJsBase() : "null"))")
     }
     /**
@@ -132,21 +193,9 @@
      * Removes children.
      */
     public func removeChildren() -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".removeChildren();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".removeChildren();")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

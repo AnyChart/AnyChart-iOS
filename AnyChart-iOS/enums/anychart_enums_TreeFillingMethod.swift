@@ -4,7 +4,7 @@ extension anychart.enums {
         case AS_TREE = "as-tree"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

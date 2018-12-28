@@ -5,7 +5,7 @@ extension anychart.graphics.vector {
         case ROUND = "round"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

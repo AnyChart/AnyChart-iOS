@@ -6,7 +6,7 @@ extension anychart.enums {
         case SINGLE_SELECT = "single-select"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

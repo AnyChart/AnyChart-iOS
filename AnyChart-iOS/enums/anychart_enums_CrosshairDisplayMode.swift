@@ -4,7 +4,7 @@ extension anychart.enums {
         case STICKY = "sticky"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

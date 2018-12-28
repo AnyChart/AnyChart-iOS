@@ -6,7 +6,7 @@ extension anychart.enums {
         case LAST_VISIBLE_DATE = "last-visible-date"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

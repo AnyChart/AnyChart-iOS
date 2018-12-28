@@ -12,7 +12,7 @@ extension anychart.graphics.vector {
         case RIGHT_TOP = "right-top"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

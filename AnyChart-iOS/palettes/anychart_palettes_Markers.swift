@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Markers(jsBase: "new anychart.palettes.Markers()")
-            super.init(jsBase: "new anychart.palettes.Markers()")
+            //super.init(jsBase: "new anychart.palettes.Markers()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.palettes.Markers {
+            return anychart.palettes.Markers(jsBase: "new anychart.palettes.Markers()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,21 @@
      * Getter for type palette markers from list by index.
      */
     public func itemAt(index: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index));")
     }
     /**
      * Setter for type palette markers from list by index.
      */
     public func itemAt(index: Double, type: anychart.enums.MarkerType) -> anychart.palettes.Markers {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index), \((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for type palette markers from list by index.
+     */
+    public func itemAt(index: Double, type: anychart.enums.BulletMarkerType) -> anychart.palettes.Markers {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index), \((type != nil) ? type.getJsBase() : "null"));")
 
         return self
     }
@@ -48,7 +61,7 @@
      * Setter for type palette markers from list by index.
      */
     public func itemAt(index: Double, type: String) -> anychart.palettes.Markers {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).itemAt(\(index), \(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -56,13 +69,21 @@
      * Getter for markers list of palette.
      */
     public func items()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".items();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".items();")
     }
     /**
      * Setter for markers list of palette.
      */
     public func items(type: [String], var_args: String) -> anychart.palettes.Markers {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\(JsObject.arrayToStringWrapQuotes(array: type)), \(JsObject.wrapQuotes(value: var_args)));")
+
+        return self
+    }
+    /**
+     * Setter for markers list of palette.
+     */
+    public func items(type: String, var_args: String) -> anychart.palettes.Markers {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\(JsObject.wrapQuotes(value: type)), \(JsObject.wrapQuotes(value: var_args)));")
 
         return self
     }
@@ -70,21 +91,17 @@
      * Setter for markers list of palette.
      */
     public func items(type: anychart.enums.MarkerType, var_args: String) -> anychart.palettes.Markers {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\((type != nil) ? type.getJsBase() : "null"), \(JsObject.wrapQuotes(value: var_args)));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for markers list of palette.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+    public func items(type: anychart.enums.BulletMarkerType, var_args: String) -> anychart.palettes.Markers {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).items(\((type != nil) ? type.getJsBase() : "null"), \(JsObject.wrapQuotes(value: var_args)));")
+
+        return self
     }
 
     }

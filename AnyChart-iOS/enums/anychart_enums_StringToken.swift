@@ -102,7 +102,7 @@ extension anychart.enums {
         case Y_VALUE = "%YValue"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

@@ -4,7 +4,7 @@ extension anychart.graphics.vector.text {
         case RTL = "rtl"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

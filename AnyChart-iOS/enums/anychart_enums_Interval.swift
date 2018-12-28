@@ -13,7 +13,7 @@ extension anychart.enums {
         case YEAR = "year"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

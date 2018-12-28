@@ -4,7 +4,7 @@ extension anychart.graphics {
         case VML = "vml"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

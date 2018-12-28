@@ -20,7 +20,7 @@ extension anychart.graphics.events {
         case TOUCHSTART = "touchstart"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

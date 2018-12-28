@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return NoDataSettings(jsBase: "new anychart.core.NoDataSettings()")
-            super.init(jsBase: "new anychart.core.NoDataSettings()")
+            //super.init(jsBase: "new anychart.core.NoDataSettings()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.NoDataSettings {
+            return anychart.core.NoDataSettings(jsBase: "new anychart.core.NoDataSettings()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,27 +39,23 @@
      * Getter for no data label.
      */
     public func label() -> anychart.core.ui.Label {
-        return anychart.core.ui.Label(jsBase: jsBase + ".label()")
+        return anychart.core.ui.Label(jsBase: self.jsBase + ".label()")
     }
     /**
      * Setter for no data label.
      */
     public func label(settings: String) -> anychart.core.NoDataSettings {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for no data label.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+    public func label(settings: Bool) -> anychart.core.NoDataSettings {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).label(\(settings));")
+
+        return self
     }
 
     }

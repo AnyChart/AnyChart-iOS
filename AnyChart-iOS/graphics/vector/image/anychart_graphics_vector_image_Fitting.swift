@@ -4,7 +4,7 @@ extension anychart.graphics.vector.image {
         case SLICE = "slice"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

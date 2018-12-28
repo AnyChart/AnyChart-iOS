@@ -12,7 +12,7 @@ extension anychart.enums {
         case STOCK_SCATTER_DATE_TIME = "stock-scatter-date-time"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Cap(jsBase: "new anychart.core.gauge.Cap()")
-            super.init(jsBase: "new anychart.core.gauge.Cap()")
+            //super.init(jsBase: "new anychart.core.gauge.Cap()")
         }
 
         
@@ -25,37 +26,36 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.gauge.Cap {
+            return anychart.core.gauge.Cap(jsBase: "new anychart.core.gauge.Cap()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
 
         
     /**
-     * Getter for the element state (enabled or disabled).
-     */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
-
-        return self
-    }
-    /**
      * Getter for the cap fill color.
      */
     public func fill()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fill();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fill();")
     }
     /**
      * Setter for cap fill settings using an array or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\((color != nil) ? color.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for cap fill settings using an array or a string.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func fill(color: [anychart.graphics.vector.GradientKey]) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: color)));")
 
         return self
     }
@@ -64,7 +64,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: [String]) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: color)));")
 
         return self
     }
@@ -73,7 +73,7 @@
 Fill as a string or an object.
      */
     public func fill(color: String, opacity: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: color)), \(opacity));")
 
         return self
     }
@@ -82,7 +82,16 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(mode), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient cap fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
 
         return self
     }
@@ -91,7 +100,16 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient cap fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func fill(keys: [String], angle: Double, mode: Bool, opacity: Double) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(mode), \(opacity));")
 
         return self
     }
@@ -100,7 +118,16 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient cap fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func fill(keys: [String], angle: Double, mode: String, opacity: Double) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
 
         return self
     }
@@ -109,16 +136,16 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
     /**
-     * Image cap fill.
+     * Radial cap fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func fill(imageSettings: Fill) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+    public func fill(keys: [String], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
@@ -126,14 +153,23 @@ Fill as a string or an object.
      * Getter for cap hatch fill settings.
      */
     public func hatchFill() -> anychart.graphics.vector.PatternFill {
-        return anychart.graphics.vector.PatternFill(jsBase: jsBase + ".hatchFill()")
+        return anychart.graphics.vector.PatternFill(jsBase: self.jsBase + ".hatchFill()")
     }
     /**
      * Setter for cap hatch fill settings.
 {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
      */
     public func hatchFill(type: anychart.graphics.vector.hatchfill.HatchFillType, color: String, thickness: Double, size: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill(\((type != nil) ? type.getJsBase() : "null"), \(JsObject.wrapQuotes(value: color)), \(thickness), \(size));")
+
+        return self
+    }
+    /**
+     * Setter for cap hatch fill settings.
+{docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+     */
+    public func hatchFill(type: String, color: String, thickness: Double, size: Double) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill(\(JsObject.wrapQuotes(value: type)), \(JsObject.wrapQuotes(value: color)), \(thickness), \(size));")
 
         return self
     }
@@ -142,7 +178,7 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func hatchFill(patternFill: anychart.graphics.vector.PatternFill) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill(\((patternFill != nil) ? patternFill.getJsBase() : "null"));")
 
         return self
     }
@@ -151,7 +187,7 @@ Fill as a string or an object.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func hatchFill(settings: anychart.graphics.vector.HatchFill) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -160,48 +196,53 @@ Fill as a string or an object.
 {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
      */
     public func hatchFill(enabled: Bool) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFill(\(enabled));")
 
         return self
-    }
-    /**
-     * Prints all elements on related stage.
-     */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
     }
     /**
      * Getter for the cap radius.
      */
     public func radius()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".radius();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".radius();")
     }
     /**
      * Setter for the cap radius.
      */
     public func radius(radius: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius(\(radius));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for the cap radius.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
+    public func radius(radius: String) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius(\(JsObject.wrapQuotes(value: radius)));")
+
+        return self
     }
     /**
      * Getter for the cap stroke.
      */
     public func stroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".stroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".stroke();")
     }
     /**
      * Setter for cap stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -210,7 +251,16 @@ Fill as a string or an object.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -219,7 +269,16 @@ Fill as a string or an object.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -228,7 +287,16 @@ Fill as a string or an object.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -237,7 +305,16 @@ Fill as a string or an object.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -246,7 +323,16 @@ Fill as a string or an object.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for cap stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -254,83 +340,7 @@ Fill as a string or an object.
      * Setter for the cap stroke using an object.
      */
     public func stroke(settings: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
-
-        return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.gauge.Cap {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }

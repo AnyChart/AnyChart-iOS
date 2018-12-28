@@ -4,7 +4,7 @@ extension anychart.enums {
         case SMALL_CAP = "small-caps"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

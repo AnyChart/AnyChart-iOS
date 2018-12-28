@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return ScatterTicks(jsBase: "new anychart.scales.ScatterTicks()")
-            super.init(jsBase: "new anychart.scales.ScatterTicks()")
+            //super.init(jsBase: "new anychart.scales.ScatterTicks()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.scales.ScatterTicks {
+            return anychart.scales.ScatterTicks(jsBase: "new anychart.scales.ScatterTicks()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,7 +39,7 @@
      * Getter for the allowFractional flag.
      */
     public func allowFractional()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".allowFractional();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".allowFractional();")
     }
     /**
      * Setter for the allowFractional flag.<br/>
@@ -42,7 +47,7 @@ Whether to the allow fractional values in ticks.<br/>
 <b>Note</b>: When {@link anychart.scales.ScatterTicks#mode} set to 'logarithmic', the allowFractional flag is always <b>false</b>.
      */
     public func allowFractional(enabled: Bool) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowFractional()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowFractional(\(enabled));")
 
         return self
     }
@@ -50,14 +55,14 @@ Whether to the allow fractional values in ticks.<br/>
      * Getter for ticks base value.
      */
     public func base()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".base();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".base();")
     }
     /**
      * Setter for ticks base value.
 <b>Note:</b> it is a number that is guaranteed to set a tick if the number is located between minimum and maximum values of the scale.
      */
     public func base(baseValue: Double) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).base()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).base(\(baseValue));")
 
         return self
     }
@@ -65,14 +70,14 @@ Whether to the allow fractional values in ticks.<br/>
      * Getter for ticks count.
      */
     public func count()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".count();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".count();")
     }
     /**
      * Setter for ticks count value.
 <b>Note:</b> Final number of ticks can be greater (one more tick can be added).
      */
     public func count(count: Double) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count(\(count));")
 
         return self
     }
@@ -81,7 +86,7 @@ Whether to the allow fractional values in ticks.<br/>
 <b>Note:</b> Final number of ticks can be greater than maximum (one more tick can be added).
      */
     public func count(minimumCount: Double, maximumCount: Double) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count(\(minimumCount), \(maximumCount));")
 
         return self
     }
@@ -90,20 +95,20 @@ Whether to the allow fractional values in ticks.<br/>
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or after <b>chart.draw()</b>
      */
     public func get()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".get();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".get();")
     }
     /**
      * Getter for ticks interval value.
 <b>Note:</b> You can get interval value only if it was set explicitly, otherwise its returns NaN.
      */
     public func interval()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".interval();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".interval();")
     }
     /**
      * Setter for ticks interval value.
      */
     public func interval(value: Double) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval(\(value));")
 
         return self
     }
@@ -111,36 +116,33 @@ Whether to the allow fractional values in ticks.<br/>
      * Getter for the ticks mode.
      */
     public func mode()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".mode();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".mode();")
     }
     /**
      * Setter for the ticks mode.
 <b>Note:</b> Use only with logarithmic scales.
      */
     public func mode(mode: anychart.enums.ScatterTicksMode) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode(\((mode != nil) ? mode.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for the ticks mode.
+<b>Note:</b> Use only with logarithmic scales.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
+    public func mode(mode: String) -> anychart.scales.ScatterTicks {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode(\(JsObject.wrapQuotes(value: mode)));")
+
+        return self
     }
     /**
      * Setups ticks as an explicit array of fixed ticks.
      */
     public func set(ticks: [String]) -> anychart.scales.ScatterTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

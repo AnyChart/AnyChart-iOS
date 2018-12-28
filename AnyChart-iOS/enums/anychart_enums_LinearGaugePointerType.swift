@@ -8,7 +8,7 @@ extension anychart.enums {
         case THERMOMETER = "thermometer"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

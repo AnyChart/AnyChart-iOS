@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Error(jsBase: "new anychart.core.utils.Error()")
-            super.init(jsBase: "new anychart.core.utils.Error()")
+            //super.init(jsBase: "new anychart.core.utils.Error()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.utils.Error {
+            return anychart.core.utils.Error(jsBase: "new anychart.core.utils.Error()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,40 +39,45 @@
      * Getter for error mode.
      */
     public func mode()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".mode();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".mode();")
     }
     /**
      * Setter for error mode.<br/>
 Error mode defines the rule to parse values for series with an error.
      */
     public func mode(mode: anychart.enums.ErrorMode) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode(\((mode != nil) ? mode.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for error mode.<br/>
+Error mode defines the rule to parse values for series with an error.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+    public func mode(mode: String) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).mode(\(JsObject.wrapQuotes(value: mode)));")
+
+        return self
     }
     /**
      * Getter for value error.
      */
     public func valueError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueError();")
     }
     /**
      * Setter for value error.
      */
     public func valueError(valueError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueError(\(JsObject.wrapQuotes(value: valueError)));")
+
+        return self
+    }
+    /**
+     * Setter for value error.
+     */
+    public func valueError(valueError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueError(\(valueError));")
 
         return self
     }
@@ -75,13 +85,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for value error stroke settings.
      */
     public func valueErrorStroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueErrorStroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueErrorStroke();")
     }
     /**
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -89,7 +107,15 @@ Error mode defines the rule to parse values for series with an error.
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -97,7 +123,15 @@ Error mode defines the rule to parse values for series with an error.
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -105,7 +139,15 @@ Error mode defines the rule to parse values for series with an error.
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\((strokeOrFill != nil) ? strokeOrFill.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -113,7 +155,15 @@ Error mode defines the rule to parse values for series with an error.
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\(JsObject.wrapQuotes(value: strokeOrFill)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\(JsObject.wrapQuotes(value: strokeOrFill)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -121,7 +171,15 @@ Error mode defines the rule to parse values for series with an error.
      * Setter for value error stroke settings.
      */
     public func valueErrorStroke(strokeOrFill: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\(JsObject.wrapQuotes(value: strokeOrFill)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for value error stroke settings.
+     */
+    public func valueErrorStroke(strokeOrFill: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorStroke(\(JsObject.wrapQuotes(value: strokeOrFill)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -129,13 +187,13 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for value error width settings.
      */
     public func valueErrorWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueErrorWidth();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueErrorWidth();")
     }
     /**
      * Setter for value error width settings. Length pins for value axis in pixels.
      */
     public func valueErrorWidth(width: Double) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorWidth()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueErrorWidth(\(width));")
 
         return self
     }
@@ -143,13 +201,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for value lower error.
      */
     public func valueLowerError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueLowerError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueLowerError();")
     }
     /**
      * Setter for value lower error.
      */
     public func valueLowerError(valueLowerError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueLowerError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueLowerError(\(JsObject.wrapQuotes(value: valueLowerError)));")
+
+        return self
+    }
+    /**
+     * Setter for value lower error.
+     */
+    public func valueLowerError(valueLowerError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueLowerError(\(valueLowerError));")
 
         return self
     }
@@ -157,13 +223,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for value upper error.
      */
     public func valueUpperError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueUpperError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueUpperError();")
     }
     /**
      * Setter for value upper error.
      */
     public func valueUpperError(valueUpperError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueUpperError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueUpperError(\(JsObject.wrapQuotes(value: valueUpperError)));")
+
+        return self
+    }
+    /**
+     * Setter for value upper error.
+     */
+    public func valueUpperError(valueUpperError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueUpperError(\(valueUpperError));")
 
         return self
     }
@@ -171,13 +245,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for X error.
      */
     public func xError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xError();")
     }
     /**
      * Setter for X error.
      */
     public func xError(xError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xError(\(JsObject.wrapQuotes(value: xError)));")
+
+        return self
+    }
+    /**
+     * Setter for X error.
+     */
+    public func xError(xError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xError(\(xError));")
 
         return self
     }
@@ -185,14 +267,23 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for X error stroke settings.
      */
     public func xErrorStroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xErrorStroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xErrorStroke();")
     }
     /**
      * Setter for X error stroke settings.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -201,7 +292,16 @@ Error mode defines the rule to parse values for series with an error.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -210,7 +310,16 @@ Error mode defines the rule to parse values for series with an error.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -219,7 +328,16 @@ Error mode defines the rule to parse values for series with an error.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -228,7 +346,16 @@ Error mode defines the rule to parse values for series with an error.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -237,7 +364,16 @@ Error mode defines the rule to parse values for series with an error.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func xErrorStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for X error stroke settings.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func xErrorStroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorStroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -245,13 +381,13 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for X error width settings.
      */
     public func xErrorWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xErrorWidth();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xErrorWidth();")
     }
     /**
      * Setter for X error width settings. Length pins for X axis in pixels.
      */
     public func xErrorWidth(width: Double) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorWidth()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xErrorWidth(\(width));")
 
         return self
     }
@@ -259,13 +395,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for X lower error.
      */
     public func xLowerError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xLowerError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xLowerError();")
     }
     /**
      * Setter for X lower error.
      */
     public func xLowerError(xLowerError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLowerError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLowerError(\(JsObject.wrapQuotes(value: xLowerError)));")
+
+        return self
+    }
+    /**
+     * Setter for X lower error.
+     */
+    public func xLowerError(xLowerError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xLowerError(\(xLowerError));")
 
         return self
     }
@@ -273,13 +417,21 @@ Error mode defines the rule to parse values for series with an error.
      * Getter for X upper error.
      */
     public func xUpperError()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xUpperError();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xUpperError();")
     }
     /**
      * Setter for X upper error.
      */
     public func xUpperError(xUpperError: String) -> anychart.core.utils.Error {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xUpperError()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xUpperError(\(JsObject.wrapQuotes(value: xUpperError)));")
+
+        return self
+    }
+    /**
+     * Setter for X upper error.
+     */
+    public func xUpperError(xUpperError: Double) -> anychart.core.utils.Error {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xUpperError(\(xUpperError));")
 
         return self
     }

@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return OrdinalTicks(jsBase: "new anychart.scales.OrdinalTicks()")
-            super.init(jsBase: "new anychart.scales.OrdinalTicks()")
+            //super.init(jsBase: "new anychart.scales.OrdinalTicks()")
         }
 
         
@@ -23,6 +24,10 @@
             JsObject.variableIndex += 1
             self.jsBase = "ordinalTicks\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
+        }
+
+        override public func instantiate() -> anychart.scales.OrdinalTicks {
+            return anychart.scales.OrdinalTicks(jsBase: "new anychart.scales.OrdinalTicks()")
         }
 
         override public func getJsBase() -> String {
@@ -39,20 +44,20 @@
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or after <b>chart.draw()</b>.
      */
     public func get()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".get();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".get();")
     }
     /**
      * Getter for ticks interval value.
      */
     public func interval()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".interval();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".interval();")
     }
     /**
      * Setter for ticks interval value.<br/>
 Passed value is rounded and defaults to 1 in case of incorrect settings.
      */
     public func interval(interval: Double) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval(\(interval));")
 
         return self
     }
@@ -60,13 +65,13 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Getter for maximum ticks count.
      */
     public func maxCount()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxCount();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".maxCount();")
     }
     /**
      * Setter for maximum ticks count.
      */
     public func maxCount(count: Double) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxCount()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxCount(\(count));")
 
         return self
     }
@@ -74,35 +79,23 @@ Passed value is rounded and defaults to 1 in case of incorrect settings.
      * Getter for the tick names.
      */
     public func names()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".names();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".names();")
     }
     /**
      * Setter for the tick names.
      */
     public func names(names: [String]) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names(\(JsObject.arrayToStringWrapQuotes(array: names)));")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Setups ticks as an explicit array of fixed ticks.
      */
     public func set(ticks: [String]) -> anychart.scales.OrdinalTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

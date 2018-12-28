@@ -21,7 +21,7 @@ extension anychart.enums {
         case STEP_LINE = "step-line"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

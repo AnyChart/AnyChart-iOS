@@ -30,7 +30,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
     }
@@ -119,6 +119,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //            .itemsLayout(value: "horizontal")
 //            .align(value: "center")
         print(js)
+        let jsBase = chart?.getJsBase() ?? ""
         
         webView.evaluateJavaScript(
 //            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
@@ -126,7 +127,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
                 js +
 //                    "chart = anychart.pie();chart.data([{value: '69.2',x: 'Apples'}, {value: '85',x: 'Oranges'}, {value: '32.1',x: 'Tea'}, {value: '8.2',x: 'Sugar'}]);" +
 //                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"THERE\"); });" +
-                "pie1.container('container');pie1.draw();" +
+                "\(jsBase).container('container');\(jsBase).draw();" +
             "});", completionHandler: nil)
         
         isRendered = true
@@ -179,7 +180,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
     }
     
     public func setChart(chart: anychart.core.Chart) {
-        js = ""
+        //js = ""
         self.chart = chart
         loadHtml()
     }

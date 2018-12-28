@@ -5,7 +5,7 @@ extension anychart.enums {
         case FORWARD = "forward"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

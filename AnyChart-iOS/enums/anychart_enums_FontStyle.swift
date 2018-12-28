@@ -5,7 +5,7 @@ extension anychart.enums {
         case OBLIQUE = "oblique"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

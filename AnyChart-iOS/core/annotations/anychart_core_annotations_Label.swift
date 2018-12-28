@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Label(jsBase: "new anychart.core.annotations.Label()")
-            super.init(jsBase: "new anychart.core.annotations.Label()")
+            //super.init(jsBase: "new anychart.core.annotations.Label()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.annotations.Label {
+            return anychart.core.annotations.Label(jsBase: "new anychart.core.annotations.Label()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,21 @@
      * Getter for the adjust font settings.
      */
     public func adjustFontSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".adjustFontSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".adjustFontSize();")
     }
     /**
      * Setter for the adjust font settings.
      */
     public func adjustFontSize(bothOrByWidth: String, byHeight: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize(\(JsObject.wrapQuotes(value: bothOrByWidth)), \(byHeight));")
+
+        return self
+    }
+    /**
+     * Setter for the adjust font settings.
+     */
+    public func adjustFontSize(bothOrByWidth: [Bool], byHeight: Bool) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize(\(JsObject.arrayToString(jsObjects: bothOrByWidth)), \(byHeight));")
 
         return self
     }
@@ -48,21 +61,7 @@
      * Setter for the adjust font settings.
      */
     public func adjustFontSize(bothOrByWidth: Bool, byHeight: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize()")
-
-        return self
-    }
-    /**
-     * Getter for an interactivity in the annotation.
-     */
-    public func allowEdit()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".allowEdit();")
-    }
-    /**
-     * Setter for an interactivity in the annotation.
-     */
-    public func allowEdit(value: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowEdit()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).adjustFontSize(\(bothOrByWidth), \(byHeight));")
 
         return self
     }
@@ -70,13 +69,21 @@
      * Getter for anchor settings.
      */
     public func anchor()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".anchor();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".anchor();")
     }
     /**
      * Setter for anchor settings.
      */
     public func anchor(anchor: anychart.enums.Anchor) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).anchor()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).anchor(\((anchor != nil) ? anchor.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for anchor settings.
+     */
+    public func anchor(anchor: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).anchor(\(JsObject.wrapQuotes(value: anchor)));")
 
         return self
     }
@@ -84,113 +91,21 @@
      * Getter for the background.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: self.jsBase + ".background()")
     }
     /**
      * Setter for the background.
      */
     public func background(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Getter for element bottom bound settings.
+     * Setter for the background.
      */
-    public func bottom()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".bottom();")
-    }
-    /**
-     * Setter for element bottom bound settings.
-     */
-    public func bottom(bottom: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
-
-        return self
-    }
-    /**
-     * Getter for element bounds settings.
-     */
-    public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.utils.RectObj) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: String, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
+    public func background(settings: Bool) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background(\(settings));")
 
         return self
     }
@@ -198,27 +113,13 @@
      * Getter for the pointer events settings.
      */
     public func disablePointerEvents()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".disablePointerEvents();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".disablePointerEvents();")
     }
     /**
      * Setter for the pointer events settings.
      */
     public func disablePointerEvents(enabled: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents()")
-
-        return self
-    }
-    /**
-     * Getter for the element state (enabled or disabled).
-     */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).disablePointerEvents(\(enabled));")
 
         return self
     }
@@ -226,13 +127,13 @@
      * Getter for font color settings.
      */
     public func fontColor()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontColor();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontColor();")
     }
     /**
      * Setter for font color settings.
      */
     public func fontColor(color: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontColor(\(JsObject.wrapQuotes(value: color)));")
 
         return self
     }
@@ -240,13 +141,21 @@
      * Getter for the text font decoration.
      */
     public func fontDecoration()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontDecoration();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontDecoration();")
     }
     /**
      * Setter for the text font decoration.
      */
     public func fontDecoration(type: anychart.graphics.vector.text.Decoration) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the text font decoration.
+     */
+    public func fontDecoration(type: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontDecoration(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -254,13 +163,13 @@
      * Getter for the font family.
      */
     public func fontFamily()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontFamily();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontFamily();")
     }
     /**
      * Setter for font family.
      */
     public func fontFamily(fontFamily: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontFamily(\(JsObject.wrapQuotes(value: fontFamily)));")
 
         return self
     }
@@ -268,14 +177,14 @@
      * Getter for the text font opacity.
      */
     public func fontOpacity()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontOpacity();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontOpacity();")
     }
     /**
      * Setter for the text font opacity.<br/>
 Double value from 0 to 1.
      */
     public func fontOpacity(opacity: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontOpacity(\(opacity));")
 
         return self
     }
@@ -283,13 +192,21 @@ Double value from 0 to 1.
      * Getter for font size settings.
      */
     public func fontSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontSize();")
     }
     /**
      * Setter for font size settings.
      */
     public func fontSize(size: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize(\(size));")
+
+        return self
+    }
+    /**
+     * Setter for font size settings.
+     */
+    public func fontSize(size: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontSize(\(JsObject.wrapQuotes(value: size)));")
 
         return self
     }
@@ -297,13 +214,21 @@ Double value from 0 to 1.
      * Getter for font style settings.
      */
     public func fontStyle()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontStyle();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontStyle();")
     }
     /**
      * Setter for font style settings.
      */
     public func fontStyle(type: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * Setter for font style settings.
+     */
+    public func fontStyle(type: anychart.graphics.vector.text.FontStyle) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontStyle(\((type != nil) ? type.getJsBase() : "null"));")
 
         return self
     }
@@ -311,13 +236,21 @@ Double value from 0 to 1.
      * Getter for font variant settings.
      */
     public func fontVariant()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontVariant();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontVariant();")
     }
     /**
      * Setter for font variant settings.
      */
     public func fontVariant(type: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * Setter for font variant settings.
+     */
+    public func fontVariant(type: anychart.graphics.vector.text.FontVariant) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontVariant(\((type != nil) ? type.getJsBase() : "null"));")
 
         return self
     }
@@ -325,108 +258,43 @@ Double value from 0 to 1.
      * Getter for font weight settings.
      */
     public func fontWeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fontWeight();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fontWeight();")
     }
     /**
      * Setter for font weight settings.
      */
     public func fontWeight(weight: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight(\(JsObject.wrapQuotes(value: weight)));")
 
         return self
     }
     /**
-     * Returns the chart on which the annotation is drawn.
+     * Setter for font weight settings.
      */
-    public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
-    }
-    /**
-     * Returns pixel bounds of the element due to parent bounds and self bounds settings.
-     */
-    public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
-    }
-    /**
-     * Returns the plot on which the annotation is drawn.
-     */
-    public func getPlot() -> anychart.core.stock.Plot {
-        return anychart.core.stock.Plot(jsBase: jsBase + ".getPlot()")
-    }
-    /**
-     * Returns annotation type.
-     */
-    public func getType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getType();")
+    public func fontWeight(weight: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fontWeight(\(weight));")
+
+        return self
     }
     /**
      * Getter for text horizontal align settings.
      */
     public func hAlign()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".hAlign();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".hAlign();")
     }
     /**
      * Setter for the text horizontal align settings.
      */
     public func hAlign(type: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
     /**
-     * Getter for element height settings.
+     * Setter for the text horizontal align settings.
      */
-    public func height()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".height();")
-    }
-    /**
-     * Setter for element height setting.
-     */
-    public func height(height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
-
-        return self
-    }
-    /**
-     * Getter for the hover gap.
-     */
-    public func hoverGap()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".hoverGap();")
-    }
-    /**
-     * Setter for the hover gap.<br/>
-The contour size around annotation.
-     */
-    public func hoverGap(value: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverGap()")
-
-        return self
-    }
-    /**
-     * Getter for hovered state settings.
-     */
-    public func hovered() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".hovered()")
-    }
-    /**
-     * Setter for hovered state settings.
-     */
-    public func hovered(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
-
-        return self
-    }
-    /**
-     * Getter for element left bound settings.
-     */
-    public func left()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".left();")
-    }
-    /**
-     * Setter for element left bound settings.
-     */
-    public func left(left: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
+    public func hAlign(type: anychart.graphics.vector.text.HAlign) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hAlign(\((type != nil) ? type.getJsBase() : "null"));")
 
         return self
     }
@@ -434,13 +302,21 @@ The contour size around annotation.
      * Getter for letter spacing settings.
      */
     public func letterSpacing()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".letterSpacing();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".letterSpacing();")
     }
     /**
      * Setter for letter spacing settings.
      */
     public func letterSpacing(spacing: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing(\(spacing));")
+
+        return self
+    }
+    /**
+     * Setter for letter spacing settings.
+     */
+    public func letterSpacing(spacing: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).letterSpacing(\(JsObject.wrapQuotes(value: spacing)));")
 
         return self
     }
@@ -448,27 +324,21 @@ The contour size around annotation.
      * Getter for the text line height.
      */
     public func lineHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".lineHeight();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".lineHeight();")
     }
     /**
      * Setter for the text line height.<br/> {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
     public func lineHeight(height: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight(\(JsObject.wrapQuotes(value: height)));")
 
         return self
     }
     /**
-     * Getter for data markers.
+     * Setter for the text line height.<br/> {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
      */
-    public func markers() -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsBase: jsBase + ".markers()")
-    }
-    /**
-     * Setter for data markers.
-     */
-    public func markers(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markers()")
+    public func lineHeight(height: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineHeight(\(height));")
 
         return self
     }
@@ -476,41 +346,21 @@ The contour size around annotation.
      * Getter for the font size for adjust text to.
      */
     public func maxFontSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxFontSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".maxFontSize();")
     }
     /**
      * Setter for the font size for adjust text to.
      */
     public func maxFontSize(size: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize(\(size));")
 
         return self
     }
     /**
-     * Getter for the maximum height.
+     * Setter for the font size for adjust text to.
      */
-    public func maxHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxHeight();")
-    }
-    /**
-     * Setter for the maximum height.
-     */
-    public func maxHeight(height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the maximum width.
-     */
-    public func maxWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxWidth();")
-    }
-    /**
-     * Setter for the maximum width.
-     */
-    public func maxWidth(width: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
+    public func maxFontSize(size: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxFontSize(\(JsObject.wrapQuotes(value: size)));")
 
         return self
     }
@@ -518,55 +368,21 @@ The contour size around annotation.
      * Getter for minimum font size settings for adjust text from.
      */
     public func minFontSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minFontSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".minFontSize();")
     }
     /**
      * Setter for minimum font size settings for adjust text from.
      */
     public func minFontSize(size: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize(\(size));")
 
         return self
     }
     /**
-     * Getter for the minimum height.
+     * Setter for minimum font size settings for adjust text from.
      */
-    public func minHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minHeight();")
-    }
-    /**
-     * Setter for the minimum height.
-     */
-    public func minHeight(height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the minimum width.
-     */
-    public func minWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minWidth();")
-    }
-    /**
-     * Setter for the minimum width.
-     */
-    public func minWidth(width: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
-
-        return self
-    }
-    /**
-     * Getter for normal state settings.
-     */
-    public func normal() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".normal()")
-    }
-    /**
-     * Setter for normal state settings.
-     */
-    public func normal(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
+    public func minFontSize(size: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minFontSize(\(JsObject.wrapQuotes(value: size)));")
 
         return self
     }
@@ -574,7 +390,7 @@ The contour size around annotation.
      * Getter for offset by X.
      */
     public func offsetX()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".offsetX();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".offsetX();")
     }
     /**
      * Setter for offset by X.<br/>
@@ -582,7 +398,17 @@ The contour size around annotation.
 Arrows show offsets layout.
      */
     public func offsetX(offset: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetX()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetX(\(offset));")
+
+        return self
+    }
+    /**
+     * Setter for offset by X.<br/>
+<img src='/si/8.4.0/anychart.core.ui.CrosshairLabel.offsetX.png' height='436' width='577'/><br/>
+Arrows show offsets layout.
+     */
+    public func offsetX(offset: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetX(\(JsObject.wrapQuotes(value: offset)));")
 
         return self
     }
@@ -590,14 +416,23 @@ Arrows show offsets layout.
      * Getter for offset by Y.
      */
     public func offsetY()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".offsetY();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".offsetY();")
     }
     /**
      * Setter for offset by Y.
 See illustration in {@link anychart.core.annotations.Label#offsetX}.
      */
     public func offsetY(offset: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetY()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetY(\(offset));")
+
+        return self
+    }
+    /**
+     * Setter for offset by Y.
+See illustration in {@link anychart.core.annotations.Label#offsetX}.
+     */
+    public func offsetY(offset: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).offsetY(\(JsObject.wrapQuotes(value: offset)));")
 
         return self
     }
@@ -605,13 +440,21 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for padding settings.
      */
     public func padding() -> anychart.core.utils.Padding {
-        return anychart.core.utils.Padding(jsBase: jsBase + ".padding()")
+        return anychart.core.utils.Padding(jsBase: self.jsBase + ".padding()")
     }
     /**
      * Setter for paddings in pixels using a single value.
      */
     public func padding(padding: [Double]) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(padding.map{String($0)}.joined(separator: ",")));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using a single value.
+     */
+    public func padding(padding: [String]) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.arrayToStringWrapQuotes(array: padding)));")
 
         return self
     }
@@ -619,7 +462,7 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using a single value.
      */
     public func padding(padding: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: padding)));")
 
         return self
     }
@@ -627,7 +470,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: String, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(JsObject.wrapQuotes(value: value2)), \(JsObject.wrapQuotes(value: value3)), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: String, value2: String, value3: String, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(JsObject.wrapQuotes(value: value2)), \(JsObject.wrapQuotes(value: value3)), \(value4));")
 
         return self
     }
@@ -635,7 +486,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: String, value3: Double, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(JsObject.wrapQuotes(value: value2)), \(value3), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: String, value2: String, value3: Double, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(JsObject.wrapQuotes(value: value2)), \(value3), \(value4));")
 
         return self
     }
@@ -643,7 +502,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: String, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(value2), \(JsObject.wrapQuotes(value: value3)), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: String, value2: Double, value3: String, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(value2), \(JsObject.wrapQuotes(value: value3)), \(value4));")
 
         return self
     }
@@ -651,7 +518,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: String, value2: Double, value3: Double, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(value2), \(value3), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: String, value2: Double, value3: Double, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(JsObject.wrapQuotes(value: value1)), \(value2), \(value3), \(value4));")
 
         return self
     }
@@ -659,7 +534,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: String, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(JsObject.wrapQuotes(value: value2)), \(JsObject.wrapQuotes(value: value3)), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: Double, value2: String, value3: String, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(JsObject.wrapQuotes(value: value2)), \(JsObject.wrapQuotes(value: value3)), \(value4));")
 
         return self
     }
@@ -667,7 +550,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: String, value3: Double, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(JsObject.wrapQuotes(value: value2)), \(value3), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: Double, value2: String, value3: Double, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(JsObject.wrapQuotes(value: value2)), \(value3), \(value4));")
 
         return self
     }
@@ -675,7 +566,15 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: String, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(value2), \(JsObject.wrapQuotes(value: value3)), \(JsObject.wrapQuotes(value: value4)));")
+
+        return self
+    }
+    /**
+     * Setter for paddings in pixels using several numbers.
+     */
+    public func padding(value1: Double, value2: Double, value3: String, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(value2), \(JsObject.wrapQuotes(value: value3)), \(value4));")
 
         return self
     }
@@ -683,67 +582,29 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Setter for paddings in pixels using several numbers.
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(value2), \(value3), \(JsObject.wrapQuotes(value: value4)));")
 
         return self
     }
     /**
-     * Prints all elements on related stage.
+     * Setter for paddings in pixels using several numbers.
      */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Getter for element right bound settings.
-     */
-    public func right()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".right();")
-    }
-    /**
-     * Setter for element right bound setting.
-     */
-    public func right(right: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
+    public func padding(value1: Double, value2: Double, value3: Double, value4: Double) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(value2), \(value3), \(value4));")
 
         return self
-    }
-    /**
-     * Selects current annotation.
-     */
-    public func select()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".select();")
     }
     /**
      * Getter for the text selectable option.
      */
     public func selectable()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".selectable();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".selectable();")
     }
     /**
      * Setter for the text selectable.
      */
     public func selectable(enabled: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable()")
-
-        return self
-    }
-    /**
-     * Getter for selected state settings.
-     */
-    public func selected() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".selected()")
-    }
-    /**
-     * Setter for selected state settings.
-     */
-    public func selected(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectable(\(enabled));")
 
         return self
     }
@@ -751,13 +612,13 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the text content for a label.
      */
     public func text()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".text();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".text();")
     }
     /**
      * Setter for text content for a label.
      */
     public func text(text: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).text()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).text(\(JsObject.wrapQuotes(value: text)));")
 
         return self
     }
@@ -765,13 +626,21 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the text direction.
      */
     public func textDirection()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".textDirection();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".textDirection();")
     }
     /**
      * Setter for the text direction.
      */
     public func textDirection(type: anychart.graphics.vector.text.Direction) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the text direction.
+     */
+    public func textDirection(type: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textDirection(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -779,13 +648,13 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the text indent.
      */
     public func textIndent()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".textIndent();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".textIndent();")
     }
     /**
      * Setter for the text indent.
      */
     public func textIndent(indent: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textIndent(\(indent));")
 
         return self
     }
@@ -793,47 +662,35 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the text overflow settings.
      */
     public func textOverflow()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".textOverflow();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".textOverflow();")
     }
     /**
      * Setter for the text overflow settings.
      */
     public func textOverflow(value: anychart.graphics.vector.text.TextOverflow) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow(\((value != nil) ? value.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Getter for element top bound settings.
+     * Setter for the text overflow settings.
      */
-    public func top()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".top();")
-    }
-    /**
-     * Setter for element top bound settings.
-     */
-    public func top(top: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
+    public func textOverflow(value: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textOverflow(\(JsObject.wrapQuotes(value: value)));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the useHTML flag.
      */
     public func useHtml()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".useHtml();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".useHtml();")
     }
     /**
      * Setter for the useHTML flag.
      */
     public func useHtml(enabled: Bool) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).useHtml(\(enabled));")
 
         return self
     }
@@ -841,13 +698,21 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the text vertical align.
      */
     public func vAlign()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".vAlign();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".vAlign();")
     }
     /**
      * Setter for the text vertical align.
      */
     public func vAlign(type: anychart.graphics.vector.text.VAlign) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the text vertical align.
+     */
+    public func vAlign(type: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).vAlign(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -855,27 +720,13 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the value anchor.
      */
     public func valueAnchor()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".valueAnchor();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".valueAnchor();")
     }
     /**
      * Setter for the value anchor.
      */
     public func valueAnchor(value: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueAnchor()")
-
-        return self
-    }
-    /**
-     * Getter for element width settings.
-     */
-    public func width()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".width();")
-    }
-    /**
-     * Setter for element width setting.
-     */
-    public func width(width: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueAnchor(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -883,13 +734,21 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the word-break mode.
      */
     public func wordBreak()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".wordBreak();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".wordBreak();")
     }
     /**
      * Setter for the word-break mode.
      */
     public func wordBreak(type: anychart.enums.WordBreak) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the word-break mode.
+     */
+    public func wordBreak(type: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordBreak(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -897,13 +756,21 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the word-wrap mode.
      */
     public func wordWrap()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".wordWrap();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".wordWrap();")
     }
     /**
      * Setter for the word-wrap mode.
      */
     public func wordWrap(type: anychart.enums.WordWrap) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the word-wrap mode.
+     */
+    public func wordWrap(type: String) -> anychart.core.annotations.Label {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -911,141 +778,13 @@ See illustration in {@link anychart.core.annotations.Label#offsetX}.
      * Getter for the X anchor.
      */
     public func xAnchor()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".xAnchor();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".xAnchor();")
     }
     /**
      * Setter for the X anchor.
      */
     public func xAnchor(value: String) -> anychart.core.annotations.Line {
         return anychart.core.annotations.Line(jsBase: "\(self.jsBase).xAnchor(\(JsObject.wrapQuotes(value: value)))")
-    }
-    /**
-     * Getter for the X-scale.
-     */
-    public func xScale() -> anychart.scales.Ordinal {
-        return anychart.scales.Ordinal(jsBase: jsBase + ".xScale()")
-    }
-    /**
-     * Setter for the X-scale.
-     */
-    public func xScale(settings: anychart.scales.Base) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
-
-        return self
-    }
-    /**
-     * Setter for the X-scale.
-     */
-    public func xScale(settings: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
-
-        return self
-    }
-    /**
-     * Getter for the Y-scale.
-     */
-    public func yScale() -> anychart.scales.Base {
-        return anychart.scales.Base(jsBase: jsBase + ".yScale()")
-    }
-    /**
-     * Setter for the Y-scale.
-     */
-    public func yScale(settings: anychart.scales.Base) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
-
-        return self
-    }
-    /**
-     * Setter for the Y-scale.
-     */
-    public func yScale(settings: anychart.enums.ScaleTypes) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
-
-        return self
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the annotation color.
-     */
-    public func color()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".color();")
-    }
-    /**
-     * Setter for the annotation color.
-     */
-    public func color(color: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).color()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.annotations.Label {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
     }
 
     }

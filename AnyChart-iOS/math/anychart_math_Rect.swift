@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Rect(jsBase: "new anychart.math.Rect()")
-            super.init(jsBase: "new anychart.math.Rect()")
+            //super.init(jsBase: "new anychart.math.Rect()")
         }
 
         
@@ -23,6 +24,10 @@
             JsObject.variableIndex += 1
             self.jsBase = "rect\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
+        }
+
+        public func instantiate() -> anychart.math.Rect {
+            return anychart.math.Rect(jsBase: "new anychart.math.Rect()")
         }
 
         override public func getJsBase() -> String {

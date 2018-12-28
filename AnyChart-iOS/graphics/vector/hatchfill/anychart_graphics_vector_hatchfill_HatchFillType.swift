@@ -34,7 +34,7 @@ extension anychart.graphics.vector.hatchfill {
         case ZIG_ZAG = "zig-zag"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

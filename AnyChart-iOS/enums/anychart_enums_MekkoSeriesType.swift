@@ -3,7 +3,7 @@ extension anychart.enums {
         case MEKKO = "mekko"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

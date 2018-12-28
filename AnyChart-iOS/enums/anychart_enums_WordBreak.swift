@@ -5,7 +5,7 @@ extension anychart.enums {
         case NORMAL = "normal"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

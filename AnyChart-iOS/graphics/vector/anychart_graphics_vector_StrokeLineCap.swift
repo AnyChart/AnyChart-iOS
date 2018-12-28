@@ -5,7 +5,7 @@ extension anychart.graphics.vector {
         case SQUARE = "square"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

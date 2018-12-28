@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Context(jsBase: "new anychart.core.series.RenderingSettings.Context()")
-            super.init(jsBase: "new anychart.core.series.RenderingSettings.Context()")
+            //super.init(jsBase: "new anychart.core.series.RenderingSettings.Context()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.core.series.renderingsettings.Context {
+            return anychart.core.series.renderingsettings.Context(jsBase: "new anychart.core.series.RenderingSettings.Context()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,7 +39,7 @@
      * Fetch statistics value by its key or a whole object if no key provided.
      */
     public func getStat(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)));")
     }
 
     }

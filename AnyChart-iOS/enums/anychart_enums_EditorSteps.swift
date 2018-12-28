@@ -6,7 +6,7 @@ extension anychart.enums {
         case EXPORT = "export"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

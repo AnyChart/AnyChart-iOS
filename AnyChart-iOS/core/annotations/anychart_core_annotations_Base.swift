@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Base(jsBase: "new anychart.core.annotations.Base()")
-            super.init(jsBase: "new anychart.core.annotations.Base()")
+            //super.init(jsBase: "new anychart.core.annotations.Base()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.annotations.Base {
+            return anychart.core.annotations.Base(jsBase: "new anychart.core.annotations.Base()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,113 +39,13 @@
      * Getter for an interactivity in the annotation.
      */
     public func allowEdit()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".allowEdit();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".allowEdit();")
     }
     /**
      * Setter for an interactivity in the annotation.
      */
     public func allowEdit(value: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowEdit()")
-
-        return self
-    }
-    /**
-     * Getter for element bottom bound settings.
-     */
-    public func bottom()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".bottom();")
-    }
-    /**
-     * Setter for element bottom bound settings.
-     */
-    public func bottom(bottom: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
-
-        return self
-    }
-    /**
-     * Getter for element bounds settings.
-     */
-    public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.utils.RectObj) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: String, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowEdit(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -148,27 +53,13 @@
      * Getter for the annotation color.
      */
     public func color()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".color();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".color();")
     }
     /**
      * Setter for the annotation color.
      */
     public func color(color: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).color()")
-
-        return self
-    }
-    /**
-     * Getter for the element state (enabled or disabled).
-     */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).color(\(JsObject.wrapQuotes(value: color)));")
 
         return self
     }
@@ -176,52 +67,32 @@
      * Returns the chart on which the annotation is drawn.
      */
     public func getChart() -> anychart.core.SeparateChart {
-        return anychart.core.SeparateChart(jsBase: jsBase + ".getChart()")
-    }
-    /**
-     * Returns pixel bounds of the element due to parent bounds and self bounds settings.
-     */
-    public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
+        return anychart.core.SeparateChart(jsBase: self.jsBase + ".getChart()")
     }
     /**
      * Returns the plot on which the annotation is drawn.
      */
     public func getPlot() -> anychart.core.stock.Plot {
-        return anychart.core.stock.Plot(jsBase: jsBase + ".getPlot()")
+        return anychart.core.stock.Plot(jsBase: self.jsBase + ".getPlot()")
     }
     /**
      * Returns annotation type.
      */
     public func getType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getType();")
-    }
-    /**
-     * Getter for element height settings.
-     */
-    public func height()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".height();")
-    }
-    /**
-     * Setter for element height setting.
-     */
-    public func height(height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
-
-        return self
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getType();")
     }
     /**
      * Getter for the hover gap.
      */
     public func hoverGap()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".hoverGap();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".hoverGap();")
     }
     /**
      * Setter for the hover gap.<br/>
 The contour size around annotation.
      */
     public func hoverGap(value: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverGap()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverGap(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -229,27 +100,13 @@ The contour size around annotation.
      * Getter for hovered state settings.
      */
     public func hovered() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".hovered()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".hovered()")
     }
     /**
      * Setter for hovered state settings.
      */
     public func hovered(settings: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
-
-        return self
-    }
-    /**
-     * Getter for element left bound settings.
-     */
-    public func left()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".left();")
-    }
-    /**
-     * Setter for element left bound settings.
-     */
-    public func left(left: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -257,69 +114,21 @@ The contour size around annotation.
      * Getter for data markers.
      */
     public func markers() -> anychart.core.ui.MarkersFactory {
-        return anychart.core.ui.MarkersFactory(jsBase: jsBase + ".markers()")
+        return anychart.core.ui.MarkersFactory(jsBase: self.jsBase + ".markers()")
     }
     /**
      * Setter for data markers.
      */
     public func markers(settings: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markers()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markers(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Getter for the maximum height.
+     * Setter for data markers.
      */
-    public func maxHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxHeight();")
-    }
-    /**
-     * Setter for the maximum height.
-     */
-    public func maxHeight(height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the maximum width.
-     */
-    public func maxWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxWidth();")
-    }
-    /**
-     * Setter for the maximum width.
-     */
-    public func maxWidth(width: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
-
-        return self
-    }
-    /**
-     * Getter for the minimum height.
-     */
-    public func minHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minHeight();")
-    }
-    /**
-     * Setter for the minimum height.
-     */
-    public func minHeight(height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the minimum width.
-     */
-    public func minWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minWidth();")
-    }
-    /**
-     * Setter for the minimum width.
-     */
-    public func minWidth(width: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
+    public func markers(settings: Bool) -> anychart.core.annotations.Base {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markers(\(settings));")
 
         return self
     }
@@ -327,39 +136,13 @@ The contour size around annotation.
      * Getter for normal state settings.
      */
     public func normal() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".normal()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".normal()")
     }
     /**
      * Setter for normal state settings.
      */
     public func normal(settings: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
-
-        return self
-    }
-    /**
-     * Prints all elements on related stage.
-     */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Getter for element right bound settings.
-     */
-    public func right()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".right();")
-    }
-    /**
-     * Setter for element right bound setting.
-     */
-    public func right(right: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -367,53 +150,19 @@ The contour size around annotation.
      * Selects current annotation.
      */
     public func select()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".select();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".select();")
     }
     /**
      * Getter for selected state settings.
      */
     public func selected() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".selected()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".selected()")
     }
     /**
      * Setter for selected state settings.
      */
     public func selected(settings: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
-
-        return self
-    }
-    /**
-     * Getter for element top bound settings.
-     */
-    public func top()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".top();")
-    }
-    /**
-     * Setter for element top bound settings.
-     */
-    public func top(top: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
-
-        return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
-    /**
-     * Getter for element width settings.
-     */
-    public func width()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".width();")
-    }
-    /**
-     * Setter for element width setting.
-     */
-    public func width(width: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -421,13 +170,21 @@ The contour size around annotation.
      * Getter for the X-scale.
      */
     public func xScale() -> anychart.scales.Ordinal {
-        return anychart.scales.Ordinal(jsBase: jsBase + ".xScale()")
+        return anychart.scales.Ordinal(jsBase: self.jsBase + ".xScale()")
     }
     /**
      * Setter for the X-scale.
      */
     public func xScale(settings: anychart.scales.Base) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\((settings != nil) ? settings.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the X-scale.
+     */
+    public func xScale(settings: anychart.scales.StockScatterDateTime) -> anychart.core.annotations.Base {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -435,7 +192,15 @@ The contour size around annotation.
      * Setter for the X-scale.
      */
     public func xScale(settings: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the X-scale.
+     */
+    public func xScale(settings: anychart.enums.ScaleTypes) -> anychart.core.annotations.Base {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -443,13 +208,21 @@ The contour size around annotation.
      * Getter for the Y-scale.
      */
     public func yScale() -> anychart.scales.Base {
-        return anychart.scales.Base(jsBase: jsBase + ".yScale()")
+        return anychart.scales.Base(jsBase: self.jsBase + ".yScale()")
     }
     /**
      * Setter for the Y-scale.
      */
     public func yScale(settings: anychart.scales.Base) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the Y-scale.
+     */
+    public func yScale(settings: String) -> anychart.core.annotations.Base {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -457,77 +230,7 @@ The contour size around annotation.
      * Setter for the Y-scale.
      */
     public func yScale(settings: anychart.enums.ScaleTypes) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
-
-        return self
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.annotations.Base {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }

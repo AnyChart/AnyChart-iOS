@@ -6,7 +6,7 @@ extension anychart.enums {
         case WIN_LOSS = "win-loss"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

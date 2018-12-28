@@ -24,7 +24,7 @@ extension anychart.enums {
         case TRIANGLE_UP = "triangle-up"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

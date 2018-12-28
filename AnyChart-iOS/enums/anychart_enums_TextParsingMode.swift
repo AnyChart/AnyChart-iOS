@@ -5,7 +5,7 @@ extension anychart.enums {
         case CSV = "csv"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

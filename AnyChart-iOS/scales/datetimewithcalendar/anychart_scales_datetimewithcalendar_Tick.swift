@@ -6,7 +6,7 @@ extension anychart.scales.datetimewithcalendar {
         public init(end: Double, holiday: Bool, start: Double) {
             super.init()
 
-            js.append(String(format: "{end:%s, holiday: %s, start: %s, } ", \(end), \(holiday), \(start)))
+            js.append("\(end), \(holiday), \(start)")
         }
 
     }

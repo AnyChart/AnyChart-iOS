@@ -12,7 +12,7 @@ extension anychart.graphics.vector.image {
         case X_MIN_Y_MIN = "x-min-y-min"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

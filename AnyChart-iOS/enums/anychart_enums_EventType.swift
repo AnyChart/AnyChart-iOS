@@ -58,7 +58,7 @@ extension anychart.enums {
         case ROW_CLICK = "rowClick"
         case ROW_DBL_CLICK = "rowDblClick"
         case ROW_MOUSE_DOWN = "rowMouseDown"
-        case ROW_MOUSE_MOVE = "rowMouseOver"
+        case ROW_MOUSE_MOVE = "rowMouseMove"
         case ROW_MOUSE_OUT = "rowMouseOut"
         case ROW_MOUSE_OVER = "rowMouseOver"
         case ROW_MOUSE_UP = "rowMouseUp"
@@ -84,7 +84,7 @@ extension anychart.enums {
         case ZOOM_START = "zoomStart"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

@@ -4,7 +4,7 @@ extension anychart.enums {
         case REVERSE = "reverse"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

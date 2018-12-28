@@ -4,7 +4,7 @@ extension anychart.enums {
         case SERIES_START = "series-start"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

@@ -5,7 +5,7 @@ extension anychart.graphics.vector.text {
         case OBLIQUE = "oblique"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

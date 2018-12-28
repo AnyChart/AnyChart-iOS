@@ -4,7 +4,7 @@ extension anychart.enums {
         case SMA = "sma"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

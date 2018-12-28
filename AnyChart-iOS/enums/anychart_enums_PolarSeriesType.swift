@@ -9,7 +9,7 @@ extension anychart.enums {
         case RANGE_COLUMN = "range-column"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

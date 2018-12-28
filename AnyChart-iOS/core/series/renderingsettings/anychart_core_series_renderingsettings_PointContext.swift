@@ -4,15 +4,16 @@
  * 
  */
  extension anychart.core.series.renderingsettings {
-    public class PointContext: anychart.core.series.RenderingSettings.Context {
+    public class PointContext: anychart.core.series.renderingsettings.Context {
 
         //override init() {
         //    super.init()
         //}
 
         public override init() {
+            super.init()
             //return PointContext(jsBase: "new anychart.core.series.RenderingSettings.PointContext()")
-            super.init(jsBase: "new anychart.core.series.RenderingSettings.PointContext()")
+            //super.init(jsBase: "new anychart.core.series.RenderingSettings.PointContext()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.series.renderingsettings.PointContext {
+            return anychart.core.series.renderingsettings.PointContext(jsBase: "new anychart.core.series.RenderingSettings.PointContext()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,25 +39,19 @@
      * Returns data value by name.
      */
     public func getDataValue(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getDataValue(\(JsObject.wrapQuotes(value: name)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getDataValue(\(JsObject.wrapQuotes(value: name)));")
     }
     /**
      * Returns stacked value if the series is stacked.
      */
     public func getStackedValue()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getStackedValue();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getStackedValue();")
     }
     /**
      * Returns stacked zero value if the series is stacked.
      */
     public func getStackedZero()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getStackedZero();")
-    }
-    /**
-     * Fetch statistics value by its key or a whole object if no key provided.
-     */
-    public func getStat(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getStackedZero();")
     }
 
     }

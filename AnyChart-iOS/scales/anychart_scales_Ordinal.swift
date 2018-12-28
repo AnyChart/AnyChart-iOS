@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Ordinal(jsBase: "new anychart.scales.Ordinal()")
-            super.init(jsBase: "new anychart.scales.Ordinal()")
+            //super.init(jsBase: "new anychart.scales.Ordinal()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.scales.Ordinal {
+            return anychart.scales.Ordinal(jsBase: "new anychart.scales.Ordinal()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -35,70 +40,36 @@
 <b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
      */
     public func extendDataRange(var_args: String) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange(\(JsObject.wrapQuotes(value: var_args)));")
 
         return self
-    }
-    /**
-     * Informs the scale that an auto-range calculation started for the chart in past was ended.
-     */
-    public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
-    }
-    /**
-     * Returns scale type.
-     */
-    public func getType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getType();")
     }
     /**
      * Returns tick name by its ratio position.
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
-    }
-    /**
-     * Getter for the scale inversion.
-     */
-    public func inverted()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".inverted();")
-    }
-    /**
-     * Setter for scale inversion.<br/> If the scale is <b>inverted</b>, axes and series go upside-down or right-to-left
-instead of bottom-to-top and left-to-right.
-     */
-    public func inverted(enabled: Bool) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
-
-        return self
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio));")
     }
     /**
      * Getter for scale ticks names.
      */
     public func names()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".names();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".names();")
     }
     /**
      * Setter for scale ticks names.
      */
     public func names(names: [String]) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names(\(JsObject.arrayToStringWrapQuotes(array: names)));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for scale ticks names.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Informs scale that an auto-range calculation started for the chart, so it should reset its data range on the first
-call of this method if needed.
-     */
-    public func startAutoCalc() -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".startAutoCalc();")
+    public func names(names: String) -> anychart.scales.Ordinal {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names(\(JsObject.wrapQuotes(value: names)));")
 
         return self
     }
@@ -106,13 +77,21 @@ call of this method if needed.
      * Getter for set of scale ticks in terms of data values.
      */
     public func ticks() -> anychart.scales.OrdinalTicks {
-        return anychart.scales.OrdinalTicks(jsBase: jsBase + ".ticks()")
+        return anychart.scales.OrdinalTicks(jsBase: self.jsBase + ".ticks()")
     }
     /**
      * Setter for set of scale ticks in terms of data values.
      */
     public func ticks(ticks: String) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks(\(JsObject.wrapQuotes(value: ticks)));")
+
+        return self
+    }
+    /**
+     * Setter for set of scale ticks in terms of data values.
+     */
+    public func ticks(ticks: [String]) -> anychart.scales.Ordinal {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
 
         return self
     }
@@ -121,25 +100,27 @@ call of this method if needed.
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
      */
     public func transform(value: String, subRangeRatio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio));")
     }
     /**
      * Getter for the scale input domain.
      */
     public func values()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".values();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".values();")
     }
     /**
      * Setter for the scale input domain.
      */
     public func values(values: [String], var_args: String) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.arrayToStringWrapQuotes(array: values)), \(JsObject.wrapQuotes(value: var_args)));")
+
+        return self
+    }
+    /**
+     * Setter for the scale input domain.
+     */
+    public func values(values: String, var_args: String) -> anychart.scales.Ordinal {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.wrapQuotes(value: values)), \(JsObject.wrapQuotes(value: var_args)));")
 
         return self
     }
@@ -147,13 +128,13 @@ call of this method if needed.
      * Getter for scale weights.
      */
     public func weights()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".weights();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".weights();")
     }
     /**
      * Setter for scale weights.
      */
     public func weights(weights: [Double]) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).weights()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).weights(\(weights.map{String($0)}.joined(separator: ",")));")
 
         return self
     }

@@ -18,7 +18,7 @@ extension anychart.enums {
         case STICK = "stick"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

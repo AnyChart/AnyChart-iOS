@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Rect(jsBase: "new anychart.graphics.math.Rect()")
-            super.init(jsBase: "new anychart.graphics.math.Rect()")
+            //super.init(jsBase: "new anychart.graphics.math.Rect()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.graphics.math.Rect {
+            return anychart.graphics.math.Rect(jsBase: "new anychart.graphics.math.Rect()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,37 +39,37 @@
      * Getter for the bottom of a rectangle.
      */
     public func getBottom()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getBottom();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getBottom();")
     }
     /**
      * Getter for the height of a rectangle.
      */
     public func getHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getHeight();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getHeight();")
     }
     /**
      * Getter for the X-coordinate of the left side of a rectangle.
      */
     public func getLeft()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getLeft();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getLeft();")
     }
     /**
      * Getter for the X-coordinate of the right side of a rectangle.
      */
     public func getRight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getRight();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getRight();")
     }
     /**
      * Getter for the top of a rectangle.
      */
     public func getTop()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getTop();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getTop();")
     }
     /**
      * Getter for the width of a rectangle.
      */
     public func getWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getWidth();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getWidth();")
     }
 
     }

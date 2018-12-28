@@ -4,7 +4,7 @@ extension anychart.enums {
         case DIFF = "diff"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

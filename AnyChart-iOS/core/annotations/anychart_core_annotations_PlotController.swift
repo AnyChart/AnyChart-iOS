@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return PlotController(jsBase: "new anychart.core.annotations.PlotController()")
-            super.init(jsBase: "new anychart.core.annotations.PlotController()")
+            //super.init(jsBase: "new anychart.core.annotations.PlotController()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.annotations.PlotController {
+            return anychart.core.annotations.PlotController(jsBase: "new anychart.core.annotations.PlotController()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -35,6 +40,12 @@
      */
     public func add(annotationTypeOrConfig: anychart.enums.AnnotationTypes) -> anychart.core.annotations.Base {
         return anychart.core.annotations.Base(jsBase: "\(self.jsBase).add(\((annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))")
+    }
+    /**
+     * Adds annotation on the plot.
+     */
+    public func add(annotationTypeOrConfig: String) -> anychart.core.annotations.Base {
+        return anychart.core.annotations.Base(jsBase: "\(self.jsBase).add(\(JsObject.wrapQuotes(value: annotationTypeOrConfig)))")
     }
     /**
      * Adds annotation on the plot.
@@ -52,27 +63,13 @@
      * Cancels current annotation drawing.
      */
     public func cancelDrawing()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".cancelDrawing();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".cancelDrawing();")
     }
     /**
      * Creates and returns an Ellipse annotation.
      */
     public func ellipse(settings: String) -> anychart.core.annotations.Ellipse {
         return anychart.core.annotations.Ellipse(jsBase: "\(self.jsBase).ellipse(\(JsObject.wrapQuotes(value: settings)))")
-    }
-    /**
-     * Getter for the enabled state.
-     */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
-
-        return self
     }
     /**
      * Creates and returns a Fibonacci Arc annotation.
@@ -102,7 +99,7 @@
      * Creates annotations list by JSON config.
      */
     public func fromJson(config: String) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fromJson()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fromJson(\(JsObject.wrapQuotes(value: config)));")
 
         return self
     }
@@ -110,7 +107,7 @@
      * Creates annotations list by XML config.
      */
     public func fromXml(config: String) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fromXml()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fromXml(\(JsObject.wrapQuotes(value: config)));")
 
         return self
     }
@@ -124,13 +121,13 @@
      * Returns annotations count.
      */
     public func getAnnotationsCount()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getAnnotationsCount();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getAnnotationsCount();")
     }
     /**
      * Returns currently selected annotation.
      */
     public func getSelectedAnnotation() -> anychart.core.annotations.Base {
-        return anychart.core.annotations.Base(jsBase: jsBase + ".getSelectedAnnotation()")
+        return anychart.core.annotations.Base(jsBase: self.jsBase + ".getSelectedAnnotation()")
     }
     /**
      * Creates and returns a Horizontal Line annotation.
@@ -163,12 +160,6 @@
         return anychart.core.annotations.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: settings)))")
     }
     /**
-     * Prints all elements on related stage.
-     */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
-    }
-    /**
      * Creates and returns a Ray annotation.
      */
     public func ray(settings: String) -> anychart.core.annotations.Ray {
@@ -184,21 +175,15 @@
      * Removes all annotations from a plot.
      */
     public func removeAllAnnotations() -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".removeAllAnnotations();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".removeAllAnnotations();")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Removes an annotation from a plot by its instance.
      */
     public func removeAnnotation(annotation: anychart.core.annotations.Base) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAnnotation()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAnnotation(\((annotation != nil) ? annotation.getJsBase() : "null"));")
 
         return self
     }
@@ -206,7 +191,7 @@
      * Removes an annotation from a plot by its index.
      */
     public func removeAnnotationAt(index: Double) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAnnotationAt()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAnnotationAt(\(index));")
 
         return self
     }
@@ -214,7 +199,7 @@
      * Selects annotation.
      */
     public func select(annotation: anychart.core.annotations.Base) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).select()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).select(\((annotation != nil) ? annotation.getJsBase() : "null"));")
 
         return self
     }
@@ -229,6 +214,13 @@
      * Starts annotation drawing.<br/>
 <b>Note:</b> Works only after {@link anychart.charts.Cartesian#draw} and {@link anychart.charts.Stock#draw} is called.
      */
+    public func startDrawing(annotationTypeOrConfig: String) -> anychart.core.annotations.Base {
+        return anychart.core.annotations.Base(jsBase: "\(self.jsBase).startDrawing(\(JsObject.wrapQuotes(value: annotationTypeOrConfig)))")
+    }
+    /**
+     * Starts annotation drawing.<br/>
+<b>Note:</b> Works only after {@link anychart.charts.Cartesian#draw} and {@link anychart.charts.Stock#draw} is called.
+     */
     public func startDrawing(annotationTypeOrConfig: anychart.core.annotations.AnnotationJSONFormat) -> anychart.core.annotations.Base {
         return anychart.core.annotations.Base(jsBase: "\(self.jsBase).startDrawing(\((annotationTypeOrConfig != nil) ? annotationTypeOrConfig.getJsBase() : "null"))")
     }
@@ -236,13 +228,13 @@
      * Return plot annotations configuration as JSON object or string.
      */
     public func toJson(stringify: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toJson(\(stringify))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toJson(\(stringify));")
     }
     /**
      * Return plot annotations configuration as XML string or XMLNode.
      */
     public func toXml(asXmlNode: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toXml(\(asXmlNode))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).toXml(\(asXmlNode));")
     }
     /**
      * Creates and returns a Trend Channel annotation.
@@ -257,16 +249,10 @@
         return anychart.core.annotations.Triangle(jsBase: "\(self.jsBase).triangle(\(JsObject.wrapQuotes(value: settings)))")
     }
     /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
-    /**
      * Unselects annotations.
      */
     public func unselect() -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".unselect();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".unselect();")
 
         return self
     }
@@ -275,76 +261,6 @@
      */
     public func verticalLine(settings: String) -> anychart.core.annotations.VerticalLine {
         return anychart.core.annotations.VerticalLine(jsBase: "\(self.jsBase).verticalLine(\(JsObject.wrapQuotes(value: settings)))")
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.annotations.PlotController {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
     }
 
     }

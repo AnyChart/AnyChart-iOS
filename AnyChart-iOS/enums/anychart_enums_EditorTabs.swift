@@ -24,7 +24,7 @@ extension anychart.enums {
         case TOOLTIP = "tooltip"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

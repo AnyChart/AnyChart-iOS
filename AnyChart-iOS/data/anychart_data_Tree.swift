@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Tree(jsBase: "new anychart.data.Tree()")
-            super.init(jsBase: "new anychart.data.Tree()")
+            //super.init(jsBase: "new anychart.data.Tree()")
         }
 
         
@@ -23,6 +24,10 @@
             JsObject.variableIndex += 1
             self.jsBase = "tree\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
+        }
+
+        override public func instantiate() -> anychart.data.Tree {
+            return anychart.data.Tree(jsBase: "new anychart.data.Tree()")
         }
 
         override public func getJsBase() -> String {
@@ -45,6 +50,12 @@
     /**
      * Inserts a new root element into a specified position by index and returns it.
      */
+    public func addChildAt(child: anychart.data.tree.DataItem, index: Double) -> anychart.data.tree.DataItem {
+        return anychart.data.tree.DataItem(jsBase: "\(self.jsBase).addChildAt(\((child != nil) ? child.getJsBase() : "null"), \(index))")
+    }
+    /**
+     * Inserts a new root element into a specified position by index and returns it.
+     */
     public func addChildAt(child: anychart.data.treeview.DataItem, index: Double) -> anychart.data.tree.DataItem {
         return anychart.data.tree.DataItem(jsBase: "\(self.jsBase).addChildAt(\((child != nil) ? child.getJsBase() : "null"), \(index))")
     }
@@ -52,7 +63,15 @@
      * Adds a data.
      */
     public func addData(data: [String], fillingMethod: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillingMethod != nil) ? fillingMethod.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: [String], fillingMethod: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.Tree {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillingMethod != nil) ? fillingMethod.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -60,7 +79,15 @@
      * Adds a data.
      */
     public func addData(data: [String], fillingMethod: String, csvSettingsOrDeps: String) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillingMethod)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: [String], fillingMethod: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.Tree {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillingMethod)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -68,7 +95,15 @@
      * Adds a data.
      */
     public func addData(data: String, fillingMethod: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillingMethod != nil) ? fillingMethod.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: String, fillingMethod: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.Tree {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillingMethod != nil) ? fillingMethod.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -76,7 +111,15 @@
      * Adds a data.
      */
     public func addData(data: String, fillingMethod: String, csvSettingsOrDeps: String) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillingMethod)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
+
+        return self
+    }
+    /**
+     * Adds a data.
+     */
+    public func addData(data: String, fillingMethod: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.Tree {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillingMethod)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
 
         return self
     }
@@ -84,13 +127,13 @@
      * Gets tree CRUD events dispatching.
      */
     public func dispatchEvents()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".dispatchEvents();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".dispatchEvents();")
     }
     /**
      * Starts or stops tree CRUD events dispatching.
      */
     public func dispatchEvents(enabled: Bool) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dispatchEvents()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dispatchEvents(\(enabled));")
 
         return self
     }
@@ -104,19 +147,25 @@
      * Returns a copy of roots array.
      */
     public func getChildren()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getChildren();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getChildren();")
     }
     /**
      * Creates tree data traverser.
      */
     public func getTraverser() -> anychart.data.Traverser {
-        return anychart.data.Traverser(jsBase: jsBase + ".getTraverser()")
+        return anychart.data.Traverser(jsBase: self.jsBase + ".getTraverser()")
     }
     /**
      * Gets the index of child in a roots array.
      */
     public func indexOfChild(child: anychart.data.tree.DataItem)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"));")
+    }
+    /**
+     * Gets the index of child in a roots array.
+     */
+    public func indexOfChild(child: anychart.data.treeview.DataItem)  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).indexOfChild(\((child != nil) ? child.getJsBase() : "null"));")
     }
     /**
      * Returns a new mapping for the tree.
@@ -128,13 +177,7 @@
      * Returns a length of roots array.
      */
     public func numChildren()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".numChildren();")
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".numChildren();")
     }
     /**
      * Removes tree's root data item.
@@ -152,7 +195,7 @@
      * Removes children of the tree.
      */
     public func removeChildren() -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".removeChildren();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".removeChildren();")
 
         return self
     }
@@ -160,15 +203,9 @@
      * Removes index on a specified field.
      */
     public func removeIndexOn(field: String) -> anychart.data.Tree {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeIndexOn()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeIndexOn(\(JsObject.wrapQuotes(value: field)));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

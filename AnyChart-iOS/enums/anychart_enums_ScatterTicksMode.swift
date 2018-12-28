@@ -4,7 +4,7 @@ extension anychart.enums {
         case LOGARITHMIC = "logarithmic"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

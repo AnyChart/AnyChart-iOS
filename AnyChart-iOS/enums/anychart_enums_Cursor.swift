@@ -21,7 +21,7 @@ extension anychart.enums {
         case W_RESIZE = "w-resize"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

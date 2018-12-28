@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Base(jsBase: "new anychart.core.stock.indicators.Base()")
-            super.init(jsBase: "new anychart.core.stock.indicators.Base()")
+            //super.init(jsBase: "new anychart.core.stock.indicators.Base()")
         }
 
         
@@ -23,6 +24,10 @@
             JsObject.variableIndex += 1
             self.jsBase = "base\(JsObject.variableIndex)"
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
+        }
+
+        public func instantiate() -> anychart.core.stock.indicators.Base {
+            return anychart.core.stock.indicators.Base(jsBase: "new anychart.core.stock.indicators.Base()")
         }
 
         override public func getJsBase() -> String {

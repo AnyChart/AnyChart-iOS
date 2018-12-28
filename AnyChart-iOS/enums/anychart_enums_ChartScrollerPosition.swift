@@ -4,7 +4,7 @@ extension anychart.enums {
         case BEFORE_AXES = "before-axes"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

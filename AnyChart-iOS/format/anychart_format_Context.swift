@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Context(jsBase: "new anychart.format.Context()")
-            super.init(jsBase: "new anychart.format.Context()")
+            //super.init(jsBase: "new anychart.format.Context()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.format.Context {
+            return anychart.format.Context(jsBase: "new anychart.format.Context()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,26 +39,19 @@
      * Gets data value by the single parameter.
      */
     public func getData(fieldPath: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getData(\(JsObject.wrapQuotes(value: fieldPath)))")
-    }
-    /**
-     * Gets data value by several parameters.<br/>
-This method uses several parameters only in the Gantt Resource, TreeMap and Pert charts.
-     */
-    public func getData(var_args: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getData(\(JsObject.wrapQuotes(value: var_args)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getData(\(JsObject.wrapQuotes(value: fieldPath)));")
     }
     /**
      * Gets meta value.
      */
     public func getMeta(name: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getMeta(\(JsObject.wrapQuotes(value: name)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getMeta(\(JsObject.wrapQuotes(value: name)));")
     }
     /**
      * Gets statistics value by key.
      */
     public func getStat(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).getStat(\(JsObject.wrapQuotes(value: key)));")
     }
 
     }

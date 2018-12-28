@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return LinearColor(jsBase: "new anychart.scales.LinearColor()")
-            super.init(jsBase: "new anychart.scales.LinearColor()")
+            //super.init(jsBase: "new anychart.scales.LinearColor()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.scales.LinearColor {
+            return anychart.scales.LinearColor(jsBase: "new anychart.scales.LinearColor()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,19 +39,27 @@
      * Converts color to value. Returns number ratio by its color.
      */
     public func colorToValue(color: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colorToValue(\(JsObject.wrapQuotes(value: color)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colorToValue(\(JsObject.wrapQuotes(value: color)));")
     }
     /**
      * Getter for the linear gradient for the linear color scale.
      */
     public func colors()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".colors();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".colors();")
     }
     /**
      * Setter for the linear gradient for the linear color scale.
      */
     public func colors(var_args: String) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\(JsObject.wrapQuotes(value: var_args)));")
+
+        return self
+    }
+    /**
+     * Setter for the linear gradient for the linear color scale.
+     */
+    public func colors(var_args: anychart.graphics.vector.SolidFill) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\((var_args != nil) ? var_args.getJsBase() : "null"));")
 
         return self
     }
@@ -54,7 +67,15 @@
      * Setter for the linear gradient for the linear color scale.
      */
     public func colors(var_args: anychart.graphics.vector.LinearGradientFill) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\((var_args != nil) ? var_args.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the linear gradient for the linear color scale.
+     */
+    public func colors(var_args: anychart.graphics.vector.RadialGradientFill) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\((var_args != nil) ? var_args.getJsBase() : "null"));")
 
         return self
     }
@@ -62,7 +83,15 @@
      * Setter for the linear gradient for the linear color scale.
      */
     public func colors(var_args: [String]) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\(JsObject.arrayToStringWrapQuotes(array: var_args)));")
+
+        return self
+    }
+    /**
+     * Setter for the linear gradient for the linear color scale.
+     */
+    public func colors(var_args: [anychart.graphics.vector.SolidFill]) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\(JsObject.arrayToString(jsObjects: var_args)));")
 
         return self
     }
@@ -70,78 +99,15 @@
      * Setter for the linear gradient for the linear color scale.
      */
     public func colors(var_args: [anychart.graphics.vector.LinearGradientFill]) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\(JsObject.arrayToString(jsObjects: var_args)));")
 
         return self
     }
     /**
-     * Extends the current input domain with the passed values (if such don't exist in the domain).<br/>
-<b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
+     * Setter for the linear gradient for the linear color scale.
      */
-    public func extendDataRange(var_args: String) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).extendDataRange()")
-
-        return self
-    }
-    /**
-     * Informs the scale that an auto-range calculation started for the chart in past was ended.
-     */
-    public func finishAutoCalc(silently: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).finishAutoCalc(\(silently))")
-    }
-    /**
-     * Returns scale type.
-     */
-    public func getType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getType();")
-    }
-    /**
-     * Returns tick by its position ratio.<br/>
-<b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
-     */
-    public func inverseTransform(ratio: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverseTransform(\(ratio))")
-    }
-    /**
-     * Getter for the scale inversion.
-     */
-    public func inverted()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".inverted();")
-    }
-    /**
-     * Setter for scale inversion.<br/> If the scale is <b>inverted</b>, axes and series go upside-down or right-to-left
-instead of bottom-to-top and left-to-right.
-     */
-    public func inverted(enabled: Bool) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).inverted()")
-
-        return self
-    }
-    /**
-     * Getter for the scale maximum.
-     */
-    public func maximum()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maximum();")
-    }
-    /**
-     * Setter for the scale maximum.
-     */
-    public func maximum(maximum: Double) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maximum()")
-
-        return self
-    }
-    /**
-     * Getter for the scale minimum.
-     */
-    public func minimum()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minimum();")
-    }
-    /**
-     * Setter for the scale minimum.
-     */
-    public func minimum(minimum: Double) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minimum()")
+    public func colors(var_args: [anychart.graphics.vector.RadialGradientFill]) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).colors(\(JsObject.arrayToString(jsObjects: var_args)));")
 
         return self
     }
@@ -149,28 +115,21 @@ instead of bottom-to-top and left-to-right.
      * Getter for the set of scale minor ticks in terms of data values.
      */
     public func minorTicks() -> anychart.scales.ScatterTicks {
-        return anychart.scales.ScatterTicks(jsBase: jsBase + ".minorTicks()")
+        return anychart.scales.ScatterTicks(jsBase: self.jsBase + ".minorTicks()")
     }
     /**
      * Setter for the  set of scale minor ticks in terms of data values.
      */
     public func minorTicks(ticks: String) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks(\(JsObject.wrapQuotes(value: ticks)));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for the  set of scale minor ticks in terms of data values.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Informs scale that an auto-range calculation started for the chart, so it should reset its data range on the first
-call of this method if needed.
-     */
-    public func startAutoCalc() -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".startAutoCalc();")
+    public func minorTicks(ticks: [String]) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minorTicks(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
 
         return self
     }
@@ -178,76 +137,29 @@ call of this method if needed.
      * Getter for the set of scale ticks in terms of data values.
      */
     public func ticks() -> anychart.scales.ScatterTicks {
-        return anychart.scales.ScatterTicks(jsBase: jsBase + ".ticks()")
+        return anychart.scales.ScatterTicks(jsBase: self.jsBase + ".ticks()")
     }
     /**
      * Setter for the set of scale ticks in terms of data values.
      */
     public func ticks(ticks: String) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks(\(JsObject.wrapQuotes(value: ticks)));")
 
         return self
     }
     /**
-     * Returns tick position ratio by its name.<br/>
-<b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
+     * Setter for the set of scale ticks in terms of data values.
      */
-    public func transform(value: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
+    public func ticks(ticks: [String]) -> anychart.scales.LinearColor {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
+
+        return self
     }
     /**
      * Converts value to color. Returns color ratio by its number.
      */
     public func valueToColor(value: Double)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueToColor(\(value))")
-    }
-    /**
-     * Getter for a flag if the maximum should be aligned by major ticks interval.
-     */
-    public func alignMaximum()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".alignMaximum();")
-    }
-    /**
-     * Getter for a flag if the maximum should be aligned by major ticks interval.<br/>
-     */
-    public func alignMaximum(enabled: Bool) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMaximum()")
-
-        return self
-    }
-    /**
-     * Setter for a flag if the minimum should be aligned by major ticks interval.
-     */
-    public func alignMinimum()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".alignMinimum();")
-    }
-    /**
-     * Setter for a flag if the minimum should be aligned by major ticks interval.
-     */
-    public func alignMinimum(enabled: Bool) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).alignMinimum()")
-
-        return self
-    }
-    /**
-     * Getter for the maximum ticks count.
-     */
-    public func maxTicksCount()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxTicksCount();")
-    }
-    /**
-     * Setter for the maximum ticks count.<br/>
-     */
-    public func maxTicksCount(count: Double) -> anychart.scales.LinearColor {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxTicksCount()")
-
-        return self
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).valueToColor(\(value));")
     }
 
     }

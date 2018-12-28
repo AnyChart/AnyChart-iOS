@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return TableIterator(jsBase: "new anychart.data.TableIterator()")
-            super.init(jsBase: "new anychart.data.TableIterator()")
+            //super.init(jsBase: "new anychart.data.TableIterator()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.data.TableIterator {
+            return anychart.data.TableIterator(jsBase: "new anychart.data.TableIterator()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,31 +39,31 @@
      * Advances the iterator to the next position.
      */
     public func advance()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".advance();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".advance();")
     }
     /**
      * Returns current field values.
      */
     public func get(field: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).get(\(JsObject.wrapQuotes(value: field)));")
     }
     /**
      * Returns item index.
      */
     public func getIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getIndex();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getIndex();")
     }
     /**
      * Returns item key.
      */
     public func getKey()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getKey();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getKey();")
     }
     /**
      * Resets the iterator to a pre-first position.
      */
     public func reset()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".reset();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".reset();")
     }
 
     }

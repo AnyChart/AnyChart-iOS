@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return GeoTicks(jsBase: "new anychart.scales.GeoTicks()")
-            super.init(jsBase: "new anychart.scales.GeoTicks()")
+            //super.init(jsBase: "new anychart.scales.GeoTicks()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.scales.GeoTicks {
+            return anychart.scales.GeoTicks(jsBase: "new anychart.scales.GeoTicks()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,14 +39,14 @@
      * Getter for ticks count.
      */
     public func count()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".count();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".count();")
     }
     /**
      * Setter for ticks count value.
 <b>Note:</b> Final number of ticks can be greater (one more tick can be added).
      */
     public func count(count: Double) -> anychart.scales.GeoTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count(\(count));")
 
         return self
     }
@@ -50,7 +55,7 @@
 <b>Note:</b> Final number of ticks can be greater than maximum (one more tick can be added).
      */
     public func count(minimumCount: Double, maximumCount: Double) -> anychart.scales.GeoTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).count(\(minimumCount), \(maximumCount));")
 
         return self
     }
@@ -60,20 +65,20 @@ Each tick is a value in terms of data, to make a tick on.<br/>
 <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or after <b>chart.draw()</b>
      */
     public func get()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".get();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".get();")
     }
     /**
      * Getter for ticks interval value.
 <b>Note:</b> You can get interval value only if it was set explicitly, it returns NaN otherwise
      */
     public func interval()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".interval();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".interval();")
     }
     /**
      * Setter for ticks interval value.
      */
     public func interval(interval: Double) -> anychart.scales.GeoTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).interval(\(interval));")
 
         return self
     }
@@ -81,21 +86,9 @@ Each tick is a value in terms of data, to make a tick on.<br/>
      * Setups ticks as an explicit array of fixed ticks.
      */
     public func set(ticks: [String]) -> anychart.scales.GeoTicks {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).set(\(JsObject.arrayToStringWrapQuotes(array: ticks)));")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

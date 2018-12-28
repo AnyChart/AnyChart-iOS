@@ -7,7 +7,7 @@ extension anychart.graphics.vector.text {
         case UNDERLINE = "underline"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

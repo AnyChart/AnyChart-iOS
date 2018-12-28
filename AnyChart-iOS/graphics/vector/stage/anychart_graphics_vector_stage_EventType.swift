@@ -6,7 +6,7 @@ extension anychart.graphics.vector.stage {
         case STAGE_RESIZE = "stageresize"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

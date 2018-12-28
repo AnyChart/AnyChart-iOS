@@ -3,227 +3,227 @@ import Foundation
 public class AnyChart {
 
     public static func area() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.area()");
+        return anychart.charts.Cartesian(jsBase: "anychart.area()");
     }
     
     public static func area3d() -> anychart.charts.Cartesian3d {
-        return anychart.charts.Cartesian3d(jsChart: "anychart.area3d()");
+        return anychart.charts.Cartesian3d(jsBase: "anychart.area3d()");
     }
     
     public static func bar() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.bar()");
+        return anychart.charts.Cartesian(jsBase: "anychart.bar()");
     }
     
     public static func bar3d() -> anychart.charts.Cartesian3d {
-        return anychart.charts.Cartesian3d(jsChart: "anychart.bar3d()");
+        return anychart.charts.Cartesian3d(jsBase: "anychart.bar3d()");
     }
     
     public static func barmekko() -> anychart.charts.Mekko {
-        return anychart.charts.Mekko(jsChart: "anychart.barmekko()");
+        return anychart.charts.Mekko(jsBase: "anychart.barmekko()");
     }
     
     public static func box() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.box()");
+        return anychart.charts.Cartesian(jsBase: "anychart.box()");
     }
     
     public static func bubble() -> anychart.charts.Scatter {
-        return anychart.charts.Scatter(jsChart: "anychart.bubble()");
+        return anychart.charts.Scatter(jsBase: "anychart.bubble()");
     }
     
     public static func bubbleMap() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.bubbleMap()");
+        return anychart.charts.Map(jsBase: "anychart.bubbleMap()");
     }
     
     public static func bullet() -> anychart.charts.Bullet {
-        return anychart.charts.Bullet(jsChart: "anychart.bullet()");
+        return anychart.charts.Bullet(jsBase: "anychart.bullet()");
     }
     
     public static func cartesian() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.cartesian()");
+        return anychart.charts.Cartesian(jsBase: "anychart.cartesian()");
     }
     
     public static func cartesian3d() -> anychart.charts.Cartesian3d {
-        return anychart.charts.Cartesian3d(jsChart: "anychart.cartesian3d()");
+        return anychart.charts.Cartesian3d(jsBase: "anychart.cartesian3d()");
     }
     
     public static func choropleth() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.choropleth()");
+        return anychart.charts.Map(jsBase: "anychart.choropleth()");
     }
     
     public static func circularGauge() -> anychart.charts.CircularGauge {
-        return anychart.charts.CircularGauge(jsChart: "anychart.circularGauge()");
+        return anychart.charts.CircularGauge(jsBase: "anychart.circularGauge()");
     }
     
     public static func column() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.column()");
+        return anychart.charts.Cartesian(jsBase: "anychart.column()");
     }
     
     public static func column3d() -> anychart.charts.Cartesian3d {
-        return anychart.charts.Cartesian3d(jsChart: "anychart.column3d()");
+        return anychart.charts.Cartesian3d(jsBase: "anychart.column3d()");
     }
     
     public static func connector() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.connector()");
+        return anychart.charts.Map(jsBase: "anychart.connector()");
     }
     
     public static func financial() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.financial()");
+        return anychart.charts.Cartesian(jsBase: "anychart.financial()");
     }
     
     public static func funnel() -> anychart.charts.Funnel {
-        return anychart.charts.Funnel(jsChart: "anychart.funnel()");
+        return anychart.charts.Funnel(jsBase: "anychart.funnel()");
     }
     
     public static func ganttProject() -> anychart.charts.Gantt {
-        return anychart.charts.Gantt(jsChart: "anychart.ganttProject()");
+        return anychart.charts.Gantt(jsBase: "anychart.ganttProject()");
     }
     
     public static func ganttResource() -> anychart.charts.Gantt {
-        return anychart.charts.Gantt(jsChart: "anychart.ganttResource()");
+        return anychart.charts.Gantt(jsBase: "anychart.ganttResource()");
     }
     
     public static func heatMap() -> anychart.charts.HeatMap {
-        return anychart.charts.HeatMap(jsChart: "anychart.heatMap()");
+        return anychart.charts.HeatMap(jsBase: "anychart.heatMap()");
     }
     
     public static func hilo() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.hilo()");
+        return anychart.charts.Cartesian(jsBase: "anychart.hilo()");
     }
     
     public static func line() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.line()");
+        return anychart.charts.Cartesian(jsBase: "anychart.line()");
     }
     
     public static func line3d() -> anychart.charts.Cartesian3d {
-        return anychart.charts.Cartesian3d(jsChart: "anychart.line3d()");
+        return anychart.charts.Cartesian3d(jsBase: "anychart.line3d()");
     }
     
     public static func map() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.map()");
+        return anychart.charts.Map(jsBase: "anychart.map()");
     }
     
     public static func marker() -> anychart.charts.Scatter {
-        return anychart.charts.Scatter(jsChart: "anychart.marker()");
+        return anychart.charts.Scatter(jsBase: "anychart.marker()");
     }
     
     public static func markerMap() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.markerMap()");
+        return anychart.charts.Map(jsBase: "anychart.markerMap()");
     }
     
     public static func mekko() -> anychart.charts.Mekko {
-        return anychart.charts.Mekko(jsChart: "anychart.mekko()");
+        return anychart.charts.Mekko(jsBase: "anychart.mekko()");
     }
     
     public static func mosaic() -> anychart.charts.Mekko {
-        return anychart.charts.Mekko(jsChart: "anychart.mosaic()");
+        return anychart.charts.Mekko(jsBase: "anychart.mosaic()");
     }
     
     public static func pareto() -> anychart.charts.Pareto {
-        return anychart.charts.Pareto(jsChart: "anychart.pareto()");
+        return anychart.charts.Pareto(jsBase: "anychart.pareto()");
     }
     
     public static func pert() -> anychart.charts.Pert {
-        return anychart.charts.Pert(jsChart: "anychart.pert()");
+        return anychart.charts.Pert(jsBase: "anychart.pert()");
     }
     
     public static func pie() -> anychart.charts.Pie {
-        return anychart.charts.Pie(jsChart: "anychart.pie()");
+        return anychart.charts.Pie(jsBase: "anychart.pie()");
     }
     
     public static func pie3d() -> anychart.charts.Pie {
-        return anychart.charts.Pie(jsChart: "anychart.pie3d()");
+        return anychart.charts.Pie(jsBase: "anychart.pie3d()");
     }
     
     public static func polar() -> anychart.charts.Polar {
-        return anychart.charts.Polar(jsChart: "anychart.polar()");
+        return anychart.charts.Polar(jsBase: "anychart.polar()");
     }
     
     public static func pyramid() -> anychart.charts.Pyramid {
-        return anychart.charts.Pyramid(jsChart: "anychart.pyramid()");
+        return anychart.charts.Pyramid(jsBase: "anychart.pyramid()");
     }
     
     public static func quadrant() -> anychart.charts.Scatter {
-        return anychart.charts.Scatter(jsChart: "anychart.quadrant()");
+        return anychart.charts.Scatter(jsBase: "anychart.quadrant()");
     }
     
     public static func radar() -> anychart.charts.Radar {
-        return anychart.charts.Radar(jsChart: "anychart.radar()");
+        return anychart.charts.Radar(jsBase: "anychart.radar()");
     }
     
     public static func resource() -> anychart.charts.Resource {
-        return anychart.charts.Resource(jsChart: "anychart.resource()");
+        return anychart.charts.Resource(jsBase: "anychart.resource()");
     }
     
     public static func sankey() -> anychart.charts.Sankey {
-        return anychart.charts.Sankey(jsChart: "anychart.sankey()");
+        return anychart.charts.Sankey(jsBase: "anychart.sankey()");
     }
     
     public static func scatter() -> anychart.charts.Scatter {
-        return anychart.charts.Scatter(jsChart: "anychart.scatter()");
+        return anychart.charts.Scatter(jsBase: "anychart.scatter()");
     }
     
     public static func seatMap() -> anychart.charts.Map {
-        return anychart.charts.Map(jsChart: "anychart.seatMap()");
+        return anychart.charts.Map(jsBase: "anychart.seatMap()");
     }
     
     public static func sparkline() -> anychart.charts.Sparkline {
-        return anychart.charts.Sparkline(jsChart: "anychart.sparkline()");
+        return anychart.charts.Sparkline(jsBase: "anychart.sparkline()");
     }
     
     public static func stock() -> anychart.charts.Stock {
-        return anychart.charts.Stock(jsChart: "anychart.stock()");
+        return anychart.charts.Stock(jsBase: "anychart.stock()");
     }
     
     public static func sunburst() -> anychart.charts.Sunburst {
-        return anychart.charts.Sunburst(jsChart: "anychart.sunburst()");
+        return anychart.charts.Sunburst(jsBase: "anychart.sunburst()");
     }
     
     public static func tagCloud() -> anychart.charts.TagCloud {
-        return anychart.charts.TagCloud(jsChart: "anychart.tagCloud()");
+        return anychart.charts.TagCloud(jsBase: "anychart.tagCloud()");
     }
     
     public static func treeMap() -> anychart.charts.TreeMap {
-        return anychart.charts.TreeMap(jsChart: "anychart.treeMap()");
+        return anychart.charts.TreeMap(jsBase: "anychart.treeMap()");
     }
     
     public static func venn() -> anychart.charts.Venn {
-        return anychart.charts.Venn(jsChart: "anychart.venn()");
+        return anychart.charts.Venn(jsBase: "anychart.venn()");
     }
     
     public static func vertical() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.vertical()");
+        return anychart.charts.Cartesian(jsBase: "anychart.vertical()");
     }
     
     public static func verticalArea() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.verticalArea()");
+        return anychart.charts.Cartesian(jsBase: "anychart.verticalArea()");
     }
     
     public static func verticalLine() -> anychart.charts.Cartesian {
-        return anychart.charts.Cartesian(jsChart: "anychart.verticalLine()");
+        return anychart.charts.Cartesian(jsBase: "anychart.verticalLine()");
     }
     
     public static func waterfall() -> anychart.charts.Waterfall {
-        return anychart.charts.Waterfall(jsChart: "anychart.waterfall()");
+        return anychart.charts.Waterfall(jsBase: "anychart.waterfall()");
     }
     
     public static func circular() -> anychart.charts.CircularGauge {
-        return anychart.charts.CircularGauge(jsChart: "anychart.gauges.circular()");
+        return anychart.charts.CircularGauge(jsBase: "anychart.gauges.circular()");
     }
     
     public static func led() -> anychart.charts.LinearGauge {
-        return anychart.charts.LinearGauge(jsChart: "anychart.gauges.led()");
+        return anychart.charts.LinearGauge(jsBase: "anychart.gauges.led()");
     }
     
     public static func linear() -> anychart.charts.LinearGauge {
-        return anychart.charts.LinearGauge(jsChart: "anychart.gauges.linear()");
+        return anychart.charts.LinearGauge(jsBase: "anychart.gauges.linear()");
     }
     
     public static func tank() -> anychart.charts.LinearGauge {
-        return anychart.charts.LinearGauge(jsChart: "anychart.gauges.tank()");
+        return anychart.charts.LinearGauge(jsBase: "anychart.gauges.tank()");
     }
     
     public static func thermometer() -> anychart.charts.LinearGauge {
-        return anychart.charts.LinearGauge(jsChart: "anychart.gauges.thermometer()");
+        return anychart.charts.LinearGauge(jsBase: "anychart.gauges.thermometer()");
     }
     
 

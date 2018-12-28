@@ -18,7 +18,7 @@ extension anychart.enums {
         case VERTICAL_LINE = "vertical-line"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

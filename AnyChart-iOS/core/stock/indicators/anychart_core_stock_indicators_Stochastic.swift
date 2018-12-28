@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Stochastic(jsBase: "new anychart.core.stock.indicators.Stochastic()")
-            super.init(jsBase: "new anychart.core.stock.indicators.Stochastic()")
+            //super.init(jsBase: "new anychart.core.stock.indicators.Stochastic()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.core.stock.indicators.Stochastic {
+            return anychart.core.stock.indicators.Stochastic(jsBase: "new anychart.core.stock.indicators.Stochastic()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,21 @@
      * Getter for the %D smoothing type.
      */
     public func dMAType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".dMAType();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".dMAType();")
     }
     /**
      * Setter for the %D smoothing type.
      */
     public func dMAType(type: anychart.enums.MovingAverageType) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dMAType()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dMAType(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the %D smoothing type.
+     */
+    public func dMAType(type: String) -> anychart.core.stock.indicators.Stochastic {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dMAType(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -48,13 +61,13 @@
      * Getter for the %D Period.
      */
     public func dPeriod()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".dPeriod();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".dPeriod();")
     }
     /**
      * Setter for the %D Period.
      */
     public func dPeriod(period: Double) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dPeriod()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dPeriod(\(period));")
 
         return self
     }
@@ -62,13 +75,21 @@
      * Getter for the indicator %D Series instance.
      */
     public func dSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsBase: jsBase + ".dSeries()")
+        return anychart.core.stock.series.Base(jsBase: self.jsBase + ".dSeries()")
     }
     /**
      * Setter for the indicator %D Series type.
      */
     public func dSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dSeries()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dSeries(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the indicator %D Series type.
+     */
+    public func dSeries(type: String) -> anychart.core.stock.indicators.Stochastic {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dSeries(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -76,13 +97,13 @@
      * Getter for the %K smoothing period.
      */
     public func kMAPeriod()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".kMAPeriod();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".kMAPeriod();")
     }
     /**
      * Setter for the %K smoothing period.
      */
     public func kMAPeriod(period: Double) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kMAPeriod()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kMAPeriod(\(period));")
 
         return self
     }
@@ -90,13 +111,21 @@
      * Getter for the %K smoothing type.
      */
     public func kMAType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".kMAType();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".kMAType();")
     }
     /**
      * Setter for the %K smoothing type.
      */
     public func kMAType(type: anychart.enums.MovingAverageType) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kMAType()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kMAType(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the %K smoothing type.
+     */
+    public func kMAType(type: String) -> anychart.core.stock.indicators.Stochastic {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kMAType(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -104,13 +133,13 @@
      * Getter for the %K Period.
      */
     public func kPeriod()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".kPeriod();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".kPeriod();")
     }
     /**
      * Setter for the %K Period.
      */
     public func kPeriod(period: Double) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kPeriod()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kPeriod(\(period));")
 
         return self
     }
@@ -118,13 +147,21 @@
      * Getter for the indicator %K Series instance.
      */
     public func kSeries() -> anychart.core.stock.series.Base {
-        return anychart.core.stock.series.Base(jsBase: jsBase + ".kSeries()")
+        return anychart.core.stock.series.Base(jsBase: self.jsBase + ".kSeries()")
     }
     /**
      * Setter for the indicator %K Series type.
      */
     public func kSeries(type: anychart.enums.StockSeriesType) -> anychart.core.stock.indicators.Stochastic {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kSeries()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kSeries(\((type != nil) ? type.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the indicator %K Series type.
+     */
+    public func kSeries(type: String) -> anychart.core.stock.indicators.Stochastic {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).kSeries(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }

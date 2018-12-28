@@ -6,7 +6,7 @@ extension anychart.graphics.vector {
         case TILE = "tile"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

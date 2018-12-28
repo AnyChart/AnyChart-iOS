@@ -4,7 +4,7 @@ extension anychart.enums {
         case UNDER_MAP = "5"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

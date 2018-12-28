@@ -4,7 +4,7 @@ extension anychart.enums {
         case SPIRAL = "spiral"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

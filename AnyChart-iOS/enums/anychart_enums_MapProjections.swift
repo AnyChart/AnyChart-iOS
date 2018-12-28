@@ -15,7 +15,7 @@ extension anychart.enums {
         case WSG84 = "wsg84"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

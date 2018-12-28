@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return SideControl(jsBase: "new anychart.core.gantt.edit.SideControl()")
-            super.init(jsBase: "new anychart.core.gantt.edit.SideControl()")
+            //super.init(jsBase: "new anychart.core.gantt.edit.SideControl()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.gantt.edit.SideControl {
+            return anychart.core.gantt.edit.SideControl(jsBase: "new anychart.core.gantt.edit.SideControl()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,43 +39,31 @@
      * Getter for the connector thumb settings.
      */
     public func connectorThumb() -> anychart.core.gantt.edit.Thumb {
-        return anychart.core.gantt.edit.Thumb(jsBase: jsBase + ".connectorThumb()")
+        return anychart.core.gantt.edit.Thumb(jsBase: self.jsBase + ".connectorThumb()")
     }
     /**
      * Setter for the connector thumb settings.<br/>
 The connector thumb is a circle on the task that allows creating connector from one task to another.
      */
     public func connectorThumb(settings: String) -> anychart.core.gantt.edit.SideControl {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorThumb()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).connectorThumb(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the thumb settings.
      */
     public func thumb() -> anychart.core.gantt.edit.Thumb {
-        return anychart.core.gantt.edit.Thumb(jsBase: jsBase + ".thumb()")
+        return anychart.core.gantt.edit.Thumb(jsBase: self.jsBase + ".thumb()")
     }
     /**
      * Setter for the thumb settings.<br/>
 Thumb is a rectangle on the task that allows editing the interval of the task.
      */
     public func thumb(settings: String) -> anychart.core.gantt.edit.SideControl {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).thumb()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).thumb(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
 
     }

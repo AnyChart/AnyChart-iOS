@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Coordinate(jsBase: "new anychart.graphics.math.Coordinate()")
-            super.init(jsBase: "new anychart.graphics.math.Coordinate()")
+            //super.init(jsBase: "new anychart.graphics.math.Coordinate()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.graphics.math.Coordinate {
+            return anychart.graphics.math.Coordinate(jsBase: "new anychart.graphics.math.Coordinate()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,13 @@
      * Getter for the X-coordinate.
      */
     public func getX()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getX();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getX();")
     }
     /**
      * Getter for the Y-coordinate.
      */
     public func getY()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getY();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getY();")
     }
 
     }

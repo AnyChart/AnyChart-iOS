@@ -6,7 +6,7 @@ extension anychart.scales.calendar {
         public init(end: Double, start: Double, workingTime: [String]) {
             super.init()
 
-            js.append(String(format: "{end:%s, start: %s, workingTime: %s, } ", \(end), \(start), \(JsObject.arrayToStringWrapQuotes(array: workingTime))))
+            js.append("\(end), \(start), \(JsObject.arrayToStringWrapQuotes(array: workingTime))")
         }
 
     }

@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Scatter(jsBase: "new anychart.charts.Scatter()")
-            super.init(jsBase: "new anychart.charts.Scatter()")
+            //super.init(jsBase: "new anychart.charts.Scatter()")
         }
 
         
@@ -25,48 +26,44 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.charts.Scatter {
+            return anychart.charts.Scatter(jsBase: "new anychart.charts.Scatter()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
 
         
     /**
-     * Getter for the accessibility setting.
+     * Adds series to chart.
      */
-        public override func a11y() -> anychart.core.utils.ChartA11y {
-        return anychart.core.utils.ChartA11y(jsBase: jsBase + ".a11y()")
-    }
-    /**
-     * Setter for the accessibility setting.
-     */
-        public override func a11y(settings: Bool) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).a11y()")
-
-        return self
+    public func addSeries(var_args: anychart.data.View)  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\((var_args != nil) ? var_args.getJsBase() : "null"));")
     }
     /**
      * Adds series to chart.
      */
-    public func addSeries(var_args: anychart.data.View)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\((var_args != nil) ? var_args.getJsBase() : "null"))")
+    public func addSeries(var_args: anychart.data.Set)  {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\((var_args != nil) ? var_args.getJsBase() : "null"));")
     }
     /**
      * Adds series to chart.
      */
     public func addSeries(var_args: [String])  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\(JsObject.arrayToStringWrapQuotes(array: var_args)))")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\(JsObject.arrayToStringWrapQuotes(array: var_args)));")
     }
     /**
      * Getter for the annotations.
      */
     public func annotations() -> anychart.core.annotations.PlotController {
-        return anychart.core.annotations.PlotController(jsBase: jsBase + ".annotations()")
+        return anychart.core.annotations.PlotController(jsBase: self.jsBase + ".annotations()")
     }
     /**
      * Setter for the annotations.
      */
     public func annotations(annotationsList: [String]) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).annotations()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).annotations(\(JsObject.arrayToStringWrapQuotes(array: annotationsList)));")
 
         return self
     }
@@ -74,14 +71,14 @@
      * Getter for the chart baseline.
      */
     public func baseline()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".baseline();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".baseline();")
     }
     /**
      * Setter for the chart baseline.<br/>
 The baseline is the line relative to which the series with the negative or positive value is drawn and painted over.
      */
     public func baseline(value: Double) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseline()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).baseline(\(value));")
 
         return self
     }
@@ -94,7 +91,19 @@ The baseline is the line relative to which the series with the negative or posit
     /**
      * Adds Bubble series.
      */
+    public func bubble(data: anychart.data.View, csvSettings: String) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Bubble series.
+     */
     public func bubble(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Bubble series.
+     */
+    public func bubble(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Bubble {
         return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
@@ -106,8 +115,20 @@ The baseline is the line relative to which the series with the negative or posit
     /**
      * Adds Bubble series.
      */
+    public func bubble(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Bubble series.
+     */
     public func bubble(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Bubble {
         return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Bubble series.
+     */
+    public func bubble(data: [String], csvSettings: String) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Adds Bubble series.
@@ -118,20 +139,40 @@ The baseline is the line relative to which the series with the negative or posit
     /**
      * Adds Bubble series.
      */
+    public func bubble(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Bubble series.
+     */
     public func bubble(data: String, csvSettings: String) -> anychart.core.scatter.series.Bubble {
         return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Bubble series.
+     */
+    public func bubble(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Bubble {
+        return anychart.core.scatter.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Getter for crosshair settings.
      */
     public func crosshair() -> anychart.core.ui.Crosshair {
-        return anychart.core.ui.Crosshair(jsBase: jsBase + ".crosshair()")
+        return anychart.core.ui.Crosshair(jsBase: self.jsBase + ".crosshair()")
     }
     /**
      * Setter for crosshair settings.
      */
     public func crosshair(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crosshair()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crosshair(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for crosshair settings.
+     */
+    public func crosshair(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crosshair(\(settings));")
 
         return self
     }
@@ -139,13 +180,13 @@ The baseline is the line relative to which the series with the negative or posit
      * Getter for crossing settings.
      */
     public func crossing() -> anychart.core.utils.Crossing {
-        return anychart.core.utils.Crossing(jsBase: jsBase + ".crossing()")
+        return anychart.core.utils.Crossing(jsBase: self.jsBase + ".crossing()")
     }
     /**
      * Setter for crossing settings.
      */
     public func crossing(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crossing()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).crossing(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -153,14 +194,23 @@ The baseline is the line relative to which the series with the negative or posit
      * Getter for the data area settings.
      */
     public func dataArea() -> anychart.core.ui.DataArea {
-        return anychart.core.ui.DataArea(jsBase: jsBase + ".dataArea()")
+        return anychart.core.ui.DataArea(jsBase: self.jsBase + ".dataArea()")
     }
     /**
      * Setter for the data area settings.<br/>
 The data area is drawn along the data bounds.
      */
     public func dataArea(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dataArea()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dataArea(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the data area settings.<br/>
+The data area is drawn along the data bounds.
+     */
+    public func dataArea(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).dataArea(\(settings));")
 
         return self
     }
@@ -168,13 +218,13 @@ The data area is drawn along the data bounds.
      * Getter for the default scatter series type.
      */
     public func defaultSeriesType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".defaultSeriesType();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".defaultSeriesType();")
     }
     /**
      * Setter for the scatter default series type.
      */
     public func defaultSeriesType(type: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).defaultSeriesType()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).defaultSeriesType(\(JsObject.wrapQuotes(value: type)));")
 
         return self
     }
@@ -183,13 +233,19 @@ The data area is drawn along the data bounds.
 <b>Note:</b> Works only after {@link anychart.charts.Scatter#draw} is called.
      */
     public func getPlotBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".getPlotBounds()")
+        return anychart.math.Rect(jsBase: self.jsBase + ".getPlotBounds()")
     }
     /**
      * Gets series by its id.
      */
     public func getSeries(id: Double) -> anychart.core.scatter.series.Base {
         return anychart.core.scatter.series.Base(jsBase: "\(self.jsBase).getSeries(\(id))")
+    }
+    /**
+     * Gets series by its id.
+     */
+    public func getSeries(id: String) -> anychart.core.scatter.series.Base {
+        return anychart.core.scatter.series.Base(jsBase: "\(self.jsBase).getSeries(\(JsObject.wrapQuotes(value: id)))")
     }
     /**
      * Gets series by its index.
@@ -201,37 +257,45 @@ The data area is drawn along the data bounds.
      * Returns series count.
      */
     public func getSeriesCount()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getSeriesCount();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getSeriesCount();")
     }
     /**
      * Returns chart type.
      */
     public func getType()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getType();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getType();")
     }
     /**
      * Returns chart X scales.
      */
     public func getXScales()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getXScales();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getXScales();")
     }
     /**
      * Returns chart Y scales.
      */
     public func getYScales()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".getYScales();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".getYScales();")
     }
     /**
      * Getter for hatch fill palette settings.
      */
     public func hatchFillPalette() -> anychart.palettes.HatchFills {
-        return anychart.palettes.HatchFills(jsBase: jsBase + ".hatchFillPalette()")
+        return anychart.palettes.HatchFills(jsBase: self.jsBase + ".hatchFillPalette()")
     }
     /**
      * Setter for hatch fill palette settings.
      */
     public func hatchFillPalette(settings: [anychart.graphics.vector.hatchfill.HatchFillType]) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette(\(JsObject.arrayToString(jsObjects: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for hatch fill palette settings.
+     */
+    public func hatchFillPalette(settings: String) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -239,7 +303,7 @@ The data area is drawn along the data bounds.
      * Setter for hatch fill palette settings.
      */
     public func hatchFillPalette(settings: anychart.palettes.HatchFills) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -247,13 +311,13 @@ The data area is drawn along the data bounds.
      * Getter for hovered state settings.
      */
     public func hovered() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".hovered()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".hovered()")
     }
     /**
      * Setter for hovered state settings.
      */
     public func hovered(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hovered(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -261,13 +325,21 @@ The data area is drawn along the data bounds.
      * Getter for series data labels.
      */
     public func labels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".labels()")
+        return anychart.core.ui.LabelsFactory(jsBase: self.jsBase + ".labels()")
     }
     /**
      * Setter for series data labels.
      */
     public func labels(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for series data labels.
+     */
+    public func labels(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).labels(\(settings));")
 
         return self
     }
@@ -280,7 +352,19 @@ The data area is drawn along the data bounds.
     /**
      * Adds Line series.
      */
+    public func line(data: anychart.data.View, csvSettings: String) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Line series.
+     */
     public func line(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Line series.
+     */
+    public func line(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Line {
         return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
@@ -292,8 +376,20 @@ The data area is drawn along the data bounds.
     /**
      * Adds Line series.
      */
+    public func line(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Line series.
+     */
     public func line(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Line {
         return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Line series.
+     */
+    public func line(data: [String], csvSettings: String) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Adds Line series.
@@ -304,8 +400,20 @@ The data area is drawn along the data bounds.
     /**
      * Adds Line series.
      */
+    public func line(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Line series.
+     */
     public func line(data: String, csvSettings: String) -> anychart.core.scatter.series.Line {
         return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Line series.
+     */
+    public func line(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Line {
+        return anychart.core.scatter.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Getter for the chart line marker.
@@ -317,7 +425,15 @@ The data area is drawn along the data bounds.
      * Setter for the chart line marker.
      */
     public func lineMarker(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the chart line marker.
+     */
+    public func lineMarker(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker(\(settings));")
 
         return self
     }
@@ -325,7 +441,15 @@ The data area is drawn along the data bounds.
      * Setter for the chart line marker by index.
      */
     public func lineMarker(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the chart line marker by index.
+     */
+    public func lineMarker(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lineMarker(\(index), \(settings));")
 
         return self
     }
@@ -338,7 +462,19 @@ The data area is drawn along the data bounds.
     /**
      * Adds Marker series.
      */
+    public func marker(data: anychart.data.View, csvSettings: String) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Marker series.
+     */
     public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Marker series.
+     */
+    public func marker(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Marker {
         return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
@@ -350,8 +486,20 @@ The data area is drawn along the data bounds.
     /**
      * Adds Marker series.
      */
+    public func marker(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Marker series.
+     */
     public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Marker {
         return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Marker series.
+     */
+    public func marker(data: [String], csvSettings: String) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
     }
     /**
      * Adds Marker series.
@@ -362,20 +510,40 @@ The data area is drawn along the data bounds.
     /**
      * Adds Marker series.
      */
+    public func marker(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    }
+    /**
+     * Adds Marker series.
+     */
     public func marker(data: String, csvSettings: String) -> anychart.core.scatter.series.Marker {
         return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
+    }
+    /**
+     * Adds Marker series.
+     */
+    public func marker(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.scatter.series.Marker {
+        return anychart.core.scatter.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
      * Getter for markers palette settings.
      */
     public func markerPalette() -> anychart.palettes.Markers {
-        return anychart.palettes.Markers(jsBase: jsBase + ".markerPalette()")
+        return anychart.palettes.Markers(jsBase: self.jsBase + ".markerPalette()")
     }
     /**
      * Setter for markers palette settings.
      */
     public func markerPalette(value: anychart.palettes.Markers) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette(\((value != nil) ? value.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for markers palette settings.
+     */
+    public func markerPalette(value: String) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -383,7 +551,15 @@ The data area is drawn along the data bounds.
      * Setter for markers palette settings.
      */
     public func markerPalette(value: [anychart.enums.MarkerType]) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette(\(JsObject.arrayToString(jsObjects: value)));")
+
+        return self
+    }
+    /**
+     * Setter for markers palette settings.
+     */
+    public func markerPalette(value: [String]) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).markerPalette(\(JsObject.arrayToStringWrapQuotes(array: value)));")
 
         return self
     }
@@ -391,13 +567,21 @@ The data area is drawn along the data bounds.
      * Getter for the maximum size for all bubbles on the charts.
      */
     public func maxBubbleSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxBubbleSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".maxBubbleSize();")
     }
     /**
      * Setter for the maximum size for all bubbles on the charts.
      */
     public func maxBubbleSize(size: Double) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxBubbleSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxBubbleSize(\(size));")
+
+        return self
+    }
+    /**
+     * Setter for the maximum size for all bubbles on the charts.
+     */
+    public func maxBubbleSize(size: String) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxBubbleSize(\(JsObject.wrapQuotes(value: size)));")
 
         return self
     }
@@ -405,13 +589,21 @@ The data area is drawn along the data bounds.
      * Getter for maximum labels.
      */
     public func maxLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".maxLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: self.jsBase + ".maxLabels()")
     }
     /**
      * Setter for maximum labels.
      */
     public func maxLabels(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxLabels()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxLabels(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for maximum labels.
+     */
+    public func maxLabels(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxLabels(\(settings));")
 
         return self
     }
@@ -419,13 +611,21 @@ The data area is drawn along the data bounds.
      * Getter for the minimum size for all bubbles on the charts.
      */
     public func minBubbleSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minBubbleSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".minBubbleSize();")
     }
     /**
      * Setter for the minimum size for all bubbles on the charts.
      */
     public func minBubbleSize(value: Double) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minBubbleSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minBubbleSize(\(value));")
+
+        return self
+    }
+    /**
+     * Setter for the minimum size for all bubbles on the charts.
+     */
+    public func minBubbleSize(value: String) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minBubbleSize(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -433,13 +633,21 @@ The data area is drawn along the data bounds.
      * Getter for minimum labels.
      */
     public func minLabels() -> anychart.core.ui.LabelsFactory {
-        return anychart.core.ui.LabelsFactory(jsBase: jsBase + ".minLabels()")
+        return anychart.core.ui.LabelsFactory(jsBase: self.jsBase + ".minLabels()")
     }
     /**
      * Setter for minimum labels.
      */
     public func minLabels(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minLabels()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minLabels(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for minimum labels.
+     */
+    public func minLabels(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minLabels(\(settings));")
 
         return self
     }
@@ -447,13 +655,13 @@ The data area is drawn along the data bounds.
      * Getter for normal state settings.
      */
     public func normal() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".normal()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".normal()")
     }
     /**
      * Setter for normal state settings.
      */
     public func normal(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).normal(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -461,14 +669,23 @@ The data area is drawn along the data bounds.
      * Getter for the series colors palette.
      */
     public func palette() -> anychart.palettes.RangeColors {
-        return anychart.palettes.RangeColors(jsBase: jsBase + ".palette()")
+        return anychart.palettes.RangeColors(jsBase: self.jsBase + ".palette()")
     }
     /**
      * Setter for the series colors palette.
 <b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
      */
     public func palette(settings: anychart.palettes.RangeColors) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette(\((settings != nil) ? settings.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the series colors palette.
+<b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
+     */
+    public func palette(settings: anychart.palettes.DistinctColors) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -477,7 +694,16 @@ The data area is drawn along the data bounds.
 <b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
      */
     public func palette(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the series colors palette.
+<b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
+     */
+    public func palette(settings: [String]) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).palette(\(JsObject.arrayToStringWrapQuotes(array: settings)));")
 
         return self
     }
@@ -485,13 +711,13 @@ The data area is drawn along the data bounds.
      * Getter for quarter settings.
      */
     public func quarters() -> anychart.core.utils.QuarterSettings {
-        return anychart.core.utils.QuarterSettings(jsBase: jsBase + ".quarters()")
+        return anychart.core.utils.QuarterSettings(jsBase: self.jsBase + ".quarters()")
     }
     /**
      * Setter for quarter settings.
      */
     public func quarters(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).quarters()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).quarters(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -505,7 +731,15 @@ The data area is drawn along the data bounds.
      * Setter for the chart range marker.
      */
     public func rangeMarker(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the chart range marker.
+     */
+    public func rangeMarker(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker(\(settings));")
 
         return self
     }
@@ -513,18 +747,23 @@ The data area is drawn along the data bounds.
      * Setter for the chart range marker by index.
      */
     public func rangeMarker(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker(\(index), \(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for the chart range marker by index.
      */
+    public func rangeMarker(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rangeMarker(\(index), \(settings));")
+
+        return self
+    }
     /**
      * Removes all series from chart.
      */
     public func removeAllSeries() -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".removeAllSeries();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".removeAllSeries();")
 
         return self
     }
@@ -532,7 +771,15 @@ The data area is drawn along the data bounds.
      * Removes one of series from chart by its id.
      */
     public func removeSeries(id: Double) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeries()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeries(\(id));")
+
+        return self
+    }
+    /**
+     * Removes one of series from chart by its id.
+     */
+    public func removeSeries(id: String) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeries(\(JsObject.wrapQuotes(value: id)));")
 
         return self
     }
@@ -540,7 +787,7 @@ The data area is drawn along the data bounds.
      * Removes one of series from chart by its index.
      */
     public func removeSeriesAt(index: Double) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeriesAt()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeSeriesAt(\(index));")
 
         return self
     }
@@ -548,13 +795,13 @@ The data area is drawn along the data bounds.
      * Getter for selected state settings.
      */
     public func selected() -> anychart.core.StateSettings {
-        return anychart.core.StateSettings(jsBase: jsBase + ".selected()")
+        return anychart.core.StateSettings(jsBase: self.jsBase + ".selected()")
     }
     /**
      * Setter for selected state settings.
      */
     public func selected(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selected(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -568,7 +815,15 @@ The data area is drawn along the data bounds.
      * Setter for the chart text marker.
      */
     public func textMarker(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for the chart text marker.
+     */
+    public func textMarker(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker(\(settings));")
 
         return self
     }
@@ -576,11 +831,18 @@ The data area is drawn along the data bounds.
      * Setter for the chart text marker by index.
      */
     public func textMarker(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker(\(index), \(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
-    
+    /**
+     * Setter for the chart text marker by index.
+     */
+    public func textMarker(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).textMarker(\(index), \(settings));")
+
+        return self
+    }
     /**
      * Getter for chart X-axis.
      */
@@ -591,7 +853,15 @@ The data area is drawn along the data bounds.
      * Setter for chart X-axis.
      */
     public func xAxis(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart X-axis.
+     */
+    public func xAxis(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis(\(settings));")
 
         return self
     }
@@ -599,7 +869,15 @@ The data area is drawn along the data bounds.
      * Setter for chart X-axis by index.
      */
     public func xAxis(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart X-axis by index.
+     */
+    public func xAxis(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAxis(\(index), \(settings));")
 
         return self
     }
@@ -613,7 +891,15 @@ The data area is drawn along the data bounds.
      * Setter for chart grid by X-scale.
      */
     public func xGrid(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart grid by X-scale.
+     */
+    public func xGrid(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid(\(settings));")
 
         return self
     }
@@ -621,7 +907,15 @@ The data area is drawn along the data bounds.
      * Setter for chart grid by index.
      */
     public func xGrid(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart grid by index.
+     */
+    public func xGrid(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xGrid(\(index), \(settings));")
 
         return self
     }
@@ -635,7 +929,15 @@ The data area is drawn along the data bounds.
      * Setter for chart minor grid by X-scale.
      */
     public func xMinorGrid(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart minor grid by X-scale.
+     */
+    public func xMinorGrid(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid(\(settings));")
 
         return self
     }
@@ -643,7 +945,15 @@ The data area is drawn along the data bounds.
      * Setter for chart minor grid by index.
      */
     public func xMinorGrid(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart minor grid by index.
+     */
+    public func xMinorGrid(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xMinorGrid(\(index), \(settings));")
 
         return self
     }
@@ -651,13 +961,21 @@ The data area is drawn along the data bounds.
      * Getter for default chart X scale.
      */
     public func xScale() -> anychart.scales.ScatterBase {
-        return anychart.scales.ScatterBase(jsBase: jsBase + ".xScale()")
+        return anychart.scales.ScatterBase(jsBase: self.jsBase + ".xScale()")
     }
     /**
      * Setter for default chart X scale.
      */
     public func xScale(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for default chart X scale.
+     */
+    public func xScale(settings: anychart.enums.ScatterScaleTypes) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -665,7 +983,7 @@ The data area is drawn along the data bounds.
      * Setter for default chart X scale.
      */
     public func xScale(settings: anychart.scales.ScatterBase) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -679,7 +997,15 @@ The data area is drawn along the data bounds.
      * Setter for chart Y-axis.
      */
     public func yAxis(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart Y-axis.
+     */
+    public func yAxis(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis(\(settings));")
 
         return self
     }
@@ -687,7 +1013,15 @@ The data area is drawn along the data bounds.
      * Setter for chart Y-axis by index.
      */
     public func yAxis(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart Y-axis by index.
+     */
+    public func yAxis(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yAxis(\(index), \(settings));")
 
         return self
     }
@@ -701,7 +1035,15 @@ The data area is drawn along the data bounds.
      * Setter for chart grid by Y-scale.
      */
     public func yGrid(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart grid by Y-scale.
+     */
+    public func yGrid(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid(\(settings));")
 
         return self
     }
@@ -709,7 +1051,15 @@ The data area is drawn along the data bounds.
      * Setter for chart grid by index.
      */
     public func yGrid(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart grid by index.
+     */
+    public func yGrid(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yGrid(\(index), \(settings));")
 
         return self
     }
@@ -723,7 +1073,15 @@ The data area is drawn along the data bounds.
      * Setter for chart minor grid by Y-scale.
      */
     public func yMinorGrid(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart minor grid by Y-scale.
+     */
+    public func yMinorGrid(settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid(\(settings));")
 
         return self
     }
@@ -731,7 +1089,15 @@ The data area is drawn along the data bounds.
      * Setter for chart minor grid by index.
      */
     public func yMinorGrid(index: Double, settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid(\(index), \(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for chart minor grid by index.
+     */
+    public func yMinorGrid(index: Double, settings: Bool) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yMinorGrid(\(index), \(settings));")
 
         return self
     }
@@ -739,13 +1105,21 @@ The data area is drawn along the data bounds.
      * Getter for default chart Y scale.
      */
     public func yScale() -> anychart.scales.ScatterBase {
-        return anychart.scales.ScatterBase(jsBase: jsBase + ".yScale()")
+        return anychart.scales.ScatterBase(jsBase: self.jsBase + ".yScale()")
     }
     /**
      * Setter for default chart Y scale.
      */
     public func yScale(settings: String) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * Setter for default chart Y scale.
+     */
+    public func yScale(settings: anychart.enums.ScatterScaleTypes) -> anychart.charts.Scatter {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
@@ -753,11 +1127,10 @@ The data area is drawn along the data bounds.
      * Setter for default chart Y scale.
      */
     public func yScale(settings: anychart.scales.ScatterBase) -> anychart.charts.Scatter {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
     }
-    
 
     }
 }

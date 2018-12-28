@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return ResourceList(jsBase: "new anychart.core.resource.ResourceList()")
-            super.init(jsBase: "new anychart.core.resource.ResourceList()")
+            //super.init(jsBase: "new anychart.core.resource.ResourceList()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.resource.ResourceList {
+            return anychart.core.resource.ResourceList(jsBase: "new anychart.core.resource.ResourceList()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,113 +39,21 @@
      * Getter for the background.
      */
     public func background() -> anychart.core.ui.Background {
-        return anychart.core.ui.Background(jsBase: jsBase + ".background()")
+        return anychart.core.ui.Background(jsBase: self.jsBase + ".background()")
     }
     /**
      * Setter for the background.
      */
     public func background(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Getter for element bottom bound settings.
+     * Setter for the background.
      */
-    public func bottom()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".bottom();")
-    }
-    /**
-     * Setter for element bottom bound settings.
-     */
-    public func bottom(bottom: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bottom()")
-
-        return self
-    }
-    /**
-     * Getter for element bounds settings.
-     */
-    public func bounds() -> anychart.core.utils.Bounds {
-        return anychart.core.utils.Bounds(jsBase: jsBase + ".bounds()")
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.utils.RectObj) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for bounds of the element using one parameter.
-     */
-    public func bounds(bounds: anychart.core.utils.Bounds) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: Double, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: Double, width: String, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: Double, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: Double, y: String, width: String, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: Double, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: Double, width: String, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: Double, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
-
-        return self
-    }
-    /**
-     * Setter for element bounds settings.
-     */
-    public func bounds(x: String, y: String, width: String, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).bounds()")
+    public func background(settings: Bool) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).background(\(settings));")
 
         return self
     }
@@ -148,13 +61,13 @@
      * Getter for descriptions.
      */
     public func descriptions() -> anychart.core.resource.resourcelist.TextSettings {
-        return anychart.core.resource.resourcelist.TextSettings(jsBase: jsBase + ".descriptions()")
+        return anychart.core.resource.resourcelist.TextSettings(jsBase: self.jsBase + ".descriptions()")
     }
     /**
      * Setter for descriptions.
      */
     public func descriptions(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).descriptions()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).descriptions(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -162,13 +75,13 @@
      * Getter for the bottom line drawing flag.
      */
     public func drawBottomLine()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".drawBottomLine();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".drawBottomLine();")
     }
     /**
      * Setter for the bottom line drawing flag.
      */
     public func drawBottomLine(enabled: Bool) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawBottomLine()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawBottomLine(\(enabled));")
 
         return self
     }
@@ -176,13 +89,13 @@
      * Getter for the left line drawing flag.
      */
     public func drawLeftLine()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".drawLeftLine();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".drawLeftLine();")
     }
     /**
      * Setter for the left line drawing flag.
      */
     public func drawLeftLine(enabled: Bool) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawLeftLine()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawLeftLine(\(enabled));")
 
         return self
     }
@@ -190,13 +103,13 @@
      * Getter for the right line drawing flag.
      */
     public func drawRightLine()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".drawRightLine();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".drawRightLine();")
     }
     /**
      * Setter for the right line drawing flag.
      */
     public func drawRightLine(enabled: Bool) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawRightLine()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawRightLine(\(enabled));")
 
         return self
     }
@@ -204,27 +117,13 @@
      * Getter for the top line drawing flag.
      */
     public func drawTopLine()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".drawTopLine();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".drawTopLine();")
     }
     /**
      * Setter for the top line drawing flag.
      */
     public func drawTopLine(enabled: Bool) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawTopLine()")
-
-        return self
-    }
-    /**
-     * Getter for the element state (enabled or disabled).
-     */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).drawTopLine(\(enabled));")
 
         return self
     }
@@ -232,14 +131,23 @@
      * Getter for the even fill color.
      */
     public func evenFill()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".evenFill();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".evenFill();")
     }
     /**
      * Setter for even fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(color: Fill) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\((color != nil) ? color.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for even fill settings using an array, an object or a string.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func evenFill(color: [anychart.graphics.vector.GradientKey]) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToString(jsObjects: color)));")
 
         return self
     }
@@ -248,7 +156,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(color: [String]) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToStringWrapQuotes(array: color)));")
 
         return self
     }
@@ -256,7 +164,7 @@
      * Even fill color with opacity.
      */
     public func evenFill(color: String, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.wrapQuotes(value: color)), \(opacity));")
 
         return self
     }
@@ -265,7 +173,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(mode), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient even fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func evenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
 
         return self
     }
@@ -274,7 +191,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient even fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func evenFill(keys: [String], angle: Double, mode: Bool, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(mode), \(opacity));")
 
         return self
     }
@@ -283,7 +209,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient even fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func evenFill(keys: [String], angle: Double, mode: String, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
 
         return self
     }
@@ -292,36 +227,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func evenFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToString(jsObjects: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
     /**
-     * Image even fill.
+     * Radial gradient even fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func evenFill(imageSettings: Fill) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill()")
-
-        return self
-    }
-    /**
-     * Returns pixel bounds of the element due to parent bounds and self bounds settings.
-     */
-    public func getPixelBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".getPixelBounds()")
-    }
-    /**
-     * Getter for element height settings.
-     */
-    public func height()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".height();")
-    }
-    /**
-     * Setter for element height setting.
-     */
-    public func height(height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).height()")
+    public func evenFill(keys: [String], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).evenFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
@@ -329,83 +244,13 @@
      * Getter for images.
      */
     public func images() -> anychart.core.resource.resourcelist.ImageSettings {
-        return anychart.core.resource.resourcelist.ImageSettings(jsBase: jsBase + ".images()")
+        return anychart.core.resource.resourcelist.ImageSettings(jsBase: self.jsBase + ".images()")
     }
     /**
      * Setter for images.
      */
     public func images(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).images()")
-
-        return self
-    }
-    /**
-     * Getter for element left bound settings.
-     */
-    public func left()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".left();")
-    }
-    /**
-     * Setter for element left bound settings.
-     */
-    public func left(left: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).left()")
-
-        return self
-    }
-    /**
-     * Getter for the maximum height.
-     */
-    public func maxHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxHeight();")
-    }
-    /**
-     * Setter for the maximum height.
-     */
-    public func maxHeight(height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the maximum width.
-     */
-    public func maxWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".maxWidth();")
-    }
-    /**
-     * Setter for the maximum width.
-     */
-    public func maxWidth(width: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxWidth()")
-
-        return self
-    }
-    /**
-     * Getter for the minimum height.
-     */
-    public func minHeight()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minHeight();")
-    }
-    /**
-     * Setter for the minimum height.
-     */
-    public func minHeight(height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minHeight()")
-
-        return self
-    }
-    /**
-     * Getter for the minimum width.
-     */
-    public func minWidth()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".minWidth();")
-    }
-    /**
-     * Setter for the minimum width.
-     */
-    public func minWidth(width: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).minWidth()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).images(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -413,13 +258,13 @@
      * Getter for names.
      */
     public func names() -> anychart.core.resource.resourcelist.TextSettings {
-        return anychart.core.resource.resourcelist.TextSettings(jsBase: jsBase + ".names()")
+        return anychart.core.resource.resourcelist.TextSettings(jsBase: self.jsBase + ".names()")
     }
     /**
      * Setter for names.
      */
     public func names(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).names(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -427,14 +272,23 @@
      * Getter for the odd fill color.
      */
     public func oddFill()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".oddFill();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".oddFill();")
     }
     /**
      * Setter for odd fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(color: Fill) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\((color != nil) ? color.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for odd fill settings using an array, an object or a string.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func oddFill(color: [anychart.graphics.vector.GradientKey]) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToString(jsObjects: color)));")
 
         return self
     }
@@ -443,7 +297,7 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(color: [String]) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToStringWrapQuotes(array: color)));")
 
         return self
     }
@@ -451,7 +305,7 @@
      * Odd fill color with opacity.
      */
     public func oddFill(color: String, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.wrapQuotes(value: color)), \(opacity));")
 
         return self
     }
@@ -460,7 +314,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: Bool, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(mode), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient odd fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func oddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
 
         return self
     }
@@ -469,7 +332,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(keys: [anychart.graphics.vector.GradientKey], angle: Double, mode: String, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToString(jsObjects: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient odd fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func oddFill(keys: [String], angle: Double, mode: Bool, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(mode), \(opacity));")
 
         return self
     }
@@ -478,7 +350,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(keys: [String], angle: Double, mode: anychart.graphics.vector.Rect, opacity: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity));")
+
+        return self
+    }
+    /**
+     * Linear gradient odd fill.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func oddFill(keys: [String], angle: Double, mode: String, opacity: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(angle), \(JsObject.wrapQuotes(value: mode)), \(opacity));")
 
         return self
     }
@@ -487,16 +368,16 @@
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func oddFill(keys: [anychart.graphics.vector.GradientKey], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToString(jsObjects: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
     /**
-     * Image odd fill.
+     * Radial gradient odd fill.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
-    public func oddFill(imageSettings: Fill) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill()")
+    public func oddFill(keys: [String], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).oddFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
 
         return self
     }
@@ -504,39 +385,21 @@
      * Getter for the overlay element.
      */
     public func overlay() -> anychart.core.gantt.Overlay {
-        return anychart.core.gantt.Overlay(jsBase: jsBase + ".overlay()")
+        return anychart.core.gantt.Overlay(jsBase: self.jsBase + ".overlay()")
     }
     /**
      * Setter for the overlay element.
      */
     public func overlay(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlay()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlay(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
     /**
-     * Prints all elements on related stage.
+     * Setter for the overlay element.
      */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Getter for element right bound settings.
-     */
-    public func right()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".right();")
-    }
-    /**
-     * Setter for element right bound setting.
-     */
-    public func right(right: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).right()")
+    public func overlay(settings: Bool) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).overlay(\(settings));")
 
         return self
     }
@@ -544,14 +407,23 @@
      * Getter for the stroke.
      */
     public func stroke()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".stroke();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".stroke();")
     }
     /**
      * Setter for the stroke.
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -560,7 +432,16 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: Stroke, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -569,7 +450,16 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -578,7 +468,16 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: ColoredFill, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\((color != nil) ? color.getJsBase() : "null"), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -587,7 +486,16 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: String, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \(JsObject.wrapQuotes(value: lineJoin)), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -596,7 +504,16 @@
 {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \(JsObject.wrapQuotes(value: lineCap)));")
+
+        return self
+    }
+    /**
+     * Setter for the stroke.
+{docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+     */
+    public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.resource.ResourceList {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
 
         return self
     }
@@ -604,7 +521,7 @@
      * Setter for stroke using an object.
      */
     public func stroke(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -612,27 +529,13 @@
      * Getter for tags.
      */
     public func tags() -> anychart.core.resource.resourcelist.TagsSettings {
-        return anychart.core.resource.resourcelist.TagsSettings(jsBase: jsBase + ".tags()")
+        return anychart.core.resource.resourcelist.TagsSettings(jsBase: self.jsBase + ".tags()")
     }
     /**
      * Setter for tags.
      */
     public func tags(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tags()")
-
-        return self
-    }
-    /**
-     * Getter for element top bound settings.
-     */
-    public func top()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".top();")
-    }
-    /**
-     * Setter for element top bound settings.
-     */
-    public func top(top: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).top()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tags(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }
@@ -640,103 +543,13 @@
      * Getter for types.
      */
     public func types() -> anychart.core.resource.resourcelist.TextSettings {
-        return anychart.core.resource.resourcelist.TextSettings(jsBase: jsBase + ".types()")
+        return anychart.core.resource.resourcelist.TextSettings(jsBase: self.jsBase + ".types()")
     }
     /**
      * Setter for types.
      */
     public func types(settings: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).types()")
-
-        return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
-    /**
-     * Getter for element width settings.
-     */
-    public func width()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".width();")
-    }
-    /**
-     * Setter for element width setting.
-     */
-    public func width(width: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width()")
-
-        return self
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.resource.ResourceList {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).types(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
     }

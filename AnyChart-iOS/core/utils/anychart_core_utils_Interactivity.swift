@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Interactivity(jsBase: "new anychart.core.utils.Interactivity()")
-            super.init(jsBase: "new anychart.core.utils.Interactivity()")
+            //super.init(jsBase: "new anychart.core.utils.Interactivity()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.utils.Interactivity {
+            return anychart.core.utils.Interactivity(jsBase: "new anychart.core.utils.Interactivity()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,7 +39,7 @@
      * 
      */
     public func allowMultiSeriesSelection(value: Bool) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowMultiSeriesSelection()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).allowMultiSeriesSelection(\(value));")
 
         return self
     }
@@ -42,13 +47,21 @@
      * Getter for the hover mode.
      */
     public func hoverMode()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".hoverMode();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".hoverMode();")
     }
     /**
      * Setter for the hover mode.
      */
     public func hoverMode(mode: anychart.enums.HoverMode) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverMode()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverMode(\((mode != nil) ? mode.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the hover mode.
+     */
+    public func hoverMode(mode: String) -> anychart.core.utils.Interactivity {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hoverMode(\(JsObject.wrapQuotes(value: mode)));")
 
         return self
     }
@@ -56,33 +69,35 @@
      * Getter for the multi-select on click.
      */
     public func multiSelectOnClick()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".multiSelectOnClick();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".multiSelectOnClick();")
     }
     /**
      * Setter for the multi-select on click.
      */
     public func multiSelectOnClick(enabled: Bool) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).multiSelectOnClick()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).multiSelectOnClick(\(enabled));")
 
         return self
-    }
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
     }
     /**
      * Getter for the selection mode.
      */
     public func selectionMode()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".selectionMode();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".selectionMode();")
     }
     /**
      * Setter for the selection mode.
      */
     public func selectionMode(mode: anychart.enums.SelectionMode) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectionMode()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectionMode(\((mode != nil) ? mode.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for the selection mode.
+     */
+    public func selectionMode(mode: String) -> anychart.core.utils.Interactivity {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).selectionMode(\(JsObject.wrapQuotes(value: mode)));")
 
         return self
     }
@@ -90,7 +105,7 @@
      * Getter for the spot radius.
      */
     public func spotRadius()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".spotRadius();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".spotRadius();")
     }
     /**
      * Setter for the spot radius.
@@ -98,28 +113,22 @@ Size of the area under cursor in pixels for radius hovering.
 <b>Note:</b> Works only with "by-spot" value in the {@link anychart.core.utils.Interactivity#hoverMode} method.
      */
     public func spotRadius(radius: Double) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).spotRadius()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).spotRadius(\(radius));")
 
         return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
     }
     /**
      * Getter for the unselectOnClickOutOfPoint.
      */
     public func unselectOnClickOutOfPoint()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".unselectOnClickOutOfPoint();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".unselectOnClickOutOfPoint();")
     }
     /**
      * Setter for the unselectOnClickOutOfPoint.<br/>
 If the value is <b>true<b/>, disables select all points when clicking outside the chart point.
      */
     public func unselectOnClickOutOfPoint(enabled: Bool) -> anychart.core.utils.Interactivity {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unselectOnClickOutOfPoint()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unselectOnClickOutOfPoint(\(enabled));")
 
         return self
     }

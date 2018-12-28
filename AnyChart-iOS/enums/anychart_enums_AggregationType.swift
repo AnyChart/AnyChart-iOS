@@ -12,7 +12,7 @@ extension anychart.enums {
         case WEIGHTED_AVERAGE = "weighted-average"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

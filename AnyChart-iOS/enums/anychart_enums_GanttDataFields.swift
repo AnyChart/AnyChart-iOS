@@ -31,7 +31,7 @@ extension anychart.enums {
         case STROKE = "stroke"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

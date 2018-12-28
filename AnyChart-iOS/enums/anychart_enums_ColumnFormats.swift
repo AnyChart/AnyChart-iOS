@@ -11,7 +11,7 @@ extension anychart.enums {
         case TEXT = "text"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

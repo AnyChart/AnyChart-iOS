@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return A11y(jsBase: "new anychart.core.utils.A11y()")
-            super.init(jsBase: "new anychart.core.utils.A11y()")
+            //super.init(jsBase: "new anychart.core.utils.A11y()")
         }
 
         
@@ -25,23 +26,15 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.utils.A11y {
+            return anychart.core.utils.A11y(jsBase: "new anychart.core.utils.A11y()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
 
         
-    /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
-     */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
 
     }
 }

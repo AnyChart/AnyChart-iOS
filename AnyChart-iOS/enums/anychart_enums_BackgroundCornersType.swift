@@ -6,7 +6,7 @@ extension anychart.enums {
         case ROUND_INNER = "round-inner"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

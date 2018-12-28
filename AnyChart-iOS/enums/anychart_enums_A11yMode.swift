@@ -4,7 +4,7 @@ extension anychart.enums {
         case DATA_TABLE = "data-table"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

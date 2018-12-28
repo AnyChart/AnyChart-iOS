@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return CircularRange(jsBase: "new anychart.core.axisMarkers.CircularRange()")
-            super.init(jsBase: "new anychart.core.axisMarkers.CircularRange()")
+            //super.init(jsBase: "new anychart.core.axisMarkers.CircularRange()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        override public func instantiate() -> anychart.core.axismarkers.CircularRange {
+            return anychart.core.axismarkers.CircularRange(jsBase: "new anychart.core.axisMarkers.CircularRange()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,13 @@
      * Getter for the axis index.
      */
     public func axisIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".axisIndex();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".axisIndex();")
     }
     /**
      * Setter for the axis index.
      */
     public func axisIndex(index: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).axisIndex()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).axisIndex(\(index));")
 
         return self
     }
@@ -48,28 +53,23 @@
      * Getter for the rounding of circular ranges.
      */
     public func cornersRounding()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".cornersRounding();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".cornersRounding();")
     }
     /**
      * Setter for the rounding of circular ranges.<br/>
 Round off the ends of circular ranges to the specified radius.
      */
     public func cornersRounding(value: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cornersRounding()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cornersRounding(\(value));")
 
         return self
     }
     /**
-     * Getter for the element state (enabled or disabled).
+     * Setter for the rounding of circular ranges.<br/>
+Round off the ends of circular ranges to the specified radius.
      */
-    public func enabled()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".enabled();")
-    }
-    /**
-     * Setter for the element enabled state.
-     */
-    public func enabled(enabled: Bool) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).enabled()")
+    public func cornersRounding(value: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).cornersRounding(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -77,13 +77,21 @@ Round off the ends of circular ranges to the specified radius.
      * Getter for the range end size.
      */
     public func endSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".endSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".endSize();")
     }
     /**
      * Setter for the range end size.
      */
     public func endSize(value: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).endSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).endSize(\(value));")
+
+        return self
+    }
+    /**
+     * Setter for the range end size.
+     */
+    public func endSize(value: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).endSize(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -91,14 +99,23 @@ Round off the ends of circular ranges to the specified radius.
      * Getter for the range fill.
      */
     public func fill()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".fill();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".fill();")
     }
     /**
      * Setter for range fill settings using an array, an object or a string.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: Fill) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\((color != nil) ? color.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * Setter for range fill settings using an array, an object or a string.
+{docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+     */
+    public func fill(color: [anychart.graphics.vector.GradientKey]) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToString(jsObjects: color)));")
 
         return self
     }
@@ -107,7 +124,7 @@ Round off the ends of circular ranges to the specified radius.
 {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
      */
     public func fill(color: [String]) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.arrayToStringWrapQuotes(array: color)));")
 
         return self
     }
@@ -115,13 +132,13 @@ Round off the ends of circular ranges to the specified radius.
      * Getter for the starting range value.
      */
     public func from()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".from();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".from();")
     }
     /**
      * Setter for the starting range value.
      */
     public func from(fromValue: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).from()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).from(\(fromValue));")
 
         return self
     }
@@ -129,53 +146,65 @@ Round off the ends of circular ranges to the specified radius.
      * Getter for the range position.
      */
     public func position()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".position();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".position();")
     }
     /**
      * Setter for the range position.
      */
     public func position(positionType: anychart.enums.GaugeSidePosition) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position(\((positionType != nil) ? positionType.getJsBase() : "null"));")
 
         return self
     }
     /**
-     * Prints all elements on related stage.
+     * Setter for the range position.
      */
-    public func print(paperSizeOrOptions: anychart.graphics.vector.PaperSize, landscape: Bool)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).print(\((paperSizeOrOptions != nil) ? paperSizeOrOptions.getJsBase() : "null"), \(landscape))")
+    public func position(positionType: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).position(\(JsObject.wrapQuotes(value: positionType)));")
+
+        return self
     }
     /**
      * Getter for the range radius.
      */
     public func radius()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".radius();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".radius();")
     }
     /**
      * Setter for the range radius.
      */
     public func radius(value: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius(\(value));")
 
         return self
     }
     /**
-     * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+     * Setter for the range radius.
      */
-    public func removeAllListeners(type: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).removeAllListeners(\(JsObject.wrapQuotes(value: type)))")
+    public func radius(value: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).radius(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
     /**
      * Getter for the range start size.
      */
     public func startSize()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".startSize();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".startSize();")
     }
     /**
      * Setter for the range start size.
      */
     public func startSize(value: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startSize()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startSize(\(value));")
+
+        return self
+    }
+    /**
+     * Setter for the range start size.
+     */
+    public func startSize(value: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).startSize(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }
@@ -183,89 +212,13 @@ Round off the ends of circular ranges to the specified radius.
      * Getter for the ending range value.
      */
     public func to()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".to();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".to();")
     }
     /**
      * Setter for the ending range value.
      */
     public func to(toValue: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to()")
-
-        return self
-    }
-    /**
-     * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
-     */
-    public func unlistenByKey(key: String)  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).unlistenByKey(\(JsObject.wrapQuotes(value: key)))")
-    }
-    /**
-     * Getter for the Z-index of the element.
-     */
-    public func zIndex()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".zIndex();")
-    }
-    /**
-     * Setter for the Z-index of the element.
-     */
-    public func zIndex(zIndex: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex()")
-
-        return self
-    }
-    /**
-     * Getter for the container.
-     */
-    public func container() -> anychart.graphics.vector.Layer {
-        return anychart.graphics.vector.Layer(jsBase: jsBase + ".container()")
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: anychart.graphics.vector.Layer) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Setter for the container.
-     */
-    public func container(element: String) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * Getter for the parent bounds.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds() -> anychart.math.Rect {
-        return anychart.math.Rect(jsBase: jsBase + ".parentBounds()")
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: anychart.math.Rect) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using single value.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(bounds: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
-
-        return self
-    }
-    /**
-     * Setter for the parent bounds using several values.<br>
-Bounds that would be used in case of percent size calculations. Expects pixel values only.
-     */
-    public func parentBounds(left: Double, top: Double, width: Double, height: Double) -> anychart.core.axismarkers.CircularRange {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).parentBounds()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to(\(toValue));")
 
         return self
     }

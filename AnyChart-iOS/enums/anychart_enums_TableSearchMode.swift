@@ -6,7 +6,7 @@ extension anychart.enums {
         case NEAREST = "nearest"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

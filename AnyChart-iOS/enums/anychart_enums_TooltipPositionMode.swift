@@ -5,7 +5,7 @@ extension anychart.enums {
         case POINT = "point"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

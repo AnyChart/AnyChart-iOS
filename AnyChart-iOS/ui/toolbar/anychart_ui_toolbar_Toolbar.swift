@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Toolbar(jsBase: "new anychart.ui.toolbar.Toolbar()")
-            super.init(jsBase: "new anychart.ui.toolbar.Toolbar()")
+            //super.init(jsBase: "new anychart.ui.toolbar.Toolbar()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.ui.toolbar.Toolbar {
+            return anychart.ui.toolbar.Toolbar(jsBase: "new anychart.ui.toolbar.Toolbar()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -33,16 +38,8 @@
     /**
      * 
      */
-    public func container(element: String) -> anychart.ui.toolbar.Toolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).container()")
-
-        return self
-    }
-    /**
-     * 
-     */
     public func draw() -> anychart.ui.toolbar.Toolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".draw();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".draw();")
 
         return self
     }
@@ -50,7 +47,7 @@
      * 
      */
     public func target(value: anychart.core.Chart) -> anychart.ui.toolbar.Toolbar {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).target()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).target(\((value != nil) ? value.getJsBase() : "null"));")
 
         return self
     }

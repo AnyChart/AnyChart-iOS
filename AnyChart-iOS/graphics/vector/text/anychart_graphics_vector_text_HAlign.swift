@@ -7,7 +7,7 @@ extension anychart.graphics.vector.text {
         case START = "start"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

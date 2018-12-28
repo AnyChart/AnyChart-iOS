@@ -11,8 +11,9 @@
         //}
 
         public override init() {
+            super.init()
             //return Preloader(jsBase: "new anychart.ui.Preloader()")
-            super.init(jsBase: "new anychart.ui.Preloader()")
+            //super.init(jsBase: "new anychart.ui.Preloader()")
         }
 
         
@@ -25,6 +26,10 @@
             APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + " = " + jsBase + ";")
         }
 
+        public func instantiate() -> anychart.ui.Preloader {
+            return anychart.ui.Preloader(jsBase: "new anychart.ui.Preloader()")
+        }
+
         override public func getJsBase() -> String {
             return jsBase;
         }
@@ -34,13 +39,13 @@
      * Getter for the visibility of the preloader.
      */
     public func visible()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: jsBase + ".visible();")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".visible();")
     }
     /**
      * Setter for the visibility of the preloader.
      */
     public func visible(enabled: Bool) -> anychart.ui.Preloader {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).visible()")
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).visible(\(enabled));")
 
         return self
     }

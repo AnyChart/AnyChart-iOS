@@ -7,7 +7,7 @@ extension anychart.enums {
         case OUTSIDE_RIGHT_IN_COLUMN = "outside-right-in-column"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

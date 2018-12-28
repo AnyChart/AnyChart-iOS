@@ -6,7 +6,7 @@ extension anychart.enums {
         case PARENT_INDEPENDENT = "parent-independent"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

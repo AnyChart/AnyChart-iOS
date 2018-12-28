@@ -68,7 +68,7 @@ extension anychart.enums {
         case YEAR_WEEK = "year-week"
 
         public func getJsBase() -> String {
-            return ""
+            return "'\(self.rawValue)'"
         }
 
     }

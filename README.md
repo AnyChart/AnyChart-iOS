@@ -442,4 +442,3 @@ AnyChart product family includes scores of chart types and we're constantly addi
 
 ## License
 [© AnyChart.com - JavaScript charts](https://www.anychart.com). All rights reserved.
-<img src="https://ga-beacon.appspot.com/UA-228820-4/Wrappers/iOS?pixel&useReferer">

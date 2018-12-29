@@ -411,6 +411,27 @@ See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
 
         return self
     }
+    public func addTarget(target: NSObject, action: Selector, fields: [String]?) {
+        var resultJs = "\(jsBase).listen('pointClick', function(e) {"
+
+        if fields != nil {
+            resultJs += "var result = {"
+            for field in fields! {
+                resultJs += "\"\(field)\": e.point.get('\(field)'),"
+            }
+            resultJs = String(resultJs.dropLast(1)) + "};"
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(result)"
+        } else {
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(null)"
+        }
+
+        resultJs += "});"
+
+        JavascriptInterface.sharedInstance.target = target
+        JavascriptInterface.sharedInstance.action = action
+
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: resultJs)
+    }
     /**
      * Gets the current visibility flag.
      */

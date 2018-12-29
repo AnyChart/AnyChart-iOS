@@ -628,6 +628,7 @@
 		30FCE4CA2175E44600CB4A21 /* AnyChart_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 30FCE4BC2175E44600CB4A21 /* AnyChart_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30FCE4D42175E6E900CB4A21 /* AnyChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FCE4D32175E6E900CB4A21 /* AnyChartView.xib */; };
 		30FCE4D62175E71A00CB4A21 /* AnyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */; };
+		739B35A421D77D7700E4D0A2 /* JavascriptInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1265,6 +1266,7 @@
 		30FCE4C92175E44600CB4A21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30FCE4D32175E6E900CB4A21 /* AnyChartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnyChartView.xib; sourceTree = "<group>"; };
 		30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyChartView.swift; sourceTree = "<group>"; };
+		739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2911,6 +2913,7 @@
 				30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */,
 				30596FA72175E995006AFEC9 /* APIlib.swift */,
 				3043E2C721AFAF500033ECB8 /* JsObject.swift */,
+				739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */,
 			);
 			path = "AnyChart-iOS";
 			sourceTree = "<group>";
@@ -3337,6 +3340,7 @@
 				3082EBCD21AFC35400F03485 /* anychart_core_stock_scrollerseries_DiscreteBase.swift in Sources */,
 				3082EB0421AFC35300F03485 /* anychart_core_polar_series_Polygon.swift in Sources */,
 				3082EB5F21AFC35300F03485 /* anychart_core_annotations_FibonacciTimezones.swift in Sources */,
+				739B35A421D77D7700E4D0A2 /* JavascriptInterface.swift in Sources */,
 				3082ECB321AFC35400F03485 /* anychart_charts_sunburst_StatsFieldsName.swift in Sources */,
 				3082EBB821AFC35400F03485 /* anychart_core_stock_indicators_Stochastic.swift in Sources */,
 				3082EB9721AFC35300F03485 /* anychart_core_stock_series_RangeSplineArea.swift in Sources */,

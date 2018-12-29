@@ -3,6 +3,11 @@ import AnyChart_iOS
 
 class ColumnChartViewController: UIViewController {
     
+    @objc func hell(event: NSDictionary) {
+        print(event["x"]!)
+        print(event["value"]!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +34,8 @@ class ColumnChartViewController: UIViewController {
         ]
         
         let column = chart.column(data: data)
+        
+        column.addTarget(target: self, action: #selector(hell), fields: ["x", "value"])
         
         column.tooltip()
             .titleFormat(format: "{%X}")

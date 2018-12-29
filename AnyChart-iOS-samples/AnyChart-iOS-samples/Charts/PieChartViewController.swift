@@ -3,6 +3,12 @@ import AnyChart_iOS
 
 class PieChartViewController: UIViewController {
     
+    @objc func hell(event: NSDictionary) {
+        print("hell")
+        print(event["x"]!)
+        print(event["value"]!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -15,6 +21,8 @@ class PieChartViewController: UIViewController {
         anyChartView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         
         let chart = AnyChart.pie()
+        
+        chart.addTarget(target: self, action: #selector(hell), fields: ["x", "value"])
         
         let data: Array<DataEntry> = [
             ValueDataEntry(x: "Apples", value: 6371664),

@@ -821,6 +821,27 @@ Read more at {@link anychart.graphics.vector.primitives#triangleUp}
     public func triangleUp()  {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".triangleUp();")
     }
+    public func addTarget(target: NSObject, action: Selector, fields: [String]?) {
+        var resultJs = "\(jsBase).listen('pointClick', function(e) {"
+
+        if fields != nil {
+            resultJs += "var result = {"
+            for field in fields! {
+                resultJs += "\"\(field)\": e.point.get('\(field)'),"
+            }
+            resultJs = String(resultJs.dropLast(1)) + "};"
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(result)"
+        } else {
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(null)"
+        }
+
+        resultJs += "});"
+
+        JavascriptInterface.sharedInstance.target = target
+        JavascriptInterface.sharedInstance.action = action
+
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: resultJs)
+    }
     /**
      * Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
 Read more at {@link anychart.graphics.vector.primitives#vLine}

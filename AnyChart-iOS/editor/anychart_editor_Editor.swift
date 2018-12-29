@@ -213,6 +213,27 @@ https://cdn.anychart.com/releases/8.4.0/js/anychart-editor.min.js)</i>
     public func step(stepName: String, value: Bool) -> anychart.editor.Step {
         return anychart.editor.Step(jsBase: "\(self.jsBase).step(\(JsObject.wrapQuotes(value: stepName)), \(value))")
     }
+    public func addTarget(target: NSObject, action: Selector, fields: [String]?) {
+        var resultJs = "\(jsBase).listen('pointClick', function(e) {"
+
+        if fields != nil {
+            resultJs += "var result = {"
+            for field in fields! {
+                resultJs += "\"\(field)\": e.point.get('\(field)'),"
+            }
+            resultJs = String(resultJs.dropLast(1)) + "};"
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(result)"
+        } else {
+            resultJs += "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(null)"
+        }
+
+        resultJs += "});"
+
+        JavascriptInterface.sharedInstance.target = target
+        JavascriptInterface.sharedInstance.action = action
+
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: resultJs)
+    }
     /**
      * Returns the current chart editor version.<br>
 <br>

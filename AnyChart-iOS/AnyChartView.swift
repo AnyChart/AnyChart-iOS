@@ -64,7 +64,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //            "</head>" +
 //            "<body>" +
 //            //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
-//            
+//
 //            "<script src=\"" + jsPath! + "\"></script>" +
 //            "<div id=\"container\"></div>" +
 //            "</body>" +
@@ -74,9 +74,13 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("Message received: \(message.name) with body: \(message.body)")
+        
+        if let messageBody: NSDictionary = message.body as? NSDictionary {
+            JavascriptInterface.sharedInstance.onClick(view: self, event: messageBody)
+        }
     }
     
-//    func webView(_ webView: WKWebView,
+//    public func webView(_ webView: WKWebView,
 //                 runJavaScriptAlertPanelWithMessage message: String,
 //                 initiatedByFrame frame: WKFrameInfo,
 //                 completionHandler: @escaping () -> Void) {
@@ -95,10 +99,10 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         let jsBase = chart?.getJsBase() ?? ""
         
         webView.evaluateJavaScript(
-//            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hel\");" +
+//                "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
                 "anychart.onDocumentReady(function () {" +
                 js +
-//                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"TH\"); });" +
+//                "\(jsBase).listen('pointClick', function(e) { window.webkit.messageHandlers[\"scriptHandler\"].postMessage(e.point.get('value')); });" +
                 "\(jsBase).container('container');\(jsBase).draw();" +
             "});", completionHandler: nil)
         

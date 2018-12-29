@@ -10,9 +10,9 @@ Check out <a href="https://github.com/AnyChart/AnyChart-iOS/wiki/Getting-started
 ## Installation
 
 ### Framework
-Drag the AnyChart-iOS.xcodeproj to your project
-Go to your target's settings, hit the "+" under the "Embedded Binaries" section, and select the AnyChart-iOS.framework
-```import AnyChart-iOS```
+1. Drag the AnyChart-iOS.xcodeproj to your project
+2. Go to your target's settings, hit the "+" under the "Embedded Binaries" section, and select the AnyChart-iOS.framework
+3. import AnyChart-iOS
 
 ## Chart Types
 AnyChart product family includes scores of chart types and we're constantly adding new ones.

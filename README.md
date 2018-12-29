@@ -174,7 +174,7 @@ AnyChart product family includes scores of chart types and we're constantly addi
             <img src="https://github.com/AnyChart/AnyChart-Android/blob/master/img/polarchart.png" alt="Polar Chart - AnyChart">
             <sup>
               <a href="">Sample app</a> /
-              <a href="">Code Snippet</a>
+              <a href="">Code Snippet - Coming soon!</a>
             </sup>            
         </td>
         <td width="33%">

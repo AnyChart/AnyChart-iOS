@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Bullet {
-            return anychart.charts.Bullet(jsBase: "new anychart.charts.Bullet()")
+            return anychart.charts.Bullet(jsBase: "new anychart.charts.bullet()")
         }
 
         override public func getJsBase() -> String {

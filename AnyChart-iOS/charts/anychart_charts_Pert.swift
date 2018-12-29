@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Pert {
-            return anychart.charts.Pert(jsBase: "new anychart.charts.Pert()")
+            return anychart.charts.Pert(jsBase: "new anychart.charts.pert()")
         }
 
         override public func getJsBase() -> String {

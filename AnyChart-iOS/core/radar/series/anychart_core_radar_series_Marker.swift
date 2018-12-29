@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.radar.series.Marker {
-            return anychart.core.radar.series.Marker(jsBase: "new anychart.core.radar.series.Marker()")
+            return anychart.core.radar.series.Marker(jsBase: "new anychart.core.radar.series.marker()")
         }
 
         override public func getJsBase() -> String {
@@ -364,6 +364,14 @@ Fill as a string or an object.
      */
     public func type(value: String) -> anychart.core.radar.series.Marker {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).type(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.radar.series.Marker {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

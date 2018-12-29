@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Scroller {
-            return anychart.core.ui.Scroller(jsBase: "new anychart.core.ui.Scroller()")
+            return anychart.core.ui.Scroller(jsBase: "new anychart.core.ui.scroller()")
         }
 
         override public func getJsBase() -> String {
@@ -518,6 +518,14 @@
      */
     public func thumbs(settings: String) -> anychart.core.ui.Scroller {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).thumbs(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.Scroller {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.grids.MapSettings {
-            return anychart.core.grids.MapSettings(jsBase: "new anychart.core.grids.MapSettings()")
+            return anychart.core.grids.MapSettings(jsBase: "new anychart.core.grids.mapsettings()")
         }
 
         override public func getJsBase() -> String {
@@ -527,6 +527,14 @@
      */
     public func zIndex(zIndex: String) -> anychart.core.grids.MapSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zIndex(\(JsObject.wrapQuotes(value: zIndex)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.grids.MapSettings {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

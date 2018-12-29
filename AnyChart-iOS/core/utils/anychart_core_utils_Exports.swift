@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.utils.Exports {
-            return anychart.core.utils.Exports(jsBase: "new anychart.core.utils.Exports()")
+            return anychart.core.utils.Exports(jsBase: "new anychart.core.utils.exports()")
         }
 
         override public func getJsBase() -> String {

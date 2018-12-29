@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.series.OHLC {
-            return anychart.core.stock.series.OHLC(jsBase: "new anychart.core.stock.series.OHLC()")
+            return anychart.core.stock.series.OHLC(jsBase: "new anychart.core.stock.series.ohlc()")
         }
 
         override public func getJsBase() -> String {

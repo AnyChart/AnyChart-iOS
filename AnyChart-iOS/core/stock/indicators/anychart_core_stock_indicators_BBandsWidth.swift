@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.BBandsWidth {
-            return anychart.core.stock.indicators.BBandsWidth(jsBase: "new anychart.core.stock.indicators.BBandsWidth()")
+            return anychart.core.stock.indicators.BBandsWidth(jsBase: "new anychart.core.stock.indicators.bbandswidth()")
         }
 
         override public func getJsBase() -> String {

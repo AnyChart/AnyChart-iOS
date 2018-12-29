@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.ContinuousRangeBase {
-            return anychart.core.cartesian.series.ContinuousRangeBase(jsBase: "new anychart.core.cartesian.series.ContinuousRangeBase()")
+            return anychart.core.cartesian.series.ContinuousRangeBase(jsBase: "new anychart.core.cartesian.series.continuousrangebase()")
         }
 
         override public func getJsBase() -> String {
@@ -449,6 +449,14 @@
      */
     public func lowStroke(settings: String) -> anychart.core.cartesian.series.ContinuousRangeBase {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lowStroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.ContinuousRangeBase {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

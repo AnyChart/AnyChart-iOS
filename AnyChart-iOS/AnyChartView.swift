@@ -1,11 +1,3 @@
-//
-//  AnyChartView.swift
-//  AnyChart-iOS
-//
-//  Created by NoName on 10/16/18.
-//  Copyright © 2018 AnyChart. All rights reserved.
-//
-
 import UIKit
 import WebKit
 
@@ -72,8 +64,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //            "</head>" +
 //            "<body>" +
 //            //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
-//            // https://stackoverflow.com/questions/5733883/loading-javascript-into-a-uiwebview-from-resources/5810930#5810930
-//            // https://github.com/facebook/react-native/issues/1442
+//            
 //            "<script src=\"" + jsPath! + "\"></script>" +
 //            "<div id=\"container\"></div>" +
 //            "</body>" +
@@ -81,8 +72,6 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         //baseURL: bundle.url(forResource: "bundle", withExtension:nil))
     }
     
-    //    https://stackoverflow.com/questions/26851630/javascript-synchronous-native-communication-to-wkwebview
-    //    https://stackoverflow.com/questions/40761218/javascript-call-to-swift-from-uiwebview
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("Message received: \(message.name) with body: \(message.body)")
     }
@@ -103,48 +92,19 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //    }
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Loaded")
-        // https://stackoverflow.com/questions/43170736/wkwebview-evaluatejavascript-not-returning-html
-//        let pie = Pie()
-//        let data: Array<DataEntry> = [
-//            ValueDataEntry(x: "Apples", value: 69.2),
-//            ValueDataEntry(x: "Oranges", value: 85),
-//            ValueDataEntry(x: "Tea", value: 32.1),
-//            ValueDataEntry(x: "Sugar", value: 8.2)
-//        ]
-//        pie.data(data: data)
-//        pie.title(value: "Fruits imported in 2015 (in kg)")
-//        pie.labels().position(value: "outside")
-//        pie.legend().position(value: "center-bottom")
-//            .itemsLayout(value: "horizontal")
-//            .align(value: "center")
-        print(js)
         let jsBase = chart?.getJsBase() ?? ""
         
         webView.evaluateJavaScript(
-//            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
+//            "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hel\");" +
                 "anychart.onDocumentReady(function () {" +
                 js +
-//                    "chart = anychart.pie();chart.data([{value: '69.2',x: 'Apples'}, {value: '85',x: 'Oranges'}, {value: '32.1',x: 'Tea'}, {value: '8.2',x: 'Sugar'}]);" +
-//                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"THERE\"); });" +
+//                "chart.listen('click', function() {  window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"TH\"); });" +
                 "\(jsBase).container('container');\(jsBase).draw();" +
             "});", completionHandler: nil)
         
         isRendered = true
-
-        //        webView.evaluateJavaScript("anychart.onDocumentReady(function () {" +
-        //            "chart = anychart.pie();chart.data([['Apples', 69.2],['Oranges', 85],['Tea', 32.1],['Sugar', 8.2]]);" +
-        //            "chart.container('container');chart.draw();" +
-        //            "});", completionHandler: nil)
-        //        webView.evaluateJavaScript("chart.title(\"Test\");"
-        //            , completionHandler: { (html: AnyObject?, error: NSError?) in
-        //                print(html!)
-        //                print(error!)
-        //                } as? (Any?, Error?) -> Void)
     }
     
-    // https://developer.apple.com/documentation/webkit/wknavigationdelegate
-    // https://stackoverflow.com/questions/50229935/wkwebview-get-javascript-errors
     //    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
     //        print("loading error", error)
     //    }
@@ -170,8 +130,6 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
             "</head>" +
             "<body>" +
             //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
-            // https://stackoverflow.com/questions/5733883/loading-javascript-into-a-uiwebview-from-resources/5810930#5810930
-            // https://github.com/facebook/react-native/issues/1442
             "<script src=\"" + jsPath! + "\"></script>" +
             "<div id=\"container\"></div>" +
             "</body>" +
@@ -186,7 +144,6 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
     }
     
     public func update() {
-//        print(js)
         webView.evaluateJavaScript(js, completionHandler: nil)
     }
     

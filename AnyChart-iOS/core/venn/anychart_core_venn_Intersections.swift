@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.venn.Intersections {
-            return anychart.core.venn.Intersections(jsBase: "new anychart.core.venn.Intersections()")
+            return anychart.core.venn.Intersections(jsBase: "new anychart.core.venn.intersections()")
         }
 
         override public func getJsBase() -> String {
@@ -433,6 +433,14 @@
      */
     public func tooltip(settings: Bool) -> anychart.core.venn.Intersections {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip(\(settings));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.venn.Intersections {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

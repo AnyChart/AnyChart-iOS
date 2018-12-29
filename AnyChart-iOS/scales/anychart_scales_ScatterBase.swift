@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.ScatterBase {
-            return anychart.scales.ScatterBase(jsBase: "new anychart.scales.ScatterBase()")
+            return anychart.scales.ScatterBase(jsBase: "new anychart.scales.scatterbase()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.format.Context {
-            return anychart.format.Context(jsBase: "new anychart.format.Context()")
+            return anychart.format.Context(jsBase: "new anychart.format.context()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.SMA {
-            return anychart.core.stock.indicators.SMA(jsBase: "new anychart.core.stock.indicators.SMA()")
+            return anychart.core.stock.indicators.SMA(jsBase: "new anychart.core.stock.indicators.sma()")
         }
 
         override public func getJsBase() -> String {

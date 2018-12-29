@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.lineargauge.pointers.Led {
-            return anychart.core.lineargauge.pointers.Led(jsBase: "new anychart.core.linearGauge.pointers.Led()")
+            return anychart.core.lineargauge.pointers.Led(jsBase: "new anychart.core.lineargauge.pointers.led()")
         }
 
         override public func getJsBase() -> String {

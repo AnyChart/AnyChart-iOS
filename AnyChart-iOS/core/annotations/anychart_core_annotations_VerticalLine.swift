@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.VerticalLine {
-            return anychart.core.annotations.VerticalLine(jsBase: "new anychart.core.annotations.VerticalLine()")
+            return anychart.core.annotations.VerticalLine(jsBase: "new anychart.core.annotations.verticalline()")
         }
 
         override public func getJsBase() -> String {

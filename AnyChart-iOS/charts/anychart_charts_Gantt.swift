@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Gantt {
-            return anychart.charts.Gantt(jsBase: "new anychart.charts.Gantt()")
+            return anychart.charts.Gantt(jsBase: "new anychart.charts.gantt()")
         }
 
         override public func getJsBase() -> String {

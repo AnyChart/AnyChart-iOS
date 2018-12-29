@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.eventmarkers.Group {
-            return anychart.core.stock.eventmarkers.Group(jsBase: "new anychart.core.stock.eventMarkers.Group()")
+            return anychart.core.stock.eventmarkers.Group(jsBase: "new anychart.core.stock.eventmarkers.group()")
         }
 
         override public func getJsBase() -> String {
@@ -974,6 +974,14 @@
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.core.stock.eventmarkers.Group {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.eventmarkers.Group {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

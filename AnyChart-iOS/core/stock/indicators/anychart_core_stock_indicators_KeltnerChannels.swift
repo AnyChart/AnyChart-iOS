@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.KeltnerChannels {
-            return anychart.core.stock.indicators.KeltnerChannels(jsBase: "new anychart.core.stock.indicators.KeltnerChannels()")
+            return anychart.core.stock.indicators.KeltnerChannels(jsBase: "new anychart.core.stock.indicators.keltnerchannels()")
         }
 
         override public func getJsBase() -> String {

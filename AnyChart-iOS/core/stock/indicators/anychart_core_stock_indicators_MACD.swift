@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.MACD {
-            return anychart.core.stock.indicators.MACD(jsBase: "new anychart.core.stock.indicators.MACD()")
+            return anychart.core.stock.indicators.MACD(jsBase: "new anychart.core.stock.indicators.macd()")
         }
 
         override public func getJsBase() -> String {

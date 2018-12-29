@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.palettes.Markers {
-            return anychart.palettes.Markers(jsBase: "new anychart.palettes.Markers()")
+            return anychart.palettes.Markers(jsBase: "new anychart.palettes.markers()")
         }
 
         override public func getJsBase() -> String {

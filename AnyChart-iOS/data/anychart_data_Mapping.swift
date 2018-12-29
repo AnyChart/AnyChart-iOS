@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.Mapping {
-            return anychart.data.Mapping(jsBase: "new anychart.data.Mapping()")
+            return anychart.data.Mapping(jsBase: "new anychart.data.mapping()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.ui.table.Border {
-            return anychart.core.ui.table.Border(jsBase: "new anychart.core.ui.table.Border()")
+            return anychart.core.ui.table.Border(jsBase: "new anychart.core.ui.table.border()")
         }
 
         override public func getJsBase() -> String {

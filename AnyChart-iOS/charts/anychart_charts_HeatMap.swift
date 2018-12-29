@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.HeatMap {
-            return anychart.charts.HeatMap(jsBase: "new anychart.charts.HeatMap()")
+            return anychart.charts.HeatMap(jsBase: "new anychart.charts.heatmap()")
         }
 
         override public func getJsBase() -> String {
@@ -876,6 +876,14 @@ The data area is drawn along the data bounds.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.HeatMap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

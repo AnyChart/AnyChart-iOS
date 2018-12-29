@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.resource.Grid {
-            return anychart.core.resource.Grid(jsBase: "new anychart.core.resource.Grid()")
+            return anychart.core.resource.Grid(jsBase: "new anychart.core.resource.grid()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.utils.OrdinalZoom {
-            return anychart.core.utils.OrdinalZoom(jsBase: "new anychart.core.utils.OrdinalZoom()")
+            return anychart.core.utils.OrdinalZoom(jsBase: "new anychart.core.utils.ordinalzoom()")
         }
 
         override public func getJsBase() -> String {

@@ -1,11 +1,3 @@
-//
-//  JsObject.swift
-//  AnyChart-iOS
-//
-//  Created by NoName on 11/29/18.
-//  Copyright © 2018 AnyChart. All rights reserved.
-//
-
 import Foundation
 
 public class JsObject {
@@ -41,17 +33,29 @@ public class JsObject {
     }
     
     private static func isJSONValid(json: String) -> Bool {
-        let data = json.data(using: .utf8)!
-        do {
-            if let json = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]
-            {
-                return true
-            } else {
-                return false
-            }
-        } catch let error as NSError {
+        let trimJson = json.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if trimJson.hasPrefix("{%") {
             return false
         }
+        if trimJson.hasPrefix("{") && trimJson.hasSuffix("}") {
+            return true
+        }
+        if trimJson.hasPrefix("[") && trimJson.hasSuffix("]") {
+            return true
+        }
+        return false
+//        let data = json.data(using: .utf8)!
+//        do {
+//            if let json = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]
+//            {
+//                return true
+//            } else {
+//                return false
+//            }
+//        } catch let error as NSError {
+//            return false
+//        }
     }
     
     private static func isFunction(function: String) -> Bool {

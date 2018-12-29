@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
-            return anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings(jsBase: "new anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings()")
+            return anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings(jsBase: "new anychart.core.gantt.timelineheaderlevelholidayssettings()")
         }
 
         override public func getJsBase() -> String {
@@ -317,6 +317,14 @@
      */
     public func padding(value1: Double, value2: Double, value3: Double, value4: Double) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).padding(\(value1), \(value2), \(value3), \(value4));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Quarter {
-            return anychart.core.utils.Quarter(jsBase: "new anychart.core.utils.Quarter()")
+            return anychart.core.utils.Quarter(jsBase: "new anychart.core.utils.quarter()")
         }
 
         override public func getJsBase() -> String {

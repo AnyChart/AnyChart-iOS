@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.radar.series.Area {
-            return anychart.core.radar.series.Area(jsBase: "new anychart.core.radar.series.Area()")
+            return anychart.core.radar.series.Area(jsBase: "new anychart.core.radar.series.area()")
         }
 
         override public func getJsBase() -> String {
@@ -327,6 +327,14 @@
      */
     public func stroke(settings: String) -> anychart.core.radar.series.Area {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.radar.series.Area {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

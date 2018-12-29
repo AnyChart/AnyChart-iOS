@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Error {
-            return anychart.core.utils.Error(jsBase: "new anychart.core.utils.Error()")
+            return anychart.core.utils.Error(jsBase: "new anychart.core.utils.error()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.series.renderingsettings.Context {
-            return anychart.core.series.renderingsettings.Context(jsBase: "new anychart.core.series.RenderingSettings.Context()")
+            return anychart.core.series.renderingsettings.Context(jsBase: "new anychart.core.series.renderingsettings.context()")
         }
 
         override public func getJsBase() -> String {

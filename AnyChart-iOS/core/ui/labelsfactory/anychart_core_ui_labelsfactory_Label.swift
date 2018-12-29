@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.labelsfactory.Label {
-            return anychart.core.ui.labelsfactory.Label(jsBase: "new anychart.core.ui.LabelsFactory.Label()")
+            return anychart.core.ui.labelsfactory.Label(jsBase: "new anychart.core.ui.labelsfactory.label()")
         }
 
         override public func getJsBase() -> String {

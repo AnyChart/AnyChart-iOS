@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.math.Rect {
-            return anychart.math.Rect(jsBase: "new anychart.math.Rect()")
+            return anychart.math.Rect(jsBase: "new anychart.math.rect()")
         }
 
         override public func getJsBase() -> String {

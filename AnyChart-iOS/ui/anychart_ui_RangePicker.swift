@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.ui.RangePicker {
-            return anychart.ui.RangePicker(jsBase: "new anychart.ui.RangePicker()")
+            return anychart.ui.RangePicker(jsBase: "new anychart.ui.rangepicker()")
         }
 
         override public func getJsBase() -> String {

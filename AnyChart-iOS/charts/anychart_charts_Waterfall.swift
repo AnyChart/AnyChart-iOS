@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Waterfall {
-            return anychart.charts.Waterfall(jsBase: "new anychart.charts.Waterfall()")
+            return anychart.charts.Waterfall(jsBase: "new anychart.charts.waterfall()")
         }
 
         override public func getJsBase() -> String {

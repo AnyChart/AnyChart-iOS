@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.FibonacciFan {
-            return anychart.core.annotations.FibonacciFan(jsBase: "new anychart.core.annotations.FibonacciFan()")
+            return anychart.core.annotations.FibonacciFan(jsBase: "new anychart.core.annotations.fibonaccifan()")
         }
 
         override public func getJsBase() -> String {

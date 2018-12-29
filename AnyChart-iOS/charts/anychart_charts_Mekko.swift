@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Mekko {
-            return anychart.charts.Mekko(jsBase: "new anychart.charts.Mekko()")
+            return anychart.charts.Mekko(jsBase: "new anychart.charts.mekko()")
         }
 
         override public func getJsBase() -> String {
@@ -294,6 +294,12 @@ The data area is drawn along the data bounds.
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).maxLabels(\(settings));")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func mekko(data: [DataEntry]) -> anychart.core.mekko.series.Mekko {
+        return anychart.core.mekko.series.Mekko(jsBase: "\(self.jsBase).mekko(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for minimum labels.
@@ -596,6 +602,12 @@ The data area is drawn along the data bounds.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func mekko(data: anychart.data.View) -> anychart.core.mekko.series.Mekko {
+        return anychart.core.mekko.series.Mekko(jsBase: "\(self.jsBase).mekko(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

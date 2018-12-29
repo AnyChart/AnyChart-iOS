@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.ColorRange {
-            return anychart.standalones.ColorRange(jsBase: "new anychart.standalones.ColorRange()")
+            return anychart.standalones.ColorRange(jsBase: "new anychart.standalones.colorrange()")
         }
 
         override public func getJsBase() -> String {

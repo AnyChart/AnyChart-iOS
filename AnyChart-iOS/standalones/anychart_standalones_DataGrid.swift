@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.DataGrid {
-            return anychart.standalones.DataGrid(jsBase: "new anychart.standalones.DataGrid()")
+            return anychart.standalones.DataGrid(jsBase: "new anychart.standalones.datagrid()")
         }
 
         override public func getJsBase() -> String {

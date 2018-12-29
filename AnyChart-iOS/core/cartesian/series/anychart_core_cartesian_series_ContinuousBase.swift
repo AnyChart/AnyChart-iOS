@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.ContinuousBase {
-            return anychart.core.cartesian.series.ContinuousBase(jsBase: "new anychart.core.cartesian.series.ContinuousBase()")
+            return anychart.core.cartesian.series.ContinuousBase(jsBase: "new anychart.core.cartesian.series.continuousbase()")
         }
 
         override public func getJsBase() -> String {

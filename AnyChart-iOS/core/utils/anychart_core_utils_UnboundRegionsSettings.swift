@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.utils.UnboundRegionsSettings {
-            return anychart.core.utils.UnboundRegionsSettings(jsBase: "new anychart.core.utils.UnboundRegionsSettings()")
+            return anychart.core.utils.UnboundRegionsSettings(jsBase: "new anychart.core.utils.unboundregionssettings()")
         }
 
         override public func getJsBase() -> String {
@@ -269,6 +269,14 @@
      */
     public func stroke(settings: String) -> anychart.core.utils.UnboundRegionsSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.utils.UnboundRegionsSettings {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

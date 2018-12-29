@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.Rect {
-            return anychart.graphics.vector.Rect(jsBase: "new anychart.graphics.vector.Rect()")
+            return anychart.graphics.vector.Rect(jsBase: "new anychart.graphics.vector.rect()")
         }
 
         override public func getJsBase() -> String {

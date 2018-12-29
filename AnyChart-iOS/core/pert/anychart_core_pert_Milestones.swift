@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.pert.Milestones {
-            return anychart.core.pert.Milestones(jsBase: "new anychart.core.pert.Milestones()")
+            return anychart.core.pert.Milestones(jsBase: "new anychart.core.pert.milestones()")
         }
 
         override public func getJsBase() -> String {
@@ -411,6 +411,14 @@
      */
     public func tooltip(settings: Bool) -> anychart.core.pert.Milestones {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).tooltip(\(settings));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.pert.Milestones {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

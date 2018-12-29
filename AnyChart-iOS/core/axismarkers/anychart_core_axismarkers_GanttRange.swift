@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.GanttRange {
-            return anychart.core.axismarkers.GanttRange(jsBase: "new anychart.core.axisMarkers.GanttRange()")
+            return anychart.core.axismarkers.GanttRange(jsBase: "new anychart.core.axismarkers.ganttrange()")
         }
 
         override public func getJsBase() -> String {
@@ -235,6 +235,14 @@ Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
      */
     public func to(toValue: String) -> anychart.core.axismarkers.GanttRange {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to(\(JsObject.wrapQuotes(value: toValue)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axismarkers.GanttRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

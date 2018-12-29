@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.Range {
-            return anychart.core.axismarkers.Range(jsBase: "new anychart.core.axisMarkers.Range()")
+            return anychart.core.axismarkers.Range(jsBase: "new anychart.core.axismarkers.range()")
         }
 
         override public func getJsBase() -> String {
@@ -270,6 +270,14 @@ The 'consider' mode consideres the marker value in the scale.
      */
     public func to(toValue: Double) -> anychart.core.axismarkers.Range {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to(\(toValue));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axismarkers.Range {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

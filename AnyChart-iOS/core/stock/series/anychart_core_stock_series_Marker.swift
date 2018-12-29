@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.series.Marker {
-            return anychart.core.stock.series.Marker(jsBase: "new anychart.core.stock.series.Marker()")
+            return anychart.core.stock.series.Marker(jsBase: "new anychart.core.stock.series.marker()")
         }
 
         override public func getJsBase() -> String {
@@ -283,6 +283,14 @@
      */
     public func type(type: String) -> anychart.core.stock.series.Marker {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).type(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.series.Marker {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

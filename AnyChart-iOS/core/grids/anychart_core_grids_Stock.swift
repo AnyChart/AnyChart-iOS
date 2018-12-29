@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.grids.Stock {
-            return anychart.core.grids.Stock(jsBase: "new anychart.core.grids.Stock()")
+            return anychart.core.grids.Stock(jsBase: "new anychart.core.grids.stock()")
         }
 
         override public func getJsBase() -> String {
@@ -393,6 +393,22 @@ Whether it is a minor grid or not.
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.grids.Stock {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.grids.Stock {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func stroke(value: String) -> anychart.core.grids.Stock {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

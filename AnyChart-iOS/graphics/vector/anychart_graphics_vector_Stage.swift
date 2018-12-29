@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.vector.Stage {
-            return anychart.graphics.vector.Stage(jsBase: "new anychart.graphics.vector.Stage()")
+            return anychart.graphics.vector.Stage(jsBase: "new anychart.graphics.vector.stage()")
         }
 
         override public func getJsBase() -> String {

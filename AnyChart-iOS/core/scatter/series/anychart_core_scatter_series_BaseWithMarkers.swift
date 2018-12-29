@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.scatter.series.BaseWithMarkers {
-            return anychart.core.scatter.series.BaseWithMarkers(jsBase: "new anychart.core.scatter.series.BaseWithMarkers()")
+            return anychart.core.scatter.series.BaseWithMarkers(jsBase: "new anychart.core.scatter.series.basewithmarkers()")
         }
 
         override public func getJsBase() -> String {

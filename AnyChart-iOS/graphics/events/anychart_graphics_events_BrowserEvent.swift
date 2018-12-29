@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.events.BrowserEvent {
-            return anychart.graphics.events.BrowserEvent(jsBase: "new anychart.graphics.events.BrowserEvent()")
+            return anychart.graphics.events.BrowserEvent(jsBase: "new anychart.graphics.events.browserevent()")
         }
 
         override public func getJsBase() -> String {

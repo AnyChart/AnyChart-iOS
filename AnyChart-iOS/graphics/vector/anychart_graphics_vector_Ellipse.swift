@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.Ellipse {
-            return anychart.graphics.vector.Ellipse(jsBase: "new anychart.graphics.vector.Ellipse()")
+            return anychart.graphics.vector.Ellipse(jsBase: "new anychart.graphics.vector.ellipse()")
         }
 
         override public func getJsBase() -> String {

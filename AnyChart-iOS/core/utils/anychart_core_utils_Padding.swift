@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Padding {
-            return anychart.core.utils.Padding(jsBase: "new anychart.core.utils.Padding()")
+            return anychart.core.utils.Padding(jsBase: "new anychart.core.utils.padding()")
         }
 
         override public func getJsBase() -> String {

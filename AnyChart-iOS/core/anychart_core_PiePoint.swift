@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.PiePoint {
-            return anychart.core.PiePoint(jsBase: "new anychart.core.PiePoint()")
+            return anychart.core.PiePoint(jsBase: "new anychart.core.piepoint()")
         }
 
         override public func getJsBase() -> String {

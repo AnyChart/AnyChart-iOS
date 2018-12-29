@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.Radial {
-            return anychart.core.axes.Radial(jsBase: "new anychart.core.axes.Radial()")
+            return anychart.core.axes.Radial(jsBase: "new anychart.core.axes.radial()")
         }
 
         override public func getJsBase() -> String {

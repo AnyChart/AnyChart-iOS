@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.edit.Thumb {
-            return anychart.core.gantt.edit.Thumb(jsBase: "new anychart.core.gantt.edit.Thumb()")
+            return anychart.core.gantt.edit.Thumb(jsBase: "new anychart.core.gantt.edit.thumb()")
         }
 
         override public func getJsBase() -> String {
@@ -309,6 +309,14 @@
      */
     public func verticalOffset(offset: Double) -> anychart.core.gantt.edit.Thumb {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).verticalOffset(\(offset));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.edit.Thumb {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

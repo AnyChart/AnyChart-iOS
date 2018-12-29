@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.HatchFill {
-            return anychart.graphics.vector.HatchFill(jsBase: "new anychart.graphics.vector.HatchFill()")
+            return anychart.graphics.vector.HatchFill(jsBase: "new anychart.graphics.vector.hatchfill()")
         }
 
         override public func getJsBase() -> String {

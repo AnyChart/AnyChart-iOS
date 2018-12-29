@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.LinearGauge {
-            return anychart.core.axes.LinearGauge(jsBase: "new anychart.core.axes.LinearGauge()")
+            return anychart.core.axes.LinearGauge(jsBase: "new anychart.core.axes.lineargauge()")
         }
 
         override public func getJsBase() -> String {

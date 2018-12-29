@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.Iterator {
-            return anychart.data.Iterator(jsBase: "new anychart.data.Iterator()")
+            return anychart.data.Iterator(jsBase: "new anychart.data.iterator()")
         }
 
         override public func getJsBase() -> String {

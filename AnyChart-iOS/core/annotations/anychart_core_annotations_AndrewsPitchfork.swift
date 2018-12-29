@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.AndrewsPitchfork {
-            return anychart.core.annotations.AndrewsPitchfork(jsBase: "new anychart.core.annotations.AndrewsPitchfork()")
+            return anychart.core.annotations.AndrewsPitchfork(jsBase: "new anychart.core.annotations.andrewspitchfork()")
         }
 
         override public func getJsBase() -> String {

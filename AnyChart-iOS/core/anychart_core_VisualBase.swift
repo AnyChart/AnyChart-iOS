@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.VisualBase {
-            return anychart.core.VisualBase(jsBase: "new anychart.core.VisualBase()")
+            return anychart.core.VisualBase(jsBase: "new anychart.core.visualbase()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.Traverser {
-            return anychart.data.Traverser(jsBase: "new anychart.data.Traverser()")
+            return anychart.data.Traverser(jsBase: "new anychart.data.traverser()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Outline {
-            return anychart.core.ui.Outline(jsBase: "new anychart.core.ui.Outline()")
+            return anychart.core.ui.Outline(jsBase: "new anychart.core.ui.outline()")
         }
 
         override public func getJsBase() -> String {
@@ -273,6 +273,14 @@
      */
     public func width(width: Double) -> anychart.core.ui.Outline {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width(\(width));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.Outline {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.Linear {
-            return anychart.scales.Linear(jsBase: "new anychart.scales.Linear()")
+            return anychart.scales.Linear(jsBase: "new anychart.scales.linear()")
         }
 
         override public func getJsBase() -> String {

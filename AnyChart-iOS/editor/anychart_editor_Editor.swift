@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.editor.Editor {
-            return anychart.editor.Editor(jsBase: "new anychart.editor.Editor()")
+            return anychart.editor.Editor(jsBase: "new anychart.editor.editor()")
         }
 
         override public func getJsBase() -> String {

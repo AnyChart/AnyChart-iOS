@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.Ordinal {
-            return anychart.scales.Ordinal(jsBase: "new anychart.scales.Ordinal()")
+            return anychart.scales.Ordinal(jsBase: "new anychart.scales.ordinal()")
         }
 
         override public func getJsBase() -> String {
@@ -103,24 +103,10 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).transform(\(JsObject.wrapQuotes(value: value)), \(subRangeRatio));")
     }
     /**
-     * Getter for the scale input domain.
+     * 
      */
-    public func values()  {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".values();")
-    }
-    /**
-     * Setter for the scale input domain.
-     */
-    public func values(values: [String], var_args: String) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.arrayToStringWrapQuotes(array: values)), \(JsObject.wrapQuotes(value: var_args)));")
-
-        return self
-    }
-    /**
-     * Setter for the scale input domain.
-     */
-    public func values(values: String, var_args: String) -> anychart.scales.Ordinal {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.wrapQuotes(value: values)), \(JsObject.wrapQuotes(value: var_args)));")
+    public func values(values: [String]) -> anychart.scales.Ordinal {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.arrayToStringWrapQuotes(array: values)));")
 
         return self
     }
@@ -135,6 +121,14 @@
      */
     public func weights(weights: [Double]) -> anychart.scales.Ordinal {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).weights(\(weights.map{String($0)}.joined(separator: ",")));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func values(values: String) -> anychart.scales.Ordinal {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).values(\(JsObject.wrapQuotes(value: values)));")
 
         return self
     }

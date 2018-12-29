@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.CMF {
-            return anychart.core.stock.indicators.CMF(jsBase: "new anychart.core.stock.indicators.CMF()")
+            return anychart.core.stock.indicators.CMF(jsBase: "new anychart.core.stock.indicators.cmf()")
         }
 
         override public func getJsBase() -> String {

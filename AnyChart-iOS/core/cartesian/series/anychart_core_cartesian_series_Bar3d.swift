@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Bar3d {
-            return anychart.core.cartesian.series.Bar3d(jsBase: "new anychart.core.cartesian.series.Bar3d()")
+            return anychart.core.cartesian.series.Bar3d(jsBase: "new anychart.core.cartesian.series.bar3d()")
         }
 
         override public func getJsBase() -> String {

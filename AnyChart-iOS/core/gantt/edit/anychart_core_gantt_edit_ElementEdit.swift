@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.edit.ElementEdit {
-            return anychart.core.gantt.edit.ElementEdit(jsBase: "new anychart.core.gantt.edit.ElementEdit()")
+            return anychart.core.gantt.edit.ElementEdit(jsBase: "new anychart.core.gantt.edit.elementedit()")
         }
 
         override public func getJsBase() -> String {
@@ -306,6 +306,14 @@ Thumbs are a rectangles on the tasks that allow editing the intervals of the tas
      */
     public func thumbs(settings: String) -> anychart.core.gantt.edit.ElementEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).thumbs(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.edit.ElementEdit {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

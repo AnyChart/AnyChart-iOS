@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.View {
-            return anychart.data.View(jsBase: "new anychart.data.View()")
+            return anychart.data.View(jsBase: "new anychart.data.view()")
         }
 
         override public func getJsBase() -> String {

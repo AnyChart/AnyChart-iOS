@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.Path {
-            return anychart.graphics.vector.Path(jsBase: "new anychart.graphics.vector.Path()")
+            return anychart.graphics.vector.Path(jsBase: "new anychart.graphics.vector.path()")
         }
 
         override public func getJsBase() -> String {

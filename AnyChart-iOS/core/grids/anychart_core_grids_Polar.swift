@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.grids.Polar {
-            return anychart.core.grids.Polar(jsBase: "new anychart.core.grids.Polar()")
+            return anychart.core.grids.Polar(jsBase: "new anychart.core.grids.polar()")
         }
 
         override public func getJsBase() -> String {
@@ -359,6 +359,14 @@
      */
     public func yScale(settings: String) -> anychart.core.grids.Polar {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.grids.Polar {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

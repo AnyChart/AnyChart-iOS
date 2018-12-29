@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.CircularTicks {
-            return anychart.core.axes.CircularTicks(jsBase: "new anychart.core.axes.CircularTicks()")
+            return anychart.core.axes.CircularTicks(jsBase: "new anychart.core.axes.circularticks()")
         }
 
         override public func getJsBase() -> String {
@@ -357,6 +357,14 @@
      */
     public func type(type: String) -> anychart.core.axes.CircularTicks {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).type(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axes.CircularTicks {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

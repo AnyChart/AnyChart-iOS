@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Spline {
-            return anychart.core.cartesian.series.Spline(jsBase: "new anychart.core.cartesian.series.Spline()")
+            return anychart.core.cartesian.series.Spline(jsBase: "new anychart.core.cartesian.series.spline()")
         }
 
         override public func getJsBase() -> String {

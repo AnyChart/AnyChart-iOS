@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.edit.StructureEdit {
-            return anychart.core.gantt.edit.StructureEdit(jsBase: "new anychart.core.gantt.edit.StructureEdit()")
+            return anychart.core.gantt.edit.StructureEdit(jsBase: "new anychart.core.gantt.edit.structureedit()")
         }
 
         override public func getJsBase() -> String {
@@ -333,6 +333,14 @@ The placement stroke is a line to place a row to root item while editing.
      */
     public func stroke(settings: String) -> anychart.core.gantt.edit.StructureEdit {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.edit.StructureEdit {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

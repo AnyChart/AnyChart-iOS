@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.Stick {
-            return anychart.core.stock.scrollerseries.Stick(jsBase: "new anychart.core.stock.scrollerSeries.Stick()")
+            return anychart.core.stock.scrollerseries.Stick(jsBase: "new anychart.core.stock.scrollerseries.stick()")
         }
 
         override public func getJsBase() -> String {

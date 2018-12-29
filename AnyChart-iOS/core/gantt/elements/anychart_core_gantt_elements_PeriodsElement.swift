@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.elements.PeriodsElement {
-            return anychart.core.gantt.elements.PeriodsElement(jsBase: "new anychart.core.gantt.elements.PeriodsElement()")
+            return anychart.core.gantt.elements.PeriodsElement(jsBase: "new anychart.core.gantt.elements.periodselement()")
         }
 
         override public func getJsBase() -> String {

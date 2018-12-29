@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.MarkersFactory {
-            return anychart.standalones.MarkersFactory(jsBase: "new anychart.standalones.MarkersFactory()")
+            return anychart.standalones.MarkersFactory(jsBase: "new anychart.standalones.markersfactory()")
         }
 
         override public func getJsBase() -> String {

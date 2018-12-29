@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Pareto {
-            return anychart.charts.Pareto(jsBase: "new anychart.charts.Pareto()")
+            return anychart.charts.Pareto(jsBase: "new anychart.charts.pareto()")
         }
 
         override public func getJsBase() -> String {

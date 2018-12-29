@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.DateTime {
-            return anychart.scales.DateTime(jsBase: "new anychart.scales.DateTime()")
+            return anychart.scales.DateTime(jsBase: "new anychart.scales.datetime()")
         }
 
         override public func getJsBase() -> String {

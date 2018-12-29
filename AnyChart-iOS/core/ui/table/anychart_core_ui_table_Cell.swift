@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.table.Cell {
-            return anychart.core.ui.table.Cell(jsBase: "new anychart.core.ui.table.Cell()")
+            return anychart.core.ui.table.Cell(jsBase: "new anychart.core.ui.table.cell()")
         }
 
         override public func getJsBase() -> String {
@@ -399,6 +399,14 @@
      */
     public func rowSpan(count: Double) -> anychart.core.ui.table.Cell {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).rowSpan(\(count));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.table.Cell {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

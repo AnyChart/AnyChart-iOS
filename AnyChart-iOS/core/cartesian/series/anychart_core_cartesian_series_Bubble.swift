@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Bubble {
-            return anychart.core.cartesian.series.Bubble(jsBase: "new anychart.core.cartesian.series.Bubble()")
+            return anychart.core.cartesian.series.Bubble(jsBase: "new anychart.core.cartesian.series.bubble()")
         }
 
         override public func getJsBase() -> String {
@@ -636,6 +636,14 @@
      */
     public func stroke(settings: String) -> anychart.core.cartesian.series.Bubble {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.Bubble {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

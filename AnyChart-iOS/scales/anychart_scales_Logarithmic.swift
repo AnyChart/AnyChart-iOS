@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.Logarithmic {
-            return anychart.scales.Logarithmic(jsBase: "new anychart.scales.Logarithmic()")
+            return anychart.scales.Logarithmic(jsBase: "new anychart.scales.logarithmic()")
         }
 
         override public func getJsBase() -> String {

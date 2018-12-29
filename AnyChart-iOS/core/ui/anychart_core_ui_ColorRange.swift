@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.ColorRange {
-            return anychart.core.ui.ColorRange(jsBase: "new anychart.core.ui.ColorRange()")
+            return anychart.core.ui.ColorRange(jsBase: "new anychart.core.ui.colorrange()")
         }
 
         override public func getJsBase() -> String {

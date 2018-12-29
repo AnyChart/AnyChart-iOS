@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Tooltip {
-            return anychart.core.ui.Tooltip(jsBase: "new anychart.core.ui.Tooltip()")
+            return anychart.core.ui.Tooltip(jsBase: "new anychart.core.ui.tooltip()")
         }
 
         override public func getJsBase() -> String {

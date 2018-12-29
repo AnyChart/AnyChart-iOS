@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.lineargauge.ScaleBar {
-            return anychart.core.lineargauge.ScaleBar(jsBase: "new anychart.core.linearGauge.ScaleBar()")
+            return anychart.core.lineargauge.ScaleBar(jsBase: "new anychart.core.lineargauge.scalebar()")
         }
 
         override public func getJsBase() -> String {
@@ -403,6 +403,14 @@
      */
     public func width(width: String) -> anychart.core.lineargauge.ScaleBar {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width(\(JsObject.wrapQuotes(value: width)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.lineargauge.ScaleBar {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.sankey.elements.Node {
-            return anychart.core.sankey.elements.Node(jsBase: "new anychart.core.sankey.elements.Node()")
+            return anychart.core.sankey.elements.Node(jsBase: "new anychart.core.sankey.elements.node()")
         }
 
         override public func getJsBase() -> String {

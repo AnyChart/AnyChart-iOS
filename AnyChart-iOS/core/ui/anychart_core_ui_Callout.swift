@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Callout {
-            return anychart.core.ui.Callout(jsBase: "new anychart.core.ui.Callout()")
+            return anychart.core.ui.Callout(jsBase: "new anychart.core.ui.callout()")
         }
 
         override public func getJsBase() -> String {

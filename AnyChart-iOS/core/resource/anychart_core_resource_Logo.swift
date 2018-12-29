@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.resource.Logo {
-            return anychart.core.resource.Logo(jsBase: "new anychart.core.resource.Logo()")
+            return anychart.core.resource.Logo(jsBase: "new anychart.core.resource.logo()")
         }
 
         override public func getJsBase() -> String {

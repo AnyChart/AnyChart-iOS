@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.StockDateTime {
-            return anychart.core.axes.StockDateTime(jsBase: "new anychart.core.axes.StockDateTime()")
+            return anychart.core.axes.StockDateTime(jsBase: "new anychart.core.axes.stockdatetime()")
         }
 
         override public func getJsBase() -> String {

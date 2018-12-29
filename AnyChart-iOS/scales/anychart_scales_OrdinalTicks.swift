@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.OrdinalTicks {
-            return anychart.scales.OrdinalTicks(jsBase: "new anychart.scales.OrdinalTicks()")
+            return anychart.scales.OrdinalTicks(jsBase: "new anychart.scales.ordinalticks()")
         }
 
         override public func getJsBase() -> String {

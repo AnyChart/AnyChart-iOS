@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.waterfall.series.Waterfall {
-            return anychart.core.waterfall.series.Waterfall(jsBase: "new anychart.core.waterfall.series.Waterfall()")
+            return anychart.core.waterfall.series.Waterfall(jsBase: "new anychart.core.waterfall.series.waterfall()")
         }
 
         override public func getJsBase() -> String {
@@ -371,6 +371,14 @@
      */
     public func risingFill(keys: [String], cx: Double, cy: Double, mode: anychart.graphics.math.Rect, opacity: Double, fx: Double, fy: Double) -> anychart.core.waterfall.series.Waterfall {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).risingFill(\(JsObject.arrayToStringWrapQuotes(array: keys)), \(cx), \(cy), \((mode != nil) ? mode.getJsBase() : "null"), \(opacity), \(fx), \(fy));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.waterfall.series.Waterfall {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

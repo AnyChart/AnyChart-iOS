@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.CircularRange {
-            return anychart.core.axismarkers.CircularRange(jsBase: "new anychart.core.axisMarkers.CircularRange()")
+            return anychart.core.axismarkers.CircularRange(jsBase: "new anychart.core.axismarkers.circularrange()")
         }
 
         override public func getJsBase() -> String {
@@ -219,6 +219,14 @@ Round off the ends of circular ranges to the specified radius.
      */
     public func to(toValue: Double) -> anychart.core.axismarkers.CircularRange {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).to(\(toValue));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axismarkers.CircularRange {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

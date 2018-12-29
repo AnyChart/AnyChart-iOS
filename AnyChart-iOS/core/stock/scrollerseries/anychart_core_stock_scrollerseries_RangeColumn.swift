@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.RangeColumn {
-            return anychart.core.stock.scrollerseries.RangeColumn(jsBase: "new anychart.core.stock.scrollerSeries.RangeColumn()")
+            return anychart.core.stock.scrollerseries.RangeColumn(jsBase: "new anychart.core.stock.scrollerseries.rangecolumn()")
         }
 
         override public func getJsBase() -> String {
@@ -327,6 +327,14 @@
      */
     public func stroke(settings: String) -> anychart.core.stock.scrollerseries.RangeColumn {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.scrollerseries.RangeColumn {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

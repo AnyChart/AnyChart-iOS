@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.radar.series.Base {
-            return anychart.core.radar.series.Base(jsBase: "new anychart.core.radar.series.Base()")
+            return anychart.core.radar.series.Base(jsBase: "new anychart.core.radar.series.base()")
         }
 
         override public func getJsBase() -> String {

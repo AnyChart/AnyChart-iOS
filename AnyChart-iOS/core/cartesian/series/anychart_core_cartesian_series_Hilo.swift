@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Hilo {
-            return anychart.core.cartesian.series.Hilo(jsBase: "new anychart.core.cartesian.series.Hilo()")
+            return anychart.core.cartesian.series.Hilo(jsBase: "new anychart.core.cartesian.series.hilo()")
         }
 
         override public func getJsBase() -> String {

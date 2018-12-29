@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.Map {
-            return anychart.core.axes.Map(jsBase: "new anychart.core.axes.Map()")
+            return anychart.core.axes.Map(jsBase: "new anychart.core.axes.map()")
         }
 
         override public func getJsBase() -> String {

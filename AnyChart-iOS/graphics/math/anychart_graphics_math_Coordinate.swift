@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.math.Coordinate {
-            return anychart.graphics.math.Coordinate(jsBase: "new anychart.graphics.math.Coordinate()")
+            return anychart.graphics.math.Coordinate(jsBase: "new anychart.graphics.math.coordinate()")
         }
 
         override public func getJsBase() -> String {

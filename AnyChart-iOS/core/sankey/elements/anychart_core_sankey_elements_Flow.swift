@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.sankey.elements.Flow {
-            return anychart.core.sankey.elements.Flow(jsBase: "new anychart.core.sankey.elements.Flow()")
+            return anychart.core.sankey.elements.Flow(jsBase: "new anychart.core.sankey.elements.flow()")
         }
 
         override public func getJsBase() -> String {

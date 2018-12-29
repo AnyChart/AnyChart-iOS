@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.RSI {
-            return anychart.core.stock.indicators.RSI(jsBase: "new anychart.core.stock.indicators.RSI()")
+            return anychart.core.stock.indicators.RSI(jsBase: "new anychart.core.stock.indicators.rsi()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.Base {
-            return anychart.core.annotations.Base(jsBase: "new anychart.core.annotations.Base()")
+            return anychart.core.annotations.Base(jsBase: "new anychart.core.annotations.base()")
         }
 
         override public func getJsBase() -> String {

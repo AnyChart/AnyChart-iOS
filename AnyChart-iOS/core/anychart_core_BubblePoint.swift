@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.BubblePoint {
-            return anychart.core.BubblePoint(jsBase: "new anychart.core.BubblePoint()")
+            return anychart.core.BubblePoint(jsBase: "new anychart.core.bubblepoint()")
         }
 
         override public func getJsBase() -> String {

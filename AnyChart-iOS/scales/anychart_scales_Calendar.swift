@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.Calendar {
-            return anychart.scales.Calendar(jsBase: "new anychart.scales.Calendar()")
+            return anychart.scales.Calendar(jsBase: "new anychart.scales.calendar()")
         }
 
         override public func getJsBase() -> String {

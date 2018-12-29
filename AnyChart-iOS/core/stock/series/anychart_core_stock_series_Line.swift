@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.series.Line {
-            return anychart.core.stock.series.Line(jsBase: "new anychart.core.stock.series.Line()")
+            return anychart.core.stock.series.Line(jsBase: "new anychart.core.stock.series.line()")
         }
 
         override public func getJsBase() -> String {

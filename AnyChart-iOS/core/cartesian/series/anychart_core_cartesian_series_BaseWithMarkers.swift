@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.BaseWithMarkers {
-            return anychart.core.cartesian.series.BaseWithMarkers(jsBase: "new anychart.core.cartesian.series.BaseWithMarkers()")
+            return anychart.core.cartesian.series.BaseWithMarkers(jsBase: "new anychart.core.cartesian.series.basewithmarkers()")
         }
 
         override public func getJsBase() -> String {

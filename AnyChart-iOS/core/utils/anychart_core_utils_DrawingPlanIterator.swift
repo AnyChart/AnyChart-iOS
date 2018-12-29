@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.DrawingPlanIterator {
-            return anychart.core.utils.DrawingPlanIterator(jsBase: "new anychart.core.utils.DrawingPlanIterator()")
+            return anychart.core.utils.DrawingPlanIterator(jsBase: "new anychart.core.utils.drawingplaniterator()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.Ticks {
-            return anychart.core.axes.Ticks(jsBase: "new anychart.core.axes.Ticks()")
+            return anychart.core.axes.Ticks(jsBase: "new anychart.core.axes.ticks()")
         }
 
         override public func getJsBase() -> String {

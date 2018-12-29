@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.Circular {
-            return anychart.core.axes.Circular(jsBase: "new anychart.core.axes.Circular()")
+            return anychart.core.axes.Circular(jsBase: "new anychart.core.axes.circular()")
         }
 
         override public func getJsBase() -> String {
@@ -433,6 +433,14 @@ Round off the ends of axes to the specified radius.
      */
     public func width(value: String) -> anychart.core.axes.Circular {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).width(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axes.Circular {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

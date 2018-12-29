@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.ui.Preloader {
-            return anychart.ui.Preloader(jsBase: "new anychart.ui.Preloader()")
+            return anychart.ui.Preloader(jsBase: "new anychart.ui.preloader()")
         }
 
         override public func getJsBase() -> String {

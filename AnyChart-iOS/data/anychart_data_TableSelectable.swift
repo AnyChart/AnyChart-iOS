@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.TableSelectable {
-            return anychart.data.TableSelectable(jsBase: "new anychart.data.TableSelectable()")
+            return anychart.data.TableSelectable(jsBase: "new anychart.data.tableselectable()")
         }
 
         override public func getJsBase() -> String {

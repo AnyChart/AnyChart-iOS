@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.TableComputer {
-            return anychart.data.TableComputer(jsBase: "new anychart.data.TableComputer()")
+            return anychart.data.TableComputer(jsBase: "new anychart.data.tablecomputer()")
         }
 
         override public func getJsBase() -> String {

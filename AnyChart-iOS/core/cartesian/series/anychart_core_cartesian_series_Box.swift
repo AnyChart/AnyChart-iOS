@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Box {
-            return anychart.core.cartesian.series.Box(jsBase: "new anychart.core.cartesian.series.Box()")
+            return anychart.core.cartesian.series.Box(jsBase: "new anychart.core.cartesian.series.box()")
         }
 
         override public func getJsBase() -> String {
@@ -746,6 +746,14 @@ Fill as a string or an object.
      */
     public func whiskerWidth(width: String) -> anychart.core.cartesian.series.Box {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).whiskerWidth(\(JsObject.wrapQuotes(value: width)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.Box {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.VolumeMA {
-            return anychart.core.stock.indicators.VolumeMA(jsBase: "new anychart.core.stock.indicators.VolumeMA()")
+            return anychart.core.stock.indicators.VolumeMA(jsBase: "new anychart.core.stock.indicators.volumema()")
         }
 
         override public func getJsBase() -> String {

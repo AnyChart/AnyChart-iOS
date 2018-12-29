@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.series.Column {
-            return anychart.core.stock.series.Column(jsBase: "new anychart.core.stock.series.Column()")
+            return anychart.core.stock.series.Column(jsBase: "new anychart.core.stock.series.column()")
         }
 
         override public func getJsBase() -> String {
@@ -327,6 +327,14 @@
      */
     public func stroke(settings: String) -> anychart.core.stock.series.Column {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.series.Column {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

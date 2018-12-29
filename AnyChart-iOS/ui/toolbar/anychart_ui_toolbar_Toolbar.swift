@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.ui.toolbar.Toolbar {
-            return anychart.ui.toolbar.Toolbar(jsBase: "new anychart.ui.toolbar.Toolbar()")
+            return anychart.ui.toolbar.Toolbar(jsBase: "new anychart.ui.toolbar.toolbar()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.Shape {
-            return anychart.graphics.vector.Shape(jsBase: "new anychart.graphics.vector.Shape()")
+            return anychart.graphics.vector.Shape(jsBase: "new anychart.graphics.vector.shape()")
         }
 
         override public func getJsBase() -> String {
@@ -258,6 +258,14 @@
      */
     public func strokeThickness(thickness: Double) -> anychart.graphics.vector.Shape {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).strokeThickness(\(thickness));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.graphics.vector.Shape {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

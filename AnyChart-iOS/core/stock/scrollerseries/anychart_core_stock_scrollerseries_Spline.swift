@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.Spline {
-            return anychart.core.stock.scrollerseries.Spline(jsBase: "new anychart.core.stock.scrollerSeries.Spline()")
+            return anychart.core.stock.scrollerseries.Spline(jsBase: "new anychart.core.stock.scrollerseries.spline()")
         }
 
         override public func getJsBase() -> String {

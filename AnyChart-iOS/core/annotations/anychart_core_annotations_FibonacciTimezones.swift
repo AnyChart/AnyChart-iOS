@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.FibonacciTimezones {
-            return anychart.core.annotations.FibonacciTimezones(jsBase: "new anychart.core.annotations.FibonacciTimezones()")
+            return anychart.core.annotations.FibonacciTimezones(jsBase: "new anychart.core.annotations.fibonaccitimezones()")
         }
 
         override public func getJsBase() -> String {

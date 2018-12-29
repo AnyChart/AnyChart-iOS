@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.elements.GroupingTasksElement {
-            return anychart.core.gantt.elements.GroupingTasksElement(jsBase: "new anychart.core.gantt.elements.GroupingTasksElement()")
+            return anychart.core.gantt.elements.GroupingTasksElement(jsBase: "new anychart.core.gantt.elements.groupingtaskselement()")
         }
 
         override public func getJsBase() -> String {

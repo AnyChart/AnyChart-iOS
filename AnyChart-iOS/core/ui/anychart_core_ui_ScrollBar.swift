@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.ScrollBar {
-            return anychart.core.ui.ScrollBar(jsBase: "new anychart.core.ui.ScrollBar()")
+            return anychart.core.ui.ScrollBar(jsBase: "new anychart.core.ui.scrollbar()")
         }
 
         override public func getJsBase() -> String {

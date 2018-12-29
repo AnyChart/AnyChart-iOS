@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.StepLine {
-            return anychart.core.stock.scrollerseries.StepLine(jsBase: "new anychart.core.stock.scrollerSeries.StepLine()")
+            return anychart.core.stock.scrollerseries.StepLine(jsBase: "new anychart.core.stock.scrollerseries.stepline()")
         }
 
         override public func getJsBase() -> String {

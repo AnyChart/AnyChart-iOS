@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.DateTimeWithCalendar {
-            return anychart.scales.DateTimeWithCalendar(jsBase: "new anychart.scales.DateTimeWithCalendar()")
+            return anychart.scales.DateTimeWithCalendar(jsBase: "new anychart.scales.datetimewithcalendar()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.MapPoint {
-            return anychart.core.MapPoint(jsBase: "new anychart.core.MapPoint()")
+            return anychart.core.MapPoint(jsBase: "new anychart.core.mappoint()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.ui.table.Padding {
-            return anychart.core.ui.table.Padding(jsBase: "new anychart.core.ui.table.Padding()")
+            return anychart.core.ui.table.Padding(jsBase: "new anychart.core.ui.table.padding()")
         }
 
         override public func getJsBase() -> String {

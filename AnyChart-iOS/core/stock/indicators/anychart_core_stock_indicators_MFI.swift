@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.MFI {
-            return anychart.core.stock.indicators.MFI(jsBase: "new anychart.core.stock.indicators.MFI()")
+            return anychart.core.stock.indicators.MFI(jsBase: "new anychart.core.stock.indicators.mfi()")
         }
 
         override public func getJsBase() -> String {

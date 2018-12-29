@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ChoroplethPoint {
-            return anychart.core.ChoroplethPoint(jsBase: "new anychart.core.ChoroplethPoint()")
+            return anychart.core.ChoroplethPoint(jsBase: "new anychart.core.choroplethpoint()")
         }
 
         override public func getJsBase() -> String {

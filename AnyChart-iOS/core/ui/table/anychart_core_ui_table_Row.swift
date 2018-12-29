@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.table.Row {
-            return anychart.core.ui.table.Row(jsBase: "new anychart.core.ui.table.Row()")
+            return anychart.core.ui.table.Row(jsBase: "new anychart.core.ui.table.row()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.elements.ConnectorElement {
-            return anychart.core.gantt.elements.ConnectorElement(jsBase: "new anychart.core.gantt.elements.ConnectorElement()")
+            return anychart.core.gantt.elements.ConnectorElement(jsBase: "new anychart.core.gantt.elements.connectorelement()")
         }
 
         override public func getJsBase() -> String {
@@ -295,6 +295,12 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.Timeline {
+        return anychart.core.ui.Timeline(jsBase: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)))")
     }
 
     }

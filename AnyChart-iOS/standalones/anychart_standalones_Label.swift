@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.Label {
-            return anychart.standalones.Label(jsBase: "new anychart.standalones.Label()")
+            return anychart.standalones.Label(jsBase: "new anychart.standalones.label()")
         }
 
         override public func getJsBase() -> String {

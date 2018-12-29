@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.TimeLineHeader {
-            return anychart.core.gantt.TimeLineHeader(jsBase: "new anychart.core.gantt.TimeLineHeader()")
+            return anychart.core.gantt.TimeLineHeader(jsBase: "new anychart.core.gantt.timelineheader()")
         }
 
         override public func getJsBase() -> String {
@@ -1056,6 +1056,14 @@
      */
     public func wordWrap(type: String) -> anychart.core.gantt.TimeLineHeader {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.TimeLineHeader {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.resource.resourcelist.ImageSettings {
-            return anychart.core.resource.resourcelist.ImageSettings(jsBase: "new anychart.core.resource.resourceList.ImageSettings()")
+            return anychart.core.resource.resourcelist.ImageSettings(jsBase: "new anychart.core.resource.resourcelist.imagesettings()")
         }
 
         override public func getJsBase() -> String {

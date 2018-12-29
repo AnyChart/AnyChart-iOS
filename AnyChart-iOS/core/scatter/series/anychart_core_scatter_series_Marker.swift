@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.scatter.series.Marker {
-            return anychart.core.scatter.series.Marker(jsBase: "new anychart.core.scatter.series.Marker()")
+            return anychart.core.scatter.series.Marker(jsBase: "new anychart.core.scatter.series.marker()")
         }
 
         override public func getJsBase() -> String {
@@ -371,6 +371,14 @@
      */
     public func unhover() -> anychart.core.scatter.series.Marker {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".unhover();")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.scatter.series.Marker {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

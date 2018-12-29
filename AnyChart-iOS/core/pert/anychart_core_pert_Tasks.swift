@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.pert.Tasks {
-            return anychart.core.pert.Tasks(jsBase: "new anychart.core.pert.Tasks()")
+            return anychart.core.pert.Tasks(jsBase: "new anychart.core.pert.tasks()")
         }
 
         override public func getJsBase() -> String {
@@ -594,6 +594,14 @@
      */
     public func upperLabels(settings: Bool) -> anychart.core.pert.Tasks {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).upperLabels(\(settings));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.pert.Tasks {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

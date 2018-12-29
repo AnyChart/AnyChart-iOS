@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.LinearGauge {
-            return anychart.charts.LinearGauge(jsBase: "new anychart.charts.LinearGauge()")
+            return anychart.charts.LinearGauge(jsBase: "new anychart.charts.lineargauge()")
         }
 
         override public func getJsBase() -> String {

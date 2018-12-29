@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.tablecomputer.RowProxy {
-            return anychart.data.tablecomputer.RowProxy(jsBase: "new anychart.data.TableComputer.RowProxy()")
+            return anychart.data.tablecomputer.RowProxy(jsBase: "new anychart.data.tablecomputer.rowproxy()")
         }
 
         override public func getJsBase() -> String {

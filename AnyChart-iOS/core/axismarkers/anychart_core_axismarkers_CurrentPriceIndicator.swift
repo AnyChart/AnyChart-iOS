@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.CurrentPriceIndicator {
-            return anychart.core.axismarkers.CurrentPriceIndicator(jsBase: "new anychart.core.axisMarkers.CurrentPriceIndicator()")
+            return anychart.core.axismarkers.CurrentPriceIndicator(jsBase: "new anychart.core.axismarkers.currentpriceindicator()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.Scroller {
-            return anychart.core.stock.Scroller(jsBase: "new anychart.core.stock.Scroller()")
+            return anychart.core.stock.Scroller(jsBase: "new anychart.core.stock.scroller()")
         }
 
         override public func getJsBase() -> String {
@@ -103,6 +103,12 @@
      */
     public func ao(mapping: anychart.data.TableMapping, fastPeriod: Double, slowPeriod: Double, maType: String, seriesType: String) -> anychart.core.stock.indicators.AO {
         return anychart.core.stock.indicators.AO(jsBase: "\(self.jsBase).ao(\((mapping != nil) ? mapping.getJsBase() : "null"), \(fastPeriod), \(slowPeriod), \(JsObject.wrapQuotes(value: maType)), \(JsObject.wrapQuotes(value: seriesType)))")
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.Table) -> anychart.core.stock.scrollerseries.Area {
+        return anychart.core.stock.scrollerseries.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Creates Aroon indicator on the scroller.
@@ -398,6 +404,12 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).hatchFillPalette(\((value != nil) ? value.getJsBase() : "null"));")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func hilo(data: anychart.data.Table) -> anychart.core.stock.scrollerseries.Hilo {
+        return anychart.core.stock.scrollerseries.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Creates a KDJ indicator on the scroller.
@@ -710,6 +722,12 @@
      */
     public func obv(mapping: anychart.data.TableMapping, seriesType: String) -> anychart.core.stock.indicators.OBV {
         return anychart.core.stock.indicators.OBV(jsBase: "\(self.jsBase).obv(\((mapping != nil) ? mapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: seriesType)))")
+    }
+    /**
+     * 
+     */
+    public func ohlc(data: anychart.data.Table) -> anychart.core.stock.scrollerseries.OHLC {
+        return anychart.core.stock.scrollerseries.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Getter for the scroller colors palette.
@@ -1156,6 +1174,24 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.TableMapping) -> anychart.core.stock.scrollerseries.Area {
+        return anychart.core.stock.scrollerseries.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func hilo(data: anychart.data.TableMapping) -> anychart.core.stock.scrollerseries.Hilo {
+        return anychart.core.stock.scrollerseries.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func ohlc(data: anychart.data.TableMapping) -> anychart.core.stock.scrollerseries.OHLC {
+        return anychart.core.stock.scrollerseries.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

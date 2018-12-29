@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.WidthBased {
-            return anychart.core.cartesian.series.WidthBased(jsBase: "new anychart.core.cartesian.series.WidthBased()")
+            return anychart.core.cartesian.series.WidthBased(jsBase: "new anychart.core.cartesian.series.widthbased()")
         }
 
         override public func getJsBase() -> String {

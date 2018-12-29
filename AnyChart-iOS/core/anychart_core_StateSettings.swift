@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.StateSettings {
-            return anychart.core.StateSettings(jsBase: "new anychart.core.StateSettings()")
+            return anychart.core.StateSettings(jsBase: "new anychart.core.statesettings()")
         }
 
         override public func getJsBase() -> String {
@@ -3449,6 +3449,14 @@ Double value from 0 to 1.
      */
     public func wordWrap(mode: String) -> anychart.core.StateSettings {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\(JsObject.wrapQuotes(value: mode)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.StateSettings {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

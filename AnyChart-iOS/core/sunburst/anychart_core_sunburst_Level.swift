@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.sunburst.Level {
-            return anychart.core.sunburst.Level(jsBase: "new anychart.core.sunburst.Level()")
+            return anychart.core.sunburst.Level(jsBase: "new anychart.core.sunburst.level()")
         }
 
         override public func getJsBase() -> String {

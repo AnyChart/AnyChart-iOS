@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Margin {
-            return anychart.core.utils.Margin(jsBase: "new anychart.core.utils.Margin()")
+            return anychart.core.utils.Margin(jsBase: "new anychart.core.utils.margin()")
         }
 
         override public func getJsBase() -> String {

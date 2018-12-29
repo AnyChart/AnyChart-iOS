@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.axes.Polar {
-            return anychart.standalones.axes.Polar(jsBase: "new anychart.standalones.axes.Polar()")
+            return anychart.standalones.axes.Polar(jsBase: "new anychart.standalones.axes.polar()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.resource.resourcelist.TagsSettings {
-            return anychart.core.resource.resourcelist.TagsSettings(jsBase: "new anychart.core.resource.resourceList.TagsSettings()")
+            return anychart.core.resource.resourcelist.TagsSettings(jsBase: "new anychart.core.resource.resourcelist.tagssettings()")
         }
 
         override public func getJsBase() -> String {

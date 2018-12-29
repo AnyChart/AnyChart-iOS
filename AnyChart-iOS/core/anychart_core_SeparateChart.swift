@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.SeparateChart {
-            return anychart.core.SeparateChart(jsBase: "new anychart.core.SeparateChart()")
+            return anychart.core.SeparateChart(jsBase: "new anychart.core.separatechart()")
         }
 
         override public func getJsBase() -> String {

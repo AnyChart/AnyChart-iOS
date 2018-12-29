@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Animation {
-            return anychart.core.utils.Animation(jsBase: "new anychart.core.utils.Animation()")
+            return anychart.core.utils.Animation(jsBase: "new anychart.core.utils.animation()")
         }
 
         override public func getJsBase() -> String {

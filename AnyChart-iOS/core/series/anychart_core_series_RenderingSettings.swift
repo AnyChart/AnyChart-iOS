@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.series.RenderingSettings {
-            return anychart.core.series.RenderingSettings(jsBase: "new anychart.core.series.RenderingSettings()")
+            return anychart.core.series.RenderingSettings(jsBase: "new anychart.core.series.renderingsettings()")
         }
 
         override public func getJsBase() -> String {

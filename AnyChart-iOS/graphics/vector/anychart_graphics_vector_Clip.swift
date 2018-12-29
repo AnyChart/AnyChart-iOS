@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.vector.Clip {
-            return anychart.graphics.vector.Clip(jsBase: "new anychart.graphics.vector.Clip()")
+            return anychart.graphics.vector.Clip(jsBase: "new anychart.graphics.vector.clip()")
         }
 
         override public func getJsBase() -> String {

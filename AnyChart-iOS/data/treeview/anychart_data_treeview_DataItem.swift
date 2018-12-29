@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.treeview.DataItem {
-            return anychart.data.treeview.DataItem(jsBase: "new anychart.data.TreeView.DataItem()")
+            return anychart.data.treeview.DataItem(jsBase: "new anychart.data.treeview.dataitem()")
         }
 
         override public func getJsBase() -> String {

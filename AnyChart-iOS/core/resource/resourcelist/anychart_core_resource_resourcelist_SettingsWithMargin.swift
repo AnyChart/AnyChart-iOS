@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.resource.resourcelist.SettingsWithMargin {
-            return anychart.core.resource.resourcelist.SettingsWithMargin(jsBase: "new anychart.core.resource.resourceList.SettingsWithMargin()")
+            return anychart.core.resource.resourcelist.SettingsWithMargin(jsBase: "new anychart.core.resource.resourcelist.settingswithmargin()")
         }
 
         override public func getJsBase() -> String {

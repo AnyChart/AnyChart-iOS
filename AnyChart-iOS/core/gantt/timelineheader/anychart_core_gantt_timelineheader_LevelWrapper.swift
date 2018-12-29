@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.timelineheader.LevelWrapper {
-            return anychart.core.gantt.timelineheader.LevelWrapper(jsBase: "new anychart.core.gantt.TimeLineHeader.LevelWrapper()")
+            return anychart.core.gantt.timelineheader.LevelWrapper(jsBase: "new anychart.core.gantt.timelineheader.levelwrapper()")
         }
 
         override public func getJsBase() -> String {
@@ -755,6 +755,14 @@ Double value from 0 to 1.
      */
     public func wordWrap(value: String) -> anychart.core.gantt.timelineheader.LevelWrapper {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).wordWrap(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gantt.timelineheader.LevelWrapper {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

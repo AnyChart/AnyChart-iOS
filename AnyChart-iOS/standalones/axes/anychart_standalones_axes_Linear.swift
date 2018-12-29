@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.axes.Linear {
-            return anychart.standalones.axes.Linear(jsBase: "new anychart.standalones.axes.Linear()")
+            return anychart.standalones.axes.Linear(jsBase: "new anychart.standalones.axes.linear()")
         }
 
         override public func getJsBase() -> String {

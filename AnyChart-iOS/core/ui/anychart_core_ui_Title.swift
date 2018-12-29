@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Title {
-            return anychart.core.ui.Title(jsBase: "new anychart.core.ui.Title()")
+            return anychart.core.ui.Title(jsBase: "new anychart.core.ui.title()")
         }
 
         override public func getJsBase() -> String {

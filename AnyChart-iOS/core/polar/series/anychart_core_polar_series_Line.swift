@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.polar.series.Line {
-            return anychart.core.polar.series.Line(jsBase: "new anychart.core.polar.series.Line()")
+            return anychart.core.polar.series.Line(jsBase: "new anychart.core.polar.series.line()")
         }
 
         override public func getJsBase() -> String {
@@ -146,6 +146,14 @@
      */
     public func stroke(color: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.polar.series.Line {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: color)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func stroke(value: String) -> anychart.core.polar.series.Line {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

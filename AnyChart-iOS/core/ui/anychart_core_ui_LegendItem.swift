@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.LegendItem {
-            return anychart.core.ui.LegendItem(jsBase: "new anychart.core.ui.LegendItem()")
+            return anychart.core.ui.LegendItem(jsBase: "new anychart.core.ui.legenditem()")
         }
 
         override public func getJsBase() -> String {

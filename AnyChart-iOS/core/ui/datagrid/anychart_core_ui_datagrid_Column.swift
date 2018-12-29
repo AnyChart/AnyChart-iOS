@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.datagrid.Column {
-            return anychart.core.ui.datagrid.Column(jsBase: "new anychart.core.ui.DataGrid.Column()")
+            return anychart.core.ui.datagrid.Column(jsBase: "new anychart.core.ui.datagrid.column()")
         }
 
         override public func getJsBase() -> String {

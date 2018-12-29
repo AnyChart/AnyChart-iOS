@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Crosshair {
-            return anychart.core.ui.Crosshair(jsBase: "new anychart.core.ui.Crosshair()")
+            return anychart.core.ui.Crosshair(jsBase: "new anychart.core.ui.crosshair()")
         }
 
         override public func getJsBase() -> String {

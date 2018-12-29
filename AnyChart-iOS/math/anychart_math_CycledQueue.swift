@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.math.CycledQueue {
-            return anychart.math.CycledQueue(jsBase: "new anychart.math.CycledQueue()")
+            return anychart.math.CycledQueue(jsBase: "new anychart.math.cycledqueue()")
         }
 
         override public func getJsBase() -> String {

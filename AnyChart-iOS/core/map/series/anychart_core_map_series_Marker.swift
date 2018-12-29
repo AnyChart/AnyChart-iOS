@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.map.series.Marker {
-            return anychart.core.map.series.Marker(jsBase: "new anychart.core.map.series.Marker()")
+            return anychart.core.map.series.Marker(jsBase: "new anychart.core.map.series.marker()")
         }
 
         override public func getJsBase() -> String {

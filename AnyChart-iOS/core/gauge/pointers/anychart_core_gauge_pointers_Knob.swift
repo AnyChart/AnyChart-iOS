@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gauge.pointers.Knob {
-            return anychart.core.gauge.pointers.Knob(jsBase: "new anychart.core.gauge.pointers.Knob()")
+            return anychart.core.gauge.pointers.Knob(jsBase: "new anychart.core.gauge.pointers.knob()")
         }
 
         override public func getJsBase() -> String {

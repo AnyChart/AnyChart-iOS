@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Sankey {
-            return anychart.charts.Sankey(jsBase: "new anychart.charts.Sankey()")
+            return anychart.charts.Sankey(jsBase: "new anychart.charts.sankey()")
         }
 
         override public func getJsBase() -> String {

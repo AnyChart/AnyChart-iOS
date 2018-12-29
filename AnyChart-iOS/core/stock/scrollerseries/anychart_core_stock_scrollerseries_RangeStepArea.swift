@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.RangeStepArea {
-            return anychart.core.stock.scrollerseries.RangeStepArea(jsBase: "new anychart.core.stock.scrollerSeries.RangeStepArea()")
+            return anychart.core.stock.scrollerseries.RangeStepArea(jsBase: "new anychart.core.stock.scrollerseries.rangesteparea()")
         }
 
         override public func getJsBase() -> String {
@@ -471,6 +471,14 @@
      */
     public func stepDirection(direction: String) -> anychart.core.stock.scrollerseries.RangeStepArea {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stepDirection(\(JsObject.wrapQuotes(value: direction)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.scrollerseries.RangeStepArea {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

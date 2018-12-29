@@ -1,0 +1,689 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7329F35C21D625EF00816A62 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F35B21D625EF00816A62 /* PieChartViewController.swift */; };
+		7329F36021D64A4000816A62 /* Area3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F35F21D64A4000816A62 /* Area3DViewController.swift */; };
+		7329F36321D66D3200816A62 /* BoxChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F36221D66D3200816A62 /* BoxChartViewController.swift */; };
+		733FEC8521CBB349001BDD5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733FEC8421CBB349001BDD5E /* AppDelegate.swift */; };
+		733FEC8A21CBB349001BDD5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733FEC8821CBB349001BDD5E /* Main.storyboard */; };
+		733FEC8C21CBB349001BDD5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733FEC8B21CBB349001BDD5E /* Assets.xcassets */; };
+		733FEC8F21CBB349001BDD5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733FEC8D21CBB349001BDD5E /* LaunchScreen.storyboard */; };
+		733FEC9A21CBB34A001BDD5E /* AnyChart_iOS_samplesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733FEC9921CBB34A001BDD5E /* AnyChart_iOS_samplesTests.swift */; };
+		733FECA521CBB34A001BDD5E /* AnyChart_iOS_samplesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733FECA421CBB34A001BDD5E /* AnyChart_iOS_samplesUITests.swift */; };
+		7345C7E621D4E1CF00B33957 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345C7E521D4E1CF00B33957 /* CollectionViewController.swift */; };
+		7345C7EA21D506DB00B33957 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7345C7E921D506DB00B33957 /* ChartCell.swift */; };
+		7394D0FE21D6759300B91150 /* MekkoChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394D0FD21D6759300B91150 /* MekkoChartViewController.swift */; };
+		7394D10221D6791200B91150 /* MosaicChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394D10121D6791200B91150 /* MosaicChartViewController.swift */; };
+		7394D10421D67B8C00B91150 /* ColumnChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394D10321D67B8C00B91150 /* ColumnChartViewController.swift */; };
+		739619D421D6806800CD45B8 /* ParetoChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739619D321D6806800CD45B8 /* ParetoChartViewController.swift */; };
+		739619D821D6834F00CD45B8 /* VennDiagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739619D721D6834F00CD45B8 /* VennDiagramViewController.swift */; };
+		739B359521D730DC00E4D0A2 /* RadarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359421D730DC00E4D0A2 /* RadarChartViewController.swift */; };
+		739B359921D734A300E4D0A2 /* RangeChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359821D734A300E4D0A2 /* RangeChartViewController.swift */; };
+		739B359B21D739A000E4D0A2 /* VerticalChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */; };
+		739B359D21D73D3600E4D0A2 /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */; };
+		739B35A221D7449A00E4D0A2 /* AnyChart_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733FECB921CBB432001BDD5E /* AnyChart_iOS.framework */; };
+		73DAB47F21D686ED002B6C7B /* PyramidChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAB47E21D686ED002B6C7B /* PyramidChartViewController.swift */; };
+		73DAB48321D68862002B6C7B /* FunnelChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAB48221D68862002B6C7B /* FunnelChartViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		733FEC9621CBB34A001BDD5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 733FEC7921CBB349001BDD5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 733FEC8021CBB349001BDD5E;
+			remoteInfo = "AnyChart-iOS-samples";
+		};
+		733FECA121CBB34A001BDD5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 733FEC7921CBB349001BDD5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 733FEC8021CBB349001BDD5E;
+			remoteInfo = "AnyChart-iOS-samples";
+		};
+		733FECB821CBB432001BDD5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 733FECB321CBB432001BDD5E /* AnyChart-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 30FCE4B92175E44600CB4A21;
+			remoteInfo = "AnyChart-iOS";
+		};
+		733FECBA21CBB432001BDD5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 733FECB321CBB432001BDD5E /* AnyChart-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 30FCE4C22175E44600CB4A21;
+			remoteInfo = "AnyChart-iOSTests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7329F35B21D625EF00816A62 /* PieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
+		7329F35F21D64A4000816A62 /* Area3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area3DViewController.swift; sourceTree = "<group>"; };
+		7329F36221D66D3200816A62 /* BoxChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxChartViewController.swift; sourceTree = "<group>"; };
+		733FEC8121CBB349001BDD5E /* AnyChart-iOS-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyChart-iOS-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		733FEC8421CBB349001BDD5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		733FEC8921CBB349001BDD5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		733FEC8B21CBB349001BDD5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		733FEC8E21CBB349001BDD5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		733FEC9021CBB349001BDD5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		733FEC9521CBB34A001BDD5E /* AnyChart-iOS-samplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnyChart-iOS-samplesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		733FEC9921CBB34A001BDD5E /* AnyChart_iOS_samplesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyChart_iOS_samplesTests.swift; sourceTree = "<group>"; };
+		733FEC9B21CBB34A001BDD5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		733FECA021CBB34A001BDD5E /* AnyChart-iOS-samplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AnyChart-iOS-samplesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		733FECA421CBB34A001BDD5E /* AnyChart_iOS_samplesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyChart_iOS_samplesUITests.swift; sourceTree = "<group>"; };
+		733FECA621CBB34A001BDD5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		733FECB321CBB432001BDD5E /* AnyChart-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "AnyChart-iOS.xcodeproj"; path = "../../AnyChart-iOS/AnyChart-iOS.xcodeproj"; sourceTree = "<group>"; };
+		7345C7E521D4E1CF00B33957 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		7345C7E921D506DB00B33957 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		7394D0FD21D6759300B91150 /* MekkoChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MekkoChartViewController.swift; sourceTree = "<group>"; };
+		7394D10121D6791200B91150 /* MosaicChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicChartViewController.swift; sourceTree = "<group>"; };
+		7394D10321D67B8C00B91150 /* ColumnChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnChartViewController.swift; sourceTree = "<group>"; };
+		739619D321D6806800CD45B8 /* ParetoChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParetoChartViewController.swift; sourceTree = "<group>"; };
+		739619D721D6834F00CD45B8 /* VennDiagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VennDiagramViewController.swift; sourceTree = "<group>"; };
+		739B359421D730DC00E4D0A2 /* RadarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarChartViewController.swift; sourceTree = "<group>"; };
+		739B359821D734A300E4D0A2 /* RangeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeChartViewController.swift; sourceTree = "<group>"; };
+		739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalChartViewController.swift; sourceTree = "<group>"; };
+		739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
+		73DAB47E21D686ED002B6C7B /* PyramidChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidChartViewController.swift; sourceTree = "<group>"; };
+		73DAB48221D68862002B6C7B /* FunnelChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnelChartViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		733FEC7E21CBB349001BDD5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				739B35A221D7449A00E4D0A2 /* AnyChart_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9221CBB34A001BDD5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9D21CBB34A001BDD5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7329F36121D659B600816A62 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				7329F35B21D625EF00816A62 /* PieChartViewController.swift */,
+				7329F35F21D64A4000816A62 /* Area3DViewController.swift */,
+				7329F36221D66D3200816A62 /* BoxChartViewController.swift */,
+				7394D0FD21D6759300B91150 /* MekkoChartViewController.swift */,
+				7394D10121D6791200B91150 /* MosaicChartViewController.swift */,
+				7394D10321D67B8C00B91150 /* ColumnChartViewController.swift */,
+				739619D321D6806800CD45B8 /* ParetoChartViewController.swift */,
+				739619D721D6834F00CD45B8 /* VennDiagramViewController.swift */,
+				73DAB47E21D686ED002B6C7B /* PyramidChartViewController.swift */,
+				73DAB48221D68862002B6C7B /* FunnelChartViewController.swift */,
+				739B359421D730DC00E4D0A2 /* RadarChartViewController.swift */,
+				739B359821D734A300E4D0A2 /* RangeChartViewController.swift */,
+				739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */,
+				739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		733FEC7821CBB349001BDD5E = {
+			isa = PBXGroup;
+			children = (
+				733FEC8321CBB349001BDD5E /* AnyChart-iOS-samples */,
+				733FEC9821CBB34A001BDD5E /* AnyChart-iOS-samplesTests */,
+				733FECA321CBB34A001BDD5E /* AnyChart-iOS-samplesUITests */,
+				733FEC8221CBB349001BDD5E /* Products */,
+				733FECB221CBB432001BDD5E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		733FEC8221CBB349001BDD5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				733FEC8121CBB349001BDD5E /* AnyChart-iOS-samples.app */,
+				733FEC9521CBB34A001BDD5E /* AnyChart-iOS-samplesTests.xctest */,
+				733FECA021CBB34A001BDD5E /* AnyChart-iOS-samplesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		733FEC8321CBB349001BDD5E /* AnyChart-iOS-samples */ = {
+			isa = PBXGroup;
+			children = (
+				7329F36121D659B600816A62 /* Charts */,
+				733FEC8421CBB349001BDD5E /* AppDelegate.swift */,
+				733FEC8821CBB349001BDD5E /* Main.storyboard */,
+				733FEC8B21CBB349001BDD5E /* Assets.xcassets */,
+				733FEC8D21CBB349001BDD5E /* LaunchScreen.storyboard */,
+				733FEC9021CBB349001BDD5E /* Info.plist */,
+				7345C7E521D4E1CF00B33957 /* CollectionViewController.swift */,
+				7345C7E921D506DB00B33957 /* ChartCell.swift */,
+			);
+			path = "AnyChart-iOS-samples";
+			sourceTree = "<group>";
+		};
+		733FEC9821CBB34A001BDD5E /* AnyChart-iOS-samplesTests */ = {
+			isa = PBXGroup;
+			children = (
+				733FEC9921CBB34A001BDD5E /* AnyChart_iOS_samplesTests.swift */,
+				733FEC9B21CBB34A001BDD5E /* Info.plist */,
+			);
+			path = "AnyChart-iOS-samplesTests";
+			sourceTree = "<group>";
+		};
+		733FECA321CBB34A001BDD5E /* AnyChart-iOS-samplesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				733FECA421CBB34A001BDD5E /* AnyChart_iOS_samplesUITests.swift */,
+				733FECA621CBB34A001BDD5E /* Info.plist */,
+			);
+			path = "AnyChart-iOS-samplesUITests";
+			sourceTree = "<group>";
+		};
+		733FECB221CBB432001BDD5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				733FECB321CBB432001BDD5E /* AnyChart-iOS.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		733FECB421CBB432001BDD5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				733FECB921CBB432001BDD5E /* AnyChart_iOS.framework */,
+				733FECBB21CBB432001BDD5E /* AnyChart-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		733FEC8021CBB349001BDD5E /* AnyChart-iOS-samples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 733FECA921CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samples" */;
+			buildPhases = (
+				733FEC7D21CBB349001BDD5E /* Sources */,
+				733FEC7E21CBB349001BDD5E /* Frameworks */,
+				733FEC7F21CBB349001BDD5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AnyChart-iOS-samples";
+			productName = "AnyChart-iOS-samples";
+			productReference = 733FEC8121CBB349001BDD5E /* AnyChart-iOS-samples.app */;
+			productType = "com.apple.product-type.application";
+		};
+		733FEC9421CBB34A001BDD5E /* AnyChart-iOS-samplesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 733FECAC21CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samplesTests" */;
+			buildPhases = (
+				733FEC9121CBB34A001BDD5E /* Sources */,
+				733FEC9221CBB34A001BDD5E /* Frameworks */,
+				733FEC9321CBB34A001BDD5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				733FEC9721CBB34A001BDD5E /* PBXTargetDependency */,
+			);
+			name = "AnyChart-iOS-samplesTests";
+			productName = "AnyChart-iOS-samplesTests";
+			productReference = 733FEC9521CBB34A001BDD5E /* AnyChart-iOS-samplesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		733FEC9F21CBB34A001BDD5E /* AnyChart-iOS-samplesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 733FECAF21CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samplesUITests" */;
+			buildPhases = (
+				733FEC9C21CBB34A001BDD5E /* Sources */,
+				733FEC9D21CBB34A001BDD5E /* Frameworks */,
+				733FEC9E21CBB34A001BDD5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				733FECA221CBB34A001BDD5E /* PBXTargetDependency */,
+			);
+			name = "AnyChart-iOS-samplesUITests";
+			productName = "AnyChart-iOS-samplesUITests";
+			productReference = 733FECA021CBB34A001BDD5E /* AnyChart-iOS-samplesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		733FEC7921CBB349001BDD5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = ArsenyMalkov;
+				TargetAttributes = {
+					733FEC8021CBB349001BDD5E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					733FEC9421CBB34A001BDD5E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 733FEC8021CBB349001BDD5E;
+					};
+					733FEC9F21CBB34A001BDD5E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 733FEC8021CBB349001BDD5E;
+					};
+				};
+			};
+			buildConfigurationList = 733FEC7C21CBB349001BDD5E /* Build configuration list for PBXProject "AnyChart-iOS-samples" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 733FEC7821CBB349001BDD5E;
+			productRefGroup = 733FEC8221CBB349001BDD5E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 733FECB421CBB432001BDD5E /* Products */;
+					ProjectRef = 733FECB321CBB432001BDD5E /* AnyChart-iOS.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				733FEC8021CBB349001BDD5E /* AnyChart-iOS-samples */,
+				733FEC9421CBB34A001BDD5E /* AnyChart-iOS-samplesTests */,
+				733FEC9F21CBB34A001BDD5E /* AnyChart-iOS-samplesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		733FECB921CBB432001BDD5E /* AnyChart_iOS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnyChart_iOS.framework;
+			remoteRef = 733FECB821CBB432001BDD5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		733FECBB21CBB432001BDD5E /* AnyChart-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AnyChart-iOSTests.xctest";
+			remoteRef = 733FECBA21CBB432001BDD5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		733FEC7F21CBB349001BDD5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				733FEC8F21CBB349001BDD5E /* LaunchScreen.storyboard in Resources */,
+				733FEC8C21CBB349001BDD5E /* Assets.xcassets in Resources */,
+				733FEC8A21CBB349001BDD5E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9321CBB34A001BDD5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9E21CBB34A001BDD5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		733FEC7D21CBB349001BDD5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7329F36021D64A4000816A62 /* Area3DViewController.swift in Sources */,
+				7394D0FE21D6759300B91150 /* MekkoChartViewController.swift in Sources */,
+				7329F36321D66D3200816A62 /* BoxChartViewController.swift in Sources */,
+				7394D10421D67B8C00B91150 /* ColumnChartViewController.swift in Sources */,
+				7394D10221D6791200B91150 /* MosaicChartViewController.swift in Sources */,
+				739B359B21D739A000E4D0A2 /* VerticalChartViewController.swift in Sources */,
+				739619D821D6834F00CD45B8 /* VennDiagramViewController.swift in Sources */,
+				739B359D21D73D3600E4D0A2 /* LineChartViewController.swift in Sources */,
+				7345C7EA21D506DB00B33957 /* ChartCell.swift in Sources */,
+				739B359921D734A300E4D0A2 /* RangeChartViewController.swift in Sources */,
+				7329F35C21D625EF00816A62 /* PieChartViewController.swift in Sources */,
+				739B359521D730DC00E4D0A2 /* RadarChartViewController.swift in Sources */,
+				7345C7E621D4E1CF00B33957 /* CollectionViewController.swift in Sources */,
+				73DAB47F21D686ED002B6C7B /* PyramidChartViewController.swift in Sources */,
+				739619D421D6806800CD45B8 /* ParetoChartViewController.swift in Sources */,
+				733FEC8521CBB349001BDD5E /* AppDelegate.swift in Sources */,
+				73DAB48321D68862002B6C7B /* FunnelChartViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9121CBB34A001BDD5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				733FEC9A21CBB34A001BDD5E /* AnyChart_iOS_samplesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		733FEC9C21CBB34A001BDD5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				733FECA521CBB34A001BDD5E /* AnyChart_iOS_samplesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		733FEC9721CBB34A001BDD5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 733FEC8021CBB349001BDD5E /* AnyChart-iOS-samples */;
+			targetProxy = 733FEC9621CBB34A001BDD5E /* PBXContainerItemProxy */;
+		};
+		733FECA221CBB34A001BDD5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 733FEC8021CBB349001BDD5E /* AnyChart-iOS-samples */;
+			targetProxy = 733FECA121CBB34A001BDD5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		733FEC8821CBB349001BDD5E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				733FEC8921CBB349001BDD5E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		733FEC8D21CBB349001BDD5E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				733FEC8E21CBB349001BDD5E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		733FECA721CBB34A001BDD5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		733FECA821CBB34A001BDD5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		733FECAA21CBB34A001BDD5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samples/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samples";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		733FECAB21CBB34A001BDD5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samples/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samples";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		733FECAD21CBB34A001BDD5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samplesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samplesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyChart-iOS-samples.app/AnyChart-iOS-samples";
+			};
+			name = Debug;
+		};
+		733FECAE21CBB34A001BDD5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samplesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samplesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AnyChart-iOS-samples.app/AnyChart-iOS-samples";
+			};
+			name = Release;
+		};
+		733FECB021CBB34A001BDD5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samplesUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samplesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AnyChart-iOS-samples";
+			};
+			name = Debug;
+		};
+		733FECB121CBB34A001BDD5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 67CB2N762W;
+				INFOPLIST_FILE = "AnyChart-iOS-samplesUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anychart.AnyChart-iOS-samplesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AnyChart-iOS-samples";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		733FEC7C21CBB349001BDD5E /* Build configuration list for PBXProject "AnyChart-iOS-samples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				733FECA721CBB34A001BDD5E /* Debug */,
+				733FECA821CBB34A001BDD5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		733FECA921CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				733FECAA21CBB34A001BDD5E /* Debug */,
+				733FECAB21CBB34A001BDD5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		733FECAC21CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samplesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				733FECAD21CBB34A001BDD5E /* Debug */,
+				733FECAE21CBB34A001BDD5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		733FECAF21CBB34A001BDD5E /* Build configuration list for PBXNativeTarget "AnyChart-iOS-samplesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				733FECB021CBB34A001BDD5E /* Debug */,
+				733FECB121CBB34A001BDD5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 733FEC7921CBB349001BDD5E /* Project object */;
+}

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Interactivity {
-            return anychart.core.utils.Interactivity(jsBase: "new anychart.core.utils.Interactivity()")
+            return anychart.core.utils.Interactivity(jsBase: "new anychart.core.utils.interactivity()")
         }
 
         override public func getJsBase() -> String {

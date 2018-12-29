@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.map.series.Choropleth {
-            return anychart.core.map.series.Choropleth(jsBase: "new anychart.core.map.series.Choropleth()")
+            return anychart.core.map.series.Choropleth(jsBase: "new anychart.core.map.series.choropleth()")
         }
 
         override public func getJsBase() -> String {

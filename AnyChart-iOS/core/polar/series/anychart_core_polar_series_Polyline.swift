@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.polar.series.Polyline {
-            return anychart.core.polar.series.Polyline(jsBase: "new anychart.core.polar.series.Polyline()")
+            return anychart.core.polar.series.Polyline(jsBase: "new anychart.core.polar.series.polyline()")
         }
 
         override public func getJsBase() -> String {

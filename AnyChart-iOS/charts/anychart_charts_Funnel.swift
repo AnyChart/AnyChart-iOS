@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Funnel {
-            return anychart.charts.Funnel(jsBase: "new anychart.charts.Funnel()")
+            return anychart.charts.Funnel(jsBase: "new anychart.charts.funnel()")
         }
 
         override public func getJsBase() -> String {
@@ -873,6 +873,14 @@
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.Funnel {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.vector.LinearGradient {
-            return anychart.graphics.vector.LinearGradient(jsBase: "new anychart.graphics.vector.LinearGradient()")
+            return anychart.graphics.vector.LinearGradient(jsBase: "new anychart.graphics.vector.lineargradient()")
         }
 
         override public func getJsBase() -> String {

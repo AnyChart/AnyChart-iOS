@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.edit.SideControl {
-            return anychart.core.gantt.edit.SideControl(jsBase: "new anychart.core.gantt.edit.SideControl()")
+            return anychart.core.gantt.edit.SideControl(jsBase: "new anychart.core.gantt.edit.sidecontrol()")
         }
 
         override public func getJsBase() -> String {

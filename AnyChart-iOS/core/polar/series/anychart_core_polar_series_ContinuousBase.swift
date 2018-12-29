@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.polar.series.ContinuousBase {
-            return anychart.core.polar.series.ContinuousBase(jsBase: "new anychart.core.polar.series.ContinuousBase()")
+            return anychart.core.polar.series.ContinuousBase(jsBase: "new anychart.core.polar.series.continuousbase()")
         }
 
         override public func getJsBase() -> String {

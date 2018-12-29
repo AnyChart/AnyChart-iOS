@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.NoDataSettings {
-            return anychart.core.NoDataSettings(jsBase: "new anychart.core.NoDataSettings()")
+            return anychart.core.NoDataSettings(jsBase: "new anychart.core.nodatasettings()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.CrosshairLabel {
-            return anychart.core.ui.CrosshairLabel(jsBase: "new anychart.core.ui.CrosshairLabel()")
+            return anychart.core.ui.CrosshairLabel(jsBase: "new anychart.core.ui.crosshairlabel()")
         }
 
         override public func getJsBase() -> String {

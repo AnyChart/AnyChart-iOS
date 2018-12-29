@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.ChartController {
-            return anychart.core.annotations.ChartController(jsBase: "new anychart.core.annotations.ChartController()")
+            return anychart.core.annotations.ChartController(jsBase: "new anychart.core.annotations.chartcontroller()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.RangeSplineArea {
-            return anychart.core.cartesian.series.RangeSplineArea(jsBase: "new anychart.core.cartesian.series.RangeSplineArea()")
+            return anychart.core.cartesian.series.RangeSplineArea(jsBase: "new anychart.core.cartesian.series.rangesplinearea()")
         }
 
         override public func getJsBase() -> String {

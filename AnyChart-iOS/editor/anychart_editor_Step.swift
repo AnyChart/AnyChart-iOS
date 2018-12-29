@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.editor.Step {
-            return anychart.editor.Step(jsBase: "new anychart.editor.Step()")
+            return anychart.editor.Step(jsBase: "new anychart.editor.step()")
         }
 
         override public func getJsBase() -> String {

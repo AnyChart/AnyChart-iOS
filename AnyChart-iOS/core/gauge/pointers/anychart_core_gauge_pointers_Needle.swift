@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gauge.pointers.Needle {
-            return anychart.core.gauge.pointers.Needle(jsBase: "new anychart.core.gauge.pointers.Needle()")
+            return anychart.core.gauge.pointers.Needle(jsBase: "new anychart.core.gauge.pointers.needle()")
         }
 
         override public func getJsBase() -> String {

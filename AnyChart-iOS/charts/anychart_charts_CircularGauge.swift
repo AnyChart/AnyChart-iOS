@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.CircularGauge {
-            return anychart.charts.CircularGauge(jsBase: "new anychart.charts.CircularGauge()")
+            return anychart.charts.CircularGauge(jsBase: "new anychart.charts.circulargauge()")
         }
 
         override public func getJsBase() -> String {
@@ -725,6 +725,14 @@
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.CircularGauge {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

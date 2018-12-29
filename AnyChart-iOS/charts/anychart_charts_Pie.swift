@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Pie {
-            return anychart.charts.Pie(jsBase: "new anychart.charts.Pie()")
+            return anychart.charts.Pie(jsBase: "new anychart.charts.pie()")
         }
 
         override public func getJsBase() -> String {
@@ -1033,6 +1033,14 @@ Ascending, Descending and No sorting is supported.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.Pie {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.ui.StageCredits {
-            return anychart.core.ui.StageCredits(jsBase: "new anychart.core.ui.StageCredits()")
+            return anychart.core.ui.StageCredits(jsBase: "new anychart.core.ui.stagecredits()")
         }
 
         override public func getJsBase() -> String {

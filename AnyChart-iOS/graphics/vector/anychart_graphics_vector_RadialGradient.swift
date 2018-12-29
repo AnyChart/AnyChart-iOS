@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.graphics.vector.RadialGradient {
-            return anychart.graphics.vector.RadialGradient(jsBase: "new anychart.graphics.vector.RadialGradient()")
+            return anychart.graphics.vector.RadialGradient(jsBase: "new anychart.graphics.vector.radialgradient()")
         }
 
         override public func getJsBase() -> String {

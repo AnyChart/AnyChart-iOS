@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Sparkline {
-            return anychart.charts.Sparkline(jsBase: "new anychart.charts.Sparkline()")
+            return anychart.charts.Sparkline(jsBase: "new anychart.charts.sparkline()")
         }
 
         override public func getJsBase() -> String {
@@ -1747,6 +1747,14 @@ Fill as a string or an object.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.Sparkline {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

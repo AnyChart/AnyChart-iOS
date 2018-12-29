@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.tableselectable.RowProxy {
-            return anychart.data.tableselectable.RowProxy(jsBase: "new anychart.data.TableSelectable.RowProxy()")
+            return anychart.data.tableselectable.RowProxy(jsBase: "new anychart.data.tableselectable.rowproxy()")
         }
 
         override public func getJsBase() -> String {

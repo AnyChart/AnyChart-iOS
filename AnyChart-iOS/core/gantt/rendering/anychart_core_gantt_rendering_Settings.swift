@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.rendering.Settings {
-            return anychart.core.gantt.rendering.Settings(jsBase: "new anychart.core.gantt.rendering.Settings()")
+            return anychart.core.gantt.rendering.Settings(jsBase: "new anychart.core.gantt.rendering.settings()")
         }
 
         override public func getJsBase() -> String {

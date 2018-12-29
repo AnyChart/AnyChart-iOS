@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.pert.CriticalPath {
-            return anychart.core.pert.CriticalPath(jsBase: "new anychart.core.pert.CriticalPath()")
+            return anychart.core.pert.CriticalPath(jsBase: "new anychart.core.pert.criticalpath()")
         }
 
         override public func getJsBase() -> String {

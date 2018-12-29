@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Background {
-            return anychart.core.ui.Background(jsBase: "new anychart.core.ui.Background()")
+            return anychart.core.ui.Background(jsBase: "new anychart.core.ui.background()")
         }
 
         override public func getJsBase() -> String {
@@ -803,6 +803,14 @@ e.g. "red 0.5".
      */
     public func topStroke(value: String, thickness: Double, dashpattern: String, lineJoin: anychart.graphics.vector.StrokeLineJoin, lineCap: anychart.graphics.vector.StrokeLineCap) -> anychart.core.ui.Background {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).topStroke(\(JsObject.wrapQuotes(value: value)), \(thickness), \(JsObject.wrapQuotes(value: dashpattern)), \((lineJoin != nil) ? lineJoin.getJsBase() : "null"), \((lineCap != nil) ? lineCap.getJsBase() : "null"));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.Background {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

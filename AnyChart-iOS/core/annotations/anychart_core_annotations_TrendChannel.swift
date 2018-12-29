@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.TrendChannel {
-            return anychart.core.annotations.TrendChannel(jsBase: "new anychart.core.annotations.TrendChannel()")
+            return anychart.core.annotations.TrendChannel(jsBase: "new anychart.core.annotations.trendchannel()")
         }
 
         override public func getJsBase() -> String {

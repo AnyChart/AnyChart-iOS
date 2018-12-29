@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.Table {
-            return anychart.standalones.Table(jsBase: "new anychart.standalones.Table()")
+            return anychart.standalones.Table(jsBase: "new anychart.standalones.table()")
         }
 
         override public func getJsBase() -> String {

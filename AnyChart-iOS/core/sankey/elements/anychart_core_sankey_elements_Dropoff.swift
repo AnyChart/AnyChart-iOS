@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.sankey.elements.Dropoff {
-            return anychart.core.sankey.elements.Dropoff(jsBase: "new anychart.core.sankey.elements.Dropoff()")
+            return anychart.core.sankey.elements.Dropoff(jsBase: "new anychart.core.sankey.elements.dropoff()")
         }
 
         override public func getJsBase() -> String {

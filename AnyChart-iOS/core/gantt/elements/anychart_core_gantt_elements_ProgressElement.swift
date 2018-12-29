@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.elements.ProgressElement {
-            return anychart.core.gantt.elements.ProgressElement(jsBase: "new anychart.core.gantt.elements.ProgressElement()")
+            return anychart.core.gantt.elements.ProgressElement(jsBase: "new anychart.core.gantt.elements.progresselement()")
         }
 
         override public func getJsBase() -> String {

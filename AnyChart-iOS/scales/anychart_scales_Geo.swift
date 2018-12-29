@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.Geo {
-            return anychart.scales.Geo(jsBase: "new anychart.scales.Geo()")
+            return anychart.scales.Geo(jsBase: "new anychart.scales.geo()")
         }
 
         override public func getJsBase() -> String {

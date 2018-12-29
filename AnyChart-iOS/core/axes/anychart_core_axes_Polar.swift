@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axes.Polar {
-            return anychart.core.axes.Polar(jsBase: "new anychart.core.axes.Polar()")
+            return anychart.core.axes.Polar(jsBase: "new anychart.core.axes.polar()")
         }
 
         override public func getJsBase() -> String {
@@ -415,6 +415,14 @@ Labels layout can be changed using the {@link anychart.core.ui.LabelsFactory#pos
      */
     public func ticks(settings: Bool) -> anychart.core.axes.Polar {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).ticks(\(settings));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.axes.Polar {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

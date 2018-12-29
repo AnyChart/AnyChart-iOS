@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.Table {
-            return anychart.data.Table(jsBase: "new anychart.data.Table()")
+            return anychart.data.Table(jsBase: "new anychart.data.table()")
         }
 
         override public func getJsBase() -> String {
@@ -36,34 +36,10 @@
 
         
     /**
-     * Adds data to the table. Replaces all rows with duplicating keys by the last seen row with that key.
+     * 
      */
-    public func addData(rawData: [String], removeFromStart: Bool, csvSettings: String) -> anychart.data.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: rawData)), \(removeFromStart), \(JsObject.wrapQuotes(value: csvSettings)));")
-
-        return self
-    }
-    /**
-     * Adds data to the table. Replaces all rows with duplicating keys by the last seen row with that key.
-     */
-    public func addData(rawData: [String], removeFromStart: Double, csvSettings: String) -> anychart.data.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: rawData)), \(removeFromStart), \(JsObject.wrapQuotes(value: csvSettings)));")
-
-        return self
-    }
-    /**
-     * Adds data to the table. Replaces all rows with duplicating keys by the last seen row with that key.
-     */
-    public func addData(rawData: String, removeFromStart: Bool, csvSettings: String) -> anychart.data.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: rawData)), \(removeFromStart), \(JsObject.wrapQuotes(value: csvSettings)));")
-
-        return self
-    }
-    /**
-     * Adds data to the table. Replaces all rows with duplicating keys by the last seen row with that key.
-     */
-    public func addData(rawData: String, removeFromStart: Double, csvSettings: String) -> anychart.data.Table {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: rawData)), \(removeFromStart), \(JsObject.wrapQuotes(value: csvSettings)));")
+    public func addData(data: [DataEntry]) -> anychart.data.Table {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToString(jsObjects: data)));")
 
         return self
     }
@@ -72,6 +48,12 @@
      */
     public func createComputer(mappingSettingsOrMapping: anychart.data.TableMapping) -> anychart.data.TableComputer {
         return anychart.data.TableComputer(jsBase: "\(self.jsBase).createComputer(\((mappingSettingsOrMapping != nil) ? mappingSettingsOrMapping.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func mapAs(mapping: String) -> anychart.data.TableMapping {
+        return anychart.data.TableMapping(jsBase: "\(self.jsBase).mapAs(\(JsObject.wrapQuotes(value: mapping)))")
     }
     /**
      * Removes all items between a start and end keys.

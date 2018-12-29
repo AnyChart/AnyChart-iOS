@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.Hilo {
-            return anychart.core.stock.scrollerseries.Hilo(jsBase: "new anychart.core.stock.scrollerSeries.Hilo()")
+            return anychart.core.stock.scrollerseries.Hilo(jsBase: "new anychart.core.stock.scrollerseries.hilo()")
         }
 
         override public func getJsBase() -> String {

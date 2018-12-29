@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Cartesian {
-            return anychart.charts.Cartesian(jsBase: "new anychart.charts.Cartesian()")
+            return anychart.charts.Cartesian(jsBase: "new anychart.charts.cartesian()")
         }
 
         override public func getJsBase() -> String {
@@ -68,58 +68,10 @@
         return self
     }
     /**
-     * Adds Area series.
+     * 
      */
-    public func area(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Area {
-        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func area(data: [DataEntry]) -> anychart.core.cartesian.series.Area {
+        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Setter for the chart background settings.
@@ -130,76 +82,10 @@
         return self
     }
     /**
-     * Adds Bar series.
+     * 
      */
-    public func bar(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: String, csvSettings: String) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bar series.
-     */
-    public func bar(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bar {
-        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func bar(data: [DataEntry]) -> anychart.core.cartesian.series.Bar {
+        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the space between bar groups on the ordinal scale by ratio of bars width.
@@ -247,148 +133,16 @@ The baseline is the line relative to which the series with the negative or posit
         return self
     }
     /**
-     * Adds Box series.
+     * 
      */
-    public func box(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func box(data: [DataEntry]) -> anychart.core.cartesian.series.Box {
+        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
-     * Adds Box series.
+     * 
      */
-    public func box(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: String, csvSettings: String) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Box series.
-     */
-    public func box(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Box {
-        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: String, csvSettings: String) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Bubble series.
-     */
-    public func bubble(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Bubble {
-        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func bubble(data: [DataEntry]) -> anychart.core.cartesian.series.Bubble {
+        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Adds Candlestick series.
@@ -463,76 +217,10 @@ The baseline is the line relative to which the series with the negative or posit
         return anychart.core.cartesian.series.Candlestick(jsBase: "\(self.jsBase).candlestick(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
-     * Adds Column series.
+     * 
      */
-    public func column(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: String) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Column {
-        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func column(data: [DataEntry]) -> anychart.core.cartesian.series.Column {
+        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the crosshair settings.
@@ -700,76 +388,10 @@ The data area is drawn along the data bounds.
         return self
     }
     /**
-     * Adds HiLo series.
+     * 
      */
-    public func hilo(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: String, csvSettings: String) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds HiLo series.
-     */
-    public func hilo(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Hilo {
-        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func hilo(data: [DataEntry]) -> anychart.core.cartesian.series.Hilo {
+        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for hovered state settings.
@@ -800,76 +422,10 @@ The data area is drawn along the data bounds.
         return self
     }
     /**
-     * Adds Jump Line series.
+     * 
      */
-    public func jumpLine(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: [String], csvSettings: String) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: String, csvSettings: String) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Jump Line series.
-     */
-    public func jumpLine(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.JumpLine {
-        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func jumpLine(data: [DataEntry]) -> anychart.core.cartesian.series.JumpLine {
+        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for series data labels.
@@ -894,76 +450,10 @@ The data area is drawn along the data bounds.
         return self
     }
     /**
-     * Adds Line series.
+     * 
      */
-    public func line(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: String) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Line {
-        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func line(data: [DataEntry]) -> anychart.core.cartesian.series.Line {
+        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the line marker.
@@ -1004,76 +494,10 @@ The data area is drawn along the data bounds.
         return self
     }
     /**
-     * Adds Marker series.
+     * 
      */
-    public func marker(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: String) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: String) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.Marker {
-        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func marker(data: [DataEntry]) -> anychart.core.cartesian.series.Marker {
+        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the chart markers palette settings.
@@ -1260,76 +684,10 @@ The data area is drawn along the data bounds.
         return self
     }
     /**
-     * Adds OHLC series.
+     * 
      */
-    public func ohlc(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: [String], csvSettings: String) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: String, csvSettings: String) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds OHLC series.
-     */
-    public func ohlc(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.OHLC {
-        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func ohlc(data: [DataEntry]) -> anychart.core.cartesian.series.OHLC {
+        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the chart colors palette.
@@ -1536,76 +894,10 @@ The data area is drawn along the data bounds.
         return anychart.core.cartesian.series.RangeBar(jsBase: "\(self.jsBase).rangeBar(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
-     * Adds Range Column series.
+     * 
      */
-    public func rangeColumn(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.View, csvSettings: String) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: String) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: String) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: String) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.cartesian.series.RangeColumn {
-        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func rangeColumn(data: [DataEntry]) -> anychart.core.cartesian.series.RangeColumn {
+        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the range marker.
@@ -2614,6 +1906,72 @@ The data area is drawn along the data bounds.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.View) -> anychart.core.cartesian.series.Area {
+        return anychart.core.cartesian.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func bar(data: anychart.data.View) -> anychart.core.cartesian.series.Bar {
+        return anychart.core.cartesian.series.Bar(jsBase: "\(self.jsBase).bar(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func box(data: anychart.data.View) -> anychart.core.cartesian.series.Box {
+        return anychart.core.cartesian.series.Box(jsBase: "\(self.jsBase).box(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func bubble(data: anychart.data.View) -> anychart.core.cartesian.series.Bubble {
+        return anychart.core.cartesian.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func column(data: anychart.data.View) -> anychart.core.cartesian.series.Column {
+        return anychart.core.cartesian.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func line(data: anychart.data.View) -> anychart.core.cartesian.series.Line {
+        return anychart.core.cartesian.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func rangeColumn(data: anychart.data.View) -> anychart.core.cartesian.series.RangeColumn {
+        return anychart.core.cartesian.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func jumpLine(data: anychart.data.View) -> anychart.core.cartesian.series.JumpLine {
+        return anychart.core.cartesian.series.JumpLine(jsBase: "\(self.jsBase).jumpLine(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func marker(data: anychart.data.View) -> anychart.core.cartesian.series.Marker {
+        return anychart.core.cartesian.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func hilo(data: anychart.data.View) -> anychart.core.cartesian.series.Hilo {
+        return anychart.core.cartesian.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func ohlc(data: anychart.data.View) -> anychart.core.cartesian.series.OHLC {
+        return anychart.core.cartesian.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Venn {
-            return anychart.charts.Venn(jsBase: "new anychart.charts.Venn()")
+            return anychart.charts.Venn(jsBase: "new anychart.charts.venn()")
         }
 
         override public func getJsBase() -> String {
@@ -655,6 +655,14 @@
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.Venn {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

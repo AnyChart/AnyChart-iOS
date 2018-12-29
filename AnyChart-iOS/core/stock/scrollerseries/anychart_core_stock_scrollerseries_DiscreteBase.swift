@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.DiscreteBase {
-            return anychart.core.stock.scrollerseries.DiscreteBase(jsBase: "new anychart.core.stock.scrollerSeries.DiscreteBase()")
+            return anychart.core.stock.scrollerseries.DiscreteBase(jsBase: "new anychart.core.stock.scrollerseries.discretebase()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.TagCloud {
-            return anychart.charts.TagCloud(jsBase: "new anychart.charts.TagCloud()")
+            return anychart.charts.TagCloud(jsBase: "new anychart.charts.tagcloud()")
         }
 
         override public func getJsBase() -> String {

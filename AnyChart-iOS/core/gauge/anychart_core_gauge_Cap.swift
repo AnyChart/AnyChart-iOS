@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gauge.Cap {
-            return anychart.core.gauge.Cap(jsBase: "new anychart.core.gauge.Cap()")
+            return anychart.core.gauge.Cap(jsBase: "new anychart.core.gauge.cap()")
         }
 
         override public func getJsBase() -> String {
@@ -341,6 +341,14 @@ Fill as a string or an object.
      */
     public func stroke(settings: String) -> anychart.core.gauge.Cap {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gauge.Cap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

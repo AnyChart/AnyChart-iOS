@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.elements.BaselinesElement {
-            return anychart.core.gantt.elements.BaselinesElement(jsBase: "new anychart.core.gantt.elements.BaselinesElement()")
+            return anychart.core.gantt.elements.BaselinesElement(jsBase: "new anychart.core.gantt.elements.baselineselement()")
         }
 
         override public func getJsBase() -> String {

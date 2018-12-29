@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.Aroon {
-            return anychart.core.stock.indicators.Aroon(jsBase: "new anychart.core.stock.indicators.Aroon()")
+            return anychart.core.stock.indicators.Aroon(jsBase: "new anychart.core.stock.indicators.aroon()")
         }
 
         override public func getJsBase() -> String {

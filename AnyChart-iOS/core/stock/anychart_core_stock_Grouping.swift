@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.Grouping {
-            return anychart.core.stock.Grouping(jsBase: "new anychart.core.stock.Grouping()")
+            return anychart.core.stock.Grouping(jsBase: "new anychart.core.stock.grouping()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.RangeBar {
-            return anychart.core.cartesian.series.RangeBar(jsBase: "new anychart.core.cartesian.series.RangeBar()")
+            return anychart.core.cartesian.series.RangeBar(jsBase: "new anychart.core.cartesian.series.rangebar()")
         }
 
         override public func getJsBase() -> String {
@@ -327,6 +327,14 @@
      */
     public func stroke(settings: String) -> anychart.core.cartesian.series.RangeBar {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.RangeBar {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

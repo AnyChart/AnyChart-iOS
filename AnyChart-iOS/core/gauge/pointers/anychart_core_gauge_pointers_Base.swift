@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gauge.pointers.Base {
-            return anychart.core.gauge.pointers.Base(jsBase: "new anychart.core.gauge.pointers.Base()")
+            return anychart.core.gauge.pointers.Base(jsBase: "new anychart.core.gauge.pointers.base()")
         }
 
         override public func getJsBase() -> String {
@@ -397,6 +397,14 @@ Fill as a string or an object.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.gauge.pointers.Base {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

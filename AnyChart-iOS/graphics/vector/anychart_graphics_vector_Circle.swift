@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.Circle {
-            return anychart.graphics.vector.Circle(jsBase: "new anychart.graphics.vector.Circle()")
+            return anychart.graphics.vector.Circle(jsBase: "new anychart.graphics.vector.circle()")
         }
 
         override public func getJsBase() -> String {

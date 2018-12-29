@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Candlestick {
-            return anychart.core.cartesian.series.Candlestick(jsBase: "new anychart.core.cartesian.series.Candlestick()")
+            return anychart.core.cartesian.series.Candlestick(jsBase: "new anychart.core.cartesian.series.candlestick()")
         }
 
         override public func getJsBase() -> String {

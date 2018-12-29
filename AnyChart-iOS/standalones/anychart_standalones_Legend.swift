@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.Legend {
-            return anychart.standalones.Legend(jsBase: "new anychart.standalones.Legend()")
+            return anychart.standalones.Legend(jsBase: "new anychart.standalones.legend()")
         }
 
         override public func getJsBase() -> String {

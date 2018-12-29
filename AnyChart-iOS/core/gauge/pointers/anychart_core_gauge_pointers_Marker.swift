@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gauge.pointers.Marker {
-            return anychart.core.gauge.pointers.Marker(jsBase: "new anychart.core.gauge.pointers.Marker()")
+            return anychart.core.gauge.pointers.Marker(jsBase: "new anychart.core.gauge.pointers.marker()")
         }
 
         override public func getJsBase() -> String {

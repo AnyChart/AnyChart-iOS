@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.DataArea {
-            return anychart.core.ui.DataArea(jsBase: "new anychart.core.ui.DataArea()")
+            return anychart.core.ui.DataArea(jsBase: "new anychart.core.ui.dataarea()")
         }
 
         override public func getJsBase() -> String {

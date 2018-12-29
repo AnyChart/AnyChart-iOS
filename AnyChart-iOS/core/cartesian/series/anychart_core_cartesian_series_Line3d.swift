@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Line3d {
-            return anychart.core.cartesian.series.Line3d(jsBase: "new anychart.core.cartesian.series.Line3d()")
+            return anychart.core.cartesian.series.Line3d(jsBase: "new anychart.core.cartesian.series.line3d()")
         }
 
         override public func getJsBase() -> String {
@@ -47,6 +47,14 @@
      */
     public func fill(color: String, opacity: Double) -> anychart.core.cartesian.series.Line3d {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: color)), \(opacity));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.Line3d {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

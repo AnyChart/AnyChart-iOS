@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.Stochastic {
-            return anychart.core.stock.indicators.Stochastic(jsBase: "new anychart.core.stock.indicators.Stochastic()")
+            return anychart.core.stock.indicators.Stochastic(jsBase: "new anychart.core.stock.indicators.stochastic()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.LinearColor {
-            return anychart.scales.LinearColor(jsBase: "new anychart.scales.LinearColor()")
+            return anychart.scales.LinearColor(jsBase: "new anychart.scales.linearcolor()")
         }
 
         override public func getJsBase() -> String {

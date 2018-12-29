@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Crossing {
-            return anychart.core.utils.Crossing(jsBase: "new anychart.core.utils.Crossing()")
+            return anychart.core.utils.Crossing(jsBase: "new anychart.core.utils.crossing()")
         }
 
         override public func getJsBase() -> String {

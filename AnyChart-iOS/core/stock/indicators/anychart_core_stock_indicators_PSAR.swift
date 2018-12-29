@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.PSAR {
-            return anychart.core.stock.indicators.PSAR(jsBase: "new anychart.core.stock.indicators.PSAR()")
+            return anychart.core.stock.indicators.PSAR(jsBase: "new anychart.core.stock.indicators.psar()")
         }
 
         override public func getJsBase() -> String {

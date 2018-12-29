@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.TRIX {
-            return anychart.core.stock.indicators.TRIX(jsBase: "new anychart.core.stock.indicators.TRIX()")
+            return anychart.core.stock.indicators.TRIX(jsBase: "new anychart.core.stock.indicators.trix()")
         }
 
         override public func getJsBase() -> String {

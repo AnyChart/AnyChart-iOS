@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.scrollerseries.SplineArea {
-            return anychart.core.stock.scrollerseries.SplineArea(jsBase: "new anychart.core.stock.scrollerSeries.SplineArea()")
+            return anychart.core.stock.scrollerseries.SplineArea(jsBase: "new anychart.core.stock.scrollerseries.splinearea()")
         }
 
         override public func getJsBase() -> String {
@@ -327,6 +327,14 @@
      */
     public func stroke(settings: String) -> anychart.core.stock.scrollerseries.SplineArea {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.scrollerseries.SplineArea {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

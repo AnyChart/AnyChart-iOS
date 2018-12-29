@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.eventmarkers.Controller {
-            return anychart.core.stock.eventmarkers.Controller(jsBase: "new anychart.core.stock.eventMarkers.Controller()")
+            return anychart.core.stock.eventmarkers.Controller(jsBase: "new anychart.core.stock.eventmarkers.controller()")
         }
 
         override public func getJsBase() -> String {
@@ -1013,6 +1013,14 @@
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.TableMapping {
         return anychart.data.TableMapping(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.eventmarkers.Controller {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

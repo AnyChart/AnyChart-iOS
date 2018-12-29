@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.signalevent.SignalEvent {
-            return anychart.signalevent.SignalEvent(jsBase: "new anychart.SignalEvent()")
+            return anychart.signalevent.SignalEvent(jsBase: "new anychart.signalevent()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.map.series.Bubble {
-            return anychart.core.map.series.Bubble(jsBase: "new anychart.core.map.series.Bubble()")
+            return anychart.core.map.series.Bubble(jsBase: "new anychart.core.map.series.bubble()")
         }
 
         override public func getJsBase() -> String {

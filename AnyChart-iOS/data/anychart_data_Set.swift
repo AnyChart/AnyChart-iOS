@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.Set {
-            return anychart.data.Set(jsBase: "new anychart.data.Set()")
+            return anychart.data.Set(jsBase: "new anychart.data.set()")
         }
 
         override public func getJsBase() -> String {
@@ -64,9 +64,7 @@
         return self
     }
     /**
-     * Defines mapping for the chart data.<br/>
-The mapping object selects and gives names fields from the data set.
-Default mapping is shown in {@link anychart.data.Set} constructor samples.
+     * 
      */
     public func mapAs(mapping: String) -> anychart.data.Mapping {
         return anychart.data.Mapping(jsBase: "\(self.jsBase).mapAs(\(JsObject.wrapQuotes(value: mapping)))")

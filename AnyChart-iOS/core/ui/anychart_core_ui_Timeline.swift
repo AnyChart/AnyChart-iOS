@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.ui.Timeline {
-            return anychart.core.ui.Timeline(jsBase: "new anychart.core.ui.Timeline()")
+            return anychart.core.ui.Timeline(jsBase: "new anychart.core.ui.timeline()")
         }
 
         override public func getJsBase() -> String {

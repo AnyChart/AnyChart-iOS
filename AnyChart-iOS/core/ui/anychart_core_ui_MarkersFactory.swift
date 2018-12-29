@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.MarkersFactory {
-            return anychart.core.ui.MarkersFactory(jsBase: "new anychart.core.ui.MarkersFactory()")
+            return anychart.core.ui.MarkersFactory(jsBase: "new anychart.core.ui.markersfactory()")
         }
 
         override public func getJsBase() -> String {
@@ -422,6 +422,14 @@
      */
     public func type(type: String) -> anychart.core.ui.MarkersFactory {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).type(\(JsObject.wrapQuotes(value: type)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.MarkersFactory {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

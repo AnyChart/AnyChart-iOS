@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.data.TableIterator {
-            return anychart.data.TableIterator(jsBase: "new anychart.data.TableIterator()")
+            return anychart.data.TableIterator(jsBase: "new anychart.data.tableiterator()")
         }
 
         override public func getJsBase() -> String {

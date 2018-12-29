@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.lineargauge.pointers.Thermometer {
-            return anychart.core.lineargauge.pointers.Thermometer(jsBase: "new anychart.core.linearGauge.pointers.Thermometer()")
+            return anychart.core.lineargauge.pointers.Thermometer(jsBase: "new anychart.core.lineargauge.pointers.thermometer()")
         }
 
         override public func getJsBase() -> String {

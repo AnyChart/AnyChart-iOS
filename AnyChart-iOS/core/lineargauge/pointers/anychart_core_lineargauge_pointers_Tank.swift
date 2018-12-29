@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.lineargauge.pointers.Tank {
-            return anychart.core.lineargauge.pointers.Tank(jsBase: "new anychart.core.linearGauge.pointers.Tank()")
+            return anychart.core.lineargauge.pointers.Tank(jsBase: "new anychart.core.lineargauge.pointers.tank()")
         }
 
         override public func getJsBase() -> String {

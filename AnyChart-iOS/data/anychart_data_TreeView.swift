@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.data.TreeView {
-            return anychart.data.TreeView(jsBase: "new anychart.data.TreeView()")
+            return anychart.data.TreeView(jsBase: "new anychart.data.treeview()")
         }
 
         override public func getJsBase() -> String {
@@ -72,66 +72,10 @@
         return anychart.data.treeview.DataItem(jsBase: "\(self.jsBase).addChildAt(\((child != nil) ? child.getJsBase() : "null"), \(index))")
     }
     /**
-     * Adds a data.
+     * 
      */
-    public func addData(data: [String], fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: [String], fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: [String], fillMethodOrCsvMapping: String, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: [String], fillMethodOrCsvMapping: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: String, fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: String, fillMethodOrCsvMapping: anychart.enums.TreeFillingMethod, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \((fillMethodOrCsvMapping != nil) ? fillMethodOrCsvMapping.getJsBase() : "null"), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: String, fillMethodOrCsvMapping: String, csvSettingsOrDeps: String) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.wrapQuotes(value: csvSettingsOrDeps)));")
-
-        return self
-    }
-    /**
-     * Adds a data.
-     */
-    public func addData(data: String, fillMethodOrCsvMapping: String, csvSettingsOrDeps: [anychart.data.tree.Dependency]) -> anychart.data.TreeView {
-        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: fillMethodOrCsvMapping)), \(JsObject.arrayToString(jsObjects: csvSettingsOrDeps)));")
+    public func addData(data: [DataEntry]) -> anychart.data.TreeView {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addData(\(JsObject.arrayToString(jsObjects: data)));")
 
         return self
     }

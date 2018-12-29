@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.TreeMap {
-            return anychart.charts.TreeMap(jsBase: "new anychart.charts.TreeMap()")
+            return anychart.charts.TreeMap(jsBase: "new anychart.charts.treemap()")
         }
 
         override public func getJsBase() -> String {
@@ -687,6 +687,14 @@ Ascending, Descending and No sorting is supported.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.Tree {
         return anychart.data.Tree(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.charts.TreeMap {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
     }
 
     }

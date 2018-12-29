@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Radar {
-            return anychart.charts.Radar(jsBase: "new anychart.charts.Radar()")
+            return anychart.charts.Radar(jsBase: "new anychart.charts.radar()")
         }
 
         override public func getJsBase() -> String {
@@ -54,58 +54,10 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\(JsObject.arrayToStringWrapQuotes(array: var_args)));")
     }
     /**
-     * Adds Area series.
+     * 
      */
-    public func area(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: String) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: String) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: String) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Area {
-        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func area(data: [DataEntry]) -> anychart.core.radar.series.Area {
+        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the chart baseline.
@@ -286,148 +238,16 @@ The baseline is the line relative to which the series with the negative or posit
         return self
     }
     /**
-     * Adds Line series.
+     * 
      */
-    public func line(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func line(data: [DataEntry]) -> anychart.core.radar.series.Line {
+        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
-     * Adds Line series.
+     * 
      */
-    public func line(data: anychart.data.View, csvSettings: String) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: String) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: String) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: String) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Line {
-        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: String) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: String) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: String) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: String) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.radar.series.Marker {
-        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func marker(data: [DataEntry]) -> anychart.core.radar.series.Marker {
+        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for markers palette settings.
@@ -896,6 +716,24 @@ The baseline is the line relative to which the series with the negative or posit
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.View) -> anychart.core.radar.series.Area {
+        return anychart.core.radar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func line(data: anychart.data.View) -> anychart.core.radar.series.Line {
+        return anychart.core.radar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func marker(data: anychart.data.View) -> anychart.core.radar.series.Marker {
+        return anychart.core.radar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

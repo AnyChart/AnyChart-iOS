@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.ui.ContextMenu {
-            return anychart.ui.ContextMenu(jsBase: "new anychart.ui.ContextMenu()")
+            return anychart.ui.ContextMenu(jsBase: "new anychart.ui.contextmenu()")
         }
 
         override public func getJsBase() -> String {

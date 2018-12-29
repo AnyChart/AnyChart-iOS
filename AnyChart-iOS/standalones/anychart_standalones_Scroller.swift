@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.Scroller {
-            return anychart.standalones.Scroller(jsBase: "new anychart.standalones.Scroller()")
+            return anychart.standalones.Scroller(jsBase: "new anychart.standalones.scroller()")
         }
 
         override public func getJsBase() -> String {

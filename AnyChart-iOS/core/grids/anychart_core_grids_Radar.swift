@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.grids.Radar {
-            return anychart.core.grids.Radar(jsBase: "new anychart.core.grids.Radar()")
+            return anychart.core.grids.Radar(jsBase: "new anychart.core.grids.radar()")
         }
 
         override public func getJsBase() -> String {
@@ -413,6 +413,14 @@
      */
     public func yScale(value: String) -> anychart.core.grids.Radar {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.grids.Radar {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

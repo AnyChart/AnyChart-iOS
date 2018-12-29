@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.DataGridButton {
-            return anychart.core.gantt.DataGridButton(jsBase: "new anychart.core.gantt.DataGridButton()")
+            return anychart.core.gantt.DataGridButton(jsBase: "new anychart.core.gantt.datagridbutton()")
         }
 
         override public func getJsBase() -> String {

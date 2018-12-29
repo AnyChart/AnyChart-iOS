@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.stock.indicators.ADL {
-            return anychart.core.stock.indicators.ADL(jsBase: "new anychart.core.stock.indicators.ADL()")
+            return anychart.core.stock.indicators.ADL(jsBase: "new anychart.core.stock.indicators.adl()")
         }
 
         override public func getJsBase() -> String {

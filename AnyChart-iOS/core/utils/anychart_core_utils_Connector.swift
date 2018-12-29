@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.Connector {
-            return anychart.core.utils.Connector(jsBase: "new anychart.core.utils.Connector()")
+            return anychart.core.utils.Connector(jsBase: "new anychart.core.utils.connector()")
         }
 
         override public func getJsBase() -> String {

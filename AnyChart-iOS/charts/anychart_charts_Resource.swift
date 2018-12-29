@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Resource {
-            return anychart.charts.Resource(jsBase: "new anychart.charts.Resource()")
+            return anychart.charts.Resource(jsBase: "new anychart.charts.resource()")
         }
 
         override public func getJsBase() -> String {

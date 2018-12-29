@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Map {
-            return anychart.charts.Map(jsBase: "new anychart.charts.Map()")
+            return anychart.charts.Map(jsBase: "new anychart.charts.map()")
         }
 
         override public func getJsBase() -> String {
@@ -76,76 +76,10 @@
         return self
     }
     /**
-     * Creates a Bubble series.
+     * 
      */
-    public func bubble(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: anychart.data.View, csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: String, csvSettings: String) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Bubble series.
-     */
-    public func bubble(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Bubble {
-        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func bubble(data: [DataEntry]) -> anychart.core.map.series.Bubble {
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for callout elements.
@@ -186,76 +120,10 @@
         return self
     }
     /**
-     * Creates a Choropleth series.
+     * 
      */
-    public func choropleth(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: anychart.data.View, csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: [String], csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: String, csvSettings: String) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Choropleth series.
-     */
-    public func choropleth(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Choropleth {
-        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func choropleth(data: [DataEntry]) -> anychart.core.map.series.Choropleth {
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the color range.
@@ -272,76 +140,10 @@
         return self
     }
     /**
-     * Creates connector series.
+     * 
      */
-    public func connector(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: anychart.data.View, csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: [String], csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: String, csvSettings: String) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates connector series.
-     */
-    public func connector(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Connector {
-        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func connector(data: [DataEntry]) -> anychart.core.map.series.Connector {
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for map crosshair settings.
@@ -668,76 +470,10 @@ Returns path of drill down from the root map to the current level.
         return self
     }
     /**
-     * Creates a Marker series.
+     * 
      */
-    public func marker(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: [String], csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: String, csvSettings: String) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Creates a Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.map.series.Marker {
-        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func marker(data: [DataEntry]) -> anychart.core.map.series.Marker {
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the map markers palette settings.
@@ -1063,6 +799,30 @@ Returns path of drill down from the root map to the current level.
      */
     public func zoomToFeature(id: String)  {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).zoomToFeature(\(JsObject.wrapQuotes(value: id)));")
+    }
+    /**
+     * 
+     */
+    public func bubble(data: anychart.data.View) -> anychart.core.map.series.Bubble {
+        return anychart.core.map.series.Bubble(jsBase: "\(self.jsBase).bubble(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func choropleth(data: anychart.data.View) -> anychart.core.map.series.Choropleth {
+        return anychart.core.map.series.Choropleth(jsBase: "\(self.jsBase).choropleth(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func connector(data: anychart.data.View) -> anychart.core.map.series.Connector {
+        return anychart.core.map.series.Connector(jsBase: "\(self.jsBase).connector(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func marker(data: anychart.data.View) -> anychart.core.map.series.Marker {
+        return anychart.core.map.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

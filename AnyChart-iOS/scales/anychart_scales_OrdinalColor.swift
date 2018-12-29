@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.scales.OrdinalColor {
-            return anychart.scales.OrdinalColor(jsBase: "new anychart.scales.OrdinalColor()")
+            return anychart.scales.OrdinalColor(jsBase: "new anychart.scales.ordinalcolor()")
         }
 
         override public func getJsBase() -> String {

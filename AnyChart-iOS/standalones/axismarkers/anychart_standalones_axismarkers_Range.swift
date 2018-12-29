@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.axismarkers.Range {
-            return anychart.standalones.axismarkers.Range(jsBase: "new anychart.standalones.axisMarkers.Range()")
+            return anychart.standalones.axismarkers.Range(jsBase: "new anychart.standalones.axismarkers.range()")
         }
 
         override public func getJsBase() -> String {

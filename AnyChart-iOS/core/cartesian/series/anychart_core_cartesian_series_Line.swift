@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Line {
-            return anychart.core.cartesian.series.Line(jsBase: "new anychart.core.cartesian.series.Line()")
+            return anychart.core.cartesian.series.Line(jsBase: "new anychart.core.cartesian.series.line()")
         }
 
         override public func getJsBase() -> String {

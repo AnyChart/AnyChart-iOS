@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.charts.Polar {
-            return anychart.charts.Polar(jsBase: "new anychart.charts.Polar()")
+            return anychart.charts.Polar(jsBase: "new anychart.charts.polar()")
         }
 
         override public func getJsBase() -> String {
@@ -54,58 +54,10 @@
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).addSeries(\(JsObject.arrayToStringWrapQuotes(array: var_args)));")
     }
     /**
-     * Adds Area series.
+     * 
      */
-    public func area(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: String) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: String) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: String) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Area series.
-     */
-    public func area(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Area {
-        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func area(data: [DataEntry]) -> anychart.core.polar.series.Area {
+        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the space between bar groups on the ordinal scale by ratio of bars width.
@@ -151,76 +103,10 @@ The baseline is the line relative to which the series with the negative or posit
         return self
     }
     /**
-     * Adds Column series.
+     * 
      */
-    public func column(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.View, csvSettings: String) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: String) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: String) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: String) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Column series.
-     */
-    public func column(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Column {
-        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func column(data: [DataEntry]) -> anychart.core.polar.series.Column {
+        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * 
@@ -388,148 +274,16 @@ The baseline is the line relative to which the series with the negative or posit
         return self
     }
     /**
-     * Adds Line series.
+     * 
      */
-    public func line(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func line(data: [DataEntry]) -> anychart.core.polar.series.Line {
+        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
-     * Adds Line series.
+     * 
      */
-    public func line(data: anychart.data.View, csvSettings: String) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: String) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: String) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: String) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Line series.
-     */
-    public func line(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Line {
-        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: String) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: String) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: String) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: String) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Marker series.
-     */
-    public func marker(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.Marker {
-        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func marker(data: [DataEntry]) -> anychart.core.polar.series.Marker {
+        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Getter for the markers palette settings.
@@ -880,76 +634,10 @@ The baseline is the line relative to which the series with the negative or posit
         return anychart.core.polar.series.Polyline(jsBase: "\(self.jsBase).polyline(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
     }
     /**
-     * Adds Range Column series.
+     * 
      */
-    public func rangeColumn(data: anychart.data.View, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.View, csvSettings: String) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.View, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: String) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: anychart.data.Set, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: String) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: [String], csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToStringWrapQuotes(array: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: anychart.enums.TextParsingMode) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: String) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \(JsObject.wrapQuotes(value: csvSettings)))")
-    }
-    /**
-     * Adds Range Column series.
-     */
-    public func rangeColumn(data: String, csvSettings: anychart.data.TextParsingSettings) -> anychart.core.polar.series.RangeColumn {
-        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.wrapQuotes(value: data)), \((csvSettings != nil) ? csvSettings.getJsBase() : "null"))")
+    public func rangeColumn(data: [DataEntry]) -> anychart.core.polar.series.RangeColumn {
+        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\(JsObject.arrayToString(jsObjects: data)))")
     }
     /**
      * Removes all series from chart.
@@ -1307,6 +995,36 @@ If the points of series should be sorted by X before drawing.
      */
     public func data(data: [DataEntry], fillMethod: String) -> anychart.data.View {
         return anychart.data.View(jsBase: "\(self.jsBase).data(\(JsObject.arrayToString(jsObjects: data)), \(JsObject.wrapQuotes(value: fillMethod)))")
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.View) -> anychart.core.polar.series.Area {
+        return anychart.core.polar.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func column(data: anychart.data.View) -> anychart.core.polar.series.Column {
+        return anychart.core.polar.series.Column(jsBase: "\(self.jsBase).column(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func line(data: anychart.data.View) -> anychart.core.polar.series.Line {
+        return anychart.core.polar.series.Line(jsBase: "\(self.jsBase).line(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func rangeColumn(data: anychart.data.View) -> anychart.core.polar.series.RangeColumn {
+        return anychart.core.polar.series.RangeColumn(jsBase: "\(self.jsBase).rangeColumn(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func marker(data: anychart.data.View) -> anychart.core.polar.series.Marker {
+        return anychart.core.polar.series.Marker(jsBase: "\(self.jsBase).marker(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

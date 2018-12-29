@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.GanttText {
-            return anychart.core.axismarkers.GanttText(jsBase: "new anychart.core.axisMarkers.GanttText()")
+            return anychart.core.axismarkers.GanttText(jsBase: "new anychart.core.axismarkers.gantttext()")
         }
 
         override public func getJsBase() -> String {

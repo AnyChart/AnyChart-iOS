@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.ChartScroller {
-            return anychart.core.ui.ChartScroller(jsBase: "new anychart.core.ui.ChartScroller()")
+            return anychart.core.ui.ChartScroller(jsBase: "new anychart.core.ui.chartscroller()")
         }
 
         override public func getJsBase() -> String {

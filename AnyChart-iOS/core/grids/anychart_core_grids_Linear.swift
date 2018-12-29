@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.grids.Linear {
-            return anychart.core.grids.Linear(jsBase: "new anychart.core.grids.Linear()")
+            return anychart.core.grids.Linear(jsBase: "new anychart.core.grids.linear()")
         }
 
         override public func getJsBase() -> String {
@@ -317,6 +317,14 @@ Layout is define by {@link anychart.core.grids.Linear#layout} method.
      */
     public func stroke(settings: String) -> anychart.core.grids.Linear {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.grids.Linear {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

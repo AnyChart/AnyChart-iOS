@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.grids.Radar {
-            return anychart.standalones.grids.Radar(jsBase: "new anychart.standalones.grids.Radar()")
+            return anychart.standalones.grids.Radar(jsBase: "new anychart.standalones.grids.radar()")
         }
 
         override public func getJsBase() -> String {

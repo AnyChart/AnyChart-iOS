@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.map.series.Connector {
-            return anychart.core.map.series.Connector(jsBase: "new anychart.core.map.series.Connector()")
+            return anychart.core.map.series.Connector(jsBase: "new anychart.core.map.series.connector()")
         }
 
         override public func getJsBase() -> String {

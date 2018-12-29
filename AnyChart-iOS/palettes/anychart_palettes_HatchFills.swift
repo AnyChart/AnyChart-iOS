@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.palettes.HatchFills {
-            return anychart.palettes.HatchFills(jsBase: "new anychart.palettes.HatchFills()")
+            return anychart.palettes.HatchFills(jsBase: "new anychart.palettes.hatchfills()")
         }
 
         override public func getJsBase() -> String {

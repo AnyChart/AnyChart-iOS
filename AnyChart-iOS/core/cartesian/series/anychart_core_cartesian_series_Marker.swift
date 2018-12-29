@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.Marker {
-            return anychart.core.cartesian.series.Marker(jsBase: "new anychart.core.cartesian.series.Marker()")
+            return anychart.core.cartesian.series.Marker(jsBase: "new anychart.core.cartesian.series.marker()")
         }
 
         override public func getJsBase() -> String {
@@ -371,6 +371,14 @@
      */
     public func unhover() -> anychart.core.cartesian.series.Marker {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: self.jsBase + ".unhover();")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.cartesian.series.Marker {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

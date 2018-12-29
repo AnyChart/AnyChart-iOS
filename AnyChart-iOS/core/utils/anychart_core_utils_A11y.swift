@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.utils.A11y {
-            return anychart.core.utils.A11y(jsBase: "new anychart.core.utils.A11y()")
+            return anychart.core.utils.A11y(jsBase: "new anychart.core.utils.a11y()")
         }
 
         override public func getJsBase() -> String {

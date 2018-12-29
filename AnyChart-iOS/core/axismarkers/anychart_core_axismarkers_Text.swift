@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.axismarkers.Text {
-            return anychart.core.axismarkers.Text(jsBase: "new anychart.core.axisMarkers.Text()")
+            return anychart.core.axismarkers.Text(jsBase: "new anychart.core.axismarkers.text()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.ui.Paginator {
-            return anychart.core.ui.Paginator(jsBase: "new anychart.core.ui.Paginator()")
+            return anychart.core.ui.Paginator(jsBase: "new anychart.core.ui.paginator()")
         }
 
         override public func getJsBase() -> String {

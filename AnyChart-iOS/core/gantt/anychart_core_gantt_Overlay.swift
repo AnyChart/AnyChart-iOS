@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.gantt.Overlay {
-            return anychart.core.gantt.Overlay(jsBase: "new anychart.core.gantt.Overlay()")
+            return anychart.core.gantt.Overlay(jsBase: "new anychart.core.gantt.overlay()")
         }
 
         override public func getJsBase() -> String {

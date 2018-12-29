@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.Point {
-            return anychart.core.Point(jsBase: "new anychart.core.Point()")
+            return anychart.core.Point(jsBase: "new anychart.core.point()")
         }
 
         override public func getJsBase() -> String {

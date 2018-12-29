@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.RangeStepArea {
-            return anychart.core.cartesian.series.RangeStepArea(jsBase: "new anychart.core.cartesian.series.RangeStepArea()")
+            return anychart.core.cartesian.series.RangeStepArea(jsBase: "new anychart.core.cartesian.series.rangesteparea()")
         }
 
         override public func getJsBase() -> String {

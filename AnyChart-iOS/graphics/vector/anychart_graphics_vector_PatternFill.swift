@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.graphics.vector.PatternFill {
-            return anychart.graphics.vector.PatternFill(jsBase: "new anychart.graphics.vector.PatternFill()")
+            return anychart.graphics.vector.PatternFill(jsBase: "new anychart.graphics.vector.patternfill()")
         }
 
         override public func getJsBase() -> String {

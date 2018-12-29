@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.Plot {
-            return anychart.core.stock.Plot(jsBase: "new anychart.core.stock.Plot()")
+            return anychart.core.stock.Plot(jsBase: "new anychart.core.stock.plot()")
         }
 
         override public func getJsBase() -> String {
@@ -102,6 +102,12 @@
      */
     public func ao(mapping: anychart.data.TableMapping, fastPeriod: Double, slowPeriod: Double, maType: String, seriesType: String) -> anychart.core.stock.indicators.AO {
         return anychart.core.stock.indicators.AO(jsBase: "\(self.jsBase).ao(\((mapping != nil) ? mapping.getJsBase() : "null"), \(fastPeriod), \(slowPeriod), \(JsObject.wrapQuotes(value: maType)), \(JsObject.wrapQuotes(value: seriesType)))")
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.Table) -> anychart.core.stock.series.Area {
+        return anychart.core.stock.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Creates Aroon indicator on the plot.
@@ -519,6 +525,12 @@ The data area is drawn along the data bounds.
      */
     public func hatchFillPalette(value: anychart.palettes.HatchFills) -> anychart.palettes.HatchFills {
         return anychart.palettes.HatchFills(jsBase: "\(self.jsBase).hatchFillPalette(\((value != nil) ? value.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func hilo(data: anychart.data.Table) -> anychart.core.stock.series.Hilo {
+        return anychart.core.stock.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Creates a KDJ indicator on the plot.
@@ -988,6 +1000,12 @@ The data area is drawn along the data bounds.
      */
     public func obv(mapping: anychart.data.TableMapping, seriesType: String) -> anychart.core.stock.indicators.OBV {
         return anychart.core.stock.indicators.OBV(jsBase: "\(self.jsBase).obv(\((mapping != nil) ? mapping.getJsBase() : "null"), \(JsObject.wrapQuotes(value: seriesType)))")
+    }
+    /**
+     * 
+     */
+    public func ohlc(data: anychart.data.Table) -> anychart.core.stock.series.OHLC {
+        return anychart.core.stock.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"))")
     }
     /**
      * Getter for the series colors palette.
@@ -1710,6 +1728,24 @@ The data area is drawn along the data bounds.
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).yScale(\((settings != nil) ? settings.getJsBase() : "null"));")
 
         return self
+    }
+    /**
+     * 
+     */
+    public func area(data: anychart.data.TableMapping) -> anychart.core.stock.series.Area {
+        return anychart.core.stock.series.Area(jsBase: "\(self.jsBase).area(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func hilo(data: anychart.data.TableMapping) -> anychart.core.stock.series.Hilo {
+        return anychart.core.stock.series.Hilo(jsBase: "\(self.jsBase).hilo(\((data != nil) ? data.getJsBase() : "null"))")
+    }
+    /**
+     * 
+     */
+    public func ohlc(data: anychart.data.TableMapping) -> anychart.core.stock.series.OHLC {
+        return anychart.core.stock.series.OHLC(jsBase: "\(self.jsBase).ohlc(\((data != nil) ? data.getJsBase() : "null"))")
     }
 
     }

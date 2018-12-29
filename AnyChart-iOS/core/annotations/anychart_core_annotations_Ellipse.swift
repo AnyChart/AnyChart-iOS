@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.annotations.Ellipse {
-            return anychart.core.annotations.Ellipse(jsBase: "new anychart.core.annotations.Ellipse()")
+            return anychart.core.annotations.Ellipse(jsBase: "new anychart.core.annotations.ellipse()")
         }
 
         override public func getJsBase() -> String {
@@ -381,6 +381,14 @@
      */
     public func xAnchor(value: String) -> anychart.core.annotations.Ellipse {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).xAnchor(\(JsObject.wrapQuotes(value: value)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.annotations.Ellipse {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

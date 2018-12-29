@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.cartesian.series.DiscreteBase {
-            return anychart.core.cartesian.series.DiscreteBase(jsBase: "new anychart.core.cartesian.series.DiscreteBase()")
+            return anychart.core.cartesian.series.DiscreteBase(jsBase: "new anychart.core.cartesian.series.discretebase()")
         }
 
         override public func getJsBase() -> String {

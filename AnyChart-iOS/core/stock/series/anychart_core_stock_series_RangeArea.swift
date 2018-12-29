@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.stock.series.RangeArea {
-            return anychart.core.stock.series.RangeArea(jsBase: "new anychart.core.stock.series.RangeArea()")
+            return anychart.core.stock.series.RangeArea(jsBase: "new anychart.core.stock.series.rangearea()")
         }
 
         override public func getJsBase() -> String {
@@ -360,6 +360,14 @@
      */
     public func lowStroke(settings: String) -> anychart.core.stock.series.RangeArea {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).lowStroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.stock.series.RangeArea {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.ui.Zoom {
-            return anychart.ui.Zoom(jsBase: "new anychart.ui.Zoom()")
+            return anychart.ui.Zoom(jsBase: "new anychart.ui.zoom()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.series.renderingsettings.PointContext {
-            return anychart.core.series.renderingsettings.PointContext(jsBase: "new anychart.core.series.RenderingSettings.PointContext()")
+            return anychart.core.series.renderingsettings.PointContext(jsBase: "new anychart.core.series.renderingsettings.pointcontext()")
         }
 
         override public func getJsBase() -> String {

@@ -27,7 +27,7 @@
         }
 
         public func instantiate() -> anychart.core.ui.scroller.Thumbs {
-            return anychart.core.ui.scroller.Thumbs(jsBase: "new anychart.core.ui.Scroller.Thumbs()")
+            return anychart.core.ui.scroller.Thumbs(jsBase: "new anychart.core.ui.scroller.thumbs()")
         }
 
         override public func getJsBase() -> String {
@@ -325,6 +325,14 @@ Whether the thumbs should be drawn.
      */
     public func stroke(settings: String) -> anychart.core.ui.scroller.Thumbs {
         APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).stroke(\(JsObject.wrapQuotes(value: settings)));")
+
+        return self
+    }
+    /**
+     * 
+     */
+    public func fill(value: String) -> anychart.core.ui.scroller.Thumbs {
+        APIlib.sharedInstance.jsDelegate?.jsAddLine(jsLine: "\(self.jsBase).fill(\(JsObject.wrapQuotes(value: value)));")
 
         return self
     }

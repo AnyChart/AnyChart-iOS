@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.core.TreeChartPoint {
-            return anychart.core.TreeChartPoint(jsBase: "new anychart.core.TreeChartPoint()")
+            return anychart.core.TreeChartPoint(jsBase: "new anychart.core.treechartpoint()")
         }
 
         override public func getJsBase() -> String {

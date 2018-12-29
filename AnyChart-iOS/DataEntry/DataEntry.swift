@@ -1,15 +1,11 @@
-//
-//  DataEntry.swift
-//  AnyChart-iOS
-//
-//  Created by NoName on 10/1/18.
-//  Copyright © 2018 AnyChart. All rights reserved.
-//
-
 import Foundation
 
-public class DataEntry {
+open class DataEntry {
     var dict: [String: Any] = [:]
+    
+    public init() {
+        
+    }
     
     public func setValue(key: String, value: Int) {
         dict[key] = value
@@ -20,6 +16,18 @@ public class DataEntry {
     }
     
     public func setValue(key: String, value: String) {
+        dict[key] = value
+    }
+    
+    public func setValue(key: String, value: [String]) {
+        dict[key] = value
+    }
+    
+    public func setValue(key: String, value: [Double]) {
+        dict[key] = value
+    }
+    
+    public func setValue(key: String, value: [Int]) {
         dict[key] = value
     }
     
@@ -35,7 +43,7 @@ public class DataEntry {
     }
 }
 
-public class ValueDataEntry: DataEntry {
+open class ValueDataEntry: DataEntry {
     public init(x: String, value: Int) {
         super.init()
         
@@ -48,5 +56,29 @@ public class ValueDataEntry: DataEntry {
         
         setValue(key: "x", value: x)
         setValue(key: "value", value: value)
+    }
+}
+
+open class BoxDataEntry: DataEntry {
+    public init(x: String, low: Int, q1: Int, median: Int, q3: Int, high: Int) {
+        super.init()
+        
+        setValue(key: "x", value: x)
+        setValue(key: "low", value: low)
+        setValue(key: "q1", value: q1)
+        setValue(key: "median", value: median)
+        setValue(key: "q3", value: q3)
+        setValue(key: "high", value: high)
+    }
+}
+
+open class NameValueDataEntry: ValueDataEntry {
+    public init(x: String, name: String, value: Int) {
+        super.init(x: x, value: value)
+        setValue(key: "name", value: name)
+    }
+    public init(x: String, name: String, value: Double) {
+        super.init(x: x, value: value)
+        setValue(key: "name", value: name)
     }
 }

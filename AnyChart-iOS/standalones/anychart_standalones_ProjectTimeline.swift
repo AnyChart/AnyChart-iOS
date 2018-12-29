@@ -27,7 +27,7 @@
         }
 
         override public func instantiate() -> anychart.standalones.ProjectTimeline {
-            return anychart.standalones.ProjectTimeline(jsBase: "new anychart.standalones.ProjectTimeline()")
+            return anychart.standalones.ProjectTimeline(jsBase: "new anychart.standalones.projecttimeline()")
         }
 
         override public func getJsBase() -> String {

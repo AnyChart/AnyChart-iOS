@@ -1,7 +1,7 @@
 import UIKit
 import AnyChart_iOS
 
-class Area3DViewController: UIViewController {
+class Area3DChartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

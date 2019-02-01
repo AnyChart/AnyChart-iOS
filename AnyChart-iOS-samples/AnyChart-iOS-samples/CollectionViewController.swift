@@ -4,7 +4,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     @IBOutlet var chartCollectionView: UICollectionView!
     
-    var charts = ["Area3D", "Box Chart", "Column Chart", "Funnel Chart", "Line Chart", "Mekko Chart", "Mosaic Chart", "Pareto Chart", "Pie Chart", "Pyramid Chart", "Radar Chart", "Range Chart", "Venn Diagram", "Vertical Chart"]
+    var charts = ["Area3D Chart", "Area Chart", "Bar3D Chart", "Bar Chart", "Box Chart", "Bubble Chart", "Column3D Chart", "Column Chart", "Combined Chart", "Funnel Chart", "HeatMap Chart", "Line Chart", "Mekko Chart", "Mosaic Chart", "Pareto Chart", "Pie Chart", "Pyramid Chart", "Radar Chart", "Range Chart", "Venn Diagram", "Vertical Chart"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,28 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let chart = charts[indexPath.item]
         var destination: UIViewController? = nil
         switch chart {
-        case "Area3D":
-            destination = Area3DViewController()
+        case "Area3D Chart":
+            destination = Area3DChartViewController()
+        case "Area Chart":
+            destination = AreaChartViewController()
+        case "Bar3D Chart":
+            destination = Bar3DChartViewController()
+        case "Bar Chart":
+            destination = BarChartViewController()
         case "Box Chart":
             destination = BoxChartViewController()
+        case "Bubble Chart":
+            destination = BubbleChartViewController()
+        case "Column3D Chart":
+            destination = Column3DChartViewController()
         case "Column Chart":
             destination = ColumnChartViewController()
+        case "Combined Chart":
+            destination = CombinedChartViewController()
         case "Funnel Chart":
             destination = FunnelChartViewController()
+        case "HeatMap Chart":
+            destination = HeatMapChartViewController()
         case "Line Chart":
             destination = LineChartViewController()
         case "Mekko Chart":

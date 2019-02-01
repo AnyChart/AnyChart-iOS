@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730FD58E22047323006A0056 /* BubbleChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730FD58D22047323006A0056 /* BubbleChartViewController.swift */; };
 		7329F35C21D625EF00816A62 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F35B21D625EF00816A62 /* PieChartViewController.swift */; };
-		7329F36021D64A4000816A62 /* Area3DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F35F21D64A4000816A62 /* Area3DViewController.swift */; };
+		7329F36021D64A4000816A62 /* Area3DChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F35F21D64A4000816A62 /* Area3DChartViewController.swift */; };
 		7329F36321D66D3200816A62 /* BoxChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7329F36221D66D3200816A62 /* BoxChartViewController.swift */; };
+		732AF1A622044A6B00DE6BEF /* Bar3DChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF1A522044A6B00DE6BEF /* Bar3DChartViewController.swift */; };
+		732AF1AA2204515100DE6BEF /* BarChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732AF1A92204515100DE6BEF /* BarChartViewController.swift */; };
+		732FF1D12203103A0056EF16 /* AreaChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FF1D02203103A0056EF16 /* AreaChartViewController.swift */; };
 		733FEC8521CBB349001BDD5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733FEC8421CBB349001BDD5E /* AppDelegate.swift */; };
 		733FEC8A21CBB349001BDD5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 733FEC8821CBB349001BDD5E /* Main.storyboard */; };
 		733FEC8C21CBB349001BDD5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733FEC8B21CBB349001BDD5E /* Assets.xcassets */; };
@@ -28,6 +32,9 @@
 		739B359B21D739A000E4D0A2 /* VerticalChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */; };
 		739B359D21D73D3600E4D0A2 /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */; };
 		739B35A221D7449A00E4D0A2 /* AnyChart_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733FECB921CBB432001BDD5E /* AnyChart_iOS.framework */; };
+		73C1EB7C220485BF00324496 /* Column3DChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C1EB7B220485BF00324496 /* Column3DChartViewController.swift */; };
+		73C1EB80220496C400324496 /* CombinedChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C1EB7F220496C400324496 /* CombinedChartViewController.swift */; };
+		73C1EB8222049B8400324496 /* HeatMapChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C1EB8122049B8400324496 /* HeatMapChartViewController.swift */; };
 		73DAB47F21D686ED002B6C7B /* PyramidChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAB47E21D686ED002B6C7B /* PyramidChartViewController.swift */; };
 		73DAB48321D68862002B6C7B /* FunnelChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAB48221D68862002B6C7B /* FunnelChartViewController.swift */; };
 /* End PBXBuildFile section */
@@ -64,9 +71,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730FD58D22047323006A0056 /* BubbleChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChartViewController.swift; sourceTree = "<group>"; };
 		7329F35B21D625EF00816A62 /* PieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
-		7329F35F21D64A4000816A62 /* Area3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area3DViewController.swift; sourceTree = "<group>"; };
+		7329F35F21D64A4000816A62 /* Area3DChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Area3DChartViewController.swift; sourceTree = "<group>"; };
 		7329F36221D66D3200816A62 /* BoxChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxChartViewController.swift; sourceTree = "<group>"; };
+		732AF1A522044A6B00DE6BEF /* Bar3DChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar3DChartViewController.swift; sourceTree = "<group>"; };
+		732AF1A92204515100DE6BEF /* BarChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewController.swift; sourceTree = "<group>"; };
+		732FF1D02203103A0056EF16 /* AreaChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChartViewController.swift; sourceTree = "<group>"; };
 		733FEC8121CBB349001BDD5E /* AnyChart-iOS-samples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AnyChart-iOS-samples.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		733FEC8421CBB349001BDD5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		733FEC8921CBB349001BDD5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,6 +102,9 @@
 		739B359821D734A300E4D0A2 /* RangeChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeChartViewController.swift; sourceTree = "<group>"; };
 		739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalChartViewController.swift; sourceTree = "<group>"; };
 		739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
+		73C1EB7B220485BF00324496 /* Column3DChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column3DChartViewController.swift; sourceTree = "<group>"; };
+		73C1EB7F220496C400324496 /* CombinedChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartViewController.swift; sourceTree = "<group>"; };
+		73C1EB8122049B8400324496 /* HeatMapChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapChartViewController.swift; sourceTree = "<group>"; };
 		73DAB47E21D686ED002B6C7B /* PyramidChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PyramidChartViewController.swift; sourceTree = "<group>"; };
 		73DAB48221D68862002B6C7B /* FunnelChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnelChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				7329F35B21D625EF00816A62 /* PieChartViewController.swift */,
-				7329F35F21D64A4000816A62 /* Area3DViewController.swift */,
+				7329F35F21D64A4000816A62 /* Area3DChartViewController.swift */,
 				7329F36221D66D3200816A62 /* BoxChartViewController.swift */,
 				7394D0FD21D6759300B91150 /* MekkoChartViewController.swift */,
 				7394D10121D6791200B91150 /* MosaicChartViewController.swift */,
@@ -138,6 +152,13 @@
 				739B359821D734A300E4D0A2 /* RangeChartViewController.swift */,
 				739B359A21D739A000E4D0A2 /* VerticalChartViewController.swift */,
 				739B359C21D73D3600E4D0A2 /* LineChartViewController.swift */,
+				732FF1D02203103A0056EF16 /* AreaChartViewController.swift */,
+				732AF1A522044A6B00DE6BEF /* Bar3DChartViewController.swift */,
+				732AF1A92204515100DE6BEF /* BarChartViewController.swift */,
+				730FD58D22047323006A0056 /* BubbleChartViewController.swift */,
+				73C1EB7B220485BF00324496 /* Column3DChartViewController.swift */,
+				73C1EB7F220496C400324496 /* CombinedChartViewController.swift */,
+				73C1EB8122049B8400324496 /* HeatMapChartViewController.swift */,
 			);
 			path = Charts;
 			sourceTree = "<group>";
@@ -370,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7329F36021D64A4000816A62 /* Area3DViewController.swift in Sources */,
+				7329F36021D64A4000816A62 /* Area3DChartViewController.swift in Sources */,
 				7394D0FE21D6759300B91150 /* MekkoChartViewController.swift in Sources */,
 				7329F36321D66D3200816A62 /* BoxChartViewController.swift in Sources */,
 				7394D10421D67B8C00B91150 /* ColumnChartViewController.swift in Sources */,
@@ -378,14 +399,21 @@
 				739B359B21D739A000E4D0A2 /* VerticalChartViewController.swift in Sources */,
 				739619D821D6834F00CD45B8 /* VennDiagramViewController.swift in Sources */,
 				739B359D21D73D3600E4D0A2 /* LineChartViewController.swift in Sources */,
+				73C1EB80220496C400324496 /* CombinedChartViewController.swift in Sources */,
 				7345C7EA21D506DB00B33957 /* ChartCell.swift in Sources */,
+				732AF1AA2204515100DE6BEF /* BarChartViewController.swift in Sources */,
+				73C1EB7C220485BF00324496 /* Column3DChartViewController.swift in Sources */,
 				739B359921D734A300E4D0A2 /* RangeChartViewController.swift in Sources */,
 				7329F35C21D625EF00816A62 /* PieChartViewController.swift in Sources */,
 				739B359521D730DC00E4D0A2 /* RadarChartViewController.swift in Sources */,
 				7345C7E621D4E1CF00B33957 /* CollectionViewController.swift in Sources */,
 				73DAB47F21D686ED002B6C7B /* PyramidChartViewController.swift in Sources */,
 				739619D421D6806800CD45B8 /* ParetoChartViewController.swift in Sources */,
+				730FD58E22047323006A0056 /* BubbleChartViewController.swift in Sources */,
+				732FF1D12203103A0056EF16 /* AreaChartViewController.swift in Sources */,
 				733FEC8521CBB349001BDD5E /* AppDelegate.swift in Sources */,
+				73C1EB8222049B8400324496 /* HeatMapChartViewController.swift in Sources */,
+				732AF1A622044A6B00DE6BEF /* Bar3DChartViewController.swift in Sources */,
 				73DAB48321D68862002B6C7B /* FunnelChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

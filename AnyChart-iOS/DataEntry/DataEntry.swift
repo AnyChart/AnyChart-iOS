@@ -7,16 +7,16 @@ open class DataEntry {
         
     }
     
-    public func setValue(key: String, value: Int) {
-        dict[key] = value
+    public func setValue(key: String, value: Int?) {
+        dict[key] = value ?? "null"
     }
     
-    public func setValue(key: String, value: Double) {
-        dict[key] = value
+    public func setValue(key: String, value: Double?) {
+        dict[key] = value ?? "null"
     }
     
-    public func setValue(key: String, value: String) {
-        dict[key] = value
+    public func setValue(key: String, value: String?) {
+        dict[key] = value ?? "null"
     }
     
     public func setValue(key: String, value: [String]) {
@@ -44,14 +44,14 @@ open class DataEntry {
 }
 
 open class ValueDataEntry: DataEntry {
-    public init(x: String, value: Int) {
+    public init(x: String, value: Int?) {
         super.init()
         
         setValue(key: "x", value: x)
         setValue(key: "value", value: value)
     }
     
-    public init(x: String, value: Double) {
+    public init(x: String, value: Double?) {
         super.init()
         
         setValue(key: "x", value: x)
@@ -80,5 +80,32 @@ open class NameValueDataEntry: ValueDataEntry {
     public init(x: String, name: String, value: Double) {
         super.init(x: x, value: value)
         setValue(key: "name", value: name)
+    }
+}
+
+open class BubbleDataEntry: DataEntry {
+    public init(x: String, value: Double, size: Double) {
+        super.init()
+        
+        setValue(key: "x", value: x)
+        setValue(key: "value", value: value)
+        setValue(key: "size", value: size)
+    }
+    public init(x: Double, value: Double, size: Double) {
+        super.init()
+        
+        setValue(key: "x", value: x)
+        setValue(key: "value", value: value)
+        setValue(key: "size", value: size)
+    }
+}
+
+open class HeatMapDataEntry: DataEntry {
+    public init(x: String, y: String, heat: Int) {
+        super.init()
+        
+        setValue(key: "x", value: x)
+        setValue(key: "y", value: y)
+        setValue(key: "heat", value: heat)
     }
 }

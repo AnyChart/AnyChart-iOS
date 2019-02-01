@@ -135,7 +135,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
             "<body>" +
             //            "<script src=\"bundle/anychart-bundle.min.js\"/>" +
             "<script src=\"" + jsPath! + "\"></script>" +
-            "<div id=\"container\"></div>" +
+            "<div id=\"container\"><br/></div>" +
             "</body>" +
             "</html>", baseURL: bundle.url(forResource: "anychart-bundle.min", withExtension:"js"))
         //baseURL: bundle.url(forResource: "bundle", withExtension:nil))

@@ -1,11 +1,3 @@
-//
-//  AnyChart_iOS.h
-//  AnyChart-iOS
-//
-//  Created by NoName on 10/16/18.
-//  Copyright © 2018 AnyChart. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for AnyChart_iOS.

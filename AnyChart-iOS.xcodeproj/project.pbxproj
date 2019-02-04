@@ -626,10 +626,10 @@
 		30FCE4C32175E44600CB4A21 /* AnyChart_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FCE4B92175E44600CB4A21 /* AnyChart_iOS.framework */; };
 		30FCE4C82175E44600CB4A21 /* AnyChart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FCE4C72175E44600CB4A21 /* AnyChart_iOSTests.swift */; };
 		30FCE4CA2175E44600CB4A21 /* AnyChart_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 30FCE4BC2175E44600CB4A21 /* AnyChart_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30FCE4D42175E6E900CB4A21 /* AnyChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FCE4D32175E6E900CB4A21 /* AnyChartView.xib */; };
 		30FCE4D62175E71A00CB4A21 /* AnyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */; };
 		37F9AE7BDCB35ED6CA5C4478 /* Pods_AnyChart_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD50F9571E3321FFE10B2EC /* Pods_AnyChart_iOSTests.framework */; };
 		739B35A421D77D7700E4D0A2 /* JavascriptInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */; };
+		73B4862222085F100003F7B1 /* AnyChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FCE4D32175E6E900CB4A21 /* AnyChartView.xib */; };
 		E4664732CB6FC78A60267F11 /* Pods_AnyChart_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773EEB26B03B20705881402 /* Pods_AnyChart_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -3055,8 +3055,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B4862222085F100003F7B1 /* AnyChartView.xib in Resources */,
 				3043DE6621AF956B0033ECB8 /* anychart-bundle.min.js in Resources */,
-				30FCE4D42175E6E900CB4A21 /* AnyChartView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3075,15 +3075,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AnyChart-iOSTests-checkManifestLockResult.txt",
 			);
@@ -3097,15 +3093,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AnyChart-iOS-checkManifestLockResult.txt",
 			);

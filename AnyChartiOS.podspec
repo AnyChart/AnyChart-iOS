@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
 
   s.name         = "AnyChartiOS"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "AnyChart iOS is an data visualization library for creating interactive charts."
 
   s.homepage     = "https://github.com/AnyChart/AnyChart-iOS"

@@ -627,7 +627,6 @@
 		30FCE4C82175E44600CB4A21 /* AnyChart_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FCE4C72175E44600CB4A21 /* AnyChart_iOSTests.swift */; };
 		30FCE4CA2175E44600CB4A21 /* AnyChart_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 30FCE4BC2175E44600CB4A21 /* AnyChart_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30FCE4D62175E71A00CB4A21 /* AnyChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */; };
-		37F9AE7BDCB35ED6CA5C4478 /* Pods_AnyChart_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD50F9571E3321FFE10B2EC /* Pods_AnyChart_iOSTests.framework */; };
 		739B35A421D77D7700E4D0A2 /* JavascriptInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */; };
 		73B4862222085F100003F7B1 /* AnyChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30FCE4D32175E6E900CB4A21 /* AnyChartView.xib */; };
 		E4664732CB6FC78A60267F11 /* Pods_AnyChart_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773EEB26B03B20705881402 /* Pods_AnyChart_iOS.framework */; };
@@ -1270,9 +1269,7 @@
 		30FCE4D52175E71A00CB4A21 /* AnyChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyChartView.swift; sourceTree = "<group>"; };
 		739B35A321D77D7700E4D0A2 /* JavascriptInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptInterface.swift; sourceTree = "<group>"; };
 		7773EEB26B03B20705881402 /* Pods_AnyChart_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyChart_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A12C1441E23C8B6D837F515 /* Pods-AnyChart-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyChart-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyChart-iOSTests/Pods-AnyChart-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CB9D7431DA7B3098CEF95D9 /* Pods-AnyChart-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyChart-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyChart-iOS/Pods-AnyChart-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		A7DE91ACBF3EE3FB7759421B /* Pods-AnyChart-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyChart-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyChart-iOSTests/Pods-AnyChart-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		B796974E45FFFF4ADB63838C /* Pods-AnyChart-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyChart-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnyChart-iOS/Pods-AnyChart-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBD50F9571E3321FFE10B2EC /* Pods_AnyChart_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyChart_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1291,7 +1288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				30FCE4C32175E44600CB4A21 /* AnyChart_iOS.framework in Frameworks */,
-				37F9AE7BDCB35ED6CA5C4478 /* Pods_AnyChart_iOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2953,8 +2949,6 @@
 			children = (
 				B796974E45FFFF4ADB63838C /* Pods-AnyChart-iOS.debug.xcconfig */,
 				8CB9D7431DA7B3098CEF95D9 /* Pods-AnyChart-iOS.release.xcconfig */,
-				8A12C1441E23C8B6D837F515 /* Pods-AnyChart-iOSTests.debug.xcconfig */,
-				A7DE91ACBF3EE3FB7759421B /* Pods-AnyChart-iOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2996,7 +2990,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30FCE4D02175E44600CB4A21 /* Build configuration list for PBXNativeTarget "AnyChart-iOSTests" */;
 			buildPhases = (
-				4F57A1FF68208E54062261FD /* [CP] Check Pods Manifest.lock */,
 				30FCE4BE2175E44600CB4A21 /* Sources */,
 				30FCE4BF2175E44600CB4A21 /* Frameworks */,
 				30FCE4C02175E44600CB4A21 /* Resources */,
@@ -3070,24 +3063,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4F57A1FF68208E54062261FD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AnyChart-iOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B22506906B89BC46952C6FE1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3925,7 +3900,6 @@
 		};
 		30FCE4D12175E44600CB4A21 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A12C1441E23C8B6D837F515 /* Pods-AnyChart-iOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -3941,7 +3915,6 @@
 		};
 		30FCE4D22175E44600CB4A21 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7DE91ACBF3EE3FB7759421B /* Pods-AnyChart-iOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,8 +7,10 @@ protocol Js {
 
 public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler, Js {
     
-    @IBOutlet var contentView: UIView!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var container: UIView!
+    var webView: WKWebView!
+    //    @IBOutlet var contentView: UIView!
+//    @IBOutlet weak var webView: WKWebView!
     
     var js: String = ""
     var isRendered = false
@@ -36,8 +38,19 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "AnyChartView", bundle: bundle)
         nib.instantiate(withOwner: self, options: nil)
-        contentView.frame = bounds
-        addSubview(contentView)
+        container.frame = bounds
+        addSubview(container)
+        
+        let webConfiguration = WKWebViewConfiguration()
+        let customFrame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 0.0, height: container.frame.size.height))
+        webView = WKWebView (frame: customFrame , configuration: webConfiguration)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: container.rightAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: container.leftAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+        webView.heightAnchor.constraint(equalTo: container.heightAnchor).isActive = true
 
         APIlib.sharedInstance.jsDelegate = self
         

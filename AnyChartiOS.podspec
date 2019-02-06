@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
-  s.platform = :ios, "8.0"
-  s.ios.deployment_target = '11.0'
+  s.platform = :ios, "9.0"
+  s.ios.deployment_target = '9.0'
 
   s.name         = "AnyChartiOS"
   s.version      = "1.0.0"
@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
 
   s.source_files  = "AnyChart-iOS/**/*.{swift}"
 
-  s.resource  = "AnyChart-iOS/*.{xib}"
+  s.preserve_paths = "AnyChart-iOS/bundle/**"
+  s.resource  = "AnyChart-iOS/*.{xib}", "AnyChart-iOS/bundle/*"
 
   s.swift_version = "4.2"
 

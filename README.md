@@ -12,6 +12,7 @@ Check out <a href="https://github.com/AnyChart/AnyChart-iOS/wiki/Getting-started
 ### CocoaPods
 
 To integrate AnyChart-iOS into your Xcode project using CocoaPods, specify it in your Podfile:
+
 ```pod 'AnyChartiOS', '~> 1.0.3'```
 
 ### Framework

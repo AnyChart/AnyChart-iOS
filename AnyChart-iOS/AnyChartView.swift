@@ -13,6 +13,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
 //    @IBOutlet weak var webView: WKWebView!
     
     var js: String = ""
+    var licenseKey: String = ""
     var isRendered = false
     var chart: anychart.core.Chart? = nil
     
@@ -113,6 +114,7 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         
         webView.evaluateJavaScript(
 //                "window.webkit.messageHandlers[\"scriptHandler\"].postMessage(\"hello\");" +
+            "anychart.licenseKey(\"\(licenseKey)\");" +
                 "anychart.onDocumentReady(function () {" +
                 js +
 //                "\(jsBase).listen('pointClick', function(e) { window.webkit.messageHandlers[\"scriptHandler\"].postMessage(e.point.get('value')); });" +
@@ -169,5 +171,8 @@ public class AnyChartView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptM
         print(error.localizedDescription)
     }
     
+    public func setLicenseKey(key: String) {
+        licenseKey = key
+    }
 }
 

@@ -285,7 +285,7 @@ AnyChart product family includes scores of chart types and we're constantly addi
             <img src="https://github.com/AnyChart/AnyChart-Android/blob/master/img/circulargauge.png" alt="Circular Gauge">
             <sup>
               <a href="">Sample app</a> /
-              <a href="">Code Snippet - Comming soon!</a>
+              <a href="https://github.com/AnyChart/AnyChart-iOS/blob/master/AnyChart-iOS-samples/AnyChart-iOS-samples/Charts/CircularGaugeChartViewController.swift">Code Snippet</a>
             </sup>            
         </td>
     </tr>

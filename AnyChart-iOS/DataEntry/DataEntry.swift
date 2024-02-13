@@ -109,3 +109,36 @@ open class HeatMapDataEntry: DataEntry {
         setValue(key: "heat", value: heat)
     }
 }
+
+open class TreeMapDataEntry: DataEntry {
+    public init(id: String, parent: String?) {
+        super.init()
+        setValue(key: "id", value: id)
+        setValue(key: "parent", value: parent)
+    }
+    
+    public init(id: Int, parent: String?) {
+        super.init()
+        setValue(key: "id", value: id)
+        setValue(key: "parent", value: parent)
+    }
+    
+    public init(id: String, parent: Int?) {
+        super.init()
+        setValue(key: "id", value: id)
+        setValue(key: "parent", value: parent)
+    }
+    
+    public init(id: Int, parent: Int?) {
+        super.init()
+        setValue(key: "id", value: id)
+        setValue(key: "parent", value: parent)
+    }
+    
+    public init(id: String, parent: String?, value: Int?) {
+        super.init()
+        setValue(key: "id", value: id)
+        setValue(key: "parent", value: parent)
+        setValue(key: "value", value: value)
+    }
+}
